@@ -1,0 +1,3168 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HTML and CSS game UI for Unreal Engine 5.8">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../reference-settings/">
+      
+      
+        <link rel="next" href="../reference-api/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>CSS support - ArcRmlUI</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Schibsted+Grotesk:300,300i,400,400i,500,500i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Schibsted Grotesk";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/paper.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-header__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArcRmlUI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CSS support
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-nav__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    ArcRmlUI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting started
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Getting started
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quick start
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Project setup
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Glossary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-html-css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from HTML and CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Samples
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Walkthrough
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents and data
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Documents and data
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game-ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Designing a game's UI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keep-alive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Keep-alive and preload
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../view-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  View models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blueprint-view-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data binding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Events
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Components
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Input
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input and gamepad
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../text-fields/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Text fields
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Forms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drag-and-drop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Drag and drop
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screens and style
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Screens and style
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frames-and-tabs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Frames and tabs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Images
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sounds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sounds
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Styling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailwind/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tailwind CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Localization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world-markers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  World markers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../display-and-players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screen size, cursor and players
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tools
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Tools
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editor-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Editor preview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inspector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Debugging layout
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Converting an HTML page
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Validation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Reference
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Attributes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Event reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Expressions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Console
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Settings
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CSS support
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CSS support
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Properties
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#box-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Box model
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Layout
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-and-fonts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Text and fonts
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-images-and-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Background, images and effects
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforms-and-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transforms and motion
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-and-scrolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Input and scrolling
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rmlui-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RmlUi-only
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Not supported
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Units
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-and-colours" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Functions and colours
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Selectors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pseudo-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Pseudo-elements
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#at-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        At-rules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#css-wide-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CSS-wide keywords
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  C++ and Blueprint
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Help
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Help
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Troubleshooting
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Limits
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FAQ
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Release notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Properties
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#box-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Box model
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Layout
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-and-fonts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Text and fonts
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#background-images-and-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Background, images and effects
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforms-and-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transforms and motion
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-and-scrolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Input and scrolling
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rmlui-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RmlUi-only
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Not supported
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Units
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-and-colours" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Functions and colours
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Selectors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pseudo-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Pseudo-elements
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#at-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        At-rules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#css-wide-keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        CSS-wide keywords
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="css-support">CSS support<a class="headerlink" href="#css-support" title="Permanent link">&para;</a></h1>
+<p>What ArcRmlUI does with the CSS a web page uses. A <a href="../documents/">document</a> is drawn by RmlUi, a UI library, so its
+style sheets (<code>.rcss</code> files, written in <a href="../glossary/#rcss">RCSS</a>) follow RmlUi's rules, not a browser's. The tables
+list what the plugin supports. For a walk through the differences by topic see <a href="../from-html-css/">Coming from
+HTML and CSS</a>.</p>
+<p>Status words in the tables:</p>
+<ul>
+<li><strong>supported</strong>: RmlUi lays out, paints or acts on the value.</li>
+<li><strong>partial</strong>: works for the values or forms the Notes list.</li>
+<li><strong>parsed, no effect</strong>: accepted without a warning, but nothing on screen changes.</li>
+<li><strong>RmlUi-only</strong>: not CSS, an extension RmlUi adds; the Notes say what it does.</li>
+</ul>
+<p>A declaration the engine drops is logged as a warning, see <a href="../validation/">Validation</a>.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<p>Every property takes <code>inherit</code>, <code>initial</code> and <code>unset</code>; see <a href="#css-wide-keywords">CSS-wide keywords</a>.</p>
+<h3 id="box-model">Box model<a class="headerlink" href="#box-model" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>margin</code>, <code>padding</code> and their four sides</td>
+<td>supported</td>
+<td><code>margin</code> takes <code>auto</code>.</td>
+</tr>
+<tr>
+<td><code>border-width</code>, <code>border-color</code> and the side forms, <code>border</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>border-style</code> and the side forms</td>
+<td>partial</td>
+<td><code>none</code>, <code>solid</code>, <code>dashed</code>, <code>dotted</code>, <code>inset</code>, <code>outset</code>, <code>hidden</code>. No <code>double</code>, <code>groove</code>, <code>ridge</code>.</td>
+</tr>
+<tr>
+<td><code>border-radius</code> and the four corners</td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>box-sizing</code></td>
+<td>supported</td>
+<td><code>content-box</code>, <code>border-box</code>.</td>
+</tr>
+<tr>
+<td><code>width</code>, <code>height</code>, <code>min-*</code>, <code>max-*</code></td>
+<td>supported</td>
+<td>Keywords <code>auto</code>, <code>min-content</code>, <code>max-content</code>, <code>fit-content</code>.</td>
+</tr>
+<tr>
+<td><code>aspect-ratio</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>outline</code>, <code>outline-width</code>, <code>outline-color</code>, <code>outline-offset</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>outline-style</code></td>
+<td>partial</td>
+<td><code>none</code>, <code>solid</code>, <code>dashed</code>, <code>dotted</code>. No <code>auto</code>.</td>
+</tr>
+<tr>
+<td><code>margin-inline</code>, <code>margin-block</code>, <code>padding-inline</code>, <code>padding-block</code>, <code>inset-inline</code>, <code>inset-block</code>, <code>border-inline*</code>, <code>border-block*</code></td>
+<td>partial</td>
+<td>Aliases of the left/right or top/bottom sides, as are their <code>-start</code> / <code>-end</code> forms (<code>margin-inline-start</code>, <code>border-block-end-color</code>, <code>border-start-end-radius</code>, ...) and <code>inline-size</code>, <code>block-size</code> with their <code>min-</code> / <code>max-</code> forms. No writing modes: inline is always left to right, block top to bottom.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout">Layout<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>display</code></td>
+<td>partial</td>
+<td><code>none</code>, <code>block</code>, <code>inline</code>, <code>inline-block</code>, <code>flow-root</code>, <code>flex</code>, <code>inline-flex</code>, <code>grid</code>, <code>inline-grid</code>, <code>contents</code>, <code>list-item</code>, <code>-webkit-box</code> and the <code>table*</code> values.</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>partial</td>
+<td><code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>. No <code>sticky</code>.</td>
+</tr>
+<tr>
+<td><code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>, <code>inset</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>float</code>, <code>clear</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>z-index</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>overflow</code>, <code>overflow-x</code>, <code>overflow-y</code></td>
+<td>partial</td>
+<td><code>visible</code>, <code>hidden</code>, <code>auto</code>, <code>scroll</code>. No <code>clip</code>.</td>
+</tr>
+<tr>
+<td><code>visibility</code></td>
+<td>partial</td>
+<td><code>visible</code>, <code>hidden</code>. No <code>collapse</code>.</td>
+</tr>
+<tr>
+<td><code>vertical-align</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>clip</code></td>
+<td>RmlUi-only</td>
+<td>Values <code>auto</code>, <code>none</code>, <code>always</code> or a number; not the CSS <code>clip</code> and not <code>clip-path</code>.</td>
+</tr>
+<tr>
+<td><code>flex</code>, <code>flex-flow</code>, <code>flex-basis</code>, <code>flex-direction</code>, <code>flex-grow</code>, <code>flex-shrink</code>, <code>flex-wrap</code>, <code>order</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>align-content</code>, <code>align-items</code>, <code>align-self</code>, <code>justify-content</code>, <code>justify-items</code>, <code>justify-self</code>, <code>place-*</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>gap</code>, <code>row-gap</code>, <code>column-gap</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>grid</code>, <code>grid-template*</code>, <code>grid-auto-*</code>, <code>grid-row*</code>, <code>grid-column*</code>, <code>grid-area</code></td>
+<td>supported</td>
+<td>Track sizes may use <code>fr</code>.</td>
+</tr>
+<tr>
+<td><code>border-collapse</code>, <code>border-spacing</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-and-fonts">Text and fonts<a class="headerlink" href="#text-and-fonts" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>font</code>, <code>font-family</code>, <code>font-size</code>, <code>font-weight</code></td>
+<td>supported</td>
+<td>No font ships with the plugin; declare fonts in a font sheet, see <a href="../project-setup/#fonts">Project setup</a>.</td>
+</tr>
+<tr>
+<td><code>font-style</code></td>
+<td>partial</td>
+<td><code>normal</code>, <code>italic</code>. No <code>oblique</code>.</td>
+</tr>
+<tr>
+<td><code>font-kerning</code>, <code>font-variant-caps</code>, <code>font-variant-numeric</code>, <code>font-variant-ligatures</code>, <code>font-feature-settings</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>letter-spacing</code>, <code>line-height</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>color</code>, <code>caret-color</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text-align</code></td>
+<td>supported</td>
+<td><code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code>, <code>start</code>, <code>end</code>.</td>
+</tr>
+<tr>
+<td><code>text-align-last</code>, <code>text-justify</code>, <code>text-transform</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text-decoration</code>, <code>text-decoration-line</code>, <code>-color</code>, <code>-thickness</code>, <code>text-underline-offset</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>text-decoration-style</code></td>
+<td>parsed, no effect</td>
+<td>Every style is drawn solid.</td>
+</tr>
+<tr>
+<td><code>white-space</code>, <code>white-space-collapse</code>, <code>text-wrap</code>, <code>text-wrap-mode</code>, <code>text-wrap-style</code></td>
+<td>supported</td>
+<td><code>white-space-collapse</code>: <code>collapse</code>, <code>preserve</code>, <code>preserve-breaks</code>.</td>
+</tr>
+<tr>
+<td><code>word-break</code>, <code>overflow-wrap</code></td>
+<td>supported</td>
+<td><code>word-break</code>: <code>normal</code>, <code>break-all</code>, <code>break-word</code>.</td>
+</tr>
+<tr>
+<td><code>text-overflow</code></td>
+<td>supported</td>
+<td><code>clip</code>, <code>ellipsis</code>, or a string.</td>
+</tr>
+<tr>
+<td><code>-webkit-line-clamp</code>, <code>-webkit-box-orient</code></td>
+<td>supported</td>
+<td>With <code>display: -webkit-box</code>.</td>
+</tr>
+<tr>
+<td><code>text-shadow</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-webkit-text-stroke</code>, <code>-webkit-text-stroke-width</code>, <code>-webkit-text-stroke-color</code>, <code>paint-order</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>list-style</code>, <code>list-style-type</code>, <code>list-style-position</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>list-style-image</code></td>
+<td>parsed, no effect</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>partial</td>
+<td>For <code>::before</code> and <code>::after</code>; <code>attr()</code> works only here.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="background-images-and-effects">Background, images and effects<a class="headerlink" href="#background-images-and-effects" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>background</code>, <code>background-color</code>, <code>background-image</code>, <code>-position</code>, <code>-size</code>, <code>-repeat</code>, <code>-origin</code>, <code>-clip</code>, <code>-attachment</code></td>
+<td>supported</td>
+<td>Gradients and images, several layers.</td>
+</tr>
+<tr>
+<td><code>mask</code>, <code>mask-image</code>, <code>-composite</code>, <code>-origin</code>, <code>-clip</code>, <code>-position</code>, <code>-size</code>, <code>-repeat</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>object-fit</code>, <code>object-position</code></td>
+<td>supported</td>
+<td>On <code>img</code> and <code>svg</code>.</td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>box-shadow</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>filter</code>, <code>backdrop-filter</code></td>
+<td>supported</td>
+<td><code>blur</code>, <code>brightness</code>, <code>contrast</code>, <code>drop-shadow</code>, <code>grayscale</code>, <code>hue-rotate</code>, <code>invert</code>, <code>opacity</code>, <code>saturate</code>, <code>sepia</code>.</td>
+</tr>
+<tr>
+<td><code>mix-blend-mode</code></td>
+<td>parsed, no effect</td>
+<td>Any value other than <code>normal</code> only makes the element a stacking context; nothing is blended.</td>
+</tr>
+<tr>
+<td><code>accent-color</code>, <code>appearance</code></td>
+<td>supported</td>
+<td><code>appearance</code>: <code>auto</code>, <code>none</code>; read by the form controls.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transforms-and-motion">Transforms and motion<a class="headerlink" href="#transforms-and-motion" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transform</code>, <code>translate</code>, <code>rotate</code>, <code>scale</code>, <code>transform-origin</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>perspective</code>, <code>perspective-origin</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>transform-style</code></td>
+<td>parsed, no effect</td>
+<td><code>preserve-3d</code> only makes the element a stacking context.</td>
+</tr>
+<tr>
+<td><code>backface-visibility</code></td>
+<td>parsed, no effect</td>
+<td></td>
+</tr>
+<tr>
+<td><code>transition</code> and its longhands</td>
+<td>supported</td>
+<td><code>transition-behavior</code>: <code>normal</code>, <code>allow-discrete</code>.</td>
+</tr>
+<tr>
+<td><code>animation</code> and its longhands</td>
+<td>supported</td>
+<td>With <code>@keyframes</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="input-and-scrolling">Input and scrolling<a class="headerlink" href="#input-and-scrolling" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pointer-events</code></td>
+<td>partial</td>
+<td><code>none</code>, <code>auto</code>.</td>
+</tr>
+<tr>
+<td><code>cursor</code></td>
+<td>partial</td>
+<td>Twelve names map to a cursor of Slate, Unreal's UI framework: <code>pointer</code>, <code>hand</code>, <code>text</code>, <code>move</code>, <code>ew-resize</code>, <code>col-resize</code>, <code>ns-resize</code>, <code>row-resize</code>, <code>not-allowed</code>, <code>grab</code>, <code>grabbing</code>, <code>crosshair</code>. Any other value gives the arrow. Which cursor each shows: <a href="../display-and-players/#mouse-cursor">Mouse cursor</a>.</td>
+</tr>
+<tr>
+<td><code>user-select</code></td>
+<td>parsed, no effect</td>
+<td></td>
+</tr>
+<tr>
+<td><code>overscroll-behavior</code></td>
+<td>partial</td>
+<td><code>auto</code>, <code>contain</code>.</td>
+</tr>
+<tr>
+<td><code>scrollbar-width</code></td>
+<td>partial</td>
+<td><code>auto</code>, <code>thin</code>, <code>none</code>.</td>
+</tr>
+<tr>
+<td><code>scrollbar-color</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rmlui-only">RmlUi-only<a class="headerlink" href="#rmlui-only" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>decorator</code></td>
+<td>RmlUi-only</td>
+<td>Draws layers on an element, such as an <code>image</code>, a <code>ninepatch</code> or a gradient, written inline or named by an <code>@decorator</code> rule. Prefer <code>background</code>.</td>
+</tr>
+<tr>
+<td><code>font-effect</code></td>
+<td>RmlUi-only</td>
+<td>Effects on text: <code>blur</code>, <code>glow</code>, <code>outline</code>, <code>shadow</code>. Prefer <code>text-shadow</code>.</td>
+</tr>
+<tr>
+<td><code>fill-image</code></td>
+<td>RmlUi-only</td>
+<td>The image of the filled part of a <code>progress</code> bar.</td>
+</tr>
+<tr>
+<td><code>image-color</code></td>
+<td>RmlUi-only</td>
+<td>The colour an <code>img</code> or a <code>progress</code> fill is tinted with; default <code>white</code>.</td>
+</tr>
+<tr>
+<td><code>scrollbar-margin</code></td>
+<td>RmlUi-only</td>
+<td>Shortens the track of a scrollbar by this length, or by the other scrollbar's size when that is larger.</td>
+</tr>
+<tr>
+<td><code>drag</code></td>
+<td>RmlUi-only</td>
+<td>Whether and how an element can be dragged: <code>none</code> (default), <code>drag</code>, <code>drag-drop</code>, <code>block</code>, <code>clone</code>; see <a href="../drag-and-drop/">Drag and drop</a>.</td>
+</tr>
+<tr>
+<td><code>focus</code></td>
+<td>RmlUi-only</td>
+<td><code>auto</code> (default) or <code>none</code>; with <code>none</code> the element and its descendants do not take focus.</td>
+</tr>
+<tr>
+<td><code>nav</code>, <code>nav-up</code>, <code>nav-right</code>, <code>nav-down</code>, <code>nav-left</code>, <code>tab-index</code></td>
+<td>RmlUi-only</td>
+<td><code>tab-index</code> (<code>none</code> or <code>auto</code>) and <code>nav</code> decide whether an element is a stop for the arrow keys and where each arrow goes. The default style sheet gives its controls <code>nav: auto</code>; a <code>div</code> or <code>span</code> needs <code>tab-index: auto; nav: auto</code> to be a stop; see <a href="../navigation/">Navigation</a>.</td>
+</tr>
+<tr>
+<td><code>-rmlui-direction</code>, <code>-rmlui-language</code>, <code>-rmlui-object-position-*</code>, <code>-rmlui-scrollbar-*-color</code></td>
+<td>RmlUi-only</td>
+<td>Longhands behind <code>object-position</code> and <code>scrollbar-color</code>, and the text direction and language of an element.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="not-supported">Not supported<a class="headerlink" href="#not-supported" title="Permanent link">&para;</a></h2>
+<p>Common properties a web developer looks for that do not exist. The list is not every CSS property; a declaration of
+one is dropped with the warning "unknown property".</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layout</td>
+<td><code>position: sticky</code>, <code>columns</code> and <code>column-*</code>, <code>table-layout</code>, <code>caption-side</code>, <code>empty-cells</code>, <code>contain</code>, <code>content-visibility</code>, <code>isolation</code>, <code>will-change</code>, <code>zoom</code>, <code>all</code></td>
+</tr>
+<tr>
+<td>Writing</td>
+<td><code>writing-mode</code>, <code>direction</code> (only <code>-rmlui-direction</code>), <code>unicode-bidi</code>, <code>text-orientation</code></td>
+</tr>
+<tr>
+<td>Text</td>
+<td><code>text-indent</code>, <code>word-spacing</code>, <code>hyphens</code>, <code>line-break</code>, <code>tab-size</code>, <code>font-stretch</code>, <code>font-variant</code> (shorthand), <code>font-variation-settings</code>, <code>font-synthesis</code>, <code>font-optical-sizing</code>, <code>text-emphasis</code>, <code>text-rendering</code>, <code>-webkit-font-smoothing</code>, <code>-webkit-text-fill-color</code>, <code>-webkit-text-size-adjust</code>, <code>quotes</code>, <code>counter-reset</code>, <code>counter-increment</code></td>
+</tr>
+<tr>
+<td>Shapes and images</td>
+<td><code>clip-path</code>, <code>border-image</code>, <code>shape-outside</code>, <code>background-blend-mode</code>, <code>mask-type</code>, <code>mask-mode</code>, <code>image-rendering</code></td>
+</tr>
+<tr>
+<td>Scrolling</td>
+<td><code>scroll-behavior</code>, <code>scroll-snap-*</code>, <code>scroll-padding</code>, <code>scroll-margin</code>, <code>scrollbar-gutter</code>, <code>overflow-clip-margin</code></td>
+</tr>
+<tr>
+<td>Containers and motion</td>
+<td><code>container</code>, <code>container-type</code>, <code>container-name</code>, <code>animation-timeline</code>, <code>animation-composition</code>, <code>view-transition-name</code>, <code>offset-path</code></td>
+</tr>
+<tr>
+<td>Interaction</td>
+<td><code>resize</code>, <code>touch-action</code>, <code>caret-shape</code>, <code>field-sizing</code>, <code>color-scheme</code>, <code>forced-color-adjust</code>, <code>print-color-adjust</code>, <code>-webkit-tap-highlight-color</code></td>
+</tr>
+<tr>
+<td>Aliases</td>
+<td><code>grid-gap</code>, <code>grid-row-gap</code>, <code>grid-column-gap</code>, <code>line-clamp</code></td>
+</tr>
+</tbody>
+</table>
+<p>A value that is not accepted by a supported property is dropped the same way, with "invalid value". The ones web
+developers meet: <code>outline: auto</code>, <code>appearance: button</code>, <code>min-height: 1lh</code>.</p>
+<h2 id="units">Units<a class="headerlink" href="#units" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>px</code>, <code>%</code>, <code>em</code>, <code>rem</code>, <code>in</code>, <code>cm</code>, <code>mm</code>, <code>pt</code>, <code>pc</code></td>
+<td>supported</td>
+<td><code>px</code> is multiplied by the DPI scale: <a href="../glossary/#css-px">CSS px and dp</a>.</td>
+</tr>
+<tr>
+<td><code>vw</code>, <code>vh</code>, <code>vmin</code>, <code>vmax</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>svw</code>, <code>svh</code>, <code>lvw</code>, <code>lvh</code>, <code>dvw</code>, <code>dvh</code></td>
+<td>partial</td>
+<td>Same as <code>vw</code> and <code>vh</code>: a game has no toolbar that changes the viewport.</td>
+</tr>
+<tr>
+<td><code>deg</code>, <code>rad</code></td>
+<td>supported</td>
+<td>Angles.</td>
+</tr>
+<tr>
+<td><code>s</code>, <code>ms</code></td>
+<td>partial</td>
+<td>Only in <code>transition-*</code> and <code>animation-*</code> times.</td>
+</tr>
+<tr>
+<td><code>fr</code></td>
+<td>partial</td>
+<td>Only in grid track lists.</td>
+</tr>
+<tr>
+<td><code>x</code>, <code>dppx</code></td>
+<td>supported</td>
+<td>Resolution, in <code>@media</code>.</td>
+</tr>
+<tr>
+<td><code>dp</code></td>
+<td>RmlUi-only</td>
+<td>Density-independent pixel. Layout extension. Prefer <code>px</code>.</td>
+</tr>
+<tr>
+<td><code>ex</code>, <code>ch</code>, <code>lh</code>, <code>cq*</code></td>
+<td>not supported</td>
+<td>The declaration is dropped.</td>
+</tr>
+<tr>
+<td><code>turn</code>, <code>grad</code></td>
+<td>partial</td>
+<td>Only as the hue of a colour function such as <code>hsl()</code>; in any other value the declaration is dropped.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="functions-and-colours">Functions and colours<a class="headerlink" href="#functions-and-colours" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>calc()</code>, <code>min()</code>, <code>max()</code>, <code>clamp()</code></td>
+<td>supported</td>
+<td>No other math function (<code>round()</code>, <code>sin()</code>, <code>pow()</code> and the like).</td>
+</tr>
+<tr>
+<td><code>var()</code> with a fallback, <code>@property</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>attr()</code></td>
+<td>partial</td>
+<td>Only in <code>content</code>.</td>
+</tr>
+<tr>
+<td><code>env()</code></td>
+<td>not supported</td>
+<td></td>
+</tr>
+<tr>
+<td>Colours: hex, <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>, <code>hsla()</code>, <code>lab()</code>, <code>lch()</code>, <code>oklab()</code>, <code>oklch()</code>, named colours, <code>transparent</code>, <code>currentcolor</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>color-mix()</code></td>
+<td>partial</td>
+<td>Only <code>in srgb</code>.</td>
+</tr>
+<tr>
+<td><code>hwb()</code>, <code>color()</code>, <code>light-dark()</code>, relative colour syntax</td>
+<td>not supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>linear-gradient()</code>, <code>radial-gradient()</code>, <code>conic-gradient()</code> and their <code>repeating-</code> forms</td>
+<td>supported</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="selectors">Selectors<a class="headerlink" href="#selectors" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Selector</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type, class, id, <code>*</code>, attribute <code>[a]</code>, <code>=</code>, <code>~=</code>, <code>\|=</code>, <code>^=</code>, <code>$=</code>, <code>*=</code></td>
+<td>partial</td>
+<td>Values match case-sensitively; the <code>i</code> case flag is not supported.</td>
+</tr>
+<tr>
+<td>Descendant, <code>&gt;</code>, <code>+</code>, <code>~</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td>Nesting with <code>&amp;</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>:nth-child()</code>, <code>:nth-last-child()</code>, <code>:nth-of-type()</code>, <code>:nth-last-of-type()</code>, <code>:first-child</code>, <code>:last-child</code>, <code>:first-of-type</code>, <code>:last-of-type</code>, <code>:only-child</code>, <code>:only-of-type</code>, <code>:empty</code>, <code>:root</code>, <code>:scope</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>:not()</code>, <code>:is()</code>, <code>:where()</code>, <code>:dir()</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>:hover</code>, <code>:active</code>, <code>:focus</code>, <code>:focus-visible</code>, <code>:focus-within</code>, <code>:checked</code>, <code>:disabled</code>, <code>:enabled</code>, <code>:placeholder-shown</code>, <code>:required</code>, <code>:optional</code>, <code>:read-only</code>, <code>:read-write</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>:selected</code>, <code>:drag</code></td>
+<td>RmlUi-only</td>
+<td></td>
+</tr>
+<tr>
+<td><code>:has()</code>, <code>:target</code>, <code>:visited</code>, <code>:valid</code>, <code>:invalid</code>, <code>:link</code> and any other name</td>
+<td>never matches</td>
+<td>The rule is kept; no element ever has that state. The validator reports it as an unknown pseudo-class.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pseudo-elements">Pseudo-elements<a class="headerlink" href="#pseudo-elements" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pseudo-element</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>::before</code>, <code>::after</code></td>
+<td>supported</td>
+<td>With <code>content</code>.</td>
+</tr>
+<tr>
+<td><code>::placeholder</code></td>
+<td>supported</td>
+<td>On text fields.</td>
+</tr>
+<tr>
+<td><code>::-webkit-scrollbar</code>, <code>-track</code>, <code>-thumb</code>, <code>-corner</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>::-webkit-slider-runnable-track</code>, <code>::-webkit-slider-thumb</code></td>
+<td>supported</td>
+<td>On <code>input type="range"</code>.</td>
+</tr>
+<tr>
+<td><code>::first-line</code>, <code>::first-letter</code>, <code>::selection</code>, <code>::marker</code>, <code>::backdrop</code>, <code>::file-selector-button</code></td>
+<td>never matches</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="at-rules">At-rules<a class="headerlink" href="#at-rules" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>At-rule</th>
+<th>Handling</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@media</code></td>
+<td>supported</td>
+<td>Features <code>width</code>, <code>height</code>, <code>aspect-ratio</code>, <code>orientation</code>, <code>resolution</code>, <code>hover</code>, <code>any-hover</code>, <code>pointer</code>, <code>any-pointer</code>, <code>color</code>, <code>prefers-reduced-motion</code>, <code>prefers-color-scheme</code>, <code>prefers-contrast</code>, <code>prefers-reduced-transparency</code>, <code>forced-colors</code>, <code>update</code>, <code>scripting</code> and the range syntax. Types <code>all</code> and <code>screen</code>.</td>
+</tr>
+<tr>
+<td><code>@keyframes</code>, <code>@font-face</code>, <code>@supports</code>, <code>@property</code></td>
+<td>supported</td>
+<td></td>
+</tr>
+<tr>
+<td><code>@decorator</code></td>
+<td>RmlUi-only</td>
+<td>Defines a <code>decorator</code>.</td>
+</tr>
+<tr>
+<td><code>@spritesheet</code></td>
+<td>RmlUi-only</td>
+<td></td>
+</tr>
+<tr>
+<td><code>@starting-style</code></td>
+<td>skipped silently</td>
+<td>The block is skipped.</td>
+</tr>
+<tr>
+<td><code>@layer a, b;</code>, <code>@charset</code>, <code>@namespace</code></td>
+<td>skipped silently</td>
+<td></td>
+</tr>
+<tr>
+<td><code>@layer name { ... }</code>, <code>@container</code></td>
+<td>applied without the condition, warns</td>
+<td>The rules apply to every element, in the order written, with the warning "Unknown at-rule". Layers do not exist and a container query is never evaluated.</td>
+</tr>
+<tr>
+<td><code>@import</code></td>
+<td>not followed</td>
+<td>Warns; link each sheet from the document.</td>
+</tr>
+<tr>
+<td>Any other at-rule</td>
+<td>top level: applied without the condition, warns; inside a style rule: dropped, warns</td>
+<td>At top level the same as <code>@layer</code> blocks. Nested in a style rule it is dropped with "At-rule '@...' inside a style rule is dropped."</td>
+</tr>
+</tbody>
+</table>
+<p>Rules inside <code>@layer name { ... }</code> and <code>@container</code> blocks apply to every element, as if the wrapper were not there: a
+layer has no effect on the order of rules, and a container condition is never checked.</p>
+<h2 id="css-wide-keywords">CSS-wide keywords<a class="headerlink" href="#css-wide-keywords" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>inherit</code>, <code>initial</code>, <code>unset</code></td>
+<td>supported, also on shorthands</td>
+</tr>
+<tr>
+<td><code>!important</code></td>
+<td>supported</td>
+</tr>
+<tr>
+<td><code>revert</code>, <code>revert-layer</code></td>
+<td>not supported</td>
+</tr>
+</tbody>
+</table>
+<p>For the open CSS gaps, see <a href="../limits/">Limits</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../reference-settings/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Settings">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Settings
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../reference-api/" class="md-footer__link md-footer__link--next" aria-label="Next: C++ and Blueprint">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                C++ and Blueprint
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","navigation.footer"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+    
+  </body>
+</html>

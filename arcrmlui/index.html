@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArcRmlUI — Game UI in HTML and CSS for Unreal Engine 5</title>
+<meta name="description" content="ArcRmlUI: an Unreal Engine 5 plugin for building game UI in HTML and CSS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="wordmark" href="../">arcx</a>
+    <nav class="nav" aria-label="Main">
+      <a class="nav-a" href="../#products" aria-current="page">Products</a>
+      <a class="nav-a" href="/docs/arcrmlui/">Docs</a>
+      <a class="nav-a" href="../#support">Support</a>
+      <button class="icon-btn js-only" type="button" data-theme-toggle aria-label="Switch theme"><span class="i-sun"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.9 4.9l1.4 1.4"/><path d="M17.7 17.7l1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.9 19.1l1.4-1.4"/><path d="M17.7 6.3l1.4-1.4"/></svg></span><span class="i-moon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span></button>
+      <a class="btn btn-primary btn-sm" href="[FAB LINK]">Get it on Fab <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v6H4V6h6"/></svg></a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero hero-editorial">
+    <div class="wrap">
+      <div class="hero-text">
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div class="meta-row"><span class="chip">Unreal Engine 5</span><span class="chip">Win64</span><span class="chip">RmlUi fork</span></div>
+          <h1 class="display">ArcRmlUI. Game UI in HTML and CSS.</h1>
+        </div>
+        <div class="hero-side">
+          <p class="lead">An Unreal Engine 5 plugin. Write RML and RCSS, bind it to ViewModels and <!-- TODO: verify --><span class="claim">render it on a dedicated UI thread</span><span class="todo">TODO: verify</span>.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="[FAB LINK]">Get it on Fab <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v6H4V6h6"/></svg></a>
+            <a class="btn btn-secondary" href="/docs/arcrmlui/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h14"/></svg> Read the docs</a>
+          </div>
+        </div>
+      </div>
+      <figure class="hero-media"><div class="media"><img src="../assets/placeholders/arcrmlui-hero.svg" alt="Placeholder: in-engine capture, 16:9" width="1600" height="900"></div><figcaption>In-engine capture of the demo UI kit. Replace with a looping video or screenshot.</figcaption></figure>
+    </div>
+  </section>
+  <section class="sec sec-alt" id="code">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div><span class="eyebrow">01 / Markup and styles</span><h2 class="h2">The markup is the UI.</h2></div>
+        <p class="muted">The same files your UI artists edit are what the game renders. Pick an example to see the RML, the RCSS and the result.</p>
+      </div>
+      <div class="tabs js-only" role="tablist" aria-label="Examples">
+        <button class="tab on" id="tab-main-menu" role="tab" type="button" aria-selected="true" aria-controls="ex-main-menu">Main menu</button>
+        <button class="tab" id="tab-settings" role="tab" type="button" aria-selected="false" aria-controls="ex-settings">Settings screen</button>
+        <button class="tab" id="tab-hud" role="tab" type="button" aria-selected="false" aria-controls="ex-hud">HUD</button>
+      </div>
+      <div class="showcase tabpanel" id="ex-main-menu" role="tabpanel" aria-label="Main menu">
+        <div class="stack">
+          <div class="code"><div class="code-hd"><span class="fname">MainMenu.rml</span><span class="lang">RML</span></div><pre><code><span class="t-tag">&lt;rml</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;head</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-str">"layer"</span> <span class="t-attr">content</span>=<span class="t-str">"UI.Layer.Menu"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-str">"input-mode"</span> <span class="t-attr">content</span>=<span class="t-str">"menu"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;link</span> <span class="t-attr">type</span>=<span class="t-str">"text/rcss"</span> <span class="t-attr">href</span>=<span class="t-str">"MainMenu.rcss"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;viewmodel</span> <span class="t-attr">name</span>=<span class="t-str">"main"</span> <span class="t-attr">class</span>=<span class="t-str">"/ArcRmlUIDemo/Demo/ViewModels/BP_ArcRmlDemoMainMenuVM.BP_ArcRmlDemoMainMenuVM_C"</span>
+    <span class="t-attr">resolver</span>=<span class="t-str">"/Script/ArcRmlUIDemo.ArcRmlDemoViewModelResolver"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;body</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mm-grid"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mm-menu"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mm-items"</span> <span class="t-attr">data-model</span>=<span class="t-str">"main"</span> <span class="t-attr">data-event-back</span>=<span class="t-str">"call('', 'Back'); stopPropagation()"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/MenuItem"</span>
+          <span class="t-attr">data-for</span>=<span class="t-str">"mmItem, mmItem_index : Items"</span>
+          <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ mmItem.Label }}</span>"</span> <span class="t-attr">description</span>=<span class="t-str">"<span class="t-interp">{{ mmItem.Description }}</span>"</span>
+          <span class="t-attr">disabled</span>=<span class="t-str">"<span class="t-interp">{{ mmItem.bDisabled }}</span>"</span> <span class="t-attr">focusable</span>=<span class="t-str">"<span class="t-interp">{{ true }}</span>"</span>
+          <span class="t-attr">autofocus</span>=<span class="t-str">"<span class="t-interp">{{ mmItem_index == Selected }}</span>"</span>
+          <span class="t-attr">data-event-click</span>=<span class="t-str">"callIf(!mmItem.bDisabled, '', 'Activate', mmItem_index)"</span><span class="t-tag">/&gt;</span>
+      <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/body</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/rml</span><span class="t-tag">&gt;</span></code></pre></div>
+          <div class="code"><div class="code-hd"><span class="fname">MainMenu.rcss</span><span class="lang">RCSS</span></div><pre><code><span class="t-sel">.mm-grid </span>{
+<span class="t-prop">  position</span>: relative;
+<span class="t-prop">  height</span>: <span class="t-num">100%</span>;
+<span class="t-prop">  box-sizing</span>: border-box;
+<span class="t-prop">  display</span>: grid;
+<span class="t-prop">  grid-template-columns</span>: minmax(<span class="t-num">320px</span>, <span class="t-num">560px</span>) minmax(<span class="t-num">0</span>, <span class="t-num">1fr</span>) minmax(<span class="t-num">280px</span>, <span class="t-num">400px</span>);
+<span class="t-prop">  grid-template-rows</span>: auto minmax(<span class="t-num">0</span>, <span class="t-num">1fr</span>) auto;
+<span class="t-prop">  gap</span>: var(--ui-space-5);
+<span class="t-prop">  padding</span>: clamp(<span class="t-num">24px</span>, <span class="t-num">4.5vw</span>, <span class="t-num">88px</span>);
+}
+<span class="t-sel">.mm-items </span>{
+<span class="t-prop">  display</span>: flex;
+<span class="t-prop">  flex-direction</span>: column;
+<span class="t-prop">  gap</span>: var(--ui-space-1);
+<span class="t-prop">  margin</span>: auto <span class="t-num">0</span>;
+}</code></pre></div>
+        </div>
+        <figure><div class="media"><img src="../assets/placeholders/render-main-menu.svg" alt="Placeholder: rendered main menu" width="1600" height="900"></div><figcaption>Rendered result: main menu. Capture from the engine.</figcaption></figure>
+      </div>
+      <div class="showcase tabpanel" id="ex-settings" role="tabpanel" aria-label="Settings screen">
+        <div class="stack">
+          <div class="code"><div class="code-hd"><span class="fname">Settings.rml</span><span class="lang">RML</span></div><pre><code><span class="t-tag">&lt;rml</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;head</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-str">"layer"</span> <span class="t-attr">content</span>=<span class="t-str">"UI.Layer.Menu"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-str">"input-mode"</span> <span class="t-attr">content</span>=<span class="t-str">"menu"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;link</span> <span class="t-attr">type</span>=<span class="t-str">"text/rcss"</span> <span class="t-attr">href</span>=<span class="t-str">"Settings.rcss"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;viewmodel</span> <span class="t-attr">name</span>=<span class="t-str">"settings"</span> <span class="t-attr">class</span>=<span class="t-str">"/ArcRmlUIDemo/Demo/ViewModels/BP_ArcRmlDemoSettingsVM.BP_ArcRmlDemoSettingsVM_C"</span>
+    <span class="t-attr">resolver</span>=<span class="t-str">"/Script/ArcRmlUIDemo.ArcRmlDemoViewModelResolver"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;body</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"st-frame"</span> <span class="t-attr">data-model</span>=<span class="t-str">"settings"</span> <span class="t-attr">data-event-back</span>=<span class="t-str">"call('', 'Back'); stopPropagation()"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"st-group"</span> <span class="t-attr">data-for</span>=<span class="t-str">"stGroup : Groups"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Divider"</span> <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ stGroup.Title }}</span>"</span><span class="t-tag">/&gt;</span>
+      <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/SettingRow"</span> <span class="t-attr">data-for</span>=<span class="t-str">"stRow : stGroup.Rows"</span>
+        <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Label }}</span>"</span> <span class="t-attr">description</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Description }}</span>"</span> <span class="t-attr">field</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Field }}</span>"</span>
+        <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Activate', stRow.Field)"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Toggle"</span> <span class="t-attr">data-if</span>=<span class="t-str">"stRow.Type == 'toggle'"</span>
+          <span class="t-attr">on</span>=<span class="t-str">"<span class="t-interp">{{ stRow.bOn }}</span>"</span> <span class="t-attr">on-label</span>=<span class="t-str">"On"</span> <span class="t-attr">off-label</span>=<span class="t-str">"Off"</span>
+          <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Activate', stRow.Field); stopPropagation()"</span><span class="t-tag">/&gt;</span>
+        <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Slider"</span> <span class="t-attr">data-if</span>=<span class="t-str">"stRow.Type == 'slider'"</span>
+          <span class="t-attr">value</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Value }}</span>"</span> <span class="t-attr">min</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Min }}</span>"</span> <span class="t-attr">max</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Max }}</span>"</span> <span class="t-attr">step</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Step }}</span>"</span>
+          <span class="t-attr">value-label</span>=<span class="t-str">"<span class="t-interp">{{ stRow.ValueLabel }}</span>"</span> <span class="t-attr">field</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Field }}</span>"</span><span class="t-tag">/&gt;</span>
+      <span class="t-tag">&lt;/dc-import</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/body</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/rml</span><span class="t-tag">&gt;</span></code></pre></div>
+          <div class="code"><div class="code-hd"><span class="fname">Settings.rcss</span><span class="lang">RCSS</span></div><pre><code><span class="t-sel">.st-frame </span>{
+<span class="t-prop">  position</span>: relative;
+<span class="t-prop">  height</span>: <span class="t-num">100%</span>;
+<span class="t-prop">  box-sizing</span>: border-box;
+<span class="t-prop">  display</span>: grid;
+<span class="t-prop">  grid-template-rows</span>: auto auto minmax(<span class="t-num">0</span>, <span class="t-num">1fr</span>) auto;
+<span class="t-prop">  gap</span>: var(--ui-space-4);
+<span class="t-prop">  padding</span>: clamp(<span class="t-num">24px</span>, <span class="t-num">3.5vw</span>, <span class="t-num">72px</span>);
+}
+<span class="t-sel">.st-head </span>{
+<span class="t-prop">  display</span>: flex;
+<span class="t-prop">  align-items</span>: flex-end;
+<span class="t-prop">  justify-content</span>: space-between;
+<span class="t-prop">  gap</span>: var(--ui-space-4);
+<span class="t-prop">  flex-wrap</span>: wrap;
+}
+<span class="t-sel">.st-body </span>{
+<span class="t-prop">  display</span>: grid;
+<span class="t-prop">  grid-template-columns</span>: minmax(<span class="t-num">0</span>, <span class="t-num">1fr</span>) minmax(<span class="t-num">300px</span>, <span class="t-num">30%</span>);
+<span class="t-prop">  gap</span>: var(--ui-space-5);
+<span class="t-prop">  min-height</span>: <span class="t-num">0</span>;
+}</code></pre></div>
+        </div>
+        <figure><div class="media"><img src="../assets/placeholders/render-settings.svg" alt="Placeholder: rendered settings screen" width="1600" height="900"></div><figcaption>Rendered result: settings screen. Capture from the engine.</figcaption></figure>
+      </div>
+      <div class="showcase tabpanel" id="ex-hud" role="tabpanel" aria-label="HUD">
+        <div class="stack">
+          <div class="code"><div class="code-hd"><span class="fname">Hud.rml</span><span class="lang">RML</span></div><pre><code><span class="t-tag">&lt;rml</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;head</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-str">"layer"</span> <span class="t-attr">content</span>=<span class="t-str">"UI.Layer.Game"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-str">"input-mode"</span> <span class="t-attr">content</span>=<span class="t-str">"all"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;link</span> <span class="t-attr">type</span>=<span class="t-str">"text/rcss"</span> <span class="t-attr">href</span>=<span class="t-str">"Hud.rcss"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;viewmodel</span> <span class="t-attr">name</span>=<span class="t-str">"hud"</span> <span class="t-attr">class</span>=<span class="t-str">"/ArcRmlUIDemo/Demo/ViewModels/BP_ArcRmlDemoHudVM.BP_ArcRmlDemoHudVM_C"</span>
+    <span class="t-attr">resolver</span>=<span class="t-str">"/Script/ArcRmlUIDemo.ArcRmlDemoViewModelResolver"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;body</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"hud-frame"</span> <span class="t-attr">data-model</span>=<span class="t-str">"hud"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"hud-top"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Badge"</span> <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ Mode }}</span>"</span> <span class="t-attr">tone</span>=<span class="t-str">"accent"</span><span class="t-tag">/&gt;</span>
+      <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"hud-where"</span><span class="t-tag">&gt;</span><span class="t-interp">{{ Where }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"hud-bottom"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/InputPrompt"</span>
+        <span class="t-attr">key-label</span>=<span class="t-str">"<span class="t-interp">{{ ArcKeys.IA_ArcDemo_OpenVendor }}</span>"</span> <span class="t-attr">label</span>=<span class="t-str">"Vendor"</span>
+        <span class="t-attr">data-hotkey</span>=<span class="t-str">"IA_ArcDemo_OpenVendor"</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'OpenVendor')"</span><span class="t-tag">/&gt;</span>
+    <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/body</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/rml</span><span class="t-tag">&gt;</span></code></pre></div>
+          <div class="code"><div class="code-hd"><span class="fname">Hud.rcss</span><span class="lang">RCSS</span></div><pre><code><span class="t-sel">.hud-frame </span>{
+<span class="t-prop">  position</span>: relative;
+<span class="t-prop">  height</span>: <span class="t-num">100%</span>;
+<span class="t-prop">  box-sizing</span>: border-box;
+<span class="t-prop">  display</span>: flex;
+<span class="t-prop">  flex-direction</span>: column;
+<span class="t-prop">  justify-content</span>: space-between;
+<span class="t-prop">  padding</span>: clamp(<span class="t-num">24px</span>, <span class="t-num">3.5vw</span>, <span class="t-num">72px</span>);
+}
+<span class="t-sel">.hud-top </span>{
+<span class="t-prop">  display</span>: flex;
+<span class="t-prop">  align-items</span>: center;
+<span class="t-prop">  gap</span>: var(--ui-space-3);
+}
+<span class="t-sel">.hud-where </span>{
+<span class="t-prop">  font-family</span>: var(--ui-font-mono);
+<span class="t-prop">  font-size</span>: var(--ui-fs-2);
+<span class="t-prop">  color</span>: var(--ui-text-muted);
+}
+<span class="t-sel">.hud-bottom </span>{
+<span class="t-prop">  display</span>: flex;
+<span class="t-prop">  flex-direction</span>: column;
+<span class="t-prop">  align-items</span>: flex-end;
+<span class="t-prop">  gap</span>: var(--ui-space-3);
+}</code></pre></div>
+        </div>
+        <figure><div class="media"><img src="../assets/placeholders/render-hud.svg" alt="Placeholder: rendered HUD" width="1600" height="900"></div><figcaption>Rendered result: HUD. Capture from the engine.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="features">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div><span class="eyebrow">02 / Features</span><h2 class="h2">What ships in the plugin.</h2></div>
+        <p class="muted">Feature list is placeholder copy until each item is verified against the release build.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 9v11"/></svg></div>
+          <h3 class="h3"><!-- TODO: verify --><span class="claim">Layout checked against Chrome</span><span class="todo">TODO: verify</span></h3>
+          <p>Block and flexbox layout is compared with Chrome's output, so CSS behaves the way you expect.</p>
+        </div>
+        <div class="card">
+          <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11"/><path d="M3 12h18"/><path d="M3 17h8"/><circle cx="18" cy="7" r="2"/><circle cx="14" cy="17" r="2"/></svg></div>
+          <h3 class="h3"><!-- TODO: verify --><span class="claim">Dedicated UI thread</span><span class="todo">TODO: verify</span></h3>
+          <p>Documents are laid out and rendered on their own thread, away from the game thread.</p>
+        </div>
+        <div class="card">
+          <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 8H7a4 4 0 0 0 0 8h2"/><path d="M15 8h2a4 4 0 0 1 0 8h-2"/><path d="M8 12h8"/></svg></div>
+          <h3 class="h3"><!-- TODO: verify --><span class="claim">MVVM data binding</span><span class="todo">TODO: verify</span></h3>
+          <p>Declare view models with &lt;viewmodel&gt; in the document head, read their fields with data-model, data-for and {{ }}, and call their functions from events with call().</p>
+        </div>
+        <div class="card">
+          <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="10" rx="5"/><path d="M7.5 10v4"/><path d="M5.5 12h4"/><path d="M15.5 11h.01"/><path d="M17.5 13h.01"/></svg></div>
+          <h3 class="h3"><!-- TODO: verify --><span class="claim">CommonUI and Enhanced Input</span><span class="todo">TODO: verify</span></h3>
+          <p>Focus, navigation and input actions go through CommonUI and Enhanced Input.</p>
+        </div>
+        <div class="card">
+          <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg></div>
+          <h3 class="h3"><!-- TODO: verify --><span class="claim">Hot-reloadable markup</span><span class="todo">TODO: verify</span></h3>
+          <p>Save an .rml or .rcss file and the running document reloads in the editor.</p>
+        </div>
+        <div class="card">
+          <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5.5l-3 13"/></svg></div>
+          <h3 class="h3"><!-- TODO: verify --><span class="claim">HTML and CSS you already know</span><span class="todo">TODO: verify</span></h3>
+          <p>RML is an HTML dialect and RCSS a CSS subset: flexbox, transforms, transitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec sec-alt" id="how">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div><span class="eyebrow">03 / How it works</span><h2 class="h2">Three steps from file to screen.</h2></div>
+        <p class="muted">No widget blueprints to keep in sync. The document and the ViewModel are the whole contract.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-n">Step 1</span>
+          <h3 class="h3">Write markup</h3>
+          <p class="muted">Describe the screen in RML, declare its view model in the head and style it with RCSS. Events call view model functions.</p>
+          <div class="code"><div class="code-hd"><span class="fname">Lists.rml</span><span class="lang">RML</span></div><pre><code><span class="t-tag">&lt;rml</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;head</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;link</span> <span class="t-attr">type</span>=<span class="t-str">"text/rcss"</span> <span class="t-attr">href</span>=<span class="t-str">"Lists.rcss"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;viewmodel</span> <span class="t-attr">name</span>=<span class="t-str">"lists"</span> <span class="t-attr">class</span>=<span class="t-str">"/Script/ArcRmlUISamples.ArcRmlSamplesListsViewModel"</span> <span class="t-attr">create</span>=<span class="t-str">"true"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;body</span> <span class="t-attr">data-model</span>=<span class="t-str">"lists"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"ls-row"</span> <span class="t-attr">data-for</span>=<span class="t-str">"r, i : Items"</span> <span class="t-attr">data-key</span>=<span class="t-str">"r.Name"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"ls-name"</span><span class="t-tag">&gt;</span><span class="t-interp">{{ i + 1 }}</span>. <span class="t-interp">{{ r.Name }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;span</span><span class="t-tag">&gt;</span>x<span class="t-interp">{{ r.Quantity }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;button</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Remove', i)"</span><span class="t-tag">&gt;</span>Remove<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Add')"</span><span class="t-tag">&gt;</span>Add<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/body</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/rml</span><span class="t-tag">&gt;</span></code></pre></div>
+        </div>
+        <div class="step">
+          <span class="step-n">Step 2</span>
+          <h3 class="h3">Bind a ViewModel</h3>
+          <p class="muted">Expose game state as FieldNotify properties of an Unreal MVVM view model; its UFUNCTIONs are what the document calls.</p>
+          <div class="code"><div class="code-hd"><span class="fname">ArcRmlSamplesLists.h</span><span class="lang">C++</span></div><pre><code><span class="t-fn">UCLASS</span>()
+<span class="t-kw">class</span> <span class="t-tag">UArcRmlSamplesListsViewModel</span> : <span class="t-kw">public</span> <span class="t-tag">UMVVMViewModelBase</span>
+{
+  <span class="t-fn">GENERATED_BODY</span>()
+
+<span class="t-kw">public</span>:
+  <span class="t-fn">UPROPERTY</span>(BlueprintReadOnly, FieldNotify, Category = <span class="t-str">"Samples"</span>)
+  <span class="t-tag">TArray</span>&lt;<span class="t-tag">FArcRmlSamplesListsRow</span>&gt; Items;
+
+  <span class="t-fn">UFUNCTION</span>(BlueprintCallable, Category = <span class="t-str">"Samples"</span>)
+  <span class="t-kw">void</span> Add();
+
+  <span class="t-fn">UFUNCTION</span>(BlueprintCallable, Category = <span class="t-str">"Samples"</span>)
+  <span class="t-kw">void</span> Remove(<span class="t-kw">int32</span> Index);
+};</code></pre></div>
+        </div>
+        <div class="step">
+          <span class="step-n">Step 3</span>
+          <h3 class="h3">Show it in game</h3>
+          <p class="muted">Open the document through the local player&#39;s viewport subsystem. The declaration in the head creates the view model.</p>
+          <div class="code"><div class="code-hd"><span class="fname">ArcRmlSamplesLists.cpp</span><span class="lang">C++</span></div><pre><code><span class="t-tag">UArcRmlViewportSubsystem</span>* Viewport =
+  LocalPlayer-&gt;GetSubsystem&lt;<span class="t-tag">UArcRmlViewportSubsystem</span>&gt;();
+
+<span class="t-kw">const</span> <span class="t-tag">FArcRmlDocumentRef</span> Document{
+  <span class="t-fn">TEXT</span>(<span class="t-str">"/ArcRmlUISamples/UI/Rml/Lists/Lists.rml"</span>)};
+Viewport-&gt;OpenDocument(Document);</code></pre></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="gallery">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div><span class="eyebrow">04 / Gallery</span><h2 class="h2">From the demo UI kit.</h2></div>
+        <p class="muted">Six capture slots. Click one to open it larger.</p>
+      </div>
+      <div class="gallery">
+        <a class="gbtn" href="../assets/placeholders/shot-01.svg" data-lightbox="Main menu" aria-label="Open screenshot 01: Main menu"><div class="media"><img src="../assets/placeholders/shot-01.svg" alt="Placeholder: Main menu" width="1600" height="900" loading="lazy"></div></a>
+        <a class="gbtn" href="../assets/placeholders/shot-02.svg" data-lightbox="Settings: video" aria-label="Open screenshot 02: Settings: video"><div class="media"><img src="../assets/placeholders/shot-02.svg" alt="Placeholder: Settings: video" width="1600" height="900" loading="lazy"></div></a>
+        <a class="gbtn" href="../assets/placeholders/shot-03.svg" data-lightbox="Settings: controls" aria-label="Open screenshot 03: Settings: controls"><div class="media"><img src="../assets/placeholders/shot-03.svg" alt="Placeholder: Settings: controls" width="1600" height="900" loading="lazy"></div></a>
+        <a class="gbtn" href="../assets/placeholders/shot-04.svg" data-lightbox="In-game HUD" aria-label="Open screenshot 04: In-game HUD"><div class="media"><img src="../assets/placeholders/shot-04.svg" alt="Placeholder: In-game HUD" width="1600" height="900" loading="lazy"></div></a>
+        <a class="gbtn" href="../assets/placeholders/shot-05.svg" data-lightbox="Inventory grid" aria-label="Open screenshot 05: Inventory grid"><div class="media"><img src="../assets/placeholders/shot-05.svg" alt="Placeholder: Inventory grid" width="1600" height="900" loading="lazy"></div></a>
+        <a class="gbtn" href="../assets/placeholders/shot-06.svg" data-lightbox="Dialogue box" aria-label="Open screenshot 06: Dialogue box"><div class="media"><img src="../assets/placeholders/shot-06.svg" alt="Placeholder: Dialogue box" width="1600" height="900" loading="lazy"></div></a>
+      </div>
+    </div>
+    <dialog class="lb" aria-label="Screenshot viewer">
+      <div class="lb-in">
+        <div class="media"><img src="" alt=""></div>
+        <div class="lb-bar">
+          <span class="muted small" data-lb-caption></span>
+          <div class="btn-row">
+            <button class="icon-btn" type="button" data-lb-prev aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="icon-btn" type="button" data-lb-next aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            <button class="icon-btn" type="button" data-lb-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </section>
+  <section class="sec sec-alt" id="specs">
+    <div class="wrap">
+      <div class="sec-hd">
+        <div><span class="eyebrow">05 / Specs</span><h2 class="h2">Technical details.</h2></div>
+        <p class="muted">Values in brackets are placeholders.</p>
+      </div>
+      <div class="tbl-box">
+        <table class="tbl">
+          <tbody>
+            <tr><th scope="row">Engine version</th><td>Unreal Engine 5.[X]+</td></tr>
+            <tr><th scope="row">Platforms</th><td>Win64</td></tr>
+            <tr><th scope="row">Modules</th><td>[ArcRmlUI, ArcRmlUIEditor, ...]</td></tr>
+            <tr><th scope="row">Dependencies</th><td>ModelViewViewModel, CommonUI, EnhancedInput</td></tr>
+            <tr><th scope="row">Documentation</th><td><a href="/docs/arcrmlui/">[DOMAIN]/docs/arcrmlui/</a></td></tr>
+            <tr><th scope="row">Support</th><td><a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a> <span class="muted">[placeholder]</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="sec" id="faq">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:var(--space-8)">
+      <div class="cta">
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:52ch">
+          <h2 class="h2">Start building UI in HTML and CSS.</h2>
+          <p class="muted">Get ArcRmlUI on Fab, then follow the quick start to put your first document on screen.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="[FAB LINK]">Get it on Fab <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v6H4V6h6"/></svg></a>
+          <a class="btn btn-secondary" href="/docs/arcrmlui/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h14"/></svg> Read the docs</a>
+        </div>
+      </div>
+      <div>
+        <div class="sec-hd">
+          <div><span class="eyebrow">06 / FAQ</span><h2 class="h2">Questions.</h2></div>
+          <p class="muted">Anything else: <a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a>.</p>
+        </div>
+        <div class="faq">
+          <details><summary>Is this the same as RmlUi?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">No. ArcRmlUI ships its own fork of RmlUi with Unreal Engine integration. What changed in the fork is listed in the docs.</span><span class="todo">TODO: verify</span></p></details>
+          <details><summary>Which engine versions are supported?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">See the specs table above. Each release on Fab lists the engine versions it was built and tested against.</span><span class="todo">TODO: verify</span></p></details>
+          <details><summary>Do I need C++ to use it?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">Markup and styles need no C++. ViewModels can be defined in C++ or Blueprint; the docs cover both.</span><span class="todo">TODO: verify</span></p></details>
+          <details><summary>Can I use it next to UMG?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">Yes, documents and UMG widgets can be on screen at the same time. The docs explain input and focus handling between them.</span><span class="todo">TODO: verify</span></p></details>
+          <details><summary>Where do I get support?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p>Email <a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a> with your engine version and a minimal repro. Bug reports and questions both go there.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <a class="wordmark" href="../">arcx</a>
+        <p class="muted small" style="margin-top:12px;max-width:34ch">Unreal Engine plugins from a small independent studio. Sold on Fab.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../arcrmlui/">ArcRmlUI</a></li>
+          <li><a href="../#products">All products</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Docs</h4>
+        <ul>
+          <li><a href="/docs/arcrmlui/">ArcRmlUI docs</a></li>
+          <li><a href="/docs/arcrmlui/quick-start/">Quick start</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a></li>
+          <li><a href="[FAB PROFILE LINK]">arcx on Fab</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-base"><span>&copy; 2026 arcx. All rights reserved.</span><span>Unreal Engine is a trademark of Epic Games, Inc.</span></div>
+  </div>
+</footer>
+</body>
+</html>

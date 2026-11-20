@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="Focus areas: arrows move inside an area, leave to the nearest item of another area at its edge, never leave a data-focus-contain popup; Back in an area with data-focus-parent returns focus to the parent area item it left from." font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#111827">
+<title>Focus areas: arrows move inside an area, leave to the nearest item of another area at its edge, never leave a data-focus-contain popup; Back in an area with data-focus-parent returns focus to the parent area item it left from.</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect x="0.5" y="0.5" width="919" height="419" rx="8" fill="#f3f4f6" stroke="#9ca3af"/>
+<text x="20" y="26" font-weight="600">FocusAreas sample</text>
+<rect x="20" y="40" width="160" height="130" rx="6" fill="#dbe4ef" stroke="#4b5563"/>
+<text x="30" y="58" font-size="12" fill="#374151">left</text>
+<rect x="35" y="68" width="130" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="100" y="87" text-anchor="middle">Left 1</text>
+<rect x="35" y="128" width="130" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="100" y="147" text-anchor="middle">Left 2</text>
+<rect x="210" y="40" width="160" height="130" rx="6" fill="#c7d9ee" stroke="#4b5563"/>
+<text x="220" y="58" font-size="12" fill="#374151">middle (primary)</text>
+<rect x="225" y="68" width="130" height="30" rx="5" fill="#b9d3f0" stroke="#4b5563"/><text x="290" y="87" text-anchor="middle">Middle 1 (autofocus)</text>
+<rect x="225" y="128" width="130" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="290" y="147" text-anchor="middle">Middle 2</text>
+<rect x="400" y="40" width="160" height="130" rx="6" fill="#dbe4ef" stroke="#4b5563"/>
+<text x="410" y="58" font-size="12" fill="#374151">right</text>
+<rect x="415" y="68" width="130" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="480" y="87" text-anchor="middle">Right 1</text>
+<rect x="415" y="128" width="130" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="480" y="147" text-anchor="middle">Right 2</text>
+<line x1="100" y1="99" x2="100" y2="126" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<line x1="224" y1="83" x2="167" y2="83" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<line x1="356" y1="83" x2="413" y2="83" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<rect x="20" y="215" width="540" height="110" rx="6" fill="#efe3cf" stroke="#4b5563"/>
+<text x="30" y="233" font-size="12" fill="#374151">popup (data-focus-contain)</text>
+<rect x="35" y="240" width="250" height="75" rx="6" fill="#f6e8d2" stroke="#4b5563"/>
+<text x="45" y="258" font-size="12" fill="#374151">popup-a</text>
+<rect x="55" y="270" width="210" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="160" y="289" text-anchor="middle">Popup A</text>
+<rect x="295" y="240" width="250" height="75" rx="6" fill="#f6e8d2" stroke="#4b5563"/>
+<text x="305" y="258" font-size="12" fill="#374151">popup-b</text>
+<rect x="315" y="270" width="210" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="420" y="289" text-anchor="middle">Popup B</text>
+<line x1="267" y1="285" x2="313" y2="285" stroke="#374151" stroke-width="1.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="300" y1="238" x2="300" y2="200" stroke="#b91c1c" stroke-width="1.6" stroke-dasharray="4 3"/>
+<path d="M292,192 L308,208 M308,192 L292,208" stroke="#b91c1c" stroke-width="2"/>
+<text x="318" y="204" fill="#7f1d1d">no arrow leaves the popup</text>
+<text x="20" y="350" >↕ inside an area, an arrow picks only targets in the same area.</text>
+<text x="20" y="370" >↔ at the edge of an area, an arrow moves to the nearest item of another area.</text>
+<text x="20" y="390" >↔ inside the popup, Left and Right move between popup-a and popup-b.</text>
+<line x1="590" y1="20" x2="590" y2="400" stroke="#9ca3af"/>
+<text x="610" y="26" font-weight="600">BackAndParent sample</text>
+<rect x="610" y="40" width="290" height="70" rx="6" fill="#dbe4ef" stroke="#4b5563"/>
+<text x="620" y="58" font-size="12" fill="#374151">list</text>
+<rect x="760" y="66" width="120" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="820" y="85" text-anchor="middle">Sword</text>
+<rect x="610" y="150" width="290" height="80" rx="6" fill="#dbe4ef" stroke="#4b5563"/>
+<text x="620" y="168" font-size="12" fill="#374151">detail: data-focus-parent="list"</text>
+<rect x="760" y="182" width="120" height="30" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="820" y="201" text-anchor="middle">Use</text>
+<line x1="800" y1="97" x2="800" y2="180" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="762" y="138" font-size="12" fill="#374151">arrow</text>
+<line x1="850" y1="180" x2="850" y2="99" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" stroke-dasharray="5 3"/>
+<text x="858" y="138" font-size="12" fill="#374151">Back</text>
+<text x="610" y="258" >Back in detail returns focus to the</text>
+<text x="610" y="276" >list item the arrow left from.</text>
+<text x="610" y="304" >Back in an area without a parent goes</text>
+<text x="610" y="322" >on to the elements around it, up to</text>
+<text x="610" y="340" >&lt;body&gt;, and closes the document when</text>
+<text x="610" y="358" >no handler stops it.</text>
+</svg>

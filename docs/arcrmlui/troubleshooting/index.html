@@ -1,0 +1,2386 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HTML and CSS game UI for Unreal Engine 5.8">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../reference-api/">
+      
+      
+        <link rel="next" href="../limits/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>Troubleshooting - ArcRmlUI</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Schibsted+Grotesk:300,300i,400,400i,500,500i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Schibsted Grotesk";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/paper.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-header__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArcRmlUI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-nav__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    ArcRmlUI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting started
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Getting started
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quick start
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Project setup
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Glossary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-html-css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from HTML and CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Samples
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Walkthrough
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents and data
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Documents and data
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game-ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Designing a game's UI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keep-alive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Keep-alive and preload
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../view-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  View models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blueprint-view-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data binding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Events
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Components
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Input
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input and gamepad
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../text-fields/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Text fields
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Forms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drag-and-drop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Drag and drop
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screens and style
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Screens and style
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frames-and-tabs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Frames and tabs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Images
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sounds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sounds
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Styling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailwind/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tailwind CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Localization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world-markers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  World markers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../display-and-players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screen size, cursor and players
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tools
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Tools
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editor-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Editor preview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inspector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Debugging layout
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Converting an HTML page
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Validation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Reference
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Attributes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Event reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Expressions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Console
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Settings
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CSS support
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  C++ and Blueprint
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Help
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Help
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Troubleshooting
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Troubleshooting
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#no-text-is-drawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No text is drawn
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-document-does-not-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The document does not open
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrows-or-the-pad-do-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Arrows or the pad do nothing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-does-nothing-or-closes-too-much" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Back does nothing, or closes too much
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-field-does-not-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A field does not update
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-call-does-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A call does nothing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-binding-shows-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A binding shows defaults
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-hotkey-does-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A hotkey does nothing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-document-is-missing-in-a-packaged-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A document is missing in a packaged build
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-look" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Where to look
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Limits
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FAQ
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Release notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#no-text-is-drawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No text is drawn
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-document-does-not-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The document does not open
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrows-or-the-pad-do-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Arrows or the pad do nothing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-does-nothing-or-closes-too-much" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Back does nothing, or closes too much
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-field-does-not-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A field does not update
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-call-does-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A call does nothing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-binding-shows-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A binding shows defaults
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-hotkey-does-nothing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A hotkey does nothing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-document-is-missing-in-a-packaged-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A document is missing in a packaged build
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-look" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Where to look
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<p>Symptom, cause and fix for what stops a <a href="../documents/">document</a> from showing or reacting. Quoted text is part of the log line (most lines start <code>ArcRmlUI:</code>);
+the log category is <code>LogArcRmlUI</code>, see <a href="#where-to-look">Where to look</a>.</p>
+<h2 id="no-text-is-drawn">No text is drawn<a class="headerlink" href="#no-text-is-drawn" title="Permanent link">&para;</a></h2>
+<p>Cause: no loaded font matches the element's <code>font-family</code>, or none is set. The log has a warning that starts
+<code>RmlUi: No font face defined.</code>. It continues either <code>Missing 'font-family' property</code>, or with RmlUi's long message that says the specified font face has to be "successfully loaded" and names the family.</p>
+<p>Fix: declare a font sheet and name its family in a style sheet (<a href="../project-setup/#fonts">Project setup, Fonts</a>). A
+font sheet that fails to load logs <code>ArcRmlUI: font sheet '&lt;path&gt;' in the ArcRmlUI setting FontSheets does not exist</code>
+(or <code>is not a package path</code> (<a href="../glossary/#package-path">package path</a>), <code>is unusable</code>), and a face that fails logs <code>failed to load font face</code>.</p>
+<h2 id="the-document-does-not-open">The document does not open<a class="headerlink" href="#the-document-does-not-open" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>OpenDocument</code> returns false</strong> for an empty path, an unreadable <a href="../documents/#the-head">head</a> and while the world is
+  cleaned up. Fix: pass the document's package path, check its <code>&lt;head&gt;</code>, and open it after the world is up
+  (<a href="../documents/#open-and-close">Documents</a>).</li>
+<li><strong>A head error.</strong> The head is the part of the document between <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code>. An unknown or repeated <code>&lt;meta&gt;</code>, or a value that is not allowed, is logged with the file and line as
+  <code>&lt;file&gt;(&lt;line&gt;): &lt;meta name='input-mode'&gt; needs 'game', 'menu' or 'all', got '&lt;value&gt;'</code> (<a href="../glossary/#input-mode">input mode</a>). Fix: use a value from the head table of
+  <a href="../documents/#the-head">Documents</a>; the <a href="../validation/">validator</a> reports the kind <code>head</code>.</li>
+<li><strong>The <a href="../glossary/#layer">layer</a> is wrong.</strong> Three cases:</li>
+<li><code>&lt;meta name='layer'&gt; has unknown gameplay tag '&lt;tag&gt;'</code>: the tag does not exist.</li>
+<li><code>layer '&lt;tag&gt;' is not in the ArcRmlUI settings LayerOrder</code>: the tag exists but is not in <strong>Layer Order</strong> (<a href="../project-setup/#layers">Project setup, Layers</a>).</li>
+<li><code>ArcRmlUI: cannot open '&lt;path&gt;': the layer host has no layer '&lt;layer&gt;'</code>: the layer host has no widget layer for the tag.</li>
+<li><strong><code>ArcRmlUI: cannot open '&lt;path&gt;': a view of it already exists</code>.</strong> The document has a <a href="../glossary/#view">view</a> already; close it first.</li>
+</ul>
+<h2 id="arrows-or-the-pad-do-nothing">Arrows or the pad do nothing<a class="headerlink" href="#arrows-or-the-pad-do-nothing" title="Permanent link">&para;</a></h2>
+<p>Check in this order:</p>
+<ol>
+<li>The document's <a href="../glossary/#input-mode"><code>input-mode</code></a> is <code>menu</code> or <code>all</code>. A <code>game</code> document takes no keys (<a href="../documents/#the-head">Documents</a>).</li>
+<li>Something has focus. With focus nowhere the first arrow moves nothing, so give the entry element <code>autofocus</code>
+   (<a href="../navigation-reference/#focus-areas">Navigation</a>).</li>
+<li>The target takes focus. A <code>&lt;button&gt;</code> does; a <code>div</code> or <code>span</code> needs <code>tab-index: auto; nav: auto</code>. Without <code>nav</code> an
+   arrow does nothing and sends no <code>navnotarget</code> (<a href="../limits/">Limits</a>).</li>
+<li>In a project with menus, the <a href="../project-setup/#input-for-menus">input setup</a> exists.</li>
+</ol>
+<h2 id="back-does-nothing-or-closes-too-much">Back does nothing, or closes too much<a class="headerlink" href="#back-does-nothing-or-closes-too-much" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Back does nothing, and the log has <code>ArcRmlUI: '&lt;path&gt;': no keys are mapped to the CommonUI Enhanced Input back
+  action</code>.</strong> The project's input data has no key on its Back action. Complete the
+  <a href="../project-setup/#input-for-menus">input setup</a>; the validator reports it as <code>input-mapping</code>.</li>
+<li><strong>Back closes the document although a <code>data-event-back</code> handler ran.</strong> A <code>call</code> never stops the event. Add
+  <code>stopPropagation()</code> to the handler, or leave it and let a child area's <code>data-focus-parent</code> take the Back. The order
+  is in <a href="../navigation-reference/#back-and-the-parent-area">Navigation</a>.</li>
+</ul>
+<h2 id="a-field-does-not-update">A field does not update<a class="headerlink" href="#a-field-does-not-update" title="Permanent link">&para;</a></h2>
+<p>Cause: the document reads only <a href="../glossary/#field-notify">Field Notify</a> fields and redraws when the model broadcasts the
+change. A plain assignment in C++ is not seen, and neither is a Blueprint Set node that does not broadcast.</p>
+<p>Fix: in C++ write the field with <code>UE_MVVM_SET_PROPERTY_VALUE</code>. In a Blueprint <a href="../glossary/#view-model">view model</a>, set the Field Notify variable
+with its Set node, which the editor titles <strong>SET w/ Broadcast</strong> (<a href="../data-binding/#fields">Data binding</a>,
+<a href="../blueprint-view-models/">Blueprint view models</a>). <code>data-value</code> cannot write a value back (<a href="../limits/">Limits</a>).</p>
+<h2 id="a-call-does-nothing">A call does nothing<a class="headerlink" href="#a-call-does-nothing" title="Permanent link">&para;</a></h2>
+<p>Cause: <code>call()</code> runs nothing and logs a warning. The line about a <code>'vm:&lt;path&gt;'</code> argument, the path of a view model
+(<a href="../events/#calls">Events</a>), is an error:</p>
+<table>
+<thead>
+<tr>
+<th>Log line</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'&lt;Function&gt;' is not a callable event function on '&lt;Class&gt;'</code></td>
+<td>The function does not exist, or is not a callable <code>BlueprintCallable</code> <code>UFUNCTION</code> that is non-const, not pure, not a network function and not a <code>BlueprintNativeEvent</code> or <code>BlueprintImplementableEvent</code> (<a href="../events/#calls">Events</a>).</td>
+</tr>
+<tr>
+<td><code>'&lt;Function&gt;' received N arguments but takes M</code></td>
+<td>The argument count differs from the parameter count.</td>
+</tr>
+<tr>
+<td><code>'&lt;Function&gt;' argument '&lt;value&gt;' does not convert to parameter '&lt;name&gt;'</code></td>
+<td>The value does not convert to the parameter's type.</td>
+</tr>
+<tr>
+<td><code>'&lt;Function&gt;' object parameter '&lt;name&gt;' takes a 'vm:&lt;path&gt;' argument</code></td>
+<td>An object parameter needs <code>'vm:&lt;path&gt;'</code>.</td>
+</tr>
+<tr>
+<td><code>call('&lt;path&gt;', '&lt;Function&gt;') targets unknown view model</code></td>
+<td>The child path names no view model of the element's model.</td>
+</tr>
+<tr>
+<td><code>call('&lt;path&gt;', '&lt;Function&gt;') on '&lt;model&gt;' has no live view model</code></td>
+<td>The model is not set yet.</td>
+</tr>
+</tbody>
+</table>
+<p>The validator reports a missing function as <code>unknown-function</code> and a wrong count as <code>call-arity</code>
+(<a href="../validation/#what-it-reports">Validation</a>). A click on a <code>data-action</code> under a <code>&lt;body&gt;</code> without <code>data-model</code>
+logs <code>action '&lt;action&gt;' was clicked under a &lt;body&gt; or embedded document root that has no data-model</code>.</p>
+<p>Fix: make the name, the argument count and the argument values match the function in the view model class, and give the
+<code>&lt;body&gt;</code> a <code>data-model</code>.</p>
+<h2 id="a-binding-shows-defaults">A binding shows defaults<a class="headerlink" href="#a-binding-shows-defaults" title="Permanent link">&para;</a></h2>
+<p>Cause: a view model that is not resolved still binds, from its class defaults, and its
+<a href="../view-models/#fields-every-model-gets"><code>ArcResolved</code></a> is false. This is the case before the first
+<a href="../view-models/#setviewmodel"><code>SetViewModel</code></a>, the call that assigns a view model to a declaration, and for a
+preview model in a <a href="../glossary/#shipping-build">Shipping build</a> or with <code>ArcRml.PreviewHidden 1</code>
+(<a href="../editor-preview/#when-the-data-shows">Editor preview</a>).</p>
+<p>Fix: for a <code>manual</code> model, call <code>SetViewModel</code> before you expect values; test <code>ArcResolved</code> in the document to show a fallback.</p>
+<h2 id="a-hotkey-does-nothing">A hotkey does nothing<a class="headerlink" href="#a-hotkey-does-nothing" title="Permanent link">&para;</a></h2>
+<ul>
+<li>With the same <code>data-hotkey</code> on several elements, the click goes to the focused element or its nearest ancestor that
+  has it; else to the first visible one in document order in the focused area, then in the document (an embedded
+  <a href="../glossary/#tab">tab</a>'s wrapper first). Another duplicate never fires, and there is no diagnostic. Fix: use each hotkey on one element (<a href="../navigation-reference/#tab-bar">Navigation</a>).</li>
+<li>The log has <code>ArcRmlUI: '&lt;path&gt;' input mapping '&lt;mapping&gt;' does not load as an Input Mapping Context</code> (an error). The
+  document opens, but its <a href="../glossary/#ui-action">UI actions</a> are unbound. Fix the path of the <code>input-mapping</code> meta.</li>
+<li>A UI action that nothing handles logs <code>UI action '&lt;action&gt;' has no handler, hotkey or cycle</code> at the <code>Log</code> level. Fix: add a <code>data-hotkey</code> or a handler for it.</li>
+<li>A <code>data-event-uiaction</code> handler consumes the action only if it also calls <code>stopPropagation()</code>; otherwise the hotkey
+  runs as well.</li>
+<li>The action must be in the document's <code>input-mapping</code> context, and the document needs an <code>input-mode</code> other than
+  <code>game</code> (<a href="../input/#the-menus-own-action">Input and gamepad</a>).</li>
+</ul>
+<h2 id="a-document-is-missing-in-a-packaged-build">A document is missing in a packaged build<a class="headerlink" href="#a-document-is-missing-in-a-packaged-build" title="Permanent link">&para;</a></h2>
+<p>Cause: with <strong>Package Everything</strong> on, every document of every <a href="../glossary/#content-root">content root</a> ships. With it off, a document that is neither in
+<strong>Paths to Package</strong> nor reached from a shipped document by a <a href="../glossary/#frame">frame</a>, a literal <code>open:</code> target or a reference of a
+Blueprint or data asset is not packaged (<a href="../project-setup/#packaging">Project setup, Packaging</a>). A <code>data-action</code>
+built from data (<code>data-attr-data-action</code>, <code>data-attrif-data-action</code> or <code>{{ }}</code>) is not followed; the cook logs
+<code>'&lt;document&gt;' builds a data-action from data</code> as a warning.</p>
+<p>Fix: add the target to <strong>Paths to Package</strong>.</p>
+<h2 id="where-to-look">Where to look<a class="headerlink" href="#where-to-look" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The log category <code>LogArcRmlUI</code>; a diagnostic line is <code>&lt;file&gt;(&lt;line&gt;): &lt;message&gt;</code>. Warnings and errors outside Shipping
+  also show in a bar over the viewport.</li>
+<li>The editor's <strong>Message Log</strong>, the ArcRmlUI log pages, and the preview's <strong>Diagnostics</strong> panel
+  (<a href="../workflow/#where-errors-show">Working with documents</a>).</li>
+<li>The <a href="../validation/">validator</a>: it finds most of the above before the document opens.</li>
+<li>The <a href="../inspector/">inspector</a>: for an element with the wrong size or a style that does not apply, it shows the box model
+  and the rules that reach the element, with their file and line.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../reference-api/" class="md-footer__link md-footer__link--prev" aria-label="Previous: C++ and Blueprint">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                C++ and Blueprint
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../limits/" class="md-footer__link md-footer__link--next" aria-label="Next: Limits">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Limits
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","navigation.footer"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+    
+  </body>
+</html>

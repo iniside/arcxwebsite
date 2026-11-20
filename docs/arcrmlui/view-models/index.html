@@ -1,0 +1,2531 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HTML and CSS game UI for Unreal Engine 5.8">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../keep-alive/">
+      
+      
+        <link rel="next" href="../blueprint-view-models/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>View models - ArcRmlUI</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Schibsted+Grotesk:300,300i,400,400i,500,500i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Schibsted Grotesk";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/paper.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-header__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArcRmlUI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              View models
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-nav__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    ArcRmlUI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting started
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Getting started
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quick start
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Project setup
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Glossary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-html-css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from HTML and CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Samples
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Walkthrough
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents and data
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Documents and data
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game-ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Designing a game's UI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keep-alive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Keep-alive and preload
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  View models
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  View models
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: create
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: context
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-resolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: resolver
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: manual
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: path
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-settable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option: settable
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-on-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option: on-close
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setviewmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SetViewModel
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fields-every-model-gets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fields every model gets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Next
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blueprint-view-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data binding
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Events
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Components
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Input
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input and gamepad
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../text-fields/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Text fields
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Forms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drag-and-drop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Drag and drop
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screens and style
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Screens and style
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frames-and-tabs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Frames and tabs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Images
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sounds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sounds
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Styling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailwind/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tailwind CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Localization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world-markers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  World markers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../display-and-players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screen size, cursor and players
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tools
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Tools
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editor-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Editor preview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inspector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Debugging layout
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Converting an HTML page
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Validation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Reference
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Attributes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Event reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Expressions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Console
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Settings
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CSS support
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  C++ and Blueprint
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Help
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Help
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Troubleshooting
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Limits
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FAQ
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Release notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#source-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: create
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: context
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-resolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: resolver
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: manual
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Source: path
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-settable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option: settable
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-on-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option: on-close
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setviewmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SetViewModel
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fields-every-model-gets" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fields every model gets
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Next
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="view-models">View models<a class="headerlink" href="#view-models" title="Permanent link">&para;</a></h1>
+<p>A <a href="../glossary/#document">document</a> reads data from Unreal MVVM <a href="../glossary/#view-model">view models</a> (<code>UMVVMViewModelBase</code>) and calls their
+functions. Use one for anything a screen shows from your game or does to it. The head declares each model with
+<code>&lt;viewmodel&gt;</code> and the body reads it through <code>data-model="&lt;name&gt;"</code> (<a href="../concepts/#view-models-and-sources">Concepts</a>).</p>
+<p>A declaration has a <code>name</code>, unique in the document, and a <code>class</code>, the path of a class that derives from
+<code>UMVVMViewModelBase</code>: <code>/Script/&lt;Module&gt;.&lt;Class&gt;</code> for a C++ class, or the generated class <code>..._C</code> of a Blueprint
+(<a href="../blueprint-view-models/">Blueprint view models</a>). It also has exactly one <a href="../glossary/#source">source</a>, the attribute that says where the
+instance comes from:</p>
+<ul>
+<li><code>create</code>: the document makes the instance.</li>
+<li><code>context</code>: the instance is looked up in the GameInstance's view model collection.</li>
+<li><code>resolver</code>: a <a href="../glossary/#resolver">resolver</a> class makes the instance.</li>
+<li><code>manual</code>: game code assigns the instance.</li>
+<li><code>path</code>: the instance is read from a property or getter of the player controller, its pawn or the local player.</li>
+</ul>
+<p>None or two is a head error. Two more attributes are optional:</p>
+<ul>
+<li><code>optional</code>: without it, focus entering the document's <a href="../glossary/#focus-area">focus areas</a> waits for an unresolved
+  model; with it, focus does not wait, and validation reports a problem with the model's fields as a warning instead of
+  an error. <code>create</code> cannot be combined with it.</li>
+<li><code>settable</code>: game code can replace the instance (<a href="#option-settable">Option: settable</a>).</li>
+</ul>
+<p>An attribute the declaration does not know is a warning, except on a <code>resolver</code> declaration, where it sets a property
+of the resolver.</p>
+<p>Only <a href="../glossary/#field-notify">Field Notify</a> fields are read, and the document updates when the model broadcasts a change
+(<a href="../data-binding/">Data binding</a>). Which source fits which screen is a table in
+<a href="../game-ui/#choosing-a-view-model-source">Designing a game's UI</a>.</p>
+<h2 id="source-create">Source: create<a class="headerlink" href="#source-create" title="Permanent link">&para;</a></h2>
+<p>The document makes its own view model when it opens. The instance lives as long as the document's <a href="../glossary/#view">view</a>: it is new
+after the document is closed and opened again, and a <a href="../glossary/#keep-alive"><code>keep-alive</code></a> document that is only parked keeps it. <code>create</code> cannot
+be combined with <code>optional</code>, and an abstract class is an error. This is the source of the FieldBinding, Events, Lists,
+StructList, NestedViewModel and Component samples:</p>
+<div class="highlight"><span class="filename">FieldBinding.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">viewmodel</span> <span class="na">name</span><span class="o">=</span><span class="s">"fields"</span> <span class="na">class</span><span class="o">=</span><span class="s">"/Script/ArcRmlUISamples.ArcRmlSamplesFieldBindingViewModel"</span> <span class="na">create</span><span class="o">=</span><span class="s">"true"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<p>A model that holds other view models makes them in its constructor with <code>CreateDefaultSubobject</code>
+(<a href="../data-binding/#nested-view-models">Data binding</a>).</p>
+<h2 id="source-context">Source: context<a class="headerlink" href="#source-context" title="Permanent link">&para;</a></h2>
+<p>The view model is looked up in the GameInstance's MVVM view model collection by its class and a context name. Game code
+adds the instance before it opens the document, so the document shows it from the first frame. Sample: SourceContext.</p>
+<div class="highlight"><span class="filename">SourceContext.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">viewmodel</span> <span class="na">name</span><span class="o">=</span><span class="s">"item"</span> <span class="na">class</span><span class="o">=</span><span class="s">"/Script/ArcRmlUISamples.ArcRmlSamplesSourceContextViewModel"</span> <span class="na">context</span><span class="o">=</span><span class="s">"VM_SampleContext"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C++</label><label for="__tabbed_1_2">Blueprint</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">SourceContext/ArcRmlSamplesSourceContext.cpp</span><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">FArcRmlDocumentRef</span><span class="w"> </span><span class="n">Document</span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"/ArcRmlUISamples/UI/Rml/SourceContext/SourceContext.rml"</span><span class="p">)};</span>
+<span class="n">UMVVMGameSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">Mvvm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalPlayer</span><span class="o">-&gt;</span><span class="n">GetGameInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UMVVMGameSubsystem</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Mvvm</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FArcRmlDocumentRef</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">FMVVMViewModelContext</span><span class="w"> </span><span class="n">Context</span><span class="p">;</span>
+<span class="n">Context</span><span class="p">.</span><span class="n">ContextClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UArcRmlSamplesSourceContextViewModel</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
+<span class="n">Context</span><span class="p">.</span><span class="n">ContextName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"VM_SampleContext"</span><span class="p">);</span>
+<span class="n">Mvvm</span><span class="o">-&gt;</span><span class="n">GetViewModelCollection</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">RemoveViewModel</span><span class="p">(</span><span class="n">Context</span><span class="p">);</span>
+<span class="n">UArcRmlSamplesSourceContextViewModel</span><span class="o">*</span><span class="w"> </span><span class="n">Instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesSourceContextViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Mvvm</span><span class="p">);</span>
+<span class="n">Instance</span><span class="o">-&gt;</span><span class="n">Label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"From the GameInstance collection"</span><span class="p">);</span>
+<span class="n">Mvvm</span><span class="o">-&gt;</span><span class="n">GetViewModelCollection</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">AddViewModelInstance</span><span class="p">(</span><span class="n">Context</span><span class="p">,</span><span class="w"> </span><span class="n">Instance</span><span class="p">);</span>
+
+<span class="k">return</span><span class="w"> </span><span class="n">Viewport</span><span class="o">-&gt;</span><span class="n">OpenDocument</span><span class="p">(</span><span class="n">Document</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Document</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FArcRmlDocumentRef</span><span class="p">();</span>
+</code></pre></div>
+<p>This is an excerpt from the body of the sample's <code>Open</code> function: <code>LocalPlayer</code> is its parameter and <code>Viewport</code> is the local player's <code>UArcRmlViewportSubsystem</code>, as in the <a href="../quick-start/#open-and-close-it">Quick start</a>.</p>
+</div>
+<div class="tabbed-block">
+<p><code>BP_SourceContext_Open</code> is a Blueprint Function Library. Its <code>Open</code> function (input <code>PlayerController</code>, output
+<code>Document</code>) runs:</p>
+<ol>
+<li><strong>Make Arc Rml Document Ref</strong> with <code>Path</code> <code>/ArcRmlUISamples/UI/Rml/SourceContext/SourceContext.rml</code>, and
+   <strong>Arc Rml Viewport Subsystem</strong> (in the palette: <strong>Get ArcRmlViewportSubsystem</strong>) with the <code>PlayerController</code> input.</li>
+<li><strong>Viewmodel Game Subsytem</strong> (the engine's own spelling of the node title) with <code>WorldContext</code> the <code>PlayerController</code>, then
+   <strong>Get View Model Collection</strong> on it.</li>
+<li><strong>Make MVVMView Model Context</strong> with <code>ContextClass</code> the view model class and <code>ContextName</code> <code>VM_SampleContext</code>, and
+   <strong>Remove View Model</strong> on the collection with that context.</li>
+<li><strong>Construct Arc Rml Samples Source Context View Model</strong> with the MVVM game subsystem as its outer, <strong>SET w/ Broadcast</strong> of <code>Label</code> on the
+   instance, and <strong>Add View Model Instance</strong> on the collection with the context and the instance.</li>
+<li><strong>Open Document</strong> on the viewport subsystem; when it returns true, the function returns the document.</li>
+</ol>
+<p><img alt="Blueprint graph of BP_SourceContext_Open Open: Remove View Model on the game subsystem's collection with the VM_SampleContext context, Construct the view model with the game subsystem as Outer, SET w/ Broadcast its Label, Add View Model Instance, then Open Document and a Branch to the Return Node" src="../images/bp-source-context-open.svg" /></p>
+</div>
+</div>
+</div>
+<p>While the instance is not in the collection the model is unresolved. The document retries every second and when the
+collection changes.</p>
+<h2 id="source-resolver">Source: resolver<a class="headerlink" href="#source-resolver" title="Permanent link">&para;</a></h2>
+<p>A resolver is a C++ class derived from <code>UMVVMViewModelContextResolver</code> that creates the instance. Every attribute of the
+declaration that is not one of the declaration's own is set on the resolver property of the same name before
+<code>CreateInstance</code> runs; a name the resolver does not have is a warning. The names <code>name</code>, <code>class</code>, <code>context</code>,
+<code>resolver</code>, <code>create</code>, <code>manual</code>, <code>path</code>, <code>settable</code>, <code>optional</code>, <a href="../editor-preview/#the-declaration-and-the-json"><code>preview</code></a> and <code>on-close</code> belong to the declaration, so a
+resolver property cannot have one of them. <code>CreateInstance</code> receives a widget owned by the <a href="../glossary/#local-player">local player</a>, so a resolver
+can read the player. Sample: SourceResolver; the <code>Greeting</code> attribute fills the resolver's <code>Greeting</code> property.</p>
+<div class="highlight"><span class="filename">SourceResolver.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">viewmodel</span> <span class="na">name</span><span class="o">=</span><span class="s">"greeting"</span> <span class="na">class</span><span class="o">=</span><span class="s">"/Script/ArcRmlUISamples.ArcRmlSamplesSourceResolverViewModel"</span> <span class="na">resolver</span><span class="o">=</span><span class="s">"/Script/ArcRmlUISamples.ArcRmlSamplesGreetingResolver"</span> <span class="na">Greeting</span><span class="o">=</span><span class="s">"Hello from the RML attribute"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">SourceResolver/ArcRmlSamplesSourceResolver.h</span><pre><span></span><code><span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UArcRmlSamplesGreetingResolver</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UMVVMViewModelContextResolver</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Greeting</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="nf">CreateInstance</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">ExpectedType</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">UserWidget</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">UMVVMView</span><span class="o">*</span><span class="w"> </span><span class="n">View</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">SourceResolver/ArcRmlSamplesSourceResolver.cpp</span><pre><span></span><code><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="nf">UArcRmlSamplesGreetingResolver::CreateInstance</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">ExpectedType</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">UserWidget</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">UMVVMView</span><span class="o">*</span><span class="w"> </span><span class="n">View</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ExpectedType</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">UArcRmlSamplesSourceResolverViewModel</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">IsChildOf</span><span class="p">(</span><span class="n">ExpectedType</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">UArcRmlSamplesSourceResolverViewModel</span><span class="o">*</span><span class="w"> </span><span class="n">ViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesSourceResolverViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetTransientPackage</span><span class="p">());</span>
+<span class="w">    </span><span class="n">ViewModel</span><span class="o">-&gt;</span><span class="n">Greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Greeting</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">APlayerController</span><span class="o">*</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UserWidget</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">UserWidget</span><span class="o">-&gt;</span><span class="n">GetOwningPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ViewModel</span><span class="o">-&gt;</span><span class="n">PlayerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Player</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FString</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"no player"</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ViewModel</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="source-manual">Source: manual<a class="headerlink" href="#source-manual" title="Permanent link">&para;</a></h2>
+<p>A <code>manual</code> declaration creates nothing: the model stays unresolved until game code assigns an object with
+<code>SetViewModel</code>. <code>manual</code> implies <code>settable</code> and <code>optional</code>. Sample: SourceManual.</p>
+<div class="highlight"><span class="filename">SourceManual.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">viewmodel</span> <span class="na">name</span><span class="o">=</span><span class="s">"item"</span> <span class="na">class</span><span class="o">=</span><span class="s">"/Script/ArcRmlUISamples.ArcRmlSamplesSourceManualViewModel"</span> <span class="na">manual</span><span class="o">=</span><span class="s">"true"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">C++</label><label for="__tabbed_2_2">Blueprint</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">SourceManual/ArcRmlSamplesSourceManual.cpp</span><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">FArcRmlDocumentRef</span><span class="w"> </span><span class="n">Document</span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"/ArcRmlUISamples/UI/Rml/SourceManual/SourceManual.rml"</span><span class="p">)};</span>
+<span class="n">UArcRmlSamplesSourceManualViewModel</span><span class="o">*</span><span class="w"> </span><span class="n">First</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesSourceManualViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetTransientPackage</span><span class="p">());</span>
+<span class="n">First</span><span class="o">-&gt;</span><span class="n">Label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Instance 1"</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Viewport</span><span class="o">-&gt;</span><span class="n">SetViewModel</span><span class="p">(</span><span class="n">Document</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"item"</span><span class="p">),</span><span class="w"> </span><span class="n">First</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FArcRmlDocumentRef</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">return</span><span class="w"> </span><span class="n">Viewport</span><span class="o">-&gt;</span><span class="n">OpenDocument</span><span class="p">(</span><span class="n">Document</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Document</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FArcRmlDocumentRef</span><span class="p">();</span>
+</code></pre></div>
+<p>This is an excerpt from the body of the sample's <code>Open</code> function; <code>Viewport</code> is the local player's <code>UArcRmlViewportSubsystem</code>.</p>
+</div>
+<div class="tabbed-block">
+<p><code>BP_SourceManual_Open</code> is a Blueprint Function Library. Its <code>Open</code> function (input <code>PlayerController</code>, output
+<code>Document</code>) runs:</p>
+<ol>
+<li><strong>Make Arc Rml Document Ref</strong> with <code>Path</code> <code>/ArcRmlUISamples/UI/Rml/SourceManual/SourceManual.rml</code>, and
+   <strong>Arc Rml Viewport Subsystem</strong> with the <code>PlayerController</code> input.</li>
+<li><strong>Construct Arc Rml Samples Source Manual View Model</strong> with the <code>PlayerController</code> as its outer, and <strong>SET w/ Broadcast</strong> of <code>Label</code> on the
+   instance with <code>Instance 1</code>.</li>
+<li><strong>Set View Model</strong> on the viewport subsystem with the document, <code>ModelName</code> <code>item</code> and the instance.</li>
+<li>When <strong>Set View Model</strong> returns true, <strong>Open Document</strong>; when that returns true, the function returns the document.</li>
+</ol>
+<p><img alt="Blueprint graph of BP_SourceManual_Open Open: Construct the view model with the Player Controller as Outer, SET w/ Broadcast its Label to Instance 1, Set View Model with Model Name item, a Branch to Open Document, and a second Branch to the Return Node" src="../images/bp-source-manual-open.svg" /></p>
+</div>
+</div>
+</div>
+<p>The document shows <code>Waiting for the view model</code> (its <code>!ArcResolved</code> branch) until the first assignment. The "Swap the
+instance" button calls <code>Swap</code>, which makes a new view model and assigns it while the document is open:</p>
+<div class="highlight"><span class="filename">SourceManual/ArcRmlSamplesSourceManual.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesSourceManualViewModel::Swap</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UArcRmlViewportSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">Viewport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArcRmlSamplesSourceManualPrivate</span><span class="o">::</span><span class="n">FindViewport</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Viewport</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">UArcRmlSamplesSourceManualViewModel</span><span class="o">*</span><span class="w"> </span><span class="n">Next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesSourceManualViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetTransientPackage</span><span class="p">());</span>
+<span class="w">    </span><span class="n">Next</span><span class="o">-&gt;</span><span class="n">Generation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Generation</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Next</span><span class="o">-&gt;</span><span class="n">Label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="o">::</span><span class="n">Printf</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Instance %d"</span><span class="p">),</span><span class="w"> </span><span class="n">Next</span><span class="o">-&gt;</span><span class="n">Generation</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Viewport</span><span class="o">-&gt;</span><span class="n">SetViewModel</span><span class="p">(</span><span class="n">FArcRmlDocumentRef</span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"/ArcRmlUISamples/UI/Rml/SourceManual/SourceManual.rml"</span><span class="p">)},</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"item"</span><span class="p">),</span><span class="w"> </span><span class="n">Next</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>Swap</code> takes a parameter named <code>WorldContextObject</code>, which the call fills with the local player controller
+(<a href="../events/#the-world-context-object">Events</a>); that is how the function reaches the player's subsystem.</p>
+<h2 id="source-path">Source: path<a class="headerlink" href="#source-path" title="Permanent link">&para;</a></h2>
+<p>The view model is read from an object property chain, starting at a widget the plugin creates for the player controller.
+The roots are the <code>UUserWidget</code> getters <code>GetOwningPlayer</code>, <code>GetOwningPlayerPawn</code> and <code>GetOwningLocalPlayer</code>. A segment
+is a Blueprint-visible object property or a const, zero-argument <code>BlueprintCallable</code> function that returns an object.
+Each segment is looked up on the class of the live object, so a member of your own player controller or pawn class is
+found without a cast. The result must be the declared class or a subclass. A path needs a player; a null on the way
+leaves the model unresolved and the document evaluates the path again later. Sample: SourcePath.</p>
+<div class="highlight"><span class="filename">SourcePath.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">viewmodel</span> <span class="na">name</span><span class="o">=</span><span class="s">"item"</span> <span class="na">class</span><span class="o">=</span><span class="s">"/Script/ArcRmlUISamples.ArcRmlSamplesSourcePathViewModel"</span> <span class="na">path</span><span class="o">=</span><span class="s">"GetOwningPlayer.SampleViewModel"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<p><code>SampleViewModel</code> is a property of the sample's <code>AArcRmlSamplesPlayerController</code>, declared in <code>ArcRmlSamplesGameMode.h</code> and made in <code>ArcRmlSamplesGameMode.cpp</code>:</p>
+<div class="highlight"><span class="filename">ArcRmlSamplesGameMode.h</span><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesSourcePathViewModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SampleViewModel</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">ArcRmlSamplesGameMode.cpp</span><pre><span></span><code><span class="n">SampleViewModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesSourcePathViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"SampleViewModel"</span><span class="p">));</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">The validator warns on this path</p>
+<p><a href="../validation/">Validation</a> reports a <code>view-model-path</code> warning on <code>SampleViewModel</code>, because it cannot see your
+own controller or pawn class. The path works at run time. Any path into a member of your own class gets this warning.
+A misspelled segment gets the same warning and never resolves, with no other message, so check the spelling when
+you see it. An unreadable or non-object segment, and a path whose result type is unrelated to the declared class,
+are <code>view-model-path</code> errors.</p>
+</div>
+<h2 id="option-settable">Option: settable<a class="headerlink" href="#option-settable" title="Permanent link">&para;</a></h2>
+<p><code>settable="true"</code> lets game code replace the instance of a model whatever its source. In the SourceSettable sample the
+first object comes from the <code>context</code> collection and the "Replace the instance" button swaps it:</p>
+<div class="highlight"><span class="filename">SourceSettable.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">viewmodel</span> <span class="na">name</span><span class="o">=</span><span class="s">"item"</span> <span class="na">class</span><span class="o">=</span><span class="s">"/Script/ArcRmlUISamples.ArcRmlSamplesSourceSettableViewModel"</span> <span class="na">context</span><span class="o">=</span><span class="s">"VM_SampleSettable"</span> <span class="na">settable</span><span class="o">=</span><span class="s">"true"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">SourceSettable/ArcRmlSamplesSourceSettable.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesSourceSettableViewModel::Replace</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">UArcRmlViewportSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">Viewport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ArcRmlSamplesSourceSettablePrivate</span><span class="o">::</span><span class="n">FindViewport</span><span class="p">(</span><span class="n">WorldContextObject</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Viewport</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">UArcRmlSamplesSourceSettableViewModel</span><span class="o">*</span><span class="w"> </span><span class="n">Next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesSourceSettableViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetTransientPackage</span><span class="p">());</span>
+<span class="w">    </span><span class="n">Next</span><span class="o">-&gt;</span><span class="n">Generation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Generation</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Next</span><span class="o">-&gt;</span><span class="n">Label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="o">::</span><span class="n">Printf</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Replacement %d"</span><span class="p">),</span><span class="w"> </span><span class="n">Next</span><span class="o">-&gt;</span><span class="n">Generation</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Viewport</span><span class="o">-&gt;</span><span class="n">SetViewModel</span><span class="p">(</span><span class="n">FArcRmlDocumentRef</span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"/ArcRmlUISamples/UI/Rml/SourceSettable/SourceSettable.rml"</span><span class="p">)},</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"item"</span><span class="p">),</span><span class="w"> </span><span class="n">Next</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A model that was set by hand is skipped by the retry and by collection changes. <code>SetViewModel</code> with <code>nullptr</code> removes
+the assignment and sends the model back to its own source, here the collection.</p>
+<h2 id="option-on-close">Option: on-close<a class="headerlink" href="#option-on-close" title="Permanent link">&para;</a></h2>
+<p><code>on-close="&lt;function&gt;"</code> names a function of the model that takes no arguments. The plugin calls it when the document closes
+or is parked (<code>keep-alive</code>, <a href="../documents/#the-head">Documents</a>), once per close or park. A parked document that is later
+destroyed calls nothing, and neither does a model that never resolved. In a <a href="../glossary/#frame">frame</a>, a <a href="../glossary/#tab">tab</a>'s <code>on-close</code> also runs when a
+tab switch hides that tab. Use it to release or answer something the open document held. The demo's dialog model is
+<code>manual</code>, and <code>Closed</code> runs the pending callback with the cancel index when the host closes the dialog:</p>
+<div class="highlight"><span class="filename">Dialog.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">viewmodel</span> <span class="na">name</span><span class="o">=</span><span class="s">"dialog"</span> <span class="na">class</span><span class="o">=</span><span class="s">"/Script/ArcRmlUIDemo.ArcRmlDemoDialogViewModel"</span> <span class="na">manual</span> <span class="na">on-close</span><span class="o">=</span><span class="s">"Closed"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">ArcRmlDemoDialogViewModel.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlDemoDialogViewModel::Closed</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TFunction</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">int32</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TakeCallback</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Callback</span><span class="p">(</span><span class="n">CancelIndex</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <a href="../validation/">validator</a> checks that the function exists and takes no arguments.</p>
+<h2 id="setviewmodel">SetViewModel<a class="headerlink" href="#setviewmodel" title="Permanent link">&para;</a></h2>
+<p><code>SetViewModel(Document, ModelName, ViewModel)</code> is a function of <code>UArcRmlViewportSubsystem</code>, in C++ and Blueprint, and
+returns whether it took the object.</p>
+<ul>
+<li>It reads the head of the named document, so the document need not be open. It returns false, with a warning in the
+  log, for a document whose head cannot be read, a name with no <code>&lt;viewmodel&gt;</code>, a declaration that is neither <code>manual</code>
+  nor <code>settable</code>, and an object that is not of the declared class.</li>
+<li>The assignment is kept per document. A set before <code>OpenDocument</code> shows from the first frame; a set after the open
+  replaces the object and updates every binding.</li>
+<li><code>nullptr</code> removes the assignment and the model returns to its own source: a new instance for <code>create</code>, the property
+  chain for <code>path</code>, the collection for <code>context</code>, the resolver for <code>resolver</code>, unresolved for <code>manual</code>. On a model with
+  no assignment it does nothing.</li>
+<li>The assignment is kept until the document closes. A parked <code>keep-alive</code> document keeps it.</li>
+<li><code>SetViewModelByClass(Document, ViewModel)</code> sets the one <code>manual</code> or <code>settable</code> declaration of the document whose class
+  the object is, and returns false when there are none or two.</li>
+<li><code>GetViewModel(Document, ModelName)</code> returns the live object of an open document, whatever its source, and null when
+  the document is parked or closed.</li>
+</ul>
+<h2 id="fields-every-model-gets">Fields every model gets<a class="headerlink" href="#fields-every-model-gets" title="Permanent link">&para;</a></h2>
+<p>These names are reserved: a view model field with one of them is not bound and logs an error.</p>
+<ul>
+<li><code>ArcResolved</code> is true once the view model exists. An unresolved model still binds, from the class defaults, so give the
+  document a fallback. The sample documents show the pattern:
+  <code>&lt;div data-if="ArcResolved"&gt;...&lt;/div&gt;</code> and <code>&lt;span data-if="!ArcResolved"&gt;Waiting for the view model&lt;/span&gt;</code>.</li>
+<li><code>ArcEmpty</code> is an empty array, which a <a href="../glossary/#component">component</a> prop with a <code>[]</code> default receives.</li>
+<li><code>ArcKeys</code> holds key labels as text for the current input device: <code>ArcKeys.&lt;Action&gt;</code> for each action of the
+  document's <code>input-mapping</code> context, by the action's asset name, and <code>confirm</code>, <code>back</code>, <code>navigate</code>, <code>stepLeft</code>,
+  <code>stepRight</code> and <code>scheme</code> (<code>keyboard</code> or <code>gamepad</code>). The GamepadMenu sample shows them as prompts:</li>
+</ul>
+<div class="highlight"><span class="filename">GamepadMenu.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span><span class="p">&gt;</span>{{ ArcKeys.confirm }} Select<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"gm-info"</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span> <span class="na">data-hotkey</span><span class="o">=</span><span class="s">"IA_Sample_MenuInfo"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'ToggleInfo')"</span><span class="p">&gt;</span>{{ ArcKeys.IA_Sample_MenuInfo }} Info<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span><span class="p">&gt;</span>{{ ArcKeys.back }} Close<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>These are three lines of the sample's <code>&lt;body&gt;</code>.</p>
+<p>A document with no <code>&lt;viewmodel&gt;</code> that reads <code>ArcKeys</code> gets a model named <code>ArcDocument</code> on its <code>&lt;body&gt;</code>; it has
+<code>ArcResolved</code> (true) and <code>ArcKeys</code>. <a href="../input/">Input and gamepad</a> covers the keys.</p>
+<h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../documents/">Documents</a>: the head, opening and closing.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../keep-alive/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Keep-alive and preload">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Keep-alive and preload
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../blueprint-view-models/" class="md-footer__link md-footer__link--next" aria-label="Next: Blueprint view models">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Blueprint view models
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","navigation.footer"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+    
+  </body>
+</html>

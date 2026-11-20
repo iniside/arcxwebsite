@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1014 572" width="1014" height="572" role="img" aria-label="Blueprint graph of the Open function of BP_SourceManual_Open: the function entry Open runs Construct Arc Rml Samples Source Manual View Model with the Player Controller as Outer, then SET w/ Broadcast sets its Label to Instance 1, then Set View Model on Arc Rml Viewport Subsystem with the document reference made by Make Arc Rml Document Ref from /ArcRmlUISamples/UI/Rml/SourceManual/SourceManual.rml, Model Name item and the new instance; a Branch on its Return Value runs Open Document with the same document, and a second Branch on that Return Value runs the Return Node, which outputs the document reference." font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#111827">
+<title>Blueprint graph of the Open function of BP_SourceManual_Open: the function entry Open runs Construct Arc Rml Samples Source Manual View Model with the Player Controller as Outer, then SET w/ Broadcast sets its Label to Instance 1, then Set View Model on Arc Rml Viewport Subsystem with the document reference made by Make Arc Rml Document Ref from /ArcRmlUISamples/UI/Rml/SourceManual/SourceManual.rml, Model Name item and the new instance; a Branch on its Return Value runs Open Document with the same document, and a second Branch on that Return Value runs the Return Node, which outputs the document reference.</title>
+<rect x="0.5" y="0.5" width="1013" height="571" rx="8" fill="#f3f4f6" stroke="#9ca3af"/>
+<text x="20" y="26" font-size="13" font-weight="600">BP_SourceManual_Open: Open</text>
+<path d="M147,80 C290.5,80 290.5,80 434,80" fill="none" stroke="#111827" stroke-width="2.4"/>
+<path d="M147,100 L153,100 Q159,100 159,106 L159,144 Q159,150 153,150 L16,150 Q10,150 10,156 L10,201 Q10,206 15,206 L20,206" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M147,100 C290.5,100 290.5,140 434,140" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M818,80 C848,80 828,80 858,80" fill="none" stroke="#111827" stroke-width="2.4"/>
+<path d="M818,100 C848,100 828,140 858,140" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M818,100 L824,100 Q830,100 830,106 L830,172 Q830,178 824,178 L430,178 Q424,178 424,184 L424,337 Q424,342 429,342 L434,342" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M990,80 L996,80 Q1002,80 1002,86 L1002,164 Q1002,170 996,170 L422,170 Q416,170 416,176 L416,236 Q416,242 422,242 L434,242" fill="none" stroke="#111827" stroke-width="2.4"/>
+<path d="M245,206 C339.5,206 339.5,262 434,262" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M245,206 L388,206 Q394,206 394,212 L394,466 Q394,472 400,472 L434,472" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M374,286 C404,286 404,282 434,282" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M374,286 C404,286 404,492 434,492" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M374,286 L398,286 Q404,286 404,292 L404,540 Q404,546 410,546 L861,546 Q867,546 867,540 L867,462 Q867,456 873,456 L881,456" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M653,242 C683,242 673,226 703,226" fill="none" stroke="#111827" stroke-width="2.4"/>
+<path d="M653,262 C683,262 673,246 703,246" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M841,226 L847,226 Q853,226 853,232 L853,374 Q853,380 847,380 L422,380 Q416,380 416,386 L416,446 Q416,452 422,452 L434,452" fill="none" stroke="#111827" stroke-width="2.4"/>
+<path d="M653,452 C683,452 673,436 703,436" fill="none" stroke="#111827" stroke-width="2.4"/>
+<path d="M653,472 C683,472 673,456 703,456" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/>
+<path d="M841,436 C871,436 851,436 881,436" fill="none" stroke="#111827" stroke-width="2.4"/>
+<rect x="20" y="44" width="127" height="72" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M20.5,68 V49 Q20.5,44.5 25,44.5 H142 Q146.5,44.5 146.5,49 V68 z" fill="#f6d7a7"/>
+<line x1="20" y1="68" x2="147" y2="68" stroke="#4b5563"/>
+<text x="32" y="61" font-size="13" font-weight="600">Open</text>
+<path d="M142,75 L148,75 L152,80 L148,85 L142,85 z" fill="#111827"/>
+<circle cx="147" cy="100" r="4" fill="#2563eb"/>
+<text x="135" y="104" text-anchor="end">Player Controller</text>
+<rect x="434" y="44" width="384" height="112" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M434.5,68 V49 Q434.5,44.5 439,44.5 H813 Q817.5,44.5 817.5,49 V68 z" fill="#b9d3f0"/>
+<line x1="434" y1="68" x2="818" y2="68" stroke="#4b5563"/>
+<text x="446" y="61" font-size="13" font-weight="600">Construct Arc Rml Samples Source Manual View Model</text>
+<path d="M429,75 L435,75 L439,80 L435,85 L429,85 z" fill="#111827"/>
+<circle cx="434" cy="100" r="4" fill="#2563eb"/>
+<text x="446" y="104">Class</text>
+<text x="452" y="124" font-family="ui-monospace, Consolas, monospace" font-size="11" fill="#374151">/Script/ArcRmlUISamples.ArcRmlSamplesSourceManualViewModel</text>
+<circle cx="434" cy="140" r="4" fill="#2563eb"/>
+<text x="446" y="144">Outer</text>
+<path d="M813,75 L819,75 L823,80 L819,85 L813,85 z" fill="#111827"/>
+<circle cx="818" cy="100" r="4" fill="#2563eb"/>
+<text x="806" y="104" text-anchor="end">Return Value</text>
+<rect x="858" y="44" width="132" height="112" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M858.5,68 V49 Q858.5,44.5 863,44.5 H985 Q989.5,44.5 989.5,49 V68 z" fill="#b9d3f0"/>
+<line x1="858" y1="68" x2="990" y2="68" stroke="#4b5563"/>
+<text x="870" y="61" font-size="13" font-weight="600">SET w/ Broadcast</text>
+<path d="M853,75 L859,75 L863,80 L859,85 L853,85 z" fill="#111827"/>
+<circle cx="858" cy="100" r="4" fill="#2563eb"/>
+<text x="870" y="104">Label</text>
+<text x="876" y="124" font-family="ui-monospace, Consolas, monospace" font-size="11" fill="#374151">Instance 1</text>
+<circle cx="858" cy="140" r="4" fill="#2563eb"/>
+<text x="870" y="144">Target</text>
+<path d="M985,75 L991,75 L995,80 L991,85 L985,85 z" fill="#111827"/>
+<rect x="20" y="170" width="225" height="52" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M20.5,194 V175 Q20.5,170.5 25,170.5 H240 Q244.5,170.5 244.5,175 V194 z" fill="#d1e7d1"/>
+<line x1="20" y1="194" x2="245" y2="194" stroke="#4b5563"/>
+<text x="32" y="187" font-size="13" font-weight="600">Arc Rml Viewport Subsystem</text>
+<circle cx="20" cy="206" r="4" fill="#2563eb"/>
+<text x="32" y="210">Player Controller</text>
+<circle cx="245" cy="206" r="4" fill="#2563eb"/>
+<text x="233" y="210" text-anchor="end">Return Value</text>
+<rect x="20" y="250" width="354" height="72" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M20.5,274 V255 Q20.5,250.5 25,250.5 H369 Q373.5,250.5 373.5,255 V274 z" fill="#d1e7d1"/>
+<line x1="20" y1="274" x2="374" y2="274" stroke="#4b5563"/>
+<text x="32" y="267" font-size="13" font-weight="600">Make Arc Rml Document Ref</text>
+<circle cx="20" cy="286" r="4" fill="#2563eb"/>
+<text x="32" y="290">Path</text>
+<text x="38" y="310" font-family="ui-monospace, Consolas, monospace" font-size="11" fill="#374151">/ArcRmlUISamples/UI/Rml/SourceManual/SourceManual.rml</text>
+<circle cx="374" cy="286" r="4" fill="#2563eb"/>
+<text x="362" y="290" text-anchor="end">Arc Rml Document Ref</text>
+<rect x="434" y="190" width="219" height="168" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M434.5,230 V195 Q434.5,190.5 439,190.5 H648 Q652.5,190.5 652.5,195 V230 z" fill="#b9d3f0"/>
+<line x1="434" y1="230" x2="653" y2="230" stroke="#4b5563"/>
+<text x="446" y="207" font-size="13" font-weight="600">Set View Model</text>
+<text x="446" y="223" font-size="11" fill="#4b5563">Target is Arc Rml Viewport Subsystem</text>
+<path d="M429,237 L435,237 L439,242 L435,247 L429,247 z" fill="#111827"/>
+<circle cx="434" cy="262" r="4" fill="#2563eb"/>
+<text x="446" y="266">Target</text>
+<circle cx="434" cy="282" r="4" fill="#2563eb"/>
+<text x="446" y="286">Document</text>
+<circle cx="434" cy="302" r="4" fill="#2563eb"/>
+<text x="446" y="306">Model Name</text>
+<text x="452" y="326" font-family="ui-monospace, Consolas, monospace" font-size="11" fill="#374151">item</text>
+<circle cx="434" cy="342" r="4" fill="#2563eb"/>
+<text x="446" y="346">View Model</text>
+<path d="M648,237 L654,237 L658,242 L654,247 L648,247 z" fill="#111827"/>
+<circle cx="653" cy="262" r="4" fill="#2563eb"/>
+<text x="641" y="266" text-anchor="end">Return Value</text>
+<rect x="703" y="190" width="138" height="72" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M703.5,214 V195 Q703.5,190.5 708,190.5 H836 Q840.5,190.5 840.5,195 V214 z" fill="#e5e7eb"/>
+<line x1="703" y1="214" x2="841" y2="214" stroke="#4b5563"/>
+<text x="715" y="207" font-size="13" font-weight="600">Branch</text>
+<path d="M698,221 L704,221 L708,226 L704,231 L698,231 z" fill="#111827"/>
+<circle cx="703" cy="246" r="4" fill="#2563eb"/>
+<text x="715" y="250">Condition</text>
+<path d="M836,221 L842,221 L846,226 L842,231 L836,231 z" fill="#111827"/>
+<text x="829" y="230" text-anchor="end">True</text>
+<path d="M836,241 L842,241 L846,246 L842,251 L836,251 z" fill="#111827"/>
+<text x="829" y="250" text-anchor="end">False</text>
+<rect x="434" y="400" width="219" height="128" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M434.5,440 V405 Q434.5,400.5 439,400.5 H648 Q652.5,400.5 652.5,405 V440 z" fill="#b9d3f0"/>
+<line x1="434" y1="440" x2="653" y2="440" stroke="#4b5563"/>
+<text x="446" y="417" font-size="13" font-weight="600">Open Document</text>
+<text x="446" y="433" font-size="11" fill="#4b5563">Target is Arc Rml Viewport Subsystem</text>
+<path d="M429,447 L435,447 L439,452 L435,457 L429,457 z" fill="#111827"/>
+<circle cx="434" cy="472" r="4" fill="#2563eb"/>
+<text x="446" y="476">Target</text>
+<circle cx="434" cy="492" r="4" fill="#2563eb"/>
+<text x="446" y="496">Document</text>
+<circle cx="434" cy="512" r="4" fill="#2563eb"/>
+<text x="446" y="516">Close Action</text>
+<path d="M648,447 L654,447 L658,452 L654,457 L648,457 z" fill="#111827"/>
+<circle cx="653" cy="472" r="4" fill="#2563eb"/>
+<text x="641" y="476" text-anchor="end">Return Value</text>
+<rect x="703" y="400" width="138" height="72" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M703.5,424 V405 Q703.5,400.5 708,400.5 H836 Q840.5,400.5 840.5,405 V424 z" fill="#e5e7eb"/>
+<line x1="703" y1="424" x2="841" y2="424" stroke="#4b5563"/>
+<text x="715" y="417" font-size="13" font-weight="600">Branch</text>
+<path d="M698,431 L704,431 L708,436 L704,441 L698,441 z" fill="#111827"/>
+<circle cx="703" cy="456" r="4" fill="#2563eb"/>
+<text x="715" y="460">Condition</text>
+<path d="M836,431 L842,431 L846,436 L842,441 L836,441 z" fill="#111827"/>
+<text x="829" y="440" text-anchor="end">True</text>
+<path d="M836,451 L842,451 L846,456 L842,461 L836,461 z" fill="#111827"/>
+<text x="829" y="460" text-anchor="end">False</text>
+<rect x="881" y="400" width="98" height="72" rx="5" fill="#ffffff" stroke="#4b5563"/>
+<path d="M881.5,424 V405 Q881.5,400.5 886,400.5 H974 Q978.5,400.5 978.5,405 V424 z" fill="#f6d7a7"/>
+<line x1="881" y1="424" x2="979" y2="424" stroke="#4b5563"/>
+<text x="893" y="417" font-size="13" font-weight="600">Return Node</text>
+<path d="M876,431 L882,431 L886,436 L882,441 L876,441 z" fill="#111827"/>
+<circle cx="881" cy="456" r="4" fill="#2563eb"/>
+<text x="893" y="460">Document</text>
+<path d="M20,554 H56" stroke="#111827" stroke-width="2.4"/><text x="64" y="558">execution</text>
+<path d="M140,554 H176" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5 3"/><text x="184" y="558">data</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" width="860" height="400" role="img" aria-label="Keep-alive lifecycle: open loads cold; close destroys by default, or parks a keep-alive or preloaded document; reopen restores a parked document; PreloadDocument parks before the first open; DiscardDocument, a reload or the end of the world destroys it, and the next open loads cold." font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#111827">
+<title>Keep-alive lifecycle: open loads cold; close destroys by default, or parks a keep-alive or preloaded document; reopen restores a parked document; PreloadDocument parks before the first open; DiscardDocument, a reload or the end of the world destroys it, and the next open loads cold.</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect x="0.5" y="0.5" width="859" height="399" rx="8" fill="#f3f4f6" stroke="#9ca3af"/>
+<rect x="20" y="160" width="200" height="70" rx="5" fill="#e5e7eb" stroke="#4b5563"/><text x="120" y="183" text-anchor="middle" font-weight="600">Not loaded or destroyed</text><text x="120" y="199" text-anchor="middle">next open loads it</text><text x="120" y="215" text-anchor="middle">from nothing</text>
+<rect x="400" y="30" width="180" height="56" rx="5" fill="#b9d3f0" stroke="#4b5563"/><text x="490" y="54" text-anchor="middle" font-weight="600">Open</text><text x="490" y="70" text-anchor="middle">shown</text>
+<rect x="400" y="300" width="180" height="70" rx="5" fill="#f6d7a7" stroke="#4b5563"/><text x="490" y="323" text-anchor="middle" font-weight="600">Parked</text><text x="490" y="339" text-anchor="middle">draws nothing,</text><text x="490" y="355" text-anchor="middle">takes no input</text>
+<path d="M120,160 C120,90 250,58 398,58" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="150" y="80" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">open: loads cold</text>
+<path d="M400,76 C300,110 240,160 222,180" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="250" y="128" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">close (default)</text>
+<line x1="460" y1="88" x2="460" y2="298" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="452" y="170" text-anchor="end" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">close: keep-alive</text>
+<text x="452" y="186" text-anchor="end" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">or preloaded</text>
+<line x1="530" y1="298" x2="530" y2="88" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="538" y="240" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">open: comes back</text>
+<text x="538" y="256" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">as it was left</text>
+<path d="M150,232 C170,300 300,330 398,330" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="120" y="290" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">PreloadDocument: loads,</text>
+<text x="120" y="306" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">lays out and parks before</text>
+<text x="120" y="322" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">the first open</text>
+<path d="M400,315 C320,290 260,240 222,214" fill="none" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" stroke-dasharray="5 3"/>
+<text x="262" y="252" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">DiscardDocument, a reload,</text>
+<text x="262" y="268" paint-order="stroke" stroke="#f3f4f6" stroke-width="5" stroke-linejoin="round">end of the player's world</text>
+<rect x="660" y="150" width="185" height="140" rx="5" fill="#ffffff" stroke="#4b5563"/><text x="752.5" y="176" text-anchor="middle">A reopen keeps</text><text x="752.5" y="192" text-anchor="middle">the view model values,</text><text x="752.5" y="208" text-anchor="middle">field text, scroll, classes,</text><text x="752.5" y="224" text-anchor="middle">data-if state, images</text><text x="752.5" y="240" text-anchor="middle">and sounds. Focus and</text><text x="752.5" y="256" text-anchor="middle">the enter animation</text><text x="752.5" y="272" text-anchor="middle">start again.</text>
+</svg>

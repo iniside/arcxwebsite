@@ -1,0 +1,2682 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HTML and CSS game UI for Unreal Engine 5.8">
+      
+      
+      
+      
+      
+        <link rel="prev" href="../blueprint-view-models/">
+      
+      
+        <link rel="next" href="../events/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.1.2">
+    
+    
+      
+        <title>Data binding - ArcRmlUI</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ebb7f775.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Schibsted+Grotesk:300,300i,400,400i,500,500i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Schibsted Grotesk";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/paper.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-header__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ArcRmlUI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data binding
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="/arcrmlui/" title="ArcRmlUI" class="md-nav__button md-logo" aria-label="ArcRmlUI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    ArcRmlUI
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Getting started
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Getting started
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quick start
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Project setup
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Concepts
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Glossary
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-html-css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from HTML and CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../samples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Samples
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Walkthrough
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents and data
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Documents and data
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Documents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game-ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Designing a game's UI
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keep-alive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Keep-alive and preload
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../view-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  View models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blueprint-view-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data binding
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data binding
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fields
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transforms
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Types
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Struct lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nested-view-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Nested view models
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Aliases
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inner-rml" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Inner RML
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Virtual lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Events
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Components
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Input
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Input and gamepad
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Navigation reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../text-fields/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Text fields
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Forms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drag-and-drop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Drag and drop
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screens and style
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Screens and style
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frames-and-tabs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Frames and tabs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Images
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sounds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sounds
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Styling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tailwind/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tailwind CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Localization
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../world-markers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  World markers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../display-and-players/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Screen size, cursor and players
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tools
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Tools
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editor-preview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Editor preview
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inspector/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Debugging layout
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../converter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Converting an HTML page
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Validation
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Reference
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Attributes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Event reference
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Expressions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Console
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Settings
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  CSS support
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  C++ and Blueprint
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Help
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Help
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Troubleshooting
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Limits
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FAQ
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Release notes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Fields
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transforms
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Types
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#struct-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Struct lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nested-view-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Nested view models
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Aliases
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inner-rml" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Inner RML
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Virtual lists
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+
+<h1 id="data-binding">Data binding<a class="headerlink" href="#data-binding" title="Permanent link">&para;</a></h1>
+<p>A <a href="../glossary/#document">document</a> shows <a href="../glossary/#view-model">view model</a> fields and reacts to their changes. Use it
+to keep what the player sees in step with game data without writing update code. The page uses seven samples (see
+<a href="../samples/">Samples</a>): FieldBinding, Lists, StructList, NestedViewModel, Aliases, InnerRml and VirtualList.</p>
+<h2 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">&para;</a></h2>
+<p>A document reads only <a href="../glossary/#field-notify">Field Notify</a> fields: a Blueprint visible property marked <code>FieldNotify</code>, or
+a const <code>BlueprintCallable</code> function that has only a return value. The document updates when the model broadcasts the
+field. In a Blueprint view model, turn <strong>Field Notify</strong> on in the variable's Details
+(<a href="../blueprint-view-models/">Blueprint view models</a>).
+In C++, <code>UE_MVVM_SET_PROPERTY_VALUE</code> writes a field and broadcasts it; a plain assignment is not seen. A document never
+writes a field; it calls a function that does (<a href="../events/">Events</a>).</p>
+<p>The FieldBinding sample has one field of each simple type:</p>
+<div class="highlight"><span class="filename">FieldBinding/ArcRmlSamplesFieldBinding.h</span><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="n">int32</span><span class="w"> </span><span class="n">Count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">Progress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">bEven</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="n">FText</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INVTEXT</span><span class="p">(</span><span class="s">"Not clicked yet"</span><span class="p">);</span>
+
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="n">FLinearColor</span><span class="w"> </span><span class="n">Accent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FLinearColor</span><span class="p">(</span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">);</span>
+
+<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">Increment</span><span class="p">();</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">FieldBinding/ArcRmlSamplesFieldBinding.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesFieldBindingViewModel::Increment</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FLinearColor</span><span class="w"> </span><span class="n">Accents</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">FLinearColor</span><span class="p">(</span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6f</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">),</span><span class="w"> </span><span class="n">FLinearColor</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.55f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">),</span><span class="w"> </span><span class="n">FLinearColor</span><span class="p">(</span><span class="mf">0.3f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.85f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4f</span><span class="p">)};</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">NewCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">UE_MVVM_SET_PROPERTY_VALUE</span><span class="p">(</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">NewCount</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_MVVM_SET_PROPERTY_VALUE</span><span class="p">(</span><span class="n">Progress</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">NewCount</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">10.0f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_MVVM_SET_PROPERTY_VALUE</span><span class="p">(</span><span class="n">bEven</span><span class="p">,</span><span class="w"> </span><span class="n">NewCount</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_MVVM_SET_PROPERTY_VALUE</span><span class="p">(</span><span class="n">Message</span><span class="p">,</span><span class="w"> </span><span class="n">FText</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="n">INVTEXT</span><span class="p">(</span><span class="s">"Clicked {0} times"</span><span class="p">),</span><span class="w"> </span><span class="n">NewCount</span><span class="p">));</span>
+<span class="w">    </span><span class="n">UE_MVVM_SET_PROPERTY_VALUE</span><span class="p">(</span><span class="n">Accent</span><span class="p">,</span><span class="w"> </span><span class="n">Accents</span><span class="p">[</span><span class="n">NewCount</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">UE_ARRAY_COUNT</span><span class="p">(</span><span class="n">Accents</span><span class="p">)]);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>{{ Field }}</code> prints a field. These attributes bind a field of the document's view model, or an expression, to an element. The FieldBinding sample uses <code>data-if</code>,
+<code>data-class-*</code>, <code>data-style-*</code>, <code>data-attr-*</code> and <code>data-event-click</code>; lists are in the Lists sample below.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data-if="expr"</code></td>
+<td>The element is shown only while the expression is true.</td>
+</tr>
+<tr>
+<td><code>data-visible="expr"</code></td>
+<td>Sets <code>visibility</code>; the element keeps its layout.</td>
+</tr>
+<tr>
+<td><code>data-class-&lt;name&gt;="expr"</code></td>
+<td>Adds the class <code>&lt;name&gt;</code> while the expression is true.</td>
+</tr>
+<tr>
+<td><code>data-style-&lt;property&gt;="expr"</code></td>
+<td>Sets one style property from the expression.</td>
+</tr>
+<tr>
+<td><code>data-attr-&lt;name&gt;="expr"</code></td>
+<td>Sets an attribute from the expression.</td>
+</tr>
+<tr>
+<td><code>data-attrif-&lt;name&gt;="expr"</code></td>
+<td>Sets the attribute <code>&lt;name&gt;</code> to empty while the expression is true and removes it while it is false. The <a href="../navigation-reference/#tab-bar">tab bar</a> marks its current tab this way.</td>
+</tr>
+<tr>
+<td><code>data-for</code>, <code>data-key</code></td>
+<td>Repeat an element per row, see <a href="#lists">Lists</a>.</td>
+</tr>
+<tr>
+<td><code>data-event-&lt;event&gt;="..."</code></td>
+<td>Run an expression on an event, see <a href="../events/">Events</a>.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">FieldBinding.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Count: {{ Count }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Progress: {{ Progress | format(1) }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ Message | to_upper }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"bEven"</span><span class="p">&gt;</span>The count is even.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"!bEven"</span><span class="p">&gt;</span>The count is odd.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-badge"</span> <span class="na">data-class-fb-odd</span><span class="o">=</span><span class="s">"!bEven"</span><span class="p">&gt;</span>odd or even<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-bar"</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-fill"</span> <span class="na">data-style-width</span><span class="o">=</span><span class="s">"(Progress * 100) + '%'"</span> <span class="na">data-style-background-color</span><span class="o">=</span><span class="s">"Accent"</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">progress</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-progress"</span> <span class="na">max</span><span class="o">=</span><span class="s">"1"</span> <span class="na">data-attr-value</span><span class="o">=</span><span class="s">"Progress"</span><span class="p">&gt;&lt;/</span><span class="nt">progress</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><img alt="The FieldBinding sample: count, progress, upper-cased message, the even line, the odd-or-even badge, a bar and Add one and Close buttons" src="../images/field-binding.png" /></p>
+<p>Expressions can read fields (<code>bEven</code>, <code>Progress</code>), combine with operators, and call transforms with <code>|</code>. Text is
+single-quoted. The whole language, every transform and what an error does: <a href="../reference-expressions/">Expression reference</a>.</p>
+<h2 id="transforms">Transforms<a class="headerlink" href="#transforms" title="Permanent link">&para;</a></h2>
+<p><code>value | name(arguments)</code> changes a value on its way into the document. In the sample, <code>Progress | format(1)</code> prints one
+decimal and <code>Message | to_upper</code> upper-cases the text.</p>
+<p>Every transform, with its arguments and what a wrong argument does, is in the <a href="../reference-expressions/#transforms">Expression reference</a>.</p>
+<h2 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field type</th>
+<th>In the document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool</code></td>
+<td>Boolean.</td>
+</tr>
+<tr>
+<td>Integer types</td>
+<td>Integer.</td>
+</tr>
+<tr>
+<td><code>float</code>, <code>double</code></td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>Enum</td>
+<td>Its name as text.</td>
+</tr>
+<tr>
+<td><code>FString</code>, <code>FName</code>, <code>FText</code></td>
+<td>Text.</td>
+</tr>
+<tr>
+<td><code>FGameplayTag</code></td>
+<td>Its name as text.</td>
+</tr>
+<tr>
+<td><code>FGameplayTagContainer</code></td>
+<td>An array of names.</td>
+</tr>
+<tr>
+<td><code>FLinearColor</code>, <code>FColor</code></td>
+<td>Colour; <code>data-style-background-color="Accent"</code> in the sample.</td>
+</tr>
+<tr>
+<td><code>FSoftObjectPath</code>, soft pointers, <code>UTexture*</code></td>
+<td>Text <code>asset:&lt;path&gt;</code>.</td>
+</tr>
+<tr>
+<td><code>FArcRmlImageRef</code></td>
+<td>Its <code>Path</code> as text.</td>
+</tr>
+<tr>
+<td>A view model object</td>
+<td>A nested model, see <a href="#nested-view-models">Nested view models</a>.</td>
+</tr>
+<tr>
+<td><code>TArray</code></td>
+<td>An array.</td>
+</tr>
+<tr>
+<td>Any other struct</td>
+<td>A struct with all its members, read by member name (<code>r.Name</code>). A Blueprint struct member is read by the name typed in the editor.</td>
+</tr>
+<tr>
+<td><code>FArcRmlStructList</code></td>
+<td>An array of its rows, see <a href="#struct-lists">Struct lists</a>.</td>
+</tr>
+<tr>
+<td><code>TMap</code>, <code>TSet</code>, other objects</td>
+<td>Empty; a warning is logged once per field.</td>
+</tr>
+</tbody>
+</table>
+<p>Nesting is read up to 16 levels deep.</p>
+<h2 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">&para;</a></h2>
+<p>A <code>TArray</code> is a list. <code>data-for="r, i : Items"</code> makes one element per row; <code>r</code> is the row and <code>i</code> its index.
+<code>data-key="r.Name"</code> on the same element keeps a row's element across inserts and removals, matched by that value. The Lists
+sample:</p>
+<div class="highlight"><span class="filename">Lists.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"ls-row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"r, i : Items"</span> <span class="na">data-key</span><span class="o">=</span><span class="s">"r.Name"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"ls-name"</span><span class="p">&gt;</span>{{ i + 1 }}. {{ r.Name }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>x{{ r.Quantity }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"ls-remove ls-button"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Remove', i)"</span><span class="p">&gt;</span>Remove<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Lists/ArcRmlSamplesLists.h</span><pre><span></span><code><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FArcRmlSamplesListsRow</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">Quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UArcRmlSamplesListsViewModel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UMVVMViewModelBase</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UArcRmlSamplesListsViewModel</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FArcRmlSamplesListsRow</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Items</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Add</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Remove</span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">Index</span><span class="p">);</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">NextNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>A plain array sends its whole value when it changes, so announce the change with
+<code>UE_MVVM_BROADCAST_FIELD_VALUE_CHANGED(Items)</code> after you edit it:</p>
+<div class="highlight"><span class="filename">Lists/ArcRmlSamplesLists.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesListsViewModel::Add</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FArcRmlSamplesListsRow</span><span class="w"> </span><span class="n">Row</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Row</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="o">::</span><span class="n">Printf</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Item %d"</span><span class="p">),</span><span class="w"> </span><span class="n">NextNumber</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Row</span><span class="p">.</span><span class="n">Quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NextNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="o">++</span><span class="n">NextNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Row</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_MVVM_BROADCAST_FIELD_VALUE_CHANGED</span><span class="p">(</span><span class="n">Items</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesListsViewModel::Remove</span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">Index</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Items</span><span class="p">.</span><span class="n">IsValidIndex</span><span class="p">(</span><span class="n">Index</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Items</span><span class="p">.</span><span class="n">RemoveAt</span><span class="p">(</span><span class="n">Index</span><span class="p">);</span>
+<span class="w">        </span><span class="n">UE_MVVM_BROADCAST_FIELD_VALUE_CHANGED</span><span class="p">(</span><span class="n">Items</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>call('', 'Remove', i)</code> passes the index as an argument; the function checks it before it uses it.</p>
+<p><img alt="The Lists sample: three rows &quot;Item 1&quot; to &quot;Item 3&quot; with quantities and a Remove button each, then Add and Close" src="../images/lists.png" /></p>
+<h2 id="struct-lists">Struct lists<a class="headerlink" href="#struct-lists" title="Permanent link">&para;</a></h2>
+<p>A plain array sends everything on every change. For a long list that changes often, hold the rows in an
+<code>FArcRmlStructList</code>: it sends only the rows that were inserted, removed, moved or changed. Blueprint view models cannot use it. The StructList sample holds the same rows as Lists:</p>
+<div class="highlight"><span class="filename">StructList/ArcRmlSamplesStructList.h</span><pre><span></span><code><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FArcRmlSamplesStructListRow</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Id</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">int32</span><span class="w"> </span><span class="n">Quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">StructList/ArcRmlSamplesStructList.cpp</span><pre><span></span><code><span class="n">UArcRmlSamplesStructListViewModel</span><span class="o">::</span><span class="n">UArcRmlSamplesStructListViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Rows</span><span class="p">.</span><span class="n">SetRowType</span><span class="p">(</span><span class="n">FArcRmlSamplesStructListRow</span><span class="o">::</span><span class="n">StaticStruct</span><span class="p">());</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">Index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">Index</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AddRow</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">UArcRmlSamplesStructListViewModel</span><span class="o">::</span><span class="n">AddRow</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">FArcRmlSamplesStructListRow</span><span class="w"> </span><span class="n">Row</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Row</span><span class="p">.</span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="o">::</span><span class="n">Printf</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"row-%d"</span><span class="p">),</span><span class="w"> </span><span class="n">NextNumber</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Row</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="o">::</span><span class="n">Printf</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Item %d"</span><span class="p">),</span><span class="w"> </span><span class="n">NextNumber</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Row</span><span class="p">.</span><span class="n">Quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NextNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="o">++</span><span class="n">NextNumber</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Rows</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">Row</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="n">Row</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">UArcRmlSamplesStructListViewModel</span><span class="o">::</span><span class="n">Bump</span><span class="p">(</span><span class="n">int32</span><span class="w"> </span><span class="n">Index</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Rows</span><span class="p">.</span><span class="n">GetKeys</span><span class="p">().</span><span class="n">IsValidIndex</span><span class="p">(</span><span class="n">Index</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rows</span><span class="p">.</span><span class="n">GetKeys</span><span class="p">()[</span><span class="n">Index</span><span class="p">];</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FArcRmlSamplesStructListRow</span><span class="o">*</span><span class="w"> </span><span class="n">Current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rows</span><span class="p">.</span><span class="n">FindAs</span><span class="o">&lt;</span><span class="n">FArcRmlSamplesStructListRow</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Key</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Current</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">FArcRmlSamplesStructListRow</span><span class="w"> </span><span class="n">Row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">Current</span><span class="p">;</span>
+<span class="w">        </span><span class="o">++</span><span class="n">Row</span><span class="p">.</span><span class="n">Quantity</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Rows</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Row</span><span class="p">);</span>
+<span class="w">        </span><span class="n">UE_MVVM_BROADCAST_FIELD_VALUE_CHANGED</span><span class="p">(</span><span class="n">Rows</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">UArcRmlSamplesStructListViewModel</span><span class="o">::</span><span class="n">Reverse</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rows</span><span class="p">.</span><span class="n">GetKeys</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Algo</span><span class="o">::</span><span class="n">Reverse</span><span class="p">(</span><span class="n">Order</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Rows</span><span class="p">.</span><span class="n">SetOrder</span><span class="p">(</span><span class="n">Order</span><span class="p">);</span>
+<span class="w">    </span><span class="n">UE_MVVM_BROADCAST_FIELD_VALUE_CHANGED</span><span class="p">(</span><span class="n">Rows</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>SetRowType</code> names the row struct, and the constructor calls it before any row is set.</li>
+<li><code>Set(Key, Row)</code> adds the row or replaces the row with that key, <code>Remove(Key)</code> deletes it and <code>SetOrder(Keys)</code> sets the
+  order; <code>GetKeys()</code> lists the keys in order and <code>FindAs&lt;Row&gt;(Key)</code> reads a row.</li>
+<li>After a change the field is announced with <code>UE_MVVM_BROADCAST_FIELD_VALUE_CHANGED(Rows)</code>.</li>
+</ul>
+<p>The document reads the rows like an array. The key given to <code>Set</code> and the <code>Id</code> member are the same text here, so
+<code>data-key="r.Id"</code> matches:</p>
+<div class="highlight"><span class="filename">StructList.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sl-row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"r, i : Rows"</span> <span class="na">data-key</span><span class="o">=</span><span class="s">"r.Id"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"sl-name"</span><span class="p">&gt;</span>{{ r.Name }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>x{{ r.Quantity }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"sl-bump sl-button"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Bump', i)"</span><span class="p">&gt;</span>+1<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"sl-remove sl-button"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Remove', i)"</span><span class="p">&gt;</span>Remove<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="nested-view-models">Nested view models<a class="headerlink" href="#nested-view-models" title="Permanent link">&para;</a></h2>
+<p>A field that holds a view model object, or an array of them, can be read through the parent's field name and called. Use
+it when each part is an object the game updates on its own and the document calls: a party with a leader and members, each
+its own view model. A struct array (above) holds plain data rows; a child announces its own changes and can be called.
+The NestedViewModel sample is that party: the leader is <code>Child</code>, the members are <code>Children</code>.</p>
+<div class="highlight"><span class="filename">NestedViewModel/ArcRmlSamplesNestedViewModel.h</span><pre><span></span><code><span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">UArcRmlSamplesNestedParentViewModel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UMVVMViewModelBase</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">UArcRmlSamplesNestedParentViewModel</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesNestedChildViewModel</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Child</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesNestedChildViewModel</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">Children</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">NestedViewModel/ArcRmlSamplesNestedViewModel.cpp</span><pre><span></span><code><span class="n">UArcRmlSamplesNestedParentViewModel</span><span class="o">::</span><span class="n">UArcRmlSamplesNestedParentViewModel</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesNestedChildViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Child"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Child</span><span class="o">-&gt;</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Leader"</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TCHAR</span><span class="o">*</span><span class="w"> </span><span class="n">ChildNames</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Archer"</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Healer"</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Scout"</span><span class="p">)};</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TCHAR</span><span class="o">*</span><span class="w"> </span><span class="n">ChildName</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ChildNames</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UArcRmlSamplesNestedChildViewModel</span><span class="o">*</span><span class="w"> </span><span class="n">Member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateDefaultSubobject</span><span class="o">&lt;</span><span class="n">UArcRmlSamplesNestedChildViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="n">ChildName</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Member</span><span class="o">-&gt;</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChildName</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Children</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Member</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The children are subobjects of the parent, made with <code>CreateDefaultSubobject</code>, so the <code>create</code> <a href="../glossary/#source">source</a> makes the
+parent and its children together.</p>
+<div class="highlight"><span class="filename">NestedViewModel.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"nv-heading"</span><span class="p">&gt;</span>Leader<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"nv-row"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"nv-name"</span><span class="p">&gt;</span>{{ Child.Name }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"nv-child-points"</span><span class="p">&gt;</span>{{ Child.Points }} points<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"nv-heading"</span><span class="p">&gt;</span>Members<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"nv-row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"c : Children"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"nv-name"</span><span class="p">&gt;</span>{{ c.Name }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>{{ c.Points }} points<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><code>{{ Child.Name }}</code> reads a field of the leader, and <code>c</code> in <code>data-for="c : Children"</code> is one member. A leader or member
+announces its own changes and the document updates the value read through the parent. A call names the model it targets, see
+<a href="../events/#calls">Events</a>.</p>
+<h2 id="aliases">Aliases<a class="headerlink" href="#aliases" title="Permanent link">&para;</a></h2>
+<p><code>data-alias-&lt;name&gt;="Path"</code> makes <code>&lt;name&gt;</code> stand for the field path <code>Path</code> on that element and everything inside it. Use it
+to shorten a long path you read many times. The Aliases sample shows the selected hero through <code>sel</code>:</p>
+<div class="highlight"><span class="filename">Aliases.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"al-card"</span> <span class="na">data-alias-sel</span><span class="o">=</span><span class="s">"Selected"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"al-name"</span> <span class="na">class</span><span class="o">=</span><span class="s">"al-name"</span><span class="p">&gt;</span>{{ sel.Name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ sel.Title }}, level {{ sel.Level }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"al-long"</span> <span class="na">class</span><span class="o">=</span><span class="s">"al-result"</span><span class="p">&gt;</span>Same name, written in full: {{ Selected.Name }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>{{ sel.Name }}</code> reads <code>Selected.Name</code>, so the two lines show the same text. When the "Next hero" button changes
+  <code>Selected</code>, both lines update.</li>
+<li>A model field with the same name as the alias wins over it, and the log warns that the alias is shadowed. Pick a name
+  no field has.</li>
+<li>In a <a href="../components/">component</a>, the alias path must come from a prop whose value is a whole <code>{{ path }}</code>.</li>
+</ul>
+<h2 id="inner-rml">Inner RML<a class="headerlink" href="#inner-rml" title="Permanent link">&para;</a></h2>
+<p><code>{{ }}</code> shows a string as text. <code>data-rml="Banner"</code> shows it as markup: it replaces the element's children with the
+string parsed as <a href="../glossary/#rml">RML</a>, again each time the string changes. The InnerRml sample shows one string from the game and one the
+player types:</p>
+<div class="highlight"><span class="filename">InnerRml.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"ir-banner"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ir-line"</span> <span class="na">data-rml</span><span class="o">=</span><span class="s">"Banner"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="cm">&lt;!-- ... --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"ir-text"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ir-line"</span><span class="p">&gt;</span>{{ Typed }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="cm">&lt;!-- ... --&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"ir-rml"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ir-line"</span> <span class="na">data-rml</span><span class="o">=</span><span class="s">"Typed"</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><code>Banner</code> is <code>Welcome back, &lt;span class="ir-gold"&gt;traveller&lt;/span&gt;</code>: the <code>&lt;span&gt;</code> becomes an element that the style sheet
+colours. <code>Typed</code> starts as <code>&lt;b&gt;x&lt;/b&gt;</code>: <code>{{ Typed }}</code> shows those characters as they are, <code>data-rml</code> turns them into a
+<code>&lt;b&gt;</code> element holding <code>x</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Never put player text in data-rml</p>
+<p>Nothing is escaped in <code>data-rml</code>. A name, a chat line or a note a player typed can hold markup, and it becomes
+elements: a player can insert an <code>&lt;img&gt;</code> or a styled <code>&lt;span&gt;</code>. Show player text with <code>{{ }}</code> and use <code>data-rml</code> only
+for strings your own game or data wrote.</p>
+</div>
+<p>A localised text (<code>loc</code>) in <code>data-rml</code> is a compile error.</p>
+<h2 id="virtual-lists">Virtual lists<a class="headerlink" href="#virtual-lists" title="Permanent link">&para;</a></h2>
+<p>A list of thousands of rows needs only the rows near the visible part. <code>data-virtual</code> on a <code>data-for</code> element creates
+the elements for a window of entries and leaves the rest as data. The VirtualList sample shows 10 000 numbers:</p>
+<div class="highlight"><span class="filename">VirtualList.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"vl-list"</span> <span class="na">class</span><span class="o">=</span><span class="s">"vl-list"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"vl-row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"n : Rows"</span> <span class="na">data-virtual</span><span class="p">&gt;</span>Row {{ n }}<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">VirtualList.rcss</span><pre><span></span><code><span class="p">.</span><span class="nc">vl-list</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">360</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">overflow-y</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#1b212b</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">vl-row</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#303846</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">px</span><span class="w"> </span><span class="mh">#1b212b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>Rows</code> is a <code>TArray&lt;int32&gt;</code> that the view model fills with 1 to 10 000; <code>{{ Rows.size }}</code> is the entry count.</p>
+<p><img alt="The VirtualList sample: a scrolling box of buttons Row 1 to Row 10 under the line &quot;10000 rows, only the ones near the visible part exist&quot;" src="../images/virtual-list.png" /></p>
+<ul>
+<li>The parent of the <code>data-for</code> element is the scroll container. It needs a fixed height and <code>overflow-y: auto</code> or
+  <code>scroll</code>. A parent that does not scroll vertically creates no rows, and the log shows the error
+  <code>Virtual data-for on &lt;address&gt;: its parent must scroll vertically</code>.</li>
+<li>Every row takes the size of the first row (its margin box). Rows of different heights, horizontal lists and other
+  children in the scroll container are not supported.</li>
+<li>The elements that exist are the visible rows plus one box height before and after. The scroll bar keeps the length of
+  the whole list.</li>
+<li>A row that leaves the window is removed, and with it its focus, hover and animations. When the rows are buttons, Up
+  and Down move focus row by row and the box scrolls to keep the focused row in view.</li>
+<li><code>data-key</code> works as in <a href="#lists">Lists</a>, but a key is read only for the rows in the window, so a repeated key outside it
+  is not detected.</li>
+<li>Two spacer elements before and after the rows give the scroll bar its length. They count as siblings, so
+  <code>:first-child</code>, <code>:nth-child</code>, <code>+</code> and <code>~</code> on a row count them too. Style rows by class.</li>
+<li>On a <code>dc-import</code>, put <code>data-virtual</code> on the host wrapper with <code>data-for</code> (<a href="../components/">Components</a>).</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../blueprint-view-models/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Blueprint view models">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Blueprint view models
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../events/" class="md-footer__link md-footer__link--next" aria-label="Next: Events">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Events
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","navigation.footer"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.3cb411a8.min.js"></script>
+      
+    
+  </body>
+</html>

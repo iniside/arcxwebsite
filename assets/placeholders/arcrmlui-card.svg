@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="ArcRmlUI capture · 16:9 — placeholder">
+<g fill="none" stroke="#7A7266" stroke-linecap="round" stroke-linejoin="round">
+<rect x="32.5" y="32.5" width="180" height="52" rx="6" stroke-width="1.5"/>
+<g transform="translate(758 350) scale(3.5)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5 3.5-5 3.5z"/></g>
+<rect x="328" y="484.5" width="945" height="68" rx="4" stroke-width="1.5"/>
+</g>
+<g fill="#7A7266" font-family="'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace" letter-spacing="1">
+<text x="122" y="68" font-size="29" text-anchor="middle">arcrmlui</text>
+<text x="800" y="531" font-size="38" text-anchor="middle">ARCRMLUI CAPTURE · 16:9 — PLACEHOLDER</text>
+</g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" width="800" height="330" role="img" aria-label="Default Layer Order, bottom to top: UI.Layer.Game, GameMenu, Menu, Modal. A Menu document with hide-lower true hides the Game HUD; a Modal dialog with hide-lower false leaves the menu visible; Back reaches the topmost activated document first." font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#111827">
+<title>Default Layer Order, bottom to top: UI.Layer.Game, GameMenu, Menu, Modal. A Menu document with hide-lower true hides the Game HUD; a Modal dialog with hide-lower false leaves the menu visible; Back reaches the topmost activated document first.</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect x="0.5" y="0.5" width="799" height="329" rx="8" fill="#f3f4f6" stroke="#9ca3af"/>
+<rect x="70" y="40" width="420" height="56" rx="4" fill="#ffffff" stroke="#9ca3af"/>
+<text x="82" y="73" font-weight="600">UI.Layer.Modal</text>
+<rect x="70" y="106" width="420" height="56" rx="4" fill="#ffffff" stroke="#9ca3af"/>
+<text x="82" y="139" font-weight="600">UI.Layer.Menu</text>
+<rect x="70" y="172" width="420" height="56" rx="4" fill="#ffffff" stroke="#9ca3af"/>
+<text x="82" y="205" font-weight="600">UI.Layer.GameMenu</text>
+<rect x="70" y="238" width="420" height="56" rx="4" fill="#ffffff" stroke="#9ca3af"/>
+<text x="82" y="271" font-weight="600">UI.Layer.Game</text>
+<text x="70" y="26" font-weight="600">Layer Order (default)</text>
+<rect x="230" y="46" width="250" height="44" rx="5" fill="#f6d7a7" stroke="#4b5563"/><text x="355" y="64" text-anchor="middle" font-weight="600">Dialog</text><text x="355" y="80" text-anchor="middle">hide-lower: false</text>
+<rect x="230" y="112" width="250" height="44" rx="5" fill="#b9d3f0" stroke="#4b5563"/><text x="355" y="130" text-anchor="middle" font-weight="600">Menu document</text><text x="355" y="146" text-anchor="middle">hide-lower: true (the default)</text>
+<rect x="230" y="178" width="250" height="44" rx="5" fill="#ffffff" stroke="#4b5563" stroke-dasharray="5 4"/><text x="355" y="204" text-anchor="middle" fill="#4b5563">(no document)</text>
+<rect x="230" y="244" width="250" height="44" rx="5" fill="#e5e7eb" stroke="#4b5563" stroke-dasharray="5 4"/><text x="355" y="262" text-anchor="middle" font-weight="600" fill="#4b5563">HUD: hidden</text><text x="355" y="278" text-anchor="middle" fill="#4b5563">by the Menu document</text>
+<line x1="40" y1="300" x2="40" y2="52" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="28" y="176" transform="rotate(-90 28 176)" text-anchor="middle">drawn over</text>
+<rect x="536" y="44" width="250" height="48" rx="5" fill="#d1e7d1" stroke="#4b5563"/><text x="661" y="64" text-anchor="middle">Back and UI actions reach the</text><text x="661" y="80" text-anchor="middle">topmost activated document first</text>
+<line x1="536" y1="68" x2="484" y2="68" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
+<text x="510" y="130" fill="#374151">Stays visible behind the dialog.</text>
+<text x="510" y="262" fill="#374151">Hidden while the Menu document</text>
+<text x="510" y="278" fill="#374151">is open.</text>
+</svg>

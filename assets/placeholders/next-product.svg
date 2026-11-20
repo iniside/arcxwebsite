@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Next product — placeholder">
+<g fill="none" stroke="#7A7266" stroke-linecap="round" stroke-linejoin="round">
+
+<g transform="translate(758 350) scale(3.5)" stroke-width="1.6"><path d="M12 5v14"/><path d="M5 12h14"/></g>
+<rect x="459" y="484.5" width="683" height="68" rx="4" stroke-width="1.5"/>
+</g>
+<g fill="#7A7266" font-family="'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace" letter-spacing="1">
+
+<text x="800" y="531" font-size="38" text-anchor="middle">NEXT PRODUCT — PLACEHOLDER</text>
+</g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" width="800" height="330" role="img" aria-label="Content rect on a 3440 by 1440 screen: the document background fills the whole screen, the layout is a centred column 2560 screen pixels wide, which is 1920 by 1080 px at scale 1.33, and the 440 screen pixels on each side stay empty." font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#111827">
+<title>Content rect on a 3440 by 1440 screen: the document background fills the whole screen, the layout is a centred column 2560 screen pixels wide, which is 1920 by 1080 px at scale 1.33, and the 440 screen pixels on each side stay empty.</title>
+<rect x="0.5" y="0.5" width="799" height="329" rx="8" fill="#f3f4f6" stroke="#9ca3af"/>
+<text x="100" y="26" font-weight="600">Content rect on a 3440 x 1440 screen (scale 1.33, no safe zone)</text>
+<rect x="100" y="50" width="600" height="251" fill="#e5e7eb" stroke="#374151" stroke-width="1.4"/>
+<rect x="176.7" y="50" width="446.5" height="251" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+<text x="400" y="170" text-anchor="middle" font-weight="600">layout: 1920 x 1080 px</text>
+<text x="400" y="190" text-anchor="middle">2560 x 1440 screen pixels</text>
+<text x="138" y="170" text-anchor="middle" font-size="12">440</text>
+<text x="662" y="170" text-anchor="middle" font-size="12">440</text>
+<text x="400" y="322" text-anchor="middle" font-size="12">3440 screen pixels; only the document background reaches the outer parts</text>
+</svg>
