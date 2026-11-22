@@ -52,12 +52,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Schibsted+Grotesk:300,300i,400,400i,500,500i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&amp;display=fallback">
-        <style>:root{--md-text-font:"Schibsted Grotesk";--md-code-font:"IBM Plex Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,500,500i,700,700i%7CDM+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"DM Sans";--md-code-font:"DM Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../stylesheets/paper.css">
+      <link rel="stylesheet" href="../stylesheets/depth.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -75,7 +75,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -131,20 +131,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
       </label>
     
   
@@ -710,6 +710,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         What you should see
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-project-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        In Project Settings
       </span>
     </span>
   </a>
@@ -1510,6 +1521,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../claude-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Converting Claude Design mockups
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2028,6 +2066,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#in-project-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        In Project Settings
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#in-a-game-feature" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2070,7 +2119,7 @@
 <p>A <a href="../documents/">document</a> is destroyed when it closes, and the next open loads it again from nothing. Two things change
 that: a <code>keep-alive</code> document is parked when it closes and comes back as you left it, and a preloaded document is loaded before
 its first open, so that open shows it at once. The KeepAlive sample has a menu with a button for each, and two screens
-it opens. Run it with <code>ArcRmlSamples.Open KeepAlive</code> in the map <code>L_ArcRmlSamples</code> (<a href="../samples/">Samples</a>).</p>
+it opens. Run it by choosing KeepAlive in the samples list in the map <code>L_ArcRmlSamples</code> (<a href="../samples/">Samples</a>).</p>
 <p><img alt="Diagram: open loads cold; close destroys by default or parks a keep-alive or preloaded document; a reopen restores it; PreloadDocument parks before the first open; DiscardDocument, a reload or the end of the player's world destroys it" src="../images/keep-alive.svg" /></p>
 <h2 id="park-and-reopen">Park and reopen<a class="headerlink" href="#park-and-reopen" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Kept.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"keep-alive"</span> <span class="na">content</span><span class="o">=</span><span class="s">"true"</span><span class="p">/&gt;</span>
@@ -2147,6 +2196,11 @@ discard, a reload or the end of the player's world; there is no eviction.</p>
    <strong>Open preloaded</strong> then shows the screen "Preloaded" at once; its button reads <strong>Back closes it</strong>.</li>
 <li><strong>Discard both</strong> also shows nothing new. <strong>Open kept</strong> now starts at "Count: 0" with an empty field.</li>
 </ol>
+<h2 id="in-project-settings">In Project Settings<a class="headerlink" href="#in-project-settings" title="Permanent link">&para;</a></h2>
+<p><strong>Project Settings &gt; Game &gt; ArcRmlUI &gt; Preload &gt; Documents To Preload</strong> lists documents to preload with no code, for every
+local player from the start of the game (<code>+DocumentsToPreload=(Path="/Game/UI/Rml/Menus/Inventory.rml")</code> in
+<code>Config/DefaultGame.ini</code> under <code>[/Script/ArcRmlUI.ArcRmlUISettings]</code>). Each entry is preloaded as if <code>PreloadDocument</code> was
+called for it. With <strong>Package Everything</strong> off, the listed documents also ship, with their frames and what they open.</p>
 <h2 id="in-a-game-feature">In a Game Feature<a class="headerlink" href="#in-a-game-feature" title="Permanent link">&para;</a></h2>
 <p>The companion plugin ArcRmlUIGameFeatures, which does not ship with this plugin, has the Game Feature action <strong>Preload RML Documents</strong>
 (<code>UArcRmlGameFeatureAction_PreloadDocuments</code>). Its <code>Documents</code> list is preloaded for every local player while the Game

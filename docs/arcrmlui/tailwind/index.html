@@ -52,12 +52,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Schibsted+Grotesk:300,300i,400,400i,500,500i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&amp;display=fallback">
-        <style>:root{--md-text-font:"Schibsted Grotesk";--md-code-font:"IBM Plex Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,500,500i,700,700i%7CDM+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"DM Sans";--md-code-font:"DM Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../stylesheets/paper.css">
+      <link rel="stylesheet" href="../stylesheets/depth.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -75,7 +75,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -131,20 +131,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
       </label>
     
   
@@ -1488,6 +1488,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../claude-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Converting Claude Design mockups
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2023,17 +2050,19 @@
 
 
 <h1 id="tailwind-css">Tailwind CSS<a class="headerlink" href="#tailwind-css" title="Permanent link">&para;</a></h1>
-<p>To style a screen with Tailwind CSS 4, download Tailwind's standalone tool, run it on your <a href="../glossary/#document">documents</a> to write one style
+<p>To style a screen with <a href="https://tailwindcss.com">Tailwind CSS</a> 4, download Tailwind's standalone tool, run it on your <a href="../glossary/#document">documents</a> to write one style
 sheet, and link that sheet in each document's head like any other. The plugin ships no Node and no Tailwind. The Tailwind
 sample is a screen written with utility classes only.</p>
 <p><img alt="The Tailwind sample: a title, Play, Options and Quit buttons, a Level, Gold and Quests list, and Health, Mana and Stamina tiles" src="../images/tailwind.png" /></p>
 <h2 id="get-the-tool">Get the tool<a class="headerlink" href="#get-the-tool" title="Permanent link">&para;</a></h2>
-<p>Download the standalone CLI for your platform from the releases of the official <code>tailwindlabs/tailwindcss</code> repository
-on GitHub (for Windows, <code>tailwindcss-windows-x64.exe</code>). It is one file and needs no Node. Put it anywhere you can run
-it from and call it <code>tailwindcss</code> below.</p>
+<p>Download the standalone CLI for your platform from the <a href="https://github.com/tailwindlabs/tailwindcss/releases/latest">latest release of the official <code>tailwindlabs/tailwindcss</code>
+repository on GitHub</a>, under <strong>Assets</strong>. For Windows it is
+<a href="https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-windows-x64.exe"><code>tailwindcss-windows-x64.exe</code></a>
+(direct download). It is one file that needs no Node and no install. Nothing adds it to <code>PATH</code>, so you run it by its
+full path; leave it in your <code>Downloads</code> folder, where the browser saves it, and the command below finds it there.</p>
 <h2 id="the-input-file">The input file<a class="headerlink" href="#the-input-file" title="Permanent link">&para;</a></h2>
 <p>Create <code>tailwind.css</code> next to your document. It is copied from the Tailwind sample:</p>
-<div class="highlight"><span class="filename">Tailwind/tailwind.css</span><pre><span></span><code><span class="c">/* Rebuild Tailwind.rcss: tailwindcss -i tailwind.css -o Tailwind.rcss */</span>
+<div class="highlight"><span class="filename">Tailwind/tailwind.css</span><pre><span></span><code><span class="c">/* Rebuild Tailwind.rcss: see "Build the sheet" in the Tailwind guide */</span>
 <span class="p">@</span><span class="k">import</span><span class="w"> </span><span class="s2">"tailwindcss"</span><span class="w"> </span><span class="nt">source</span><span class="o">(</span><span class="nt">none</span><span class="o">)</span><span class="p">;</span>
 <span class="p">@</span><span class="k">source</span><span class="w"> </span><span class="s2">"./Tailwind.rml"</span><span class="p">;</span>
 
@@ -2051,12 +2080,14 @@ it from and call it <code>tailwindcss</code> below.</p>
   <a href="../validation/">validator</a>. Use the family your project loads; the sample uses <code>Arc Samples Sans</code>.</li>
 </ul>
 <h2 id="build-the-sheet">Build the sheet<a class="headerlink" href="#build-the-sheet" title="Permanent link">&para;</a></h2>
-<p>In the folder of <code>tailwind.css</code>:</p>
-<div class="highlight"><pre><span></span><code>tailwindcss -i tailwind.css -o Tailwind.rcss
+<p>Open PowerShell in the folder of <code>tailwind.css</code> (in File Explorer: right-click the folder, <strong>Open in Terminal</strong>) and run:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&amp;</span> <span class="s2">"$HOME\Downloads\tailwindcss-windows-x64.exe"</span> <span class="n">-i</span> <span class="n">tailwind</span><span class="p">.</span><span class="n">css</span> <span class="n">-o</span> <span class="n">Tailwind</span><span class="p">.</span><span class="n">rcss</span>
 </code></pre></div>
-<p><code>Tailwind.rcss</code> appears next to <code>tailwind.css</code>. To see the screen in the picture above, run
-<code>ArcRmlSamples.Open Tailwind</code> in the map <code>L_ArcRmlSamples</code> (<a href="../samples/">Samples</a>); the console is explained in
-<a href="../quick-start/#open-the-console">Open the console</a>.</p>
+<p>If you saved the file somewhere else, put its path between the quotes instead.</p>
+<p>With Node installed, <code>npx @tailwindcss/cli@4 -i tailwind.css -o Tailwind.rcss</code> does the same. A bare
+<code>npx tailwindcss</code> can run a Tailwind 3 installed in a parent folder, which stops with <code>Failed to find 'tailwindcss'</code>.</p>
+<p><code>Tailwind.rcss</code> appears next to <code>tailwind.css</code>. To see the screen in the picture above, choose
+Tailwind in the samples list in the map <code>L_ArcRmlSamples</code> (<a href="../samples/">Samples</a>).</p>
 <p>Name the output <code>.rcss</code>: a <code>&lt;link&gt;</code> loads only <code>.rcss</code> files. Link it in the head of the document, after the sheet
 your project shares:</p>
 <div class="highlight"><span class="filename">Tailwind/Tailwind.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/rcss"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/Shared/Samples.rcss"</span><span class="p">/&gt;</span>

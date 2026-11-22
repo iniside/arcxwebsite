@@ -3,8 +3,7 @@
   root.classList.add('js');
   var stored=null;
   try{stored=localStorage.getItem('theme')}catch(e){}
-  var dark=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches;
-  root.setAttribute('data-theme',stored||(dark?'dark':'light'));
+  root.setAttribute('data-theme',stored||'dark');
 
   function ready(){
     document.querySelectorAll('[data-theme-toggle]').forEach(function(btn){

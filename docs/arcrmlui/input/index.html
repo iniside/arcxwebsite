@@ -52,12 +52,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Schibsted+Grotesk:300,300i,400,400i,500,500i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&amp;display=fallback">
-        <style>:root{--md-text-font:"Schibsted Grotesk";--md-code-font:"IBM Plex Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,500,500i,700,700i%7CDM+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"DM Sans";--md-code-font:"DM Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="../stylesheets/paper.css">
+      <link rel="stylesheet" href="../stylesheets/depth.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -75,7 +75,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -131,20 +131,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light theme"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark theme"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light theme" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark theme" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
       </label>
     
   
@@ -1499,6 +1499,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../claude-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Converting Claude Design mockups
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2114,13 +2141,13 @@ rows; the key marks the row that has focus as the favourite, whichever of its co
   <code>input-mapping</code> meta activates it (<a href="#the-menus-own-action">the menu's own action</a>).</li>
 </ul>
 <p>The code above is an excerpt: the rows "Scroll" and "Gem" are written like "Potion", and the screen also declares its view model.</p>
-<p>Run it with <code>ArcRmlSamples.Open RowHotkeys</code>. The readout under the rows starts as <code>Favourite: -1, used:</code>. Press <span class="keys"><kbd class="key-r">R</kbd></span> on the first row: it reads <code>Favourite: 0, used:</code>. Press Down to move to the second row and <span class="keys"><kbd class="key-r">R</kbd></span> again: it reads <code>Favourite: 1, used:</code>. Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> on "Use" and <code>used:</code> shows the row's item name.</p>
+<p>Run it by choosing RowHotkeys in the samples list. The readout under the rows starts as <code>Favourite: -1, used:</code>. Press <span class="keys"><kbd class="key-r">R</kbd></span> on the first row: it reads <code>Favourite: 0, used:</code>. Press Down to move to the second row and <span class="keys"><kbd class="key-r">R</kbd></span> again: it reads <code>Favourite: 1, used:</code>. Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> on "Use" and <code>used:</code> shows the row's item name.</p>
 <h2 id="project-setup">Project setup<a class="headerlink" href="#project-setup" title="Permanent link">&para;</a></h2>
 <p>The menu needs the CommonUI setup of <a href="../project-setup/#input-for-menus">Project setup, Input for menus</a>, which also lists
 the sample input assets and their ini lines. A menu document whose Back action has no key logs a warning when it
 opens, and the <a href="../validation/">validator</a> reports it.</p>
 <h2 id="run-it">Run it<a class="headerlink" href="#run-it" title="Permanent link">&para;</a></h2>
-<p>Play in the map <code>L_ArcRmlSamples</code>, then type in the <a href="../quick-start/#open-the-console">console</a>:</p>
+<p>Play in the map <code>L_ArcRmlSamples</code> and choose GamepadMenu in the samples list. The second way is the <a href="../quick-start/#open-the-console">console</a>:</p>
 <div class="highlight"><pre><span></span><code>ArcRmlSamples.Open GamepadMenu
 </code></pre></div>
 <p>Move with the arrows or the D-pad, press <span class="keys"><kbd class="key-enter">Enter</kbd></span> or gamepad A, press <span class="keys"><kbd class="key-i">I</kbd></span> or gamepad Y for "Info", and
