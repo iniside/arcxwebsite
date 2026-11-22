@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1422,6 +1476,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2150,7 +2231,8 @@ the same expressions. <code>data-for</code> and <code>data-alias-*</code> take a
 the event does not carry is empty.</p>
 <p>The first name of a path is looked up as a field of the <a href="../glossary/#view-model">view model</a>, then as a <code>data-alias-*</code> or <code>data-for</code> name of the
 element or an ancestor, then as a field whose name differs only in case. When two fields match that way, a warning
-names both and the one used.</p>
+names both and the one used. A path of two or more names that matches none of these reads <code>&lt;Field&gt;</code> of the view model
+named by its first name (<a href="../data-binding/#other-models">Other models</a>).</p>
 <h2 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">&para;</a></h2>
 <p>From the strongest binding to the weakest. Operators of one row run left to right.</p>
 <div class="admonition note">
@@ -2254,6 +2336,18 @@ value; the ones marked "logs" also write a warning.</p>
 <tr>
 <td><code>round</code></td>
 <td>The nearest whole number; halves round up.</td>
+</tr>
+<tr>
+<td><code>floor</code>, <code>ceil</code></td>
+<td>The number rounded down or up to a whole number.</td>
+</tr>
+<tr>
+<td><code>abs</code></td>
+<td>The number without its sign.</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td>The number of characters of the value as text; an empty value gives <code>0</code>.</td>
 </tr>
 <tr>
 <td><code>arcclamp(low, high)</code></td>

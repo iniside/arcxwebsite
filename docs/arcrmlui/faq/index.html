@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1422,6 +1476,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -1960,10 +2041,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#is-this-the-same-as-rmlui" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Is this the same as RmlUi?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#can-i-reuse-an-html-page" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         Can I reuse an HTML page?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-an-ai-agent-write-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Can an AI agent write the UI?
       </span>
     </span>
   </a>
@@ -2187,10 +2290,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#is-this-the-same-as-rmlui" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Is this the same as RmlUi?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#can-i-reuse-an-html-page" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         Can I reuse an HTML page?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-an-ai-agent-write-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Can an AI agent write the UI?
       </span>
     </span>
   </a>
@@ -2252,9 +2377,9 @@
 <h2 id="which-engine-version-and-platforms">Which engine version and platforms?<a class="headerlink" href="#which-engine-version-and-platforms" title="Permanent link">&para;</a></h2>
 <p>Unreal Engine 5.8 and Win64. Other platforms are not supported yet. See <a href="../project-setup/#requirements">Project setup</a>.</p>
 <h2 id="does-it-work-with-umg-can-i-mix-it-with-my-widgets">Does it work with UMG? Can I mix it with my widgets?<a class="headerlink" href="#does-it-work-with-umg-can-i-mix-it-with-my-widgets" title="Permanent link">&para;</a></h2>
-<p>A <a href="../documents/">document</a> is not a UMG widget and cannot sit inside a Widget Blueprint: documents open only through
-<code>OpenDocument</code>, on a CommonUI <a href="../glossary/#layer">layer</a> of the <a href="../glossary/#local-player">local player</a>'s viewport. Your
-own widgets stay in the game next to the documents. A document reads its data from UMG Viewmodel (MVVM)
+<p>A <a href="../documents/">document</a> opens through <code>OpenDocument</code>, on a CommonUI <a href="../glossary/#layer">layer</a> of the
+<a href="../glossary/#local-player">local player</a>'s viewport, and your own widgets stay in the game next to it. A Widget Blueprint
+can also show a document with the document widget (<a href="../umg-widget/">A document in a UMG widget</a>). A document reads its data from UMG Viewmodel (MVVM)
 <a href="../glossary/#view-model">view models</a>. See <a href="../documents/">Documents</a> and <a href="../game-ui/">Designing a game's UI</a>.</p>
 <h2 id="does-it-need-commonui">Does it need CommonUI?<a class="headerlink" href="#does-it-need-commonui" title="Permanent link">&para;</a></h2>
 <p>Yes. The layers are CommonUI widget stacks, and a menu takes keys through CommonUI and Enhanced Input. The plugin enables
@@ -2280,15 +2405,23 @@ a <a href="../glossary/#shipping-build">Shipping build</a>. See <a href="../proj
 <h2 id="can-i-use-tailwind-css">Can I use Tailwind CSS?<a class="headerlink" href="#can-i-use-tailwind-css" title="Permanent link">&para;</a></h2>
 <p>Yes, through Tailwind's own command-line tool, which writes one style sheet the document links. The plugin ships no Node
 and no Tailwind, and some CSS is not supported. See <a href="../tailwind/">Tailwind CSS</a>.</p>
+<h2 id="is-this-the-same-as-rmlui">Is this the same as RmlUi?<a class="headerlink" href="#is-this-the-same-as-rmlui" title="Permanent link">&para;</a></h2>
+<p>No. It draws documents with a fork of RmlUi that lays out, shapes and paints CSS closer to Chrome, starts from a
+browser's default styles, and binds data to Unreal MVVM view models instead of data models built in C++. Lua, the
+debugger and Lottie are not included. See <a href="../from-rmlui/">Coming from RmlUi</a>.</p>
 <h2 id="can-i-reuse-an-html-page">Can I reuse an HTML page?<a class="headerlink" href="#can-i-reuse-an-html-page" title="Permanent link">&para;</a></h2>
 <p>As a start: the converter removes what <a href="../glossary/#rml">RML</a> cannot run. See <a href="../converter/">Converting an HTML page</a> and
 <a href="../from-html-css/">Coming from HTML and CSS</a>.</p>
+<h2 id="can-an-ai-agent-write-the-ui">Can an AI agent write the UI?<a class="headerlink" href="#can-an-ai-agent-write-the-ui" title="Permanent link">&para;</a></h2>
+<p>Documents are text files, so a coding agent can write and edit them, and the validator checks its output. The plugin
+ships skills for Claude Code and a snippet for other agents; see <a href="../ai-agents/">Working with AI agents</a>.</p>
 <h2 id="which-third-party-licences-does-it-contain">Which third-party licences does it contain?<a class="headerlink" href="#which-third-party-licences-does-it-contain" title="Permanent link">&para;</a></h2>
 <p>The plugin contains code from RmlUi, lunasvg, plutovg (partly derived from FreeType), Taffy, Chromium, Ladybird, itlib
 and robin_hood, and the WHATWG character entity table and HTML user-agent style sheet. Their licences ship with the
 plugin. Two layout features follow the design of Blitz (MIT).</p>
 <h2 id="where-do-i-report-a-problem">Where do I report a problem?<a class="headerlink" href="#where-do-i-report-a-problem" title="Permanent link">&para;</a></h2>
-<p>Use the support link on the plugin's entry in <strong>Edit &gt; Plugins</strong>. Say which document fails and include the <code>LogArcRmlUI</code> lines; see
+<p>Ask on <a href="https://discord.gg/ET8hECySrc">Discord</a> or email <a href="mailto:support.arcx@gmail.com">support.arcx@gmail.com</a>; the support link on
+the plugin's entry in <strong>Edit &gt; Plugins</strong> leads to both. Say which document fails and include the <code>LogArcRmlUI</code> lines; see
 <a href="../troubleshooting/">Troubleshooting</a>.</p>
 <h2 id="what-is-it-not">What is it not?<a class="headerlink" href="#what-is-it-not" title="Permanent link">&para;</a></h2>
 <ul>

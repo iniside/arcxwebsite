@@ -587,6 +587,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -811,6 +838,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1559,6 +1613,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2153,8 +2234,11 @@ pick the plugin's folder, such as <code>ArcRmlUISamples</code>, under <strong>Pl
 <li>Copy the <code>ArcRmlUISamples</code> plugin folder into your project's <code>Plugins</code> folder.</li>
 <li>In <code>Config/DefaultGame.ini</code>, add the samples' font sheet (the text needs a font, see the warning below):
    <code>+FontSheets=/ArcRmlUISamples/UI/Rml/Fonts/Fonts.rcss</code> under <code>[/Script/ArcRmlUI.ArcRmlUISettings]</code>.</li>
+<li>Add the <a href="../project-setup/#input-for-menus">input setup</a>: the list of samples is a <code>menu</code> document that takes keys
+   and the gamepad, and without the setup its open logs <code>no keys are mapped to the CommonUI Enhanced Input back action</code>.
+   The ini blocks at the end of that section use the samples' own input assets.</li>
 <li>Restart the editor.</li>
-<li>Play in the map <code>L_ArcRmlSamples</code>. A list of samples shows at the right edge.</li>
+<li>Play in the map <code>L_ArcRmlSamples</code> (<code>/ArcRmlUISamples/Maps/</code>). A list of samples shows at the right edge.</li>
 <li>Click FirstScreen in the list. The console does the same: <a href="#open-the-console">open the console</a> and type:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>ArcRmlSamples.Open FirstScreen
@@ -2236,6 +2320,8 @@ path becomes <code>/Game/UI/Rml/FirstScreen/FirstScreen.rml</code>. Then change 
 </ul>
 <p>The quickest way to try your own file is the console: <code>ArcRml.Open /Game/UI/Rml/FirstScreen/FirstScreen.rml</code> opens it
 with no code (<a href="#open-the-console">Open the console</a>).</p>
+<p>To start a document of your own from a template, use <strong>Create RML Document</strong> in the Content Browser
+(<a href="../workflow/#create-a-document">Working with documents</a>).</p>
 <h2 id="open-and-close-it">Open and close it<a class="headerlink" href="#open-and-close-it" title="Permanent link">&para;</a></h2>
 <p>Documents open per <a href="../glossary/#local-player">local player</a> through the <code>UArcRmlViewportSubsystem</code> local player
 subsystem. <code>OpenDocument</code> takes an <code>FArcRmlDocumentRef</code>, the document's package path, and returns whether it

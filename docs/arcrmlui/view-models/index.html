@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -833,6 +860,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1562,6 +1616,33 @@
     
   
   Converting Claude Design mockups
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
 
     
   </span>
@@ -2370,7 +2451,9 @@ leaves the model unresolved and the document evaluates the path again later. Sam
 <div class="admonition warning">
 <p class="admonition-title">The validator warns on this path</p>
 <p><a href="../validation/">Validation</a> reports a <code>view-model-path</code> warning on <code>SampleViewModel</code>, because it cannot see your
-own controller or pawn class. The path works at run time. Any path into a member of your own class gets this warning.
+own controller or pawn class. The path works at run time. A document shown by a Document Widget is checked against
+the class of the Widget Blueprint that holds the widget, so a path into a property of that widget gets no warning;
+any other path into a member of your own class gets this warning.
 A misspelled segment gets the same warning and never resolves, with no other message, so check the spelling when
 you see it. An unreadable or non-object segment, and a path whose result type is unrelated to the declared class,
 are <code>view-model-path</code> errors.</p>

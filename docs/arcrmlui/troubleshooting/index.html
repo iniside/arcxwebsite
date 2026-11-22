@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1403,6 +1457,33 @@
     
   
   Converting Claude Design mockups
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
 
     
   </span>
@@ -2203,6 +2284,12 @@ font sheet that fails to load logs <code>ArcRmlUI: font sheet '&lt;path&gt;' in 
 <li><code>layer '&lt;tag&gt;' is not in the ArcRmlUI settings LayerOrder</code>: the tag exists but is not in <strong>Layer Order</strong> (<a href="../project-setup/#layers">Project setup, Layers</a>).</li>
 <li><code>ArcRmlUI: cannot open '&lt;path&gt;': the layer host has no layer '&lt;layer&gt;'</code>: the layer host has no widget layer for the tag.</li>
 <li><strong><code>ArcRmlUI: cannot open '&lt;path&gt;': a view of it already exists</code>.</strong> The document has a <a href="../glossary/#view">view</a> already; close it first.</li>
+<li><strong><code>ArcRmlUI: cannot open '&lt;path&gt;' without a local player world</code></strong> (a warning). The local player has no world at that moment,
+  for example while a map is loading or the game is closing. Fix: open the document after the map has loaded.</li>
+<li><strong><code>ArcRml.Open: no local player in this world</code></strong> (a warning). The console command ran outside Play, where no player
+  exists. Fix: run it during Play (<a href="../quick-start/#open-the-console">Open the console</a>).</li>
+<li><strong><code>ArcRmlUI: cannot open '&lt;path&gt;': pushing it onto layer '&lt;layer&gt;' failed</code>.</strong> The layer's widget container did not add
+  the document's widget.</li>
 </ul>
 <h2 id="arrows-or-the-pad-do-nothing">Arrows or the pad do nothing<a class="headerlink" href="#arrows-or-the-pad-do-nothing" title="Permanent link">&para;</a></h2>
 <p>Check in this order:</p>
@@ -2267,8 +2354,9 @@ with its Set node, which the editor titles <strong>SET w/ Broadcast</strong> (<a
 </tbody>
 </table>
 <p>The validator reports a missing function as <code>unknown-function</code> and a wrong count as <code>call-arity</code>
-(<a href="../validation/#what-it-reports">Validation</a>). A click on a <code>data-action</code> under a <code>&lt;body&gt;</code> without <code>data-model</code>
-logs <code>action '&lt;action&gt;' was clicked under a &lt;body&gt; or embedded document root that has no data-model</code>.</p>
+(<a href="../validation/#what-it-reports">Validation</a>). A click on a <code>data-action</code> other than <code>close</code> and <code>open:&lt;package path&gt;</code> under a <code>&lt;body&gt;</code> without
+<code>data-model</code> logs <code>action '&lt;action&gt;' was clicked under a &lt;body&gt; or embedded document root that has no data-model; only close
+and open:&lt;path&gt; work without one</code>.</p>
 <p>Fix: make the name, the argument count and the argument values match the function in the view model class, and give the
 <code>&lt;body&gt;</code> a <code>data-model</code>.</p>
 <h2 id="a-binding-shows-defaults">A binding shows defaults<a class="headerlink" href="#a-binding-shows-defaults" title="Permanent link">&para;</a></h2>
@@ -2297,7 +2385,8 @@ preview model in a <a href="../glossary/#shipping-build">Shipping build</a> or w
 Blueprint or data asset is not packaged (<a href="../project-setup/#packaging">Project setup, Packaging</a>). A <code>data-action</code>
 built from data (<code>data-attr-data-action</code>, <code>data-attrif-data-action</code> or <code>{{ }}</code>) is not followed; the cook logs
 <code>'&lt;document&gt;' builds a data-action from data</code> as a warning.</p>
-<p>Fix: add the target to <strong>Paths to Package</strong>.</p>
+<p>Fix: add the target to <strong>Paths to Package</strong>. For a document inside a Game Feature plugin, add the <strong>Package RML Documents</strong>
+action to its <code>GameFeatureData</code> instead (<a href="../project-setup/#packaging">Project setup, Packaging</a>).</p>
 <h2 id="where-to-look">Where to look<a class="headerlink" href="#where-to-look" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The log category <code>LogArcRmlUI</code>; a diagnostic line is <code>&lt;file&gt;(&lt;line&gt;): &lt;message&gt;</code>. Warnings and errors outside Shipping

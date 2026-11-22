@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -767,6 +794,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1515,6 +1569,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2121,6 +2202,12 @@ listed below is a head error: the document does not open (<code>OpenDocument</co
 <td><code>true</code>, <code>false</code></td>
 <td><code>false</code></td>
 <td>Every key and pad press also sends an <code>anyinput</code> event to the document. <code>true</code> is not allowed with <code>input-mode</code> <code>game</code>.</td>
+</tr>
+<tr>
+<td><code>mouse-capture</code></td>
+<td><code>true</code>, <code>false</code></td>
+<td><code>false</code></td>
+<td>With <code>input-mode</code> <code>all</code>, <code>true</code> hides the cursor and captures the mouse for the game, as <code>game</code> does, for an action-game HUD with mouse look; its keys then reach it as <a href="../events/#ui-actions">UI actions</a> of <code>input-mapping</code>, not as raw key events. While a text field of the document is active the cursor is shown. Not allowed with <code>input-mode</code> <code>game</code> or <code>menu</code>.</td>
 </tr>
 <tr>
 <td><code>frame</code></td>

@@ -576,6 +576,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -800,6 +827,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1548,6 +1602,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2127,8 +2208,8 @@ and the gamepad also needs the <a href="#input-for-menus">input setup</a>.</p>
   Input; in the editor also Content Browser - File Data Source and GameplayTagsEditor.</li>
 </ul>
 <h2 id="enable-the-plugin">Enable the plugin<a class="headerlink" href="#enable-the-plugin" title="Permanent link">&para;</a></h2>
-<p>Add ArcRmlUI to your project from Fab (<strong>Add to Project</strong>) or install it to the engine, then enable it in
-<strong>Edit &gt; Plugins</strong>. It enables the plugins above with itself.</p>
+<p>Install ArcRmlUI to the engine: in the Epic Games Launcher, find it under <strong>Library</strong> &gt; <strong>Fab Library</strong> and click
+<strong>Install to Engine</strong>. Then enable it in <strong>Edit &gt; Plugins</strong>. It enables the plugins above with itself.</p>
 <p>A C++ module that opens documents or defines <a href="../glossary/#view-model">view models</a> lists the plugin's modules in its
 <code>Build.cs</code>: <code>ArcRmlUIData</code> holds <code>FArcRmlDocumentRef</code>, <code>ArcRmlUI</code> the viewport subsystem. Opening documents needs only those two. This excerpt of the samples module's <code>Build.cs</code> also lists the modules its view models use:</p>
 <div class="highlight"><span class="filename">ArcRmlUISamples.Build.cs</span><pre><span></span><code><span class="w">        </span><span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span>
@@ -2181,17 +2262,18 @@ at start; their fonts serve every document. The samples' font sheet:</p>
 </tr>
 <tr>
 <td>Fallback Font Family</td>
-<td><code>FallbackFontFamily=</code></td>
+<td><code>FallbackFontFamily=Arc Samples Sans</code></td>
 <td>The family text is drawn with when no style sets one.</td>
 </tr>
 <tr>
 <td>Generic Font Families</td>
-<td><code>GenericFontFamilies=</code></td>
+<td><code>GenericFontFamilies=(("sans-serif", "Arc Samples Sans"))</code></td>
 <td>Maps a generic name such as <code>sans-serif</code> to a declared family.</td>
 </tr>
 </tbody>
 </table>
-<p>These settings take effect after an editor restart.</p>
+<p>The family in the last two rows must be one that a listed font sheet declares; a name no sheet declares has no effect.
+These settings take effect after an editor restart.</p>
 <h2 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h2>
 <p>A document opens on a layer, a <code>UI.Layer.*</code> gameplay tag named by <code>&lt;meta name="layer"&gt;</code>; <a href="../documents/#layers">Documents</a>
 explains them. The plugin defines four tags, <code>UI.Layer.Game</code>, <code>UI.Layer.GameMenu</code>, <code>UI.Layer.Menu</code> and
@@ -2258,6 +2340,11 @@ covers navigation, hotkeys and a document's own mapping context.</p>
   (documents that show other documents, see <a href="../frames-and-tabs/">Frames and tabs</a>), the documents that
   <code>data-action="open:&lt;package path&gt;"</code> names as a literal, the documents that Blueprints and data assets
   reference, and the documents listed in <strong>Documents To Preload</strong> (<a href="../keep-alive/#in-project-settings">Keep-alive and preload</a>).</li>
+<li>A Game Feature plugin lists its own paths with the action <strong>Package RML Documents</strong> (<code>UArcRmlGameFeatureAction_PackageDocuments</code>)
+  of the companion plugin ArcRmlUIGameFeatures, which does not ship with this plugin (it is <code>Plugins/ArcRmlUIGameFeatures</code> of the
+  <a href="https://github.com/iniside/ArcLunzoSamples">Arc Lunzo Samples</a> repository). The cook packages them when that
+  Game Feature plugin is enabled on the platform, so they need no entry in <strong>Paths to Package</strong>. A path outside the plugin
+  is a cook error.</li>
 <li>The font sheets always ship.</li>
 </ul>
 

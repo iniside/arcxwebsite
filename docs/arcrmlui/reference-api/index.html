@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1422,6 +1476,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -1748,6 +1829,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#document-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Document widget
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI scale
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1770,10 +1873,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#editor-python" class="md-nav__link">
+  <a href="#sync-strings-from-a-script" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Editor Python
+        Sync Strings from a script
       </span>
     </span>
   </a>
@@ -2022,6 +2125,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#document-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Document widget
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UI scale
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#types" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2044,10 +2169,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#editor-python" class="md-nav__link">
+  <a href="#sync-strings-from-a-script" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Editor Python
+        Sync Strings from a script
       </span>
     </span>
   </a>
@@ -2172,6 +2297,16 @@ in a Blueprint place the <strong>Arc Rml Viewport Subsystem</strong> node (palet
 execution pins, each with a <strong>Document</strong> pin: <strong>Before Activate</strong> fires at the <code>Init</code> moment above, and
 <strong>After Activate</strong> fires once the open has succeeded. See <a href="../documents/#open-and-close">Documents</a> and
 <a href="../blueprint-view-models/#opening-the-document-from-a-blueprint">Blueprint view models</a>.</p>
+<h2 id="document-widget">Document widget<a class="headerlink" href="#document-widget" title="Permanent link">&para;</a></h2>
+<p><code>UArcRmlDocumentWidget</code> (<code>ArcRmlUI</code>, <code>Host/ArcRmlDocumentWidget.h</code>) is a UMG widget that shows one document. Its Blueprint members
+(<code>Document</code>, <code>SetViewModel</code>, <code>ReloadDocument</code>, <code>OnOpenRequested</code>, <code>OnCloseRequested</code>) are in the category
+<strong>ArcRmlUI|Document Widget</strong>. See <a href="../umg-widget/">A document in a UMG widget</a>.</p>
+<h2 id="ui-scale">UI scale<a class="headerlink" href="#ui-scale" title="Permanent link">&para;</a></h2>
+<p><code>UArcRmlUISettingsSubsystem</code> (<code>ArcRmlUI</code>, <code>Host/ArcRmlUISettingsSubsystem.h</code>) is a game instance subsystem, C++ only (no
+Blueprint node), not created on a dedicated server. <code>SetUIScale</code> sets <strong>Application Scale</strong> and <code>SetMaxUIAspectRatio</code>
+the aspect cap (default 16:9, 0 for no limit); <code>GetUIScale</code> and <code>GetMaxUIAspectRatio</code> return them. Neither value is
+checked or saved; the project's <strong>Application Scale</strong> comes back when the game instance ends. See
+<a href="../display-and-players/#css-pixels-and-screen-pixels">Screen size, cursor and players</a>.</p>
 <h2 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2210,9 +2345,11 @@ as a <code>double</code>. Store it in a view model as a time stamp; the <a href=
 then gives the seconds from that stamp to now on the clock the document runs on. <code>ArcRml.Clock</code> stops the document's
 clock in builds that are not a <a href="../glossary/#shipping-build">Shipping build</a> (<a href="../reference-console/">Console reference</a>); the
 value <code>Seconds()</code> returns keeps running.</p>
-<h2 id="editor-python">Editor Python<a class="headerlink" href="#editor-python" title="Permanent link">&para;</a></h2>
-<p><code>unreal.ArcRmlStringSyncLibrary.sync_strings(package_paths)</code> does what <strong>Sync Strings</strong> does in the Content Browser for the
-given document package paths and returns the errors as <code>&lt;path&gt;(&lt;line&gt;): &lt;message&gt;</code>, or <code>&lt;path&gt;: &lt;message&gt;</code> when there is no line. See
+<h2 id="sync-strings-from-a-script">Sync Strings from a script<a class="headerlink" href="#sync-strings-from-a-script" title="Permanent link">&para;</a></h2>
+<p><code>UArcRmlStringSyncLibrary::SyncStrings</code> (editor module <code>ArcRmlUIEditor</code>, header <code>Localization/ArcRmlStringSyncLibrary.h</code>;
+Blueprint category <strong>ArcRmlUI|Localization</strong>, so an Editor Utility Blueprint can call it) and its editor Python form
+<code>unreal.ArcRmlStringSyncLibrary.sync_strings(package_paths)</code> do what <strong>Sync Strings</strong> does in the Content Browser for the
+given document package paths and return the errors as <code>&lt;path&gt;(&lt;line&gt;): &lt;message&gt;</code>, or <code>&lt;path&gt;: &lt;message&gt;</code> when there is no line. See
 <a href="../localization/#edit-the-texts">Localization</a>.</p>
 
 

@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1403,6 +1457,33 @@
     
   
   Converting Claude Design mockups
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
 
     
   </span>
@@ -2508,6 +2589,11 @@ HTML and CSS</a>.</p>
 <td></td>
 </tr>
 <tr>
+<td><code>text-indent</code></td>
+<td>supported</td>
+<td>A length or a percentage of the containing block's width; it indents the first formatted line. <code>each-line</code> and <code>hanging</code> are not parsed and warn.</td>
+</tr>
+<tr>
 <td><code>text-decoration</code>, <code>text-decoration-line</code>, <code>-color</code>, <code>-thickness</code>, <code>text-underline-offset</code></td>
 <td>supported</td>
 <td></td>
@@ -2759,7 +2845,7 @@ HTML and CSS</a>.</p>
 </table>
 <h2 id="not-supported">Not supported<a class="headerlink" href="#not-supported" title="Permanent link">&para;</a></h2>
 <p>Common properties a web developer looks for that do not exist. The list is not every CSS property; a declaration of
-one is dropped with the warning "unknown property".</p>
+one is dropped with the warning "unknown property", except <code>tab-size</code>, <code>resize</code>, <code>-webkit-text-size-adjust</code>, <code>-webkit-tap-highlight-color</code> and <code>font-variation-settings: normal</code>, which are dropped silently.</p>
 <table>
 <thead>
 <tr>
@@ -2778,7 +2864,7 @@ one is dropped with the warning "unknown property".</p>
 </tr>
 <tr>
 <td>Text</td>
-<td><code>text-indent</code>, <code>word-spacing</code>, <code>hyphens</code>, <code>line-break</code>, <code>tab-size</code>, <code>font-stretch</code>, <code>font-variant</code> (shorthand), <code>font-variation-settings</code>, <code>font-synthesis</code>, <code>font-optical-sizing</code>, <code>text-emphasis</code>, <code>text-rendering</code>, <code>-webkit-font-smoothing</code>, <code>-webkit-text-fill-color</code>, <code>-webkit-text-size-adjust</code>, <code>quotes</code>, <code>counter-reset</code>, <code>counter-increment</code></td>
+<td><code>word-spacing</code>, <code>hyphens</code>, <code>line-break</code>, <code>tab-size</code>, <code>font-stretch</code>, <code>font-variant</code> (shorthand), <code>font-variation-settings</code>, <code>font-synthesis</code>, <code>font-optical-sizing</code>, <code>text-emphasis</code>, <code>text-rendering</code>, <code>-webkit-font-smoothing</code>, <code>-webkit-text-fill-color</code>, <code>-webkit-text-size-adjust</code>, <code>quotes</code>, <code>counter-reset</code>, <code>counter-increment</code></td>
 </tr>
 <tr>
 <td>Shapes and images</td>
@@ -2966,7 +3052,7 @@ developers meet: <code>outline: auto</code>, <code>appearance: button</code>, <c
 <tr>
 <td><code>:has()</code>, <code>:target</code>, <code>:visited</code>, <code>:valid</code>, <code>:invalid</code>, <code>:link</code> and any other name</td>
 <td>never matches</td>
-<td>The rule is kept; no element ever has that state. The validator reports it as an unknown pseudo-class.</td>
+<td>The rule is kept; no element ever has that state. The validator reports it as an unknown pseudo-class, except vendor-prefixed names (<code>-webkit-</code>, <code>-moz-</code>, <code>-ms-</code>, <code>-o-</code>), <code>:host</code>, <code>::backdrop</code> and <code>::file-selector-button</code>, which are silent outside a <code>:not()</code> argument.</td>
 </tr>
 </tbody>
 </table>
@@ -3043,14 +3129,19 @@ developers meet: <code>outline: auto</code>, <code>appearance: button</code>, <c
 <td>The block is skipped.</td>
 </tr>
 <tr>
-<td><code>@layer a, b;</code>, <code>@charset</code>, <code>@namespace</code></td>
+<td><code>@charset</code>, <code>@namespace</code></td>
 <td>skipped silently</td>
 <td></td>
 </tr>
 <tr>
-<td><code>@layer name { ... }</code>, <code>@container</code></td>
+<td><code>@layer a, b;</code>, <code>@layer name { ... }</code></td>
+<td>supported</td>
+<td>Layers order the cascade as in Chrome: a later layer beats an earlier one, unlayered rules beat every layer, and <code>!important</code> reverses both. A document has one layer order, by first appearance across its sheets. An invalid name warns.</td>
+</tr>
+<tr>
+<td><code>@container</code></td>
 <td>applied without the condition, warns</td>
-<td>The rules apply to every element, in the order written, with the warning "Unknown at-rule". Layers do not exist and a container query is never evaluated.</td>
+<td>The rules apply to every element, in the order written, with the warning "Unknown at-rule". A container query is never evaluated.</td>
 </tr>
 <tr>
 <td><code>@import</code></td>
@@ -3060,12 +3151,12 @@ developers meet: <code>outline: auto</code>, <code>appearance: button</code>, <c
 <tr>
 <td>Any other at-rule</td>
 <td>top level: applied without the condition, warns; inside a style rule: dropped, warns</td>
-<td>At top level the same as <code>@layer</code> blocks. Nested in a style rule it is dropped with "At-rule '@...' inside a style rule is dropped."</td>
+<td>At top level the same as <code>@container</code>. Nested in a style rule it is dropped with "At-rule '@...' inside a style rule is dropped."</td>
 </tr>
 </tbody>
 </table>
-<p>Rules inside <code>@layer name { ... }</code> and <code>@container</code> blocks apply to every element, as if the wrapper were not there: a
-layer has no effect on the order of rules, and a container condition is never checked.</p>
+<p>Rules inside <code>@container</code> blocks apply to every element, as if the wrapper were not there: a container condition is never
+checked.</p>
 <h2 id="css-wide-keywords">CSS-wide keywords<a class="headerlink" href="#css-wide-keywords" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

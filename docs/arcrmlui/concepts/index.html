@@ -598,6 +598,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -822,6 +849,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1570,6 +1624,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2272,14 +2353,26 @@ shows in a later UI update, never inside the call that made it. A field set seve
 once, with its last value. <code>call()</code> and <code>data-action</code> run on the game thread's next tick, so what the function
 changes shows one update after the click.</p>
 <h2 id="compiled-files">Compiled files<a class="headerlink" href="#compiled-files" title="Permanent link">&para;</a></h2>
-<p>The plugin runs compiled files, not the sources: each <code>.rml</code> compiles to an <code>.rmlc</code> and each <code>.rcss</code> to an <code>.rcssc</code>
-next to it. In the editor a document whose sources changed is compiled again when it loads; a packaged build ships
-only compiled files, with the images and fonts they use. The compiled files are rebuilt from the sources, so they
-need not be in source control. <a href="../validation/">Validation</a> compiles and checks documents without opening them.</p>
+<p>The plugin runs compiled files, not the sources: each document <code>X.rml</code> compiles to <code>X.rmlc</code> and each style sheet
+<code>X.rcss</code> to <code>X.rcssc</code>, in the same folder. A compiled file is the parsed document or style sheet in a binary form,
+with its <a href="../components/">components</a> expanded, and the list of files it was compiled from. A component has no compiled
+file of its own.</p>
+<ul>
+<li><strong>Editor</strong>: a document or style sheet is compiled when it opens and its compiled file is missing, was written by
+  another plugin version, or one of the files it was compiled from has changed since. On save the editor compiles the
+  changed files and reloads the open documents (<a href="../workflow/#edit-and-save">Working with documents</a>), and
+  <a href="../validation/">Validation</a> compiles and checks documents without opening them. A game run with the editor's
+  binaries compiles the same way when a document opens.</li>
+<li><strong>Cook</strong>: the cook compiles what it packages and ships the <code>.rmlc</code> and <code>.rcssc</code> files with the images and fonts they
+  use; the <code>.rml</code> and <code>.rcss</code> sources are not shipped (<a href="../project-setup/#packaging">Packaging</a>).</li>
+<li><strong>Packaged build</strong>: reads only compiled files and never compiles. A document whose compiled file is missing does not
+  open, and the error names it: <code>no usable compiled file</code>.</li>
+</ul>
+<p>The compiled files are rebuilt from the sources, so they need not be in source control.</p>
 <h2 id="rmlui">RmlUi<a class="headerlink" href="#rmlui" title="Permanent link">&para;</a></h2>
 <p>ArcRmlUI lays out and draws documents with RmlUi, an open-source UI library with HTML-like markup and CSS-like
 styling. ArcRmlUI extends it to behave more like a browser. This guide and <a href="../reference-css/">CSS support</a> are the
-reference for what a document can do. RmlUi's own documentation describes the library this plugin is built on; where it differs, this guide is right. Documents reach the game through
+reference for what a document can do. RmlUi's own documentation describes the library this plugin is built on; where it differs, this guide is right, and <a href="../from-rmlui/">Coming from RmlUi</a> lists the differences. Documents reach the game through
 view models and <code>data-*</code> attributes, and code through the plugin's own API (<a href="../reference-api/">C++ and Blueprint</a>).</p>
 
 

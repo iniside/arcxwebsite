@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1521,6 +1575,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2194,6 +2275,16 @@ pushes its config):</p>
 <td>Not captured by the game.</td>
 </tr>
 <tr>
+<td><code>all</code> with <code>mouse-capture</code> <code>true</code></td>
+<td>Hidden</td>
+<td>Captured by the game permanently.</td>
+</tr>
+<tr>
+<td><code>all</code> with <code>mouse-capture</code> <code>true</code>, while a text field of the document is active</td>
+<td>Shown</td>
+<td>Not captured by the game.</td>
+</tr>
+<tr>
 <td><code>game</code> (default)</td>
 <td>Hidden</td>
 <td>Captured by the game permanently.</td>
@@ -2210,7 +2301,8 @@ fakes touch from the mouse, or its virtual pointer is shown. The virtual pointer
 accept clicks at; <code>ArcRml.VirtualPointer 1</code> shows it (<a href="../reference-console/">Console</a>), and CommonUI also needs
 <code>CommonUI.EnableVirtualPointer</code>, a console variable that is on by default.</p>
 <p>A game that wants a cursor over its HUD, with no menu open, opens a <code>menu</code> or <code>all</code> document or sets
-<code>CommonUI.AlwaysShowCursor</code>.</p>
+<code>CommonUI.AlwaysShowCursor</code>. A HUD with its own hotkeys over a mouse-look character is an <code>all</code> document with
+<code>&lt;meta name="mouse-capture" content="true"/&gt;</code>.</p>
 <h2 id="more-than-one-local-player">More than one local player<a class="headerlink" href="#more-than-one-local-player" title="Permanent link">&para;</a></h2>
 <p>Every local player has its own <code>UArcRmlViewportSubsystem</code> and its own <a href="../documents/#layers">layers</a> and documents. Per player:</p>
 <ul>

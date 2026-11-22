@@ -344,12 +344,12 @@ Viewport-&gt;OpenDocument(Document);</code></pre></div>
       <div class="tbl-box">
         <table class="tbl">
           <tbody>
-            <tr><th scope="row">Engine version</th><td>Unreal Engine 5.[X]+</td></tr>
+            <tr><th scope="row">Engine version</th><td>Unreal Engine 5.8</td></tr>
             <tr><th scope="row">Platforms</th><td>Win64</td></tr>
             <tr><th scope="row">Modules</th><td>[ArcRmlUI, ArcRmlUIEditor, ...]</td></tr>
             <tr><th scope="row">Dependencies</th><td>ModelViewViewModel, CommonUI, EnhancedInput</td></tr>
             <tr><th scope="row">Documentation</th><td><a href="/docs/arcrmlui/">[DOMAIN]/docs/arcrmlui/</a></td></tr>
-            <tr><th scope="row">Support</th><td><a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a> <span class="muted">[placeholder]</span></td></tr>
+            <tr><th scope="row">Support</th><td><a href="https://discord.gg/ET8hECySrc">Discord</a>, <a href="mailto:support.arcx@gmail.com">support.arcx@gmail.com</a></td></tr>
           </tbody>
         </table>
       </div>
@@ -367,7 +367,6 @@ Viewport-&gt;OpenDocument(Document);</code></pre></div>
           <h3 class="h3">Next update</h3>
           <ul class="roadmap-list">
             <li>Documents in the game world: render a document onto a surface in the level and interact with it.</li>
-            <li>Documents inside UMG: a widget that hosts a document, placed from the Designer palette.</li>
             <li>Faster first open of a screen: styles and layout prepared before the screen is first shown.</li>
             <li>Transform and opacity animations composited on the GPU.</li>
             <li>Tailwind CSS 4 builds without warnings, synthesized bold and the :focus-visible ring.</li>
@@ -416,14 +415,14 @@ Viewport-&gt;OpenDocument(Document);</code></pre></div>
       <div>
         <div class="sec-hd">
           <div><span class="eyebrow">07 / FAQ</span><h2 class="h2">Questions.</h2></div>
-          <p class="muted">Anything else: <a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a>.</p>
+          <p class="muted">Anything else: ask on <a href="https://discord.gg/ET8hECySrc">Discord</a> or email <a href="mailto:support.arcx@gmail.com">support.arcx@gmail.com</a>.</p>
         </div>
         <div class="faq">
-          <details><summary>Is this the same as RmlUi?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">No. Arc Lunzo ships its own fork of RmlUi with Unreal Engine integration. What changed in the fork is listed in the docs.</span><span class="todo">TODO: verify</span></p></details>
-          <details><summary>Which engine versions are supported?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">See the specs table above. Each release on Fab lists the engine versions it was built and tested against.</span><span class="todo">TODO: verify</span></p></details>
-          <details><summary>Do I need C++ to use it?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">Markup and styles need no C++. ViewModels can be defined in C++ or Blueprint; the docs cover both.</span><span class="todo">TODO: verify</span></p></details>
-          <details><summary>Can I use it next to UMG?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p><!-- TODO: verify --><span class="claim">Yes, documents and UMG widgets can be on screen at the same time. The docs explain input and focus handling between them.</span><span class="todo">TODO: verify</span></p></details>
-          <details><summary>Where do I get support?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p>Email <a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a> with your engine version and a minimal repro. Bug reports and questions both go there.</p></details>
+          <details><summary>Is this the same as RmlUi?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p>No. Arc Lunzo draws documents with its own fork of RmlUi that lays out, shapes and paints CSS closer to Chrome and starts from a browser's default styles. Data binds to Unreal MVVM view models declared in the document instead of data models built in C++, and input runs through CommonUI and Enhanced Input. RmlUi's Lua, debugger and Lottie are not included. The full list: <a href="/docs/arcrmlui/from-rmlui/">Coming from RmlUi</a>.</p></details>
+          <details><summary>Which engine versions are supported?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p>Unreal Engine 5.8 on Win64. Other engine versions and platforms are not supported yet.</p></details>
+          <details><summary>Do I need C++ to use it?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p>No. Markup and styles need no C++, and view models can be written in Blueprint or in C++; only struct lists and view model resolvers need C++. The docs cover both: <a href="/docs/arcrmlui/blueprint-view-models/">Blueprint view models</a> and <a href="/docs/arcrmlui/view-models/">View models</a>.</p></details>
+          <details><summary>Can I use it next to UMG?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p>Yes. Documents open on CommonUI layers of the player's viewport, and your UMG widgets stay on screen next to them. A Widget Blueprint can also show a document: drop the document widget from the Designer palette into its tree. See <a href="/docs/arcrmlui/umg-widget/">A document in a UMG widget</a>.</p></details>
+          <details><summary>Where do I get support?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary><p>Ask on <a href="https://discord.gg/ET8hECySrc">Discord</a> or email <a href="mailto:support.arcx@gmail.com">support.arcx@gmail.com</a>. For a bug, include your engine version and a minimal repro.</p></details>
         </div>
       </div>
     </div>
@@ -453,7 +452,8 @@ Viewport-&gt;OpenDocument(Document);</code></pre></div>
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:[SUPPORT EMAIL]">[SUPPORT EMAIL]</a></li>
+          <li><a href="https://discord.gg/ET8hECySrc">Discord</a></li>
+          <li><a href="mailto:support.arcx@gmail.com">support.arcx@gmail.com</a></li>
           <li><a href="[FAB PROFILE LINK]">arcx on Fab</a></li>
         </ul>
       </div>

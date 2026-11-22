@@ -15,7 +15,7 @@
         <link rel="prev" href="../glossary/">
       
       
-        <link rel="next" href="../samples/">
+        <link rel="next" href="../from-rmlui/">
       
       
         
@@ -576,6 +576,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -800,6 +827,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1548,6 +1602,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2146,7 +2227,7 @@ its result. The changed lines: the <code>&lt;!DOCTYPE&gt;</code>, <code>&lt;meta
 <h2 id="paths-and-images">Paths and images<a class="headerlink" href="#paths-and-images" title="Permanent link">&para;</a></h2>
 <p>A path that starts with <code>/</code> is a <a href="../glossary/#package-path">package path</a>, <code>/&lt;Mount&gt;/UI/Rml/Shared/Samples.rcss</code>, where <code>&lt;Mount&gt;</code> is <code>Game</code> or a
 plugin the project loads. Any other path is relative to the document.
-Images are <code>png</code> or <code>svg</code> files; the cook ships only <code>svg</code>, <code>png</code>, <code>ttf</code> and <code>otf</code> from a <a href="../glossary/#content-root">content root</a>. An image can
+Images are <code>png</code> files, or <code>svg</code> files drawn by <code>&lt;svg&gt;</code>; the cook ships only <code>svg</code>, <code>png</code>, <code>ttf</code> and <code>otf</code> from a <a href="../glossary/#content-root">content root</a>. An image can
 also come from a texture asset: <code>src="asset:/Package/Path.Object"</code> draws a <code>Texture2D</code> without virtual texture streaming
 (<a href="../images/#texture-assets">Images</a>). No font ships with the plugin,
 and a web font link does not load: declare each font in a font sheet, see <a href="../project-setup/#fonts">Project setup</a>.</p>
@@ -2219,7 +2300,7 @@ Text fields and focus: <a href="../text-fields/">Text fields</a>, <a href="../na
 <ul>
 <li><code>position: sticky</code>, <code>columns</code>, <code>writing-mode</code>, <code>clip-path</code>, <code>resize</code>, <code>scroll-snap-*</code>, <code>container-type</code> do not exist.</li>
 <li><code>:has()</code>, <code>:target</code>, <code>:visited</code>, <code>:valid</code> and <code>:invalid</code> never match.</li>
-<li><code>@layer</code> and <code>@container</code> blocks apply their rules unconditionally, without layers and without the condition. Each one logs an "Unknown at-rule" warning, which is expected.
+<li><code>@layer</code> orders the cascade as in Chrome. <code>@container</code> blocks apply their rules unconditionally, without the condition, and log an "Unknown at-rule" warning, which is expected.
   <code>@import</code> is not followed: link each sheet from the document.</li>
 <li>Units <code>ex</code>, <code>ch</code> and <code>lh</code> and the functions <code>env()</code> and <code>hwb()</code> are not supported.</li>
 </ul>
@@ -2229,8 +2310,10 @@ Text fields and focus: <a href="../text-fields/">Text fields</a>, <a href="../na
   addition: <code>input</code>, <code>select</code>, <code>textarea</code> and <code>button</code> are arrow-key stops (<code>nav: auto</code>).</li>
 <li>No font ships. A rule with no <code>font-family</code> uses the configured fallback family.</li>
 </ul>
-<p>A declaration ArcRmlUI drops is reported as a warning, for example "Declaration 'resize: none;' is dropped: unknown
-property 'resize'." or "... is dropped: invalid value.". The warning shows in the log of every build that is not
+<p>A declaration ArcRmlUI drops is reported as a warning, except for the browser-only items listed under <a href="../reference-css/#not-supported">Not supported</a>, the declarations of a rule
+whose selectors can never match (such as <code>::backdrop</code> or a vendor-prefixed pseudo), and a <code>-webkit-</code> or <code>-moz-</code> property
+whose unprefixed twin parsed in the same rule; for example "Declaration 'columns: 2;' is dropped: unknown
+property 'columns'." or "... is dropped: invalid value.". The warning shows in the log of every build that is not
 a <a href="../glossary/#shipping-build">Shipping build</a>, and the <a href="../validation/">validator</a> reports the same text before you run the game. A malformed block drops
 the rest of its sheet.</p>
 <h2 id="bring-a-page-over">Bring a page over<a class="headerlink" href="#bring-a-page-over" title="Permanent link">&para;</a></h2>
@@ -2311,13 +2394,13 @@ the rest of its sheet.</p>
         
         
           
-          <a href="../samples/" class="md-footer__link md-footer__link--next" aria-label="Next: Samples">
+          <a href="../from-rmlui/" class="md-footer__link md-footer__link--next" aria-label="Next: Coming from RmlUi">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Samples
+                Coming from RmlUi
               </div>
             </div>
             <div class="md-footer__button md-icon">

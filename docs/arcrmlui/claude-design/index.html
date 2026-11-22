@@ -15,7 +15,7 @@
         <link rel="prev" href="../converter/">
       
       
-        <link rel="next" href="../validation/">
+        <link rel="next" href="../ai-agents/">
       
       
         
@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1554,6 +1608,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2139,7 +2220,9 @@ the Python of your Unreal Engine install, so there is nothing to install. For a 
 <div class="highlight"><pre><span></span><code><span class="p">&amp;</span> <span class="s2">"&lt;Engine&gt;\Engine\Binaries\ThirdParty\Python3\Win64\python.exe"</span> <span class="n">-I</span> <span class="s2">"&lt;ArcRmlUI&gt;\Extras\DcConvert\dc2rml.py"</span> <span class="p">-</span><span class="n">-source</span> <span class="s2">"&lt;Mockup&gt;"</span> <span class="p">-</span><span class="n">-dest</span> <span class="s2">"&lt;Project&gt;\Content\UI\Rml\Kit"</span>
 </code></pre></div>
 <p><code>&lt;Engine&gt;</code> is the folder of your Unreal Engine install, <code>&lt;ArcRmlUI&gt;</code> the plugin folder (the one that holds
-<code>ArcRmlUI.uplugin</code>) and <code>&lt;Mockup&gt;</code> the folder with the <code>.dc.html</code> files and the mockup's <code>themes.js</code>.</p>
+<code>ArcRmlUI.uplugin</code>) and <code>&lt;Mockup&gt;</code> the folder with the <code>.dc.html</code> files and the mockup's <code>themes.js</code>. Where that folder
+is depends on where the design was made: a Claude session that works in a folder on your disk writes the files there;
+a design kept in the cloud is downloaded as a <code>.zip</code> and unzipped.</p>
 <p>The last line is the summary, for example <code>ArcRmlDcConvert: wrote 24 files, 0 errors, 1 warnings, 9 manual</code>. The run
 <strong>passes</strong> with exit code 0 (<code>$LASTEXITCODE</code> in PowerShell) and <strong>fails</strong> with 2 when there is an error. Warnings and
 <code>manual</code> entries do not fail it.</p>
@@ -2157,7 +2240,7 @@ the Python of your Unreal Engine install, so there is nothing to install. For a 
 </tr>
 <tr>
 <td><code>--dest</code></td>
-<td>The folder to write into, a disk path under the <code>Content</code> folder of the project or of a plugin. Any other folder fails with "is not under a <a href="../glossary/#content-root">content root</a>".</td>
+<td>The folder to write into, a disk path under the <code>Content</code> folder of the project or of a plugin in the project's <code>Plugins</code> folder. A folder under no <code>Content</code> folder fails with "is not under a <a href="../glossary/#content-root">content root</a>".</td>
 </tr>
 <tr>
 <td><code>--icons</code></td>
@@ -2256,8 +2339,8 @@ component files and checks each component inside the documents that import it; t
 import it in a small document and validate that. A <code>var(--x)</code> that a converted rule reads and nothing declares is an
 error there: declare it with its default in the component's <code>.rcss</code>.</p>
 <h2 id="with-an-ai-agent">With an AI agent<a class="headerlink" href="#with-an-ai-agent" title="Permanent link">&para;</a></h2>
-<p><code>Extras/AgentSkills/</code> holds two skills for Claude Code (and a snippet for other agents) that run the converter and work
-through its report for you. Its <code>README.md</code> says how to install them.</p>
+<p><code>Extras/AgentSkills/</code> holds two skills that run the converter and work through its report for you; install and limits:
+<a href="../ai-agents/">Working with AI agents</a>.</p>
 
 
 
@@ -2306,13 +2389,13 @@ through its report for you. Its <code>README.md</code> says how to install them.
         
         
           
-          <a href="../validation/" class="md-footer__link md-footer__link--next" aria-label="Next: Validation">
+          <a href="../ai-agents/" class="md-footer__link md-footer__link--next" aria-label="Next: Working with AI agents">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Validation
+                Working with AI agents
               </div>
             </div>
             <div class="md-footer__button md-icon">

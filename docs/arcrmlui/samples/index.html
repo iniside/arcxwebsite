@@ -12,7 +12,7 @@
       
       
       
-        <link rel="prev" href="../from-html-css/">
+        <link rel="prev" href="../from-rmlui/">
       
       
         <link rel="next" href="../walkthrough/">
@@ -449,6 +449,33 @@
                   
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
     
   
   
@@ -767,6 +794,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1515,6 +1569,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2056,11 +2137,13 @@ Converter and EditorPreview have none). Run one to see a
 feature working, or copy its files into your project as a starting point. The guide's code blocks are copied from these
 files.</p>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p>The samples are in the <a href="https://github.com/iniside/ArcLunzoSamples">Arc Lunzo Samples</a> repository on GitHub. To run them without a project of your
+own, open its <code>ArcRmlUIHost.uproject</code>, which has them set up. To add them to your project:</p>
 <ol>
-<li>Copy the <code>ArcRmlUISamples</code> plugin folder into your project's <code>Plugins</code> folder; put it nowhere else, or its content is not found. The plugin has a C++ module (Win64), so the project must build C++.</li>
+<li>Copy the <code>ArcRmlUISamples</code> plugin folder (<code>Plugins/ArcRmlUISamples</code> of the repository) into your project's <code>Plugins</code> folder; put it nowhere else, or its content is not found. The plugin has a C++ module (Win64), so the project must build C++.</li>
 <li>Add the samples' font sheet to the <a href="../project-setup/#fonts">font settings</a>, in <code>Config/DefaultGame.ini</code>:
    <code>+FontSheets=/ArcRmlUISamples/UI/Rml/Fonts/Fonts.rcss</code> in <code>[/Script/ArcRmlUI.ArcRmlUISettings]</code>.</li>
-<li>For the samples that take keys and the gamepad, the project needs the <a href="../project-setup/#input-for-menus">input setup</a>;
+<li>For the samples list and the samples that take keys and the gamepad, the project needs the <a href="../project-setup/#input-for-menus">input setup</a>;
    the plugin's <code>/ArcRmlUISamples/Input/</code> assets provide one.</li>
 <li>Restart the editor.</li>
 </ol>
@@ -2293,6 +2376,30 @@ Choosing another sample closes the one opened last.</p>
 <td>Open</td>
 </tr>
 <tr>
+<td>UmgWidget</td>
+<td>A Widget Blueprint with a text block and a document widget that shows a counter document.</td>
+<td><a href="../umg-widget/">A document in a UMG widget</a></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>UmgLayout</td>
+<td>A document widget in a Size Box inside a Scroll Box, between text blocks.</td>
+<td><a href="../umg-widget/#add-it-to-a-widget-blueprint">A document in a UMG widget</a></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>UmgOwnerData</td>
+<td>A document whose view model is a property of the Widget Blueprint that holds it, read with <code>path=</code>.</td>
+<td><a href="../umg-widget/#give-it-data">A document in a UMG widget</a></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>UmgEvents</td>
+<td>A Widget Blueprint graph that handles the open and close requests of the document, and swaps the document.</td>
+<td><a href="../umg-widget/#react-to-open-and-close">A document in a UMG widget</a></td>
+<td>Open</td>
+</tr>
+<tr>
 <td>VirtualList</td>
 <td>A list of 10 000 rows in a scroll box, with elements only for the rows near the visible part.</td>
 <td><a href="../data-binding/#virtual-lists">Data binding</a></td>
@@ -2316,6 +2423,10 @@ Choosing another sample closes the one opened last.</p>
 <p>With <strong>Package Everything</strong> on (the default) a packaged build ships the samples' documents. With it off, add their
 folder to <strong>Paths to Package</strong>: <code>+PathsToPackage=/ArcRmlUISamples/UI/Rml</code> in <code>[/Script/ArcRmlUI.ArcRmlUISettings]</code>
 of <code>Config/DefaultGame.ini</code>. Most samples open their documents from C++ by a path string, which the cook does not see.</p>
+<p>The samples' Blueprints (the <code>BP_*_Open</code> classes) and Widget Blueprints (<code>WBP_Sample_*</code>) are also loaded from C++ by a
+path string, so the cook does not see them either. Add the folder to <strong>Additional Asset Directories to Cook</strong> in
+<strong>Project Settings &gt; Packaging</strong> (<code>+DirectoriesToAlwaysCook=(Path="/ArcRmlUISamples")</code> in
+<code>[/Script/UnrealEd.ProjectPackagingSettings]</code> of <code>Config/DefaultGame.ini</code>). The host project has both lines.</p>
 
 
 
@@ -2347,7 +2458,7 @@ of <code>Config/DefaultGame.ini</code>. Most samples open their documents from C
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../from-html-css/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Coming from HTML and CSS">
+          <a href="../from-rmlui/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Coming from RmlUi">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -2357,7 +2468,7 @@ of <code>Config/DefaultGame.ini</code>. Most samples open their documents from C
                 Previous
               </span>
               <div class="md-ellipsis">
-                Coming from HTML and CSS
+                Coming from RmlUi
               </div>
             </div>
           </a>

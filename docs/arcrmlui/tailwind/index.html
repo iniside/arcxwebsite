@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1515,6 +1569,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2101,7 +2182,7 @@ your project shares:</p>
 <li>A modal's content sits a few pixels higher.</li>
 <li>Form-state variants (<code>disabled:</code>, <code>enabled:</code>, <code>checked:</code>, <code>required:</code>, <code>placeholder-shown:</code>, <code>read-only:</code>,
   <code>peer-checked:</code>) do not all match Chrome.</li>
-<li><code>:has()</code> (<code>has-*</code>), container queries (<code>@container</code>, <code>@md:</code>), <code>indent-*</code>, <code>zoom-*</code> and <code>open:</code> are not
+<li><code>:has()</code> (<code>has-*</code>), container queries (<code>@container</code>, <code>@md:</code>), <code>zoom-*</code> and <code>open:</code> are not
   supported; see <a href="../reference-css/">CSS support</a>.</li>
 </ul>
 <p>For what <a href="../glossary/#rml">RML</a> does differently from a browser,
@@ -2118,8 +2199,8 @@ see <a href="../from-html-css/">Coming from HTML and CSS</a> and <a href="../ref
 <tbody>
 <tr>
 <td>Warnings in the validator and in the log.</td>
-<td>They come from Tailwind's base styles and its <code>@layer</code> wrappers: browser-specific pseudo-classes, properties and values RML does not know. None come from the classes the sample uses, and the page renders right.</td>
-<td>Expect them. Only a warning at the rule of a class you use matters: it drops the declaration it names, and the class's other declarations still apply. Check that property in <a href="../reference-css/">CSS support</a>.</td>
+<td>The default Tailwind v4 build validates with no warnings, so <code>-WarningsAsErrors</code> passes. A warning comes from your own CSS: a typo, an unknown pseudo-class without a vendor prefix or a value RML does not support.</td>
+<td>A warning at the rule of a class you use drops the declaration it names, and the class's other declarations still apply. Check that property in <a href="../reference-css/">CSS support</a>.</td>
 </tr>
 <tr>
 <td><code>font-bold</code> text is drawn regular.</td>

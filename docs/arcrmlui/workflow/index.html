@@ -403,6 +403,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#create-a-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Create a document
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#edit-and-save" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -546,6 +557,33 @@
     
   
   Coming from HTML and CSS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
 
     
   </span>
@@ -789,6 +827,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1537,6 +1602,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2011,6 +2103,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#create-a-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Create a document
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#edit-and-save" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2096,6 +2199,20 @@
 <h1 id="working-with-documents">Working with documents<a class="headerlink" href="#working-with-documents" title="Permanent link">&para;</a></h1>
 <p>The loop a designer repeats: edit a document, see it change, check it. The editor reloads open
 documents on save, so no restart or reopen is needed.</p>
+<h2 id="create-a-document">Create a document<a class="headerlink" href="#create-a-document" title="Permanent link">&para;</a></h2>
+<p>In the Content Browser, select a folder and choose <strong>Create RML Document</strong> under <strong>Create File</strong> in the <strong>+ Add</strong> menu.
+The entry shows for the <code>UI/Rml</code> folder of a <a href="../glossary/#content-root">content root</a> and for a folder that already
+holds an <code>.rml</code> file, never under <code>UI/Rml/Test/</code>. Pick the kind, then type the name over <code>NewDocument</code>: letters,
+digits and underscores, not starting with a digit.</p>
+<ul>
+<li><strong>Screen</strong> writes <code>&lt;Name&gt;.rml</code>, <code>&lt;Name&gt;.rcss</code> and <code>Preview/&lt;Name&gt;.json</code> in that folder and opens the document in
+  the <a href="../editor-preview/">editor preview</a>. The document opens on <code>UI.Layer.Menu</code> with <code>input-mode</code> <code>menu</code> and shows
+  the <code>title</code> of its preview data. Its style sheet sets <code>font-family: sans-serif</code>, which draws when <strong>Generic
+  Font Families</strong> maps <code>sans-serif</code> to a declared family or <strong>Fallback Font Family</strong> names one
+  (<a href="../project-setup/#fonts">Project setup, Fonts</a>).</li>
+<li><strong>Component</strong> writes <code>&lt;Name&gt;.rml</code>, a <a href="../components/">component</a> with one prop, <code>label</code>, and <code>&lt;Name&gt;.rcss</code>.</li>
+</ul>
+<p>Nothing is written when one of these files already exists.</p>
 <h2 id="edit-and-save">Edit and save<a class="headerlink" href="#edit-and-save" title="Permanent link">&para;</a></h2>
 <p>Edit the <code>.rml</code> and <code>.rcss</code> files in any text editor (the editor preview's <strong>Open in text editor</strong> opens one) and
 save. The editor watches the <code>Content</code> folder of every <a href="../glossary/#content-root">content root</a>. About 0.2 seconds after the last

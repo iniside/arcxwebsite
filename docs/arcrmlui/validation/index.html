@@ -12,7 +12,7 @@
       
       
       
-        <link rel="prev" href="../claude-design/">
+        <link rel="prev" href="../ai-agents/">
       
       
         <link rel="next" href="../reference-attributes/">
@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1421,6 +1475,33 @@
                   
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
     
   
   
@@ -2137,7 +2218,7 @@ check that did not run.</p>
 </tr>
 <tr>
 <td><code>structural-conflict</code></td>
-<td>For example <code>data-if</code> and <code>data-for</code> on one element, or <code>data-action</code> without a <code>data-model</code> on <code>&lt;body&gt;</code>.</td>
+<td>For example <code>data-if</code> and <code>data-for</code> on one element, or a <code>data-action</code> other than <code>close</code> and <code>open:&lt;package path&gt;</code> without a <code>data-model</code> on <code>&lt;body&gt;</code>.</td>
 </tr>
 <tr>
 <td><code>undefined-variable</code>, <code>duplicate-id</code></td>
@@ -2159,7 +2240,9 @@ similar), and from converting HTML into RML. A CSS declaration the engine drops 
 <h3 id="view-model-path">view-model-path<a class="headerlink" href="#view-model-path" title="Permanent link">&para;</a></h3>
 <p>A <code>path</code> source reads the view model through a chain of properties, such as <code>GetOwningPlayer.SampleViewModel</code>
 (<a href="../view-models/#source-path">View models</a>). The validator follows the chain with the types it can see, starting at
-<code>UUserWidget</code>, and reports:</p>
+<code>UUserWidget</code>. When <code>UUserWidget</code> lacks the first segment and a Document Widget in a Widget Blueprint shows the
+document, it starts again at that Widget Blueprint's class, so a path into a property of your widget gets no report. It
+reports:</p>
 <ul>
 <li>A <strong>warning</strong> for a segment the visible type lacks. The live object may be a subclass that has it, so the check stops
   there and the model can still resolve at run time. The SourcePath sample gets this warning on <code>SampleViewModel</code>:
@@ -2201,7 +2284,7 @@ warning.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../claude-design/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Converting Claude Design mockups">
+          <a href="../ai-agents/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Working with AI agents">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -2211,7 +2294,7 @@ warning.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Converting Claude Design mockups
+                Working with AI agents
               </div>
             </div>
           </a>

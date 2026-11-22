@@ -12,7 +12,7 @@
       
       
       
-        <link rel="prev" href="../blueprint-view-models/">
+        <link rel="prev" href="../umg-widget/">
       
       
         <link rel="next" href="../events/">
@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -692,6 +719,33 @@
                   
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
     
   
   
@@ -758,6 +812,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         Fields
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Other models
       </span>
     </span>
   </a>
@@ -1570,6 +1635,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -2055,6 +2147,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#other-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Other models
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#transforms" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2201,7 +2304,8 @@ writes a field; it calls a function that does (<a href="../events/">Events</a>).
 <span class="w">    </span><span class="n">UE_MVVM_SET_PROPERTY_VALUE</span><span class="p">(</span><span class="n">Accent</span><span class="p">,</span><span class="w"> </span><span class="n">Accents</span><span class="p">[</span><span class="n">NewCount</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">UE_ARRAY_COUNT</span><span class="p">(</span><span class="n">Accents</span><span class="p">)]);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>{{ Field }}</code> prints a field. These attributes bind a field of the document's view model, or an expression, to an element. The FieldBinding sample uses <code>data-if</code>,
+<p><code>{{ Field }}</code> prints a field. These attributes bind a field of the document's view model, or an expression, to an element. The FieldBinding sample declares its model <code>fields</code> in the head and puts <code>data-model="fields"</code> on <code>&lt;body&gt;</code>, so every
+binding below reads it (<a href="../documents/#the-head">Documents</a>). It uses <code>data-if</code>,
 <code>data-class-*</code>, <code>data-style-*</code>, <code>data-attr-*</code> and <code>data-event-click</code>; lists are in the Lists sample below.</p>
 <table>
 <thead>
@@ -2257,6 +2361,12 @@ writes a field; it calls a function that does (<a href="../events/">Events</a>).
 <p><img alt="The FieldBinding sample: count, progress, upper-cased message, the even line, the odd-or-even badge, a bar and Add one and Close buttons" src="../images/field-binding.png" /></p>
 <p>Expressions can read fields (<code>bEven</code>, <code>Progress</code>), combine with operators, and call transforms with <code>|</code>. Text is
 single-quoted. The whole language, every transform and what an error does: <a href="../reference-expressions/">Expression reference</a>.</p>
+<h2 id="other-models">Other models<a class="headerlink" href="#other-models" title="Permanent link">&para;</a></h2>
+<p><code>&lt;model&gt;.&lt;Field&gt;</code> reads a field of another view model by its name, for example <code>{{ ui.Theme }}</code>: any model the document
+or its <a href="../frames-and-tabs/">frame</a> declares. A field of the element's own model, a <code>data-alias-*</code> or <code>data-for</code> name, or a
+field whose name differs only in case is looked up first, so it hides a model of the same name. Until that model
+exists, the read gives an empty value and logs <code>Could not get value from data variable</code>; the view updates when the model
+is created.</p>
 <h2 id="transforms">Transforms<a class="headerlink" href="#transforms" title="Permanent link">&para;</a></h2>
 <p><code>value | name(arguments)</code> changes a value on its way into the document. In the sample, <code>Progress | format(1)</code> prints one
 decimal and <code>Message | to_upper</code> upper-cases the text.</p>
@@ -2635,7 +2745,7 @@ the elements for a window of entries and leaves the rest as data. The VirtualLis
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../blueprint-view-models/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Blueprint view models">
+          <a href="../umg-widget/" class="md-footer__link md-footer__link--prev" aria-label="Previous: A document in a UMG widget">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -2645,7 +2755,7 @@ the elements for a window of entries and leaves the rest as data. The VirtualLis
                 Previous
               </span>
               <div class="md-ellipsis">
-                Blueprint view models
+                A document in a UMG widget
               </div>
             </div>
           </a>

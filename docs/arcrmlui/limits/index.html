@@ -450,6 +450,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../from-rmlui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Coming from RmlUi
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../samples/" class="md-nav__link">
         
   
@@ -674,6 +701,33 @@
     
   
   Blueprint view models
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umg-widget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  A document in a UMG widget
 
     
   </span>
@@ -1422,6 +1476,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ai-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Working with AI agents
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../validation/" class="md-nav__link">
         
   
@@ -1878,6 +1959,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#document-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Document widget
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#platform" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2044,6 +2136,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#document-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Document widget
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#platform" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2086,7 +2189,7 @@ them. This page says what is possible or not here; for things going wrong, see <
 <li><strong><code>data-if</code> rebuilds its branch</strong> on every change from false to true, so focus, scroll and hover state inside it
   are lost.</li>
 <li><strong><code>data-action</code> needs a <code>data-model</code> on the <code>&lt;body&gt;</code></strong> of the document or the <a href="../glossary/#tab">tab</a>; without it a click warns and
-  does nothing.</li>
+  does nothing. <code>close</code> and <code>open:&lt;package path&gt;</code> are the exception: they work without one.</li>
 <li><strong>Model variables are read-only</strong>: <code>data-value</code> cannot write an input back to a view model. Call a function that
   sets the field (<a href="../view-models/">View models</a>).</li>
 <li><strong>A virtual list</strong> (<code>data-virtual</code>) needs a parent that scrolls vertically and rows of one size; a row that leaves the
@@ -2130,6 +2233,14 @@ them. This page says what is possible or not here; for things going wrong, see <
   (<a href="../frames-and-tabs/">Frames and tabs</a>).</li>
 <li><strong>A <a href="../glossary/#keep-alive">parked</a> document stays until a discard</strong>: there is no eviction, and <code>DiscardDocument</code> is C++ only
   (<a href="../keep-alive/#discard">Keep-alive and preload</a>).</li>
+</ul>
+<h2 id="document-widget">Document widget<a class="headerlink" href="#document-widget" title="Permanent link">&para;</a></h2>
+<p>The <a href="../umg-widget/">document widget</a> in a Widget Blueprint:</p>
+<ul>
+<li><strong>Mouse only</strong>: no keyboard, gamepad or focus handling.</li>
+<li><strong>No frame or tabs, and no keep-alive.</strong></li>
+<li><strong>No size of its own</strong>: the document takes the slot's size, so a slot sized to its content shows nothing.</li>
+<li><strong>Below a layer document it gets no pointer input</strong>: add it above the layers.</li>
 </ul>
 <h2 id="platform">Platform<a class="headerlink" href="#platform" title="Permanent link">&para;</a></h2>
 <ul>
