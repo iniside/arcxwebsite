@@ -2308,7 +2308,7 @@ pointer (empty space between elements) the document answers nothing, and the wid
 <p>The plugin never sets <code>bShowMouseCursor</code>. <a href="../project-setup/#input-for-menus">CommonUI</a>, Unreal's UI input framework,
 shows or hides the cursor from the <a href="../glossary/#input-mode"><code>input-mode</code></a> of the topmost active document of each player (only that document
 pushes its config):</p>
-<p><img alt="Diagram: input-mode menu and all show the cursor, game hides it unless a text field is active" src="../images/cursor-visibility.svg" /></p>
+<p><img alt="Diagram: input-mode menu and all show the cursor, game hides it unless a text field is active, all with mouse-capture hides it unless data-mouse-release is shown" src="../images/cursor-visibility.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -2339,6 +2339,11 @@ pushes its config):</p>
 <td>Not captured by the game.</td>
 </tr>
 <tr>
+<td><code>all</code> with <code>mouse-capture</code> <code>true</code>, while an element with <code>data-mouse-release</code> is shown</td>
+<td>Shown</td>
+<td>Not captured by the game.</td>
+</tr>
+<tr>
 <td><code>game</code> (default)</td>
 <td>Hidden</td>
 <td>Captured by the game permanently.</td>
@@ -2357,6 +2362,12 @@ accept clicks at; <code>ArcRml.VirtualPointer 1</code> shows it (<a href="../ref
 <p>A game that wants a cursor over its HUD, with no menu open, opens a <code>menu</code> or <code>all</code> document or sets
 <code>CommonUI.AlwaysShowCursor</code>. A HUD with its own hotkeys over a mouse-look character is an <code>all</code> document with
 <code>&lt;meta name="mouse-capture" content="true"/&gt;</code>.</p>
+<p>A panel inside such a HUD that the player clicks, such as a debug or build menu shown with <code>data-if</code>, carries
+<code>data-mouse-release</code>. While it is shown the cursor appears and the mouse works the panel; when it is hidden or removed,
+the mouse is captured again for mouse look. In a document without <code>mouse-capture</code> the attribute does nothing.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"mouse-capture"</span> <span class="na">content</span><span class="o">=</span><span class="s">"true"</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"debug-panel"</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"DebugOpen"</span> <span class="na">data-mouse-release</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
 <h2 id="more-than-one-local-player">More than one local player<a class="headerlink" href="#more-than-one-local-player" title="Permanent link">&para;</a></h2>
 <p>Every local player has its own <code>UArcRmlViewportSubsystem</code> and its own <a href="../documents/#layers">layers</a> and documents. Per player:</p>
 <ul>
