@@ -34,7 +34,7 @@
           <h1 class="display">Arc Lunzo. Game UI in HTML and CSS.</h1>
         </div>
         <div class="hero-side">
-          <p class="lead">An Unreal Engine 5 plugin. Write RML and RCSS, bind it to ViewModels and <!-- TODO: verify --><span class="claim">render it on a dedicated UI thread</span><span class="todo">TODO: verify</span>.</p>
+          <p class="lead">An Unreal Engine 5 plugin. Write RML and RCSS, bind it to ViewModels and render it on dedicated UI threads.</p>
           <div class="btn-row">
             <span class="btn btn-primary btn-pending" aria-disabled="true">Awaiting Fab verification</span>
             <a class="btn btn-secondary" href="/docs/arcrmlui/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h14v14H6a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h14"/></svg> Read the docs</a>
@@ -215,32 +215,32 @@
       <div class="grid-3">
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 9v11"/></svg></div>
-          <h3 class="h3"><!-- TODO: verify --><span class="claim">Layout checked against Chrome</span><span class="todo">TODO: verify</span></h3>
+          <h3 class="h3">Layout checked against Chrome</h3>
           <p>Block and flexbox layout is compared with Chrome's output, so CSS behaves the way you expect.</p>
         </div>
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11"/><path d="M3 12h18"/><path d="M3 17h8"/><circle cx="18" cy="7" r="2"/><circle cx="14" cy="17" r="2"/></svg></div>
-          <h3 class="h3"><!-- TODO: verify --><span class="claim">Dedicated UI thread</span><span class="todo">TODO: verify</span></h3>
-          <p>Documents are laid out and rendered on their own thread, away from the game thread.</p>
+          <h3 class="h3">Dedicated UI threads</h3>
+          <p>Documents are laid out and rendered on their own threads, away from the game thread.</p>
         </div>
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 8H7a4 4 0 0 0 0 8h2"/><path d="M15 8h2a4 4 0 0 1 0 8h-2"/><path d="M8 12h8"/></svg></div>
-          <h3 class="h3"><!-- TODO: verify --><span class="claim">MVVM data binding</span><span class="todo">TODO: verify</span></h3>
+          <h3 class="h3">MVVM data binding</h3>
           <p>Declare view models with &lt;viewmodel&gt; in the document head, read their fields with data-model, data-for and {{ }}, and call their functions from events with call().</p>
         </div>
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="10" rx="5"/><path d="M7.5 10v4"/><path d="M5.5 12h4"/><path d="M15.5 11h.01"/><path d="M17.5 13h.01"/></svg></div>
-          <h3 class="h3"><!-- TODO: verify --><span class="claim">CommonUI and Enhanced Input</span><span class="todo">TODO: verify</span></h3>
+          <h3 class="h3">CommonUI and Enhanced Input</h3>
           <p>Focus, navigation and input actions go through CommonUI and Enhanced Input.</p>
         </div>
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg></div>
-          <h3 class="h3"><!-- TODO: verify --><span class="claim">Hot-reloadable markup</span><span class="todo">TODO: verify</span></h3>
+          <h3 class="h3">Hot-reloadable markup</h3>
           <p>Save an .rml or .rcss file and the running document reloads in the editor.</p>
         </div>
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M13.5 5.5l-3 13"/></svg></div>
-          <h3 class="h3"><!-- TODO: verify --><span class="claim">HTML and CSS you already know</span><span class="todo">TODO: verify</span></h3>
+          <h3 class="h3">HTML and CSS you already know</h3>
           <p>RML is an HTML dialect and RCSS a CSS subset: flexbox, transforms, transitions.</p>
         </div>
       </div>
@@ -256,17 +256,17 @@
         <div class="step">
           <span class="step-n">Step 1</span>
           <h3 class="h3">Write markup</h3>
-          <p class="muted">Describe the screen in RML, declare its view model in the head and style it with RCSS. Events call view model functions.</p>
+          <p class="muted">Describe the screen in RML, declare its view model in the head and style it with RCSS. <code class="inline">data-model="lists"</code> makes that view model's fields readable by name, so <code class="inline">Items</code> is its array; <code class="inline">row</code> and <code class="inline">index</code> are names you choose. A field of any other declared view model is read as <code class="inline">name.Field</code>. Events call view model functions.</p>
           <div class="code"><div class="code-hd"><span class="fname">Lists.rml</span><span class="lang">RML</span></div><pre><code><span class="t-tag">&lt;rml</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;head</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;link</span> <span class="t-attr">type</span>=<span class="t-str">"text/rcss"</span> <span class="t-attr">href</span>=<span class="t-str">"Lists.rcss"</span><span class="t-tag">/&gt;</span>
   <span class="t-tag">&lt;viewmodel</span> <span class="t-attr">name</span>=<span class="t-str">"lists"</span> <span class="t-attr">class</span>=<span class="t-str">"/Script/ArcRmlUISamples.ArcRmlSamplesListsViewModel"</span> <span class="t-attr">create</span>=<span class="t-str">"true"</span><span class="t-tag">/&gt;</span>
 <span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;body</span> <span class="t-attr">data-model</span>=<span class="t-str">"lists"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"ls-row"</span> <span class="t-attr">data-for</span>=<span class="t-str">"r, i : Items"</span> <span class="t-attr">data-key</span>=<span class="t-str">"r.Name"</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"ls-name"</span><span class="t-tag">&gt;</span><span class="t-interp">{{ i + 1 }}</span>. <span class="t-interp">{{ r.Name }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;span</span><span class="t-tag">&gt;</span>x<span class="t-interp">{{ r.Quantity }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;button</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Remove', i)"</span><span class="t-tag">&gt;</span>Remove<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"ls-row"</span> <span class="t-attr">data-for</span>=<span class="t-str">"row, index : Items"</span> <span class="t-attr">data-key</span>=<span class="t-str">"row.Name"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"ls-name"</span><span class="t-tag">&gt;</span><span class="t-interp">{{ index + 1 }}</span>. <span class="t-interp">{{ row.Name }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;span</span><span class="t-tag">&gt;</span>x<span class="t-interp">{{ row.Quantity }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;button</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Remove', index)"</span><span class="t-tag">&gt;</span>Remove<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;button</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Add')"</span><span class="t-tag">&gt;</span>Add<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;/body</span><span class="t-tag">&gt;</span>
@@ -275,8 +275,20 @@
         <div class="step">
           <span class="step-n">Step 2</span>
           <h3 class="h3">Bind a ViewModel</h3>
-          <p class="muted">Expose game state as FieldNotify properties of an Unreal MVVM view model; its UFUNCTIONs are what the document calls.</p>
-          <div class="code"><div class="code-hd"><span class="fname">ArcRmlSamplesLists.h</span><span class="lang">C++</span></div><pre><code><span class="t-fn">UCLASS</span>()
+          <p class="muted">Expose game state as FieldNotify properties of an Unreal MVVM view model; its UFUNCTIONs are what the document calls. A row is a plain struct, read by member name (<code class="inline">row.Name</code>).</p>
+          <div class="code"><div class="code-hd"><span class="fname">ArcRmlSamplesLists.h</span><span class="lang">C++</span></div><pre><code><span class="t-fn">USTRUCT</span>(BlueprintType)
+<span class="t-kw">struct</span> <span class="t-tag">FArcRmlSamplesListsRow</span>
+{
+  <span class="t-fn">GENERATED_BODY</span>()
+
+  <span class="t-fn">UPROPERTY</span>(BlueprintReadOnly, Category = <span class="t-str">"Samples"</span>)
+  <span class="t-tag">FString</span> Name;
+
+  <span class="t-fn">UPROPERTY</span>(BlueprintReadOnly, Category = <span class="t-str">"Samples"</span>)
+  <span class="t-kw">int32</span> Quantity = 0;
+};
+
+<span class="t-fn">UCLASS</span>()
 <span class="t-kw">class</span> <span class="t-tag">UArcRmlSamplesListsViewModel</span> : <span class="t-kw">public</span> <span class="t-tag">UMVVMViewModelBase</span>
 {
   <span class="t-fn">GENERATED_BODY</span>()

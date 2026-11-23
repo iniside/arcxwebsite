@@ -2233,8 +2233,8 @@
 them. This page says what is possible or not here; for things going wrong, see <a href="../troubleshooting/">Troubleshooting</a>.</p>
 <h2 id="binding">Binding<a class="headerlink" href="#binding" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>An expression reads one model</strong>: the nearest <code>data-model</code> ancestor. To combine two, nest an element with the
-  second <code>data-model</code>.</li>
+<li><strong>An expression reads its own model by bare name and any other model of the document by <code>&lt;model&gt;.&lt;Field&gt;</code></strong>, read-only
+  (<a href="../data-binding/#other-models">Other models</a>). A value cannot be written to another model's field.</li>
 <li><strong><code>call()</code> cannot pass an object of another model.</strong> An argument <code>'vm:&lt;path&gt;'</code> resolves in the model of the calling
   element.</li>
 <li><strong>Expressions cannot build arrays or loop counts.</strong> Use a fixed cell per index.</li>

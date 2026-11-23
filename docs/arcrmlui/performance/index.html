@@ -2257,12 +2257,12 @@ styled and laid out. With it only the rows near the visible part exist (<a href=
 <code>data-key</code> keeps the element of an entry across inserts and removals instead of rebuilding rows.</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Do --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"r : Items"</span> <span class="na">data-key</span><span class="o">=</span><span class="s">"r.Id"</span> <span class="na">data-virtual</span><span class="p">&gt;</span>{{ r.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"row : Items"</span> <span class="na">data-key</span><span class="o">=</span><span class="s">"row.Id"</span> <span class="na">data-virtual</span><span class="p">&gt;</span>{{ row.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 <span class="cm">&lt;!-- Don't, with thousands of entries --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"r : Items"</span><span class="p">&gt;</span>{{ r.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"row : Items"</span><span class="p">&gt;</span>{{ row.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><strong>Animate <code>transform</code> and <code>opacity</code>.</strong> Growing a panel with <code>width</code> or shifting it with <code>margin-left</code> runs layout on

@@ -2286,7 +2286,7 @@ the event does not carry is empty.</p>
 <p>The first name of a path is looked up as a field of the <a href="../glossary/#view-model">view model</a>, then as a <code>data-alias-*</code> or <code>data-for</code> name of the
 element or an ancestor, then as a field whose name differs only in case. When two fields match that way, a warning
 names both and the one used. A path of two or more names that matches none of these reads <code>&lt;Field&gt;</code> of the view model
-named by its first name (<a href="../data-binding/#other-models">Other models</a>).</p>
+named by its first name (<a href="../data-binding/#other-models">Other models</a>): <code>ui.Theme</code> reads <code>Theme</code> of the model <code>ui</code>, read-only. The element's own model is read with or without its own name in front of a field.</p>
 <h2 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">&para;</a></h2>
 <p>From the strongest binding to the weakest. Operators of one row run left to right.</p>
 <div class="admonition note">
