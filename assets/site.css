@@ -160,6 +160,7 @@ html:not(.js) .js-only{display:none!important}
 .btn-ghost{background:transparent;color:var(--color-fg)!important}
 .btn-ghost:hover{background:var(--color-bg-subtle);color:var(--color-fg)!important}
 .btn-sm{min-height:36px;padding:0 14px;font-size:14px}
+.btn-pending{opacity:.6;cursor:default;pointer-events:none}
 .btn-row{display:flex;flex-wrap:wrap;gap:var(--space-3)}
 
 /* TODO markers */
