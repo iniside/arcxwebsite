@@ -2228,7 +2228,7 @@ what did not change is drawn again from its earlier result.</p>
 <td>Layout of that text and of its ancestors, whose size can depend on it, then the paint of that text. Siblings keep their earlier layout and paint.</td>
 </tr>
 <tr>
-<td>A class (<code>class</code> or <code>data-class</code>)</td>
+<td>A class (<code>class</code> or <code>class:</code>)</td>
 <td>Style of the element. Style of descendants or siblings too only when a selector of your style sheets reaches them (<code>.a .b</code>, <code>.a + .b</code>). Layout reruns only when a changed property affects it.</td>
 </tr>
 <tr>
@@ -2252,17 +2252,17 @@ what did not change is drawn again from its earlier result.</p>
 <p>An animation of a size property is a size change on every frame; an animation of <code>transform</code> or <code>opacity</code> is the
 paint-only row on every frame.</p>
 <h2 id="do-and-dont">Do and don't<a class="headerlink" href="#do-and-dont" title="Permanent link">&para;</a></h2>
-<p><strong>Long lists: <code>data-virtual</code> and <code>data-key</code>.</strong> Without <code>data-virtual</code> every entry is an element, and each of them is
+<p><strong>Long lists: <code>:virtual</code> and <code>:key</code>.</strong> Without <code>:virtual</code> every entry is an element, and each of them is
 styled and laid out. With it only the rows near the visible part exist (<a href="../data-binding/#virtual-lists">Virtual lists</a>); the parent needs a fixed height and <code>overflow-y: auto</code>.
-<code>data-key</code> keeps the element of an entry across inserts and removals instead of rebuilding rows.</p>
+<code>:key</code> keeps the element of an entry across inserts and removals instead of rebuilding rows.</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- Do --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"row : Items"</span> <span class="na">data-key</span><span class="o">=</span><span class="s">"row.Id"</span> <span class="na">data-virtual</span><span class="p">&gt;</span>{{ row.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">:for</span><span class="o">=</span><span class="s">"row : Items"</span> <span class="na">:key</span><span class="o">=</span><span class="s">"row.Id"</span> <span class="na">:virtual</span><span class="p">&gt;</span>{{ row.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 <span class="cm">&lt;!-- Don't, with thousands of entries --&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"list"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">data-for</span><span class="o">=</span><span class="s">"row : Items"</span><span class="p">&gt;</span>{{ row.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"row"</span> <span class="na">:for</span><span class="o">=</span><span class="s">"row : Items"</span><span class="p">&gt;</span>{{ row.Name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><strong>Animate <code>transform</code> and <code>opacity</code>.</strong> Growing a panel with <code>width</code> or shifting it with <code>margin-left</code> runs layout on
@@ -2370,7 +2370,7 @@ They come from one run of a packaged Development build on 2026-11-22: AMD Ryzen 
 </tr>
 </tbody>
 </table>
-<p><strong>A large page.</strong> A test document of about 43,700 elements takes about half a second of layout to open; use <code>data-virtual</code>
+<p><strong>A large page.</strong> A test document of about 43,700 elements takes about half a second of layout to open; use <code>:virtual</code>
 for long lists.</p>
 
 

@@ -2297,7 +2297,7 @@ it in the samples list in the map <code>L_ArcRmlSamples</code> (<a href="../samp
 <li><code>data-focus-primary</code> and <code>autofocus</code> decide where focus starts; a non-form element needs <code>tab-index: auto; nav: auto</code> to take an arrow.</li>
 <li><code>data-focus-contain</code> keeps focus inside a popup; <code>navnotarget</code> reports an arrow that found no target in its area, before focus leaves it.</li>
 <li>Back in a child area returns to its parent area (<code>data-focus-parent</code>) before the document closes.</li>
-<li><code>data-hotkey-cycle</code> steps a tab bar and <code>data-focus-request</code> moves focus from the <a href="../glossary/#view-model">view model</a>.</li>
+<li><code>data-hotkey-cycle</code> steps a tab bar and <code>:focus-request</code> moves focus from the <a href="../glossary/#view-model">view model</a>.</li>
 </ul>
 <h2 id="how-focus-works">How focus works<a class="headerlink" href="#how-focus-works" title="Permanent link">&para;</a></h2>
 <p>One screen of the FocusAreas sample shows how the attributes combine. It has the areas <code>left</code>, <code>middle</code> and <code>right</code>
@@ -2354,7 +2354,7 @@ and a popup with the areas <code>popup-a</code> and <code>popup-b</code>:</p>
 <td><a href="../navigation-reference/#tab-bar">Tab bar</a></td>
 </tr>
 <tr>
-<td><code>data-focus-request</code></td>
+<td><code>:focus-request</code></td>
 <td>The <a href="../view-models/">view model</a> moves focus to an element</td>
 <td><a href="../navigation-reference/#focus-requests">Focus requests</a></td>
 </tr>
@@ -2375,11 +2375,11 @@ below build it. Each step names the rule it uses; the full rule is in
 <code>data-focus-primary</code> on <code>list</code> makes it the area that gets focus first, and <code>autofocus</code> on "Sword" is where it lands
 (<a href="../navigation-reference/#focus-areas">Focus areas</a>).</p>
 <div class="highlight"><span class="filename">BackAndParent.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-area"</span> <span class="na">data-focus-area</span><span class="o">=</span><span class="s">"list"</span> <span class="na">data-focus-primary</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bp-sword"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-item"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Select', 'Sword')"</span><span class="p">&gt;</span>Sword<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bp-sword"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-item"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('back', 'Select', 'Sword')"</span><span class="p">&gt;</span>Sword<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-area"</span> <span class="na">data-focus-area</span><span class="o">=</span><span class="s">"detail"</span> <span class="na">data-focus-parent</span><span class="o">=</span><span class="s">"list"</span> <span class="na">data-focus-exit</span><span class="o">=</span><span class="s">"#bp-done"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bp-use"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-item"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Use')"</span><span class="p">&gt;</span>Use<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bp-done"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-item"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Exit')"</span><span class="p">&gt;</span>Done<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bp-use"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-item"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('back', 'Use')"</span><span class="p">&gt;</span>Use<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bp-done"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bp-item"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('back', 'Exit')"</span><span class="p">&gt;</span>Done<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>A <code>&lt;button&gt;</code> is a navigation stop by default. The list also holds the buttons "Shield" and "Potion", written like "Sword". <code>data-focus-parent</code> and <code>data-focus-exit</code> on <code>detail</code> are step 3.</p>
@@ -2398,7 +2398,7 @@ way back:</p>
   direct click on "Done" runs <code>Exit</code> too but does not leave the area.</li>
 </ul>
 <p>Back in <code>list</code>, which has no parent, goes on to <code>&lt;body&gt;</code> and closes the document when no handler stops it. The sample's
-<code>&lt;body data-event-back="call('', 'CountBack')"&gt;</code> hears every Back that is not a return to a parent area. It does not call
+<code>&lt;body on:back="call('back', 'CountBack')"&gt;</code> hears every Back that is not a return to a parent area. It does not call
 <code>stopPropagation()</code>, so a Back in <code>list</code> still closes the document. The order of one Back is in
 <a href="../navigation-reference/#back-and-the-parent-area">Back and the parent area</a>.</p>
 <h3 id="4-back-from-a-button">4. Back from a button<a class="headerlink" href="#4-back-from-a-button" title="Permanent link">&para;</a></h3>

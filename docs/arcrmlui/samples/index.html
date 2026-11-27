@@ -2305,8 +2305,14 @@ Choosing another sample closes the one opened last.</p>
 </tr>
 <tr>
 <td>Component</td>
-<td>A component imported twice with <code>dc-import</code>, with static and bound props and slots.</td>
+<td>A component imported twice with <code>dc-import</code>, once by path and once by a head alias, with static and bound props and slots.</td>
 <td><a href="../components/">Components</a></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>LocalState</td>
+<td>A component with its own <code>&lt;state&gt;</code>: accordions that open alone, one per <code>:for</code> row, and a slot that reads the outer component's state.</td>
+<td><a href="../components/#local-state">Components</a></td>
 <td>Open</td>
 </tr>
 <tr>
@@ -2329,7 +2335,7 @@ Choosing another sample closes the one opened last.</p>
 </tr>
 <tr>
 <td>GamepadMenu</td>
-<td>A menu driven by keyboard and gamepad, with its own action and Back.</td>
+<td>A menu driven by keyboard and gamepad, with its own action, <code>&lt;kbd action&gt;</code> key labels and Back.</td>
 <td><a href="../input/">Input and gamepad</a></td>
 <td>Open</td>
 </tr>
@@ -2377,7 +2383,7 @@ Choosing another sample closes the one opened last.</p>
 </tr>
 <tr>
 <td>Animations</td>
-<td><code>body.enter</code> and <code>body.leave</code> animations and a <code>data-pulse-*</code> flash.</td>
+<td><code>body.enter</code> and <code>body.leave</code> animations and a <code>pulse:*</code> flash.</td>
 <td><a href="../styling/#enter-and-leave">Styling</a></td>
 <td>Open</td>
 </tr>
@@ -2389,7 +2395,7 @@ Choosing another sample closes the one opened last.</p>
 </tr>
 <tr>
 <td>WorldMarker</td>
-<td>A label placed over a cube in the level with <code>data-world</code>.</td>
+<td>A label placed over a cube in the level with <code>:world</code>.</td>
 <td><a href="../world-markers/">World markers</a></td>
 <td>Open</td>
 </tr>
@@ -2413,7 +2419,7 @@ Choosing another sample closes the one opened last.</p>
 </tr>
 <tr>
 <td>FocusRequest</td>
-<td>Buttons that move focus to a text field with <code>data-focus-request</code>.</td>
+<td>Buttons that move focus to a text field with <code>:focus-request</code>.</td>
 <td><a href="../navigation-reference/#focus-requests">Navigation reference</a></td>
 <td>Open</td>
 </tr>
@@ -2461,13 +2467,19 @@ Choosing another sample closes the one opened last.</p>
 </tr>
 <tr>
 <td>Aliases</td>
-<td>A card that reads the selected hero through a short name from <code>data-alias-&lt;name&gt;</code>.</td>
+<td>A card that reads the selected hero through a short name from <code>alias:&lt;name&gt;</code>.</td>
 <td><a href="../data-binding/#aliases">Data binding</a></td>
 <td>Open</td>
 </tr>
 <tr>
+<td>EmbeddedViews</td>
+<td>Two views placed with <code>dc-import</code>: a header that shares the screen's model, and a member card placed once per row and given that row's member.</td>
+<td><a href="../components/#place-a-view">Components</a></td>
+<td>Open</td>
+</tr>
+<tr>
 <td>InnerRml</td>
-<td>A model string shown as text with <code>{{ }}</code> and as markup with <code>data-rml</code>.</td>
+<td>A model string shown as text with <code>{{ }}</code> and as markup with <code>:rml</code>.</td>
 <td><a href="../data-binding/#inner-rml">Data binding</a></td>
 <td>Open</td>
 </tr>

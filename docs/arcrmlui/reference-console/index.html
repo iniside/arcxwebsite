@@ -2214,6 +2214,16 @@ each exists: <strong>Every build</strong>, <strong>Not Shipping</strong> (every 
 <td>Variable, default 120. Upper bound on how often a view that is animating is rendered again.</td>
 <td>Every build</td>
 </tr>
+<tr>
+<td><code>ArcRml.CompositedLayers 0\|1</code></td>
+<td>Variable, default 1. At 1 an element with a <code>transform</code> or <code>opacity</code> animation or transition (running, or finished and holding its value) or <code>will-change</code> paints its content once into a texture and each later frame draws that texture with the element's transform and opacity. At 0 such elements paint as any other element; existing layers are released on the next frame.</td>
+<td>Every build</td>
+</tr>
+<tr>
+<td><code>ArcRml.LayerBudgetMB &lt;MB&gt;</code></td>
+<td>Variable, default 128. Memory for the layer textures of one view. A layer that would go over it is drawn at a lower resolution, or not made and painted as any other element; a lowered budget releases layers on the next frame until the rest fits.</td>
+<td>Every build</td>
+</tr>
 </tbody>
 </table>
 <p>For example, with the game running, <code>ArcRml.Open /ArcRmlUISamples/UI/Rml/FirstScreen/FirstScreen.rml</code> shows the FirstScreen
@@ -2273,7 +2283,7 @@ it (<a href="../quick-start/">Quick start</a>). The text shows only when <code>/
 </tr>
 <tr>
 <td><code>ArcRml.Click &lt;Path&gt; &lt;Selector&gt; [Index]</code></td>
-<td>Sends a left click to the centre of the <code>Index</code>-th visible element (default 0) that matches <code>Selector</code>.</td>
+<td>Sends a left click to the centre of the <code>Index</code>-th visible element (default 0) that matches <code>Selector</code>; an element scrolled out of view is scrolled into view first.</td>
 <td>Not Shipping</td>
 </tr>
 <tr>

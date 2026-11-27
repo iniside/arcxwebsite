@@ -2233,23 +2233,28 @@
 them. This page says what is possible or not here; for things going wrong, see <a href="../troubleshooting/">Troubleshooting</a>.</p>
 <h2 id="binding">Binding<a class="headerlink" href="#binding" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>An expression reads its own model by bare name and any other model of the document by <code>&lt;model&gt;.&lt;Field&gt;</code></strong>, read-only
-  (<a href="../data-binding/#other-models">Other models</a>). A value cannot be written to another model's field.</li>
-<li><strong><code>call()</code> cannot pass an object of another model.</strong> An argument <code>'vm:&lt;path&gt;'</code> resolves in the model of the calling
-  element.</li>
+<li><strong>An expression reads a model by <code>&lt;model&gt;.&lt;Field&gt;</code></strong> (<a href="../data-binding/#other-models">Other models</a>). <code>:value</code>,
+  <code>:checked</code> and an event assignment write the model its first name names (<a href="../forms/#show-and-write-back">Forms</a>).</li>
 <li><strong>Expressions cannot build arrays or loop counts.</strong> Use a fixed cell per index.</li>
-<li><strong><code>data-if</code> and <code>data-for</code> on one element</strong>: an error is logged and <code>data-for</code> is kept. Nest two elements. The
+<li><strong><code>:if</code> and <code>:for</code> on one element</strong>: an error is logged and <code>:for</code> is kept. Nest two elements. The
   validator reports it as <code>structural-conflict</code> (<a href="../validation/">Validation</a>).</li>
-<li><strong><code>data-if</code> rebuilds its branch</strong> on every change from false to true, so focus, scroll and hover state inside it
+<li><strong><code>:if</code> rebuilds its branch</strong> on every change from false to true, so focus, scroll and hover state inside it
   are lost.</li>
-<li><strong><code>data-action</code> needs a <code>data-model</code> on the <code>&lt;body&gt;</code></strong> of the document or the <a href="../glossary/#tab">tab</a>; without it a click warns and
+<li><strong><code>data-action</code> needs a <code>:model</code> on the <code>&lt;body&gt;</code></strong> of the document or the <a href="../glossary/#tab">tab</a>; without it a click warns and
   does nothing. <code>close</code> and <code>open:&lt;package path&gt;</code> are the exception: they work without one.</li>
-<li><strong>Model variables are read-only</strong>: <code>data-value</code> cannot write an input back to a view model. Call a function that
-  sets the field (<a href="../view-models/">View models</a>).</li>
-<li><strong>A virtual list</strong> (<code>data-virtual</code>) needs a parent that scrolls vertically and rows of one size; a row that leaves the
+<li><strong>A write needs a field Blueprint may write.</strong> <code>:value</code>, <code>:checked</code> and an event assignment write a
+  <code>BlueprintReadWrite</code> field; a <code>BlueprintReadOnly</code> one is refused with an error and a <code>read-only-field</code> validator
+  warning. Call a function instead (<a href="../view-models/">View models</a>). A write never calls a <code>BlueprintSetter</code> function, an
+  <code>FText</code> field takes the string as plain text (no table key), and a whole list or struct cannot be written. A
+  preview model keeps a write in the UI only.</li>
+<li><strong>A virtual list</strong> (<code>:virtual</code>) needs a parent that scrolls vertically and rows of one size; a row that leaves the
   window loses focus, hover and animations, and its two spacer elements count in <code>:nth-child</code> (<a href="../data-binding/#virtual-lists">Data binding</a>).</li>
-<li><strong><code>data-rml</code> escapes nothing</strong>: markup in the string becomes elements, so never put text a player typed in it
+<li><strong><code>:rml</code> escapes nothing</strong>: markup in the string becomes elements, so never put text a player typed in it
   (<a href="../data-binding/#inner-rml">Data binding</a>).</li>
+<li><strong>Local state is lost when its element is rebuilt</strong> (<code>:if</code>, a keyed row rebuilt out of order, a virtual-list row
+  leaving the window) and is not kept across a reload; this holds for components, views and screens (<a href="../components/#local-state">Local state</a>).</li>
+<li><strong>A placed view has no props, slots or style isolation.</strong> A given model needs one whole-value <code>{{ path }}</code> on the import; the
+  view's <code>&lt;script&gt;</code>, <code>&lt;meta&gt;</code> and <code>&lt;title&gt;</code> are ignored (<a href="../components/#place-a-view">Place a view</a>).</li>
 <li><strong>An alias is resolved once</strong>, when its element is created, and a model variable of the same name hides it
   (<a href="../data-binding/#aliases">Data binding</a>).</li>
 </ul>
@@ -2264,26 +2269,26 @@ them. This page says what is possible or not here; for things going wrong, see <
   (<a href="../navigation-reference/#tab-bar">Navigation</a>).</li>
 <li><strong>A text field types from the moment it takes focus</strong>; pad back ends typing, and Left and Right at the ends of the
   caret move focus (<a href="../text-fields/">Text fields</a>).</li>
-<li><strong>A drag is cancelled</strong> when its source or an ancestor is removed (a <code>data-if</code> turning false), the pointer capture is lost
+<li><strong>A drag is cancelled</strong> when its source or an ancestor is removed (a <code>:if</code> turning false), the pointer capture is lost
   or a new press arrives (<a href="../drag-and-drop/">Drag and drop</a>).</li>
 </ul>
 <h2 id="style">Style<a class="headerlink" href="#style" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>A leave animation is cut off</strong> after <code>LeaveTimeoutSeconds</code> (default 0.5 s; <strong>Leave Timeout Seconds</strong> in Project Settings &gt; Game &gt; ArcRmlUI, see <a href="../reference-settings/">Settings</a>), and <code>@starting-style</code> rules are dropped
   (<a href="../styling/#enter-and-leave">Styling</a>).</li>
-<li><strong><code>data-pulse-*</code> does not pulse</strong> on the first value or in a <a href="../glossary/#view">view</a> created by the change; use keyed rows in a <code>data-for</code>
+<li><strong><code>pulse:*</code> does not pulse</strong> on the first value or in a <a href="../glossary/#view">view</a> created by the change; use keyed rows in a <code>:for</code>
   (<a href="../styling/#pulse">Styling</a>).</li>
 <li><strong>Only the whole text of an element is localized</strong>: no child element or <code>{{ }}</code> in a <code>loc</code> element, and no text in an
   attribute (<a href="../localization/">Localization</a>).</li>
 <li><strong>Part of CSS is not supported</strong>: <code>position: sticky</code>, <code>columns</code>, <code>clip-path</code> and others are dropped with a warning. Find the way around in
   <a href="../reference-css/#not-supported">CSS support</a> and <a href="../tailwind/#known-differences">Tailwind CSS</a>.</li>
-<li><strong><code>data-world</code> places the element from the screen origin</strong>: its own layout position must be the top-left corner, and a
+<li><strong><code>:world</code> places the element from the screen origin</strong>: its own layout position must be the top-left corner, and a
   transform of your own goes on a child (<a href="../world-markers/">World markers</a>).</li>
 </ul>
 <h2 id="lifecycle">Lifecycle<a class="headerlink" href="#lifecycle" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>A <a href="../glossary/#tab">tab</a> is isolated from its <a href="../glossary/#frame">frame</a></strong>: frame rules and custom properties do not reach into it, and its <code>:root</code> and <code>html</code>
-  rules refer to the tab. A <code>data-if</code> that rebuilds the frame's <code>arc-embed</code> drops the kept tabs
+  rules refer to the tab. A <code>:if</code> that rebuilds the frame's <code>arc-embed</code> drops the kept tabs
   (<a href="../frames-and-tabs/">Frames and tabs</a>).</li>
 <li><strong>A <a href="../glossary/#keep-alive">parked</a> document stays until a discard</strong>: there is no eviction, and <code>DiscardDocument</code> is C++ only
   (<a href="../keep-alive/#discard">Keep-alive and preload</a>).</li>

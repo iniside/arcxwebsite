@@ -68,13 +68,13 @@
 <span class="t-tag">&lt;body</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mm-grid"</span><span class="t-tag">&gt;</span>
     <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mm-menu"</span><span class="t-tag">&gt;</span>
-      <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mm-items"</span> <span class="t-attr">data-model</span>=<span class="t-str">"main"</span> <span class="t-attr">data-event-back</span>=<span class="t-str">"call('', 'Back'); stopPropagation()"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mm-items"</span> <span class="t-attr">:model</span>=<span class="t-str">"main"</span> <span class="t-attr">on:back</span>=<span class="t-str">"call('', 'Back'); stopPropagation()"</span><span class="t-tag">&gt;</span>
         <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/MenuItem"</span>
-          <span class="t-attr">data-for</span>=<span class="t-str">"mmItem, mmItem_index : Items"</span>
+          <span class="t-attr">:for</span>=<span class="t-str">"mmItem, mmItem_index : Items"</span>
           <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ mmItem.Label }}</span>"</span> <span class="t-attr">description</span>=<span class="t-str">"<span class="t-interp">{{ mmItem.Description }}</span>"</span>
           <span class="t-attr">disabled</span>=<span class="t-str">"<span class="t-interp">{{ mmItem.bDisabled }}</span>"</span> <span class="t-attr">focusable</span>=<span class="t-str">"<span class="t-interp">{{ true }}</span>"</span>
           <span class="t-attr">autofocus</span>=<span class="t-str">"<span class="t-interp">{{ mmItem_index == Selected }}</span>"</span>
-          <span class="t-attr">data-event-click</span>=<span class="t-str">"callIf(!mmItem.bDisabled, '', 'Activate', mmItem_index)"</span><span class="t-tag">/&gt;</span>
+          <span class="t-attr">on:click</span>=<span class="t-str">"callIf(!mmItem.bDisabled, '', 'Activate', mmItem_index)"</span><span class="t-tag">/&gt;</span>
       <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
     <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
@@ -110,16 +110,16 @@
     <span class="t-attr">resolver</span>=<span class="t-str">"/Script/ArcRmlUIDemo.ArcRmlDemoViewModelResolver"</span><span class="t-tag">/&gt;</span>
 <span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;body</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"st-frame"</span> <span class="t-attr">data-model</span>=<span class="t-str">"settings"</span> <span class="t-attr">data-event-back</span>=<span class="t-str">"call('', 'Back'); stopPropagation()"</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"st-group"</span> <span class="t-attr">data-for</span>=<span class="t-str">"stGroup : Groups"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"st-frame"</span> <span class="t-attr">:model</span>=<span class="t-str">"settings"</span> <span class="t-attr">on:back</span>=<span class="t-str">"call('', 'Back'); stopPropagation()"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"st-group"</span> <span class="t-attr">:for</span>=<span class="t-str">"stGroup : Groups"</span><span class="t-tag">&gt;</span>
       <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Divider"</span> <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ stGroup.Title }}</span>"</span><span class="t-tag">/&gt;</span>
-      <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/SettingRow"</span> <span class="t-attr">data-for</span>=<span class="t-str">"stRow : stGroup.Rows"</span>
+      <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/SettingRow"</span> <span class="t-attr">:for</span>=<span class="t-str">"stRow : stGroup.Rows"</span>
         <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Label }}</span>"</span> <span class="t-attr">description</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Description }}</span>"</span> <span class="t-attr">field</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Field }}</span>"</span>
-        <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Activate', stRow.Field)"</span><span class="t-tag">&gt;</span>
-        <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Toggle"</span> <span class="t-attr">data-if</span>=<span class="t-str">"stRow.Type == 'toggle'"</span>
+        <span class="t-attr">on:click</span>=<span class="t-str">"call('', 'Activate', stRow.Field)"</span><span class="t-tag">&gt;</span>
+        <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Toggle"</span> <span class="t-attr">:if</span>=<span class="t-str">"stRow.Type == 'toggle'"</span>
           <span class="t-attr">on</span>=<span class="t-str">"<span class="t-interp">{{ stRow.bOn }}</span>"</span> <span class="t-attr">on-label</span>=<span class="t-str">"On"</span> <span class="t-attr">off-label</span>=<span class="t-str">"Off"</span>
-          <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Activate', stRow.Field); stopPropagation()"</span><span class="t-tag">/&gt;</span>
-        <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Slider"</span> <span class="t-attr">data-if</span>=<span class="t-str">"stRow.Type == 'slider'"</span>
+          <span class="t-attr">on:click</span>=<span class="t-str">"call('', 'Activate', stRow.Field); stopPropagation()"</span><span class="t-tag">/&gt;</span>
+        <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Slider"</span> <span class="t-attr">:if</span>=<span class="t-str">"stRow.Type == 'slider'"</span>
           <span class="t-attr">value</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Value }}</span>"</span> <span class="t-attr">min</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Min }}</span>"</span> <span class="t-attr">max</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Max }}</span>"</span> <span class="t-attr">step</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Step }}</span>"</span>
           <span class="t-attr">value-label</span>=<span class="t-str">"<span class="t-interp">{{ stRow.ValueLabel }}</span>"</span> <span class="t-attr">field</span>=<span class="t-str">"<span class="t-interp">{{ stRow.Field }}</span>"</span><span class="t-tag">/&gt;</span>
       <span class="t-tag">&lt;/dc-import</span><span class="t-tag">&gt;</span>
@@ -163,7 +163,7 @@
     <span class="t-attr">resolver</span>=<span class="t-str">"/Script/ArcRmlUIDemo.ArcRmlDemoViewModelResolver"</span><span class="t-tag">/&gt;</span>
 <span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;body</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"hud-frame"</span> <span class="t-attr">data-model</span>=<span class="t-str">"hud"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"hud-frame"</span> <span class="t-attr">:model</span>=<span class="t-str">"hud"</span><span class="t-tag">&gt;</span>
     <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"hud-top"</span><span class="t-tag">&gt;</span>
       <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Badge"</span> <span class="t-attr">label</span>=<span class="t-str">"<span class="t-interp">{{ Mode }}</span>"</span> <span class="t-attr">tone</span>=<span class="t-str">"accent"</span><span class="t-tag">/&gt;</span>
       <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"hud-where"</span><span class="t-tag">&gt;</span><span class="t-interp">{{ Where }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
@@ -171,7 +171,7 @@
     <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"hud-bottom"</span><span class="t-tag">&gt;</span>
       <span class="t-tag">&lt;dc-import</span> <span class="t-attr">name</span>=<span class="t-str">"/ArcRmlUIDemo/UI/Rml/Demo/Components/InputPrompt"</span>
         <span class="t-attr">key-label</span>=<span class="t-str">"<span class="t-interp">{{ ArcKeys.IA_ArcDemo_OpenVendor }}</span>"</span> <span class="t-attr">label</span>=<span class="t-str">"Vendor"</span>
-        <span class="t-attr">data-hotkey</span>=<span class="t-str">"IA_ArcDemo_OpenVendor"</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'OpenVendor')"</span><span class="t-tag">/&gt;</span>
+        <span class="t-attr">data-hotkey</span>=<span class="t-str">"IA_ArcDemo_OpenVendor"</span> <span class="t-attr">on:click</span>=<span class="t-str">"call('', 'OpenVendor')"</span><span class="t-tag">/&gt;</span>
     <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;/body</span><span class="t-tag">&gt;</span>
@@ -226,7 +226,7 @@
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 8H7a4 4 0 0 0 0 8h2"/><path d="M15 8h2a4 4 0 0 1 0 8h-2"/><path d="M8 12h8"/></svg></div>
           <h3 class="h3">MVVM data binding</h3>
-          <p>Declare view models with &lt;viewmodel&gt; in the document head, read their fields with data-model, data-for and {{ }}, and call their functions from events with call().</p>
+          <p>Declare view models with &lt;viewmodel&gt; in the document head, read their fields with :model, :for and {{ }}, and call their functions from events with call().</p>
         </div>
         <div class="card">
           <div class="feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="10" rx="5"/><path d="M7.5 10v4"/><path d="M5.5 12h4"/><path d="M15.5 11h.01"/><path d="M17.5 13h.01"/></svg></div>
@@ -256,19 +256,19 @@
         <div class="step">
           <span class="step-n">Step 1</span>
           <h3 class="h3">Write markup</h3>
-          <p class="muted">Describe the screen in RML, declare its view model in the head and style it with RCSS. <code class="inline">data-model="lists"</code> makes that view model's fields readable by name, so <code class="inline">Items</code> is its array; <code class="inline">row</code> and <code class="inline">index</code> are names you choose. A field of any other declared view model is read as <code class="inline">name.Field</code>. Events call view model functions.</p>
+          <p class="muted">Describe the screen in RML, declare its view model in the head and style it with RCSS. <code class="inline">:model="lists"</code> makes that view model's fields readable by name, so <code class="inline">Items</code> is its array; <code class="inline">row</code> and <code class="inline">index</code> are names you choose. A field of any other declared view model is read as <code class="inline">name.Field</code>. Events call view model functions.</p>
           <div class="code"><div class="code-hd"><span class="fname">Lists.rml</span><span class="lang">RML</span></div><pre><code><span class="t-tag">&lt;rml</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;head</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;link</span> <span class="t-attr">type</span>=<span class="t-str">"text/rcss"</span> <span class="t-attr">href</span>=<span class="t-str">"Lists.rcss"</span><span class="t-tag">/&gt;</span>
   <span class="t-tag">&lt;viewmodel</span> <span class="t-attr">name</span>=<span class="t-str">"lists"</span> <span class="t-attr">class</span>=<span class="t-str">"/Script/ArcRmlUISamples.ArcRmlSamplesListsViewModel"</span> <span class="t-attr">create</span>=<span class="t-str">"true"</span><span class="t-tag">/&gt;</span>
 <span class="t-tag">&lt;/head</span><span class="t-tag">&gt;</span>
-<span class="t-tag">&lt;body</span> <span class="t-attr">data-model</span>=<span class="t-str">"lists"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"ls-row"</span> <span class="t-attr">data-for</span>=<span class="t-str">"row, index : Items"</span> <span class="t-attr">data-key</span>=<span class="t-str">"row.Name"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;body</span> <span class="t-attr">:model</span>=<span class="t-str">"lists"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"ls-row"</span> <span class="t-attr">:for</span>=<span class="t-str">"row, index : Items"</span> <span class="t-attr">:key</span>=<span class="t-str">"row.Name"</span><span class="t-tag">&gt;</span>
     <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"ls-name"</span><span class="t-tag">&gt;</span><span class="t-interp">{{ index + 1 }}</span>. <span class="t-interp">{{ row.Name }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
     <span class="t-tag">&lt;span</span><span class="t-tag">&gt;</span>x<span class="t-interp">{{ row.Quantity }}</span><span class="t-tag">&lt;/span</span><span class="t-tag">&gt;</span>
-    <span class="t-tag">&lt;button</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Remove', index)"</span><span class="t-tag">&gt;</span>Remove<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;button</span> <span class="t-attr">on:click</span>=<span class="t-str">"call('', 'Remove', index)"</span><span class="t-tag">&gt;</span>Remove<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
   <span class="t-tag">&lt;/div</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;button</span> <span class="t-attr">data-event-click</span>=<span class="t-str">"call('', 'Add')"</span><span class="t-tag">&gt;</span>Add<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">on:click</span>=<span class="t-str">"call('', 'Add')"</span><span class="t-tag">&gt;</span>Add<span class="t-tag">&lt;/button</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;/body</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;/rml</span><span class="t-tag">&gt;</span></code></pre></div>
         </div>
@@ -375,9 +375,13 @@ Viewport-&gt;OpenDocument(Document);</code></pre></div>
       </div>
       <div class="grid-3">
         <div class="card">
-          <span class="badge">Now</span>
+          <span class="badge">Coming soon</span>
           <h3 class="h3">Next update</h3>
           <ul class="roadmap-list">
+            <li>A visual binding editor in the RML preview, in the style of UMG: Hierarchy, Details and a View Bindings table, pickers for view model fields, lists, functions and input actions, and every edit written back to your .rml with undo.</li>
+            <li>Typed component props and call arguments, checked live in the editor.</li>
+            <li>Import a React + TypeScript + Tailwind UI as RML components and screens, with two-way binding for form fields.</li>
+            <li>Input prompts and hotkeys by Enhanced Input action path.</li>
             <li>Documents in the game world: render a document onto a surface in the level and interact with it.</li>
             <li>Faster first open of a screen: styles and layout prepared before the screen is first shown.</li>
             <li>Transform and opacity animations composited on the GPU.</li>
@@ -389,10 +393,9 @@ Viewport-&gt;OpenDocument(Document);</code></pre></div>
           <span class="badge badge-muted">Next</span>
           <h3 class="h3">Workflow and Blueprint</h3>
           <ul class="roadmap-list">
-            <li>A binding editor in the style of UMG: bind view model fields to elements without writing data attributes by hand.</li>
             <li>A screen router: named screens, back history and preload.</li>
             <li>A fuller Blueprint API: open-state checks, focus and input mode, theme switching.</li>
-            <li>View model checks (unknown fields, call arguments) in the editor preview and computed styles in the inspector.</li>
+            <li>Computed styles in the preview inspector.</li>
             <li>VS Code settings for .rml and .rcss, and an "Open in external editor" action.</li>
           </ul>
         </div>
@@ -403,7 +406,6 @@ Viewport-&gt;OpenDocument(Document);</code></pre></div>
             <li>Platforms beyond Win64.</li>
             <li>Right-to-left text (Arabic, Hebrew).</li>
             <li>Split-screen.</li>
-            <li>Optional TSX authoring, compiled to RML, with no JavaScript at runtime.</li>
             <li>An AI skill that translates HTML and CSS into RML, shipped with the plugin.</li>
             <li>A free Figma export plugin.</li>
             <li>A performance page in the docs.</li>

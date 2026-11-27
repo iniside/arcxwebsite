@@ -2169,13 +2169,13 @@ committed when the field was left. Text fields behave as in Chrome. Run it by ch
 samples list in the map <code>L_ArcRmlSamples</code> (<a href="../samples/">Samples</a>).</p>
 <h2 id="the-document">The document<a class="headerlink" href="#the-document" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">TextFields.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"tf-input"</span> <span class="na">class</span><span class="o">=</span><span class="s">"tf-field"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Type a name"</span>
-    <span class="na">data-attr-value</span><span class="o">=</span><span class="s">"Live"</span>
-    <span class="na">data-event-input</span><span class="o">=</span><span class="s">"call('', 'SetLive', ev.value)"</span>
-    <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'Commit', ev.value)"</span><span class="p">/&gt;</span>
+    <span class="na">attr:value</span><span class="o">=</span><span class="s">"tf.Live"</span>
+    <span class="na">on:input</span><span class="o">=</span><span class="s">"call('tf', 'SetLive', ev.value)"</span>
+    <span class="na">on:change</span><span class="o">=</span><span class="s">"call('tf', 'Commit', ev.value)"</span><span class="p">/&gt;</span>
 <span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">"tf-notes"</span> <span class="na">class</span><span class="o">=</span><span class="s">"tf-field tf-notes"</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">"Type some notes"</span>
-    <span class="na">data-attr-value</span><span class="o">=</span><span class="s">"NotesLive"</span>
-    <span class="na">data-event-input</span><span class="o">=</span><span class="s">"call('', 'SetNotesLive', ev.value)"</span>
-    <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'CommitNotes', ev.value)"</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+    <span class="na">attr:value</span><span class="o">=</span><span class="s">"tf.NotesLive"</span>
+    <span class="na">on:input</span><span class="o">=</span><span class="s">"call('tf', 'SetNotesLive', ev.value)"</span>
+    <span class="na">on:change</span><span class="o">=</span><span class="s">"call('tf', 'CommitNotes', ev.value)"</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">TextFields/ArcRmlSamplesTextFields.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesTextFieldsViewModel::SetLive</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Value</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2192,10 +2192,10 @@ samples list in the map <code>L_ArcRmlSamples</code> (<a href="../samples/">Samp
 <li><code>input</code> fires for every edit (typing, delete, paste, cut), so <code>Live</code> follows the field. <code>change</code> fires when focus leaves
   the field, or on Enter in the <code>&lt;input&gt;</code>, when the text differs from the one at focus or at the last <code>change</code>. Enter in
   the <code>&lt;textarea&gt;</code> inserts a line break. Both events carry <code>ev.value</code>.</li>
-<li>Show the model's text with <code>data-attr-value</code>, as the sample does; <code>data-value</code> sets the same <code>value</code> attribute. Neither
-  writes back: a model field is read-only to the <a href="../glossary/#document">document</a> (<a href="../limits/">Limits</a>), so <code>data-event-input</code> calls a function
-  that stores each edit.</li>
-<li>A value written through <code>data-attr-value</code> fires no event. On a focused field the write does not become the committed
+<li>Show the model's text with <code>attr:value</code>, as the sample does; <code>:value</code> sets the same <code>value</code> attribute. <code>attr:value</code> never
+  writes back, so the sample's <code>on:input</code> calls a function that stores each edit; <code>:value</code> on a
+  <code>BlueprintReadWrite</code> field writes the text on <code>change</code> (<a href="../forms/#show-and-write-back">Forms</a>).</li>
+<li>A value written through <code>attr:value</code> fires no event. On a focused field the write does not become the committed
   value, so <code>change</code> still fires when the field is left; echoing the field's own text writes the same value and the
   caret stays.</li>
 <li><code>placeholder="..."</code> is shown while the field is empty and styled with <code>::placeholder</code>.</li>

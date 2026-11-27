@@ -2348,8 +2348,8 @@ the wrong colour or no effect from a rule you wrote. It exists outside <a href="
 <h2 id="pick-an-element">Pick an element<a class="headerlink" href="#pick-an-element" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>In the view</strong>: move the pointer over the document and the element under it gets a red outline; click to select it.
-  The pick follows geometry only: the topmost element whose border box holds the point. <code>pointer-events: none</code> does not
-  hide an element from it. A <code>::before</code> or <code>::after</code> box is not picked: the click selects its parent.</li>
+  The pick takes the topmost element whose border box holds the point and skips elements with <code>pointer-events: none</code>,
+  as the game's own pointer and Chrome's element picker do, so a decorative overlay never hides what is under it. A <code>::before</code> or <code>::after</code> box is not picked: the click selects its parent.</li>
 <li>
 <p><strong>In the tree</strong>: click a row. The row's element is outlined in the view while the pointer is on the row, and a double
   click on a row goes to its source line: in the editor it opens the file there, in a game it copies <code>file:line</code> to the
@@ -2365,6 +2365,8 @@ the wrong colour or no effect from a rule you wrote. It exists outside <a href="
 </li>
 </ul>
 <p>The selected element is drawn in the view with its content, padding, border and margin boxes.</p>
+<p>In the editor preview, the element panel under the inspector and the View Bindings table edit the selected element's attributes in the file (<a href="../editor-preview/#bind-from-the-panels">Bind
+from the panels</a>).</p>
 <h2 id="read-the-selection">Read the selection<a class="headerlink" href="#read-the-selection" title="Permanent link">&para;</a></h2>
 <p>The panel shows, top to bottom:</p>
 <ul>

@@ -2175,14 +2175,14 @@
 
 
 <h1 id="event-reference">Event reference<a class="headerlink" href="#event-reference" title="Permanent link">&para;</a></h1>
-<p>The event names a <code>data-event-&lt;event&gt;</code> in a <a href="../documents/">document</a> can listen to, what each carries and whether it bubbles. How to write the
+<p>The event names a <code>on:&lt;event&gt;</code> in a <a href="../documents/">document</a> can listen to, what each carries and whether it bubbles. How to write the
 expression is on <a href="../events/">Events</a>. An event runs the handlers of the element and then its ancestors; a handler that
 calls <code>stopPropagation()</code> ends that on an event that can be stopped and does nothing on one that cannot; the tables
 say which. Stopping also cancels what the event would do by default (a stopped <code>keydown</code> does not move focus).</p>
 <p>A parameter is read as <code>ev.&lt;name&gt;</code>.</p>
 <h2 id="events-from-the-plugin">Events from the plugin<a class="headerlink" href="#events-from-the-plugin" title="Permanent link">&para;</a></h2>
 <p>Each bubbles up from the element in the <strong>Sent on</strong> column. All except <code>focusvisible</code> can be stopped. A
-<code>data-event-uiaction</code>, <code>data-event-back</code>, <code>data-event-navnotarget</code> or <code>data-event-anyinput</code> on an element does not make
+<code>on:uiaction</code>, <code>on:back</code>, <code>on:navnotarget</code> or <code>on:anyinput</code> on an element does not make
 the element take a mouse click or focus.</p>
 <table>
 <thead>
@@ -2204,7 +2204,7 @@ the element take a mouse click or focus.</p>
 <td><code>uiaction</code></td>
 <td>The focused element, else <code>&lt;body&gt;</code>.</td>
 <td>A <a href="../events/#ui-actions">UI action</a>, an action of the document's Input Mapping Context, fires.</td>
-<td><code>action</code>, the action's name</td>
+<td><code>action</code>, the action's name, also when the document names it by package path</td>
 </tr>
 <tr>
 <td><code>anyinput</code></td>
@@ -2366,7 +2366,7 @@ the element take a mouse click or focus.</p>
 <code>input</code>, at the release of a range, or when a checkbox, radio or <code>select</code> changes. A value written by a binding fires
 neither (<a href="../text-fields/">Text fields</a>).</p>
 <h3 id="document-events">Document events<a class="headerlink" href="#document-events" title="Permanent link">&para;</a></h3>
-<p><code>load</code>, <code>show</code>, <code>resize</code> and <code>unload</code> are sent only to the document's root element. Put their <code>data-event-*</code> on the
+<p><code>load</code>, <code>show</code>, <code>resize</code> and <code>unload</code> are sent only to the document's root element. Put their <code>on:*</code> on the
 root tag of the file, <code>&lt;rml&gt;</code> (or <code>&lt;html&gt;</code>); one on <code>&lt;body&gt;</code> or inside it never receives them. A <a href="../glossary/#tab">tab</a>
 embedded in a <a href="../glossary/#frame">frame</a> gets none of them.</p>
 <ul>

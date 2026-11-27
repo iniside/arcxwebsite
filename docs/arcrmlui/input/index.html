@@ -1003,6 +1003,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#key-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Key labels
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-setup" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2168,6 +2179,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#key-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Key labels
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#project-setup" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2216,15 +2238,15 @@ Unreal's UI input framework, so the project needs the
 <div class="highlight"><span class="filename">GamepadMenu.rml</span><pre><span></span><code><span class="nt">&lt;meta</span><span class="w"> </span><span class="na">name=</span><span class="s">"input-mode"</span><span class="w"> </span><span class="na">content=</span><span class="s">"menu"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;meta</span><span class="w"> </span><span class="na">name=</span><span class="s">"input-mapping"</span><span class="w"> </span><span class="na">content=</span><span class="s">"/ArcRmlUISamples/UI/Rml/GamepadMenu/IMC_Sample_GamepadMenu"</span><span class="nt">/&gt;</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">GamepadMenu.rml</span><pre><span></span><code><span class="nt">&lt;button</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-play"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-button"</span><span class="w"> </span><span class="na">autofocus=</span><span class="s">""</span><span class="w"> </span><span class="na">data-event-click=</span><span class="s">"call('', 'Choose', 'Play')"</span><span class="nt">&gt;</span>Play<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-options"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-button"</span><span class="w"> </span><span class="na">data-event-click=</span><span class="s">"call('', 'Choose', 'Options')"</span><span class="nt">&gt;</span>Options<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-credits"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-button"</span><span class="w"> </span><span class="na">data-event-click=</span><span class="s">"call('', 'Choose', 'Credits')"</span><span class="nt">&gt;</span>Credits<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;p</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-last"</span><span class="nt">&gt;</span>Last<span class="w"> </span>choice:<span class="w"> </span>{{<span class="w"> </span>LastChoice<span class="w"> </span>}}<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-info"</span><span class="w"> </span><span class="na">data-if=</span><span class="s">"bInfoShown"</span><span class="nt">&gt;</span>Arrows<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span>D-pad<span class="w"> </span>move<span class="w"> </span>the<span class="w"> </span>focus,<span class="w"> </span>{{<span class="w"> </span>ArcKeys.confirm<span class="w"> </span>}}<span class="w"> </span>presses<span class="w"> </span>the<span class="w"> </span>focused<span class="w"> </span>button,<span class="w"> </span>{{<span class="w"> </span>ArcKeys.back<span class="w"> </span>}}<span class="w"> </span>closes<span class="w"> </span>the<span class="w"> </span>menu.<span class="nt">&lt;/p&gt;</span>
+<div class="highlight"><span class="filename">GamepadMenu.rml</span><pre><span></span><code><span class="nt">&lt;button</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-play"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-button"</span><span class="w"> </span><span class="na">autofocus=</span><span class="s">""</span><span class="w"> </span><span class="na">on:click=</span><span class="s">"call('menu', 'Choose', 'Play')"</span><span class="nt">&gt;</span>Play<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-options"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-button"</span><span class="w"> </span><span class="na">on:click=</span><span class="s">"call('menu', 'Choose', 'Options')"</span><span class="nt">&gt;</span>Options<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-credits"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-button"</span><span class="w"> </span><span class="na">on:click=</span><span class="s">"call('menu', 'Choose', 'Credits')"</span><span class="nt">&gt;</span>Credits<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;p</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-last"</span><span class="nt">&gt;</span>Last<span class="w"> </span>choice:<span class="w"> </span>{{<span class="w"> </span>menu.LastChoice<span class="w"> </span>}}<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-info"</span><span class="w"> </span><span class="na">:if=</span><span class="s">"menu.bInfoShown"</span><span class="nt">&gt;</span>Arrows<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span>D-pad<span class="w"> </span>move<span class="w"> </span>the<span class="w"> </span>focus,<span class="w"> </span><span class="nt">&lt;kbd</span><span class="w"> </span><span class="na">action=</span><span class="s">"confirm"</span><span class="nt">/&gt;</span><span class="w"> </span>presses<span class="w"> </span>the<span class="w"> </span>focused<span class="w"> </span>button,<span class="w"> </span><span class="nt">&lt;kbd</span><span class="w"> </span><span class="na">action=</span><span class="s">"back"</span><span class="nt">/&gt;</span><span class="w"> </span>closes<span class="w"> </span>the<span class="w"> </span>menu.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;div</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-prompts"</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;span</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-prompt"</span><span class="nt">&gt;</span>{{<span class="w"> </span>ArcKeys.confirm<span class="w"> </span>}}<span class="w"> </span>Select<span class="nt">&lt;/span&gt;</span>
-<span class="w">    </span><span class="nt">&lt;span</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-info"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-prompt"</span><span class="w"> </span><span class="na">data-hotkey=</span><span class="s">"IA_Sample_MenuInfo"</span><span class="w"> </span><span class="na">data-event-click=</span><span class="s">"call('', 'ToggleInfo')"</span><span class="nt">&gt;</span>{{<span class="w"> </span>ArcKeys.IA_Sample_MenuInfo<span class="w"> </span>}}<span class="w"> </span>Info<span class="nt">&lt;/span&gt;</span>
-<span class="w">    </span><span class="nt">&lt;span</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-prompt"</span><span class="nt">&gt;</span>{{<span class="w"> </span>ArcKeys.back<span class="w"> </span>}}<span class="w"> </span>Close<span class="nt">&lt;/span&gt;</span>
+<span class="w">    </span><span class="nt">&lt;span</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-prompt"</span><span class="nt">&gt;&lt;kbd</span><span class="w"> </span><span class="na">action=</span><span class="s">"confirm"</span><span class="nt">/&gt;</span><span class="w"> </span>Select<span class="nt">&lt;/span&gt;</span>
+<span class="w">    </span><span class="nt">&lt;span</span><span class="w"> </span><span class="na">id=</span><span class="s">"gm-info"</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-prompt"</span><span class="w"> </span><span class="na">data-hotkey=</span><span class="s">"/ArcRmlUISamples/UI/Rml/GamepadMenu/IA_Sample_MenuInfo"</span><span class="w"> </span><span class="na">on:click=</span><span class="s">"call('menu', 'ToggleInfo')"</span><span class="nt">&gt;&lt;kbd</span><span class="w"> </span><span class="na">action=</span><span class="s">"/ArcRmlUISamples/UI/Rml/GamepadMenu/IA_Sample_MenuInfo"</span><span class="nt">/&gt;</span><span class="w"> </span>Info<span class="nt">&lt;/span&gt;</span>
+<span class="w">    </span><span class="nt">&lt;span</span><span class="w"> </span><span class="na">class=</span><span class="s">"gm-prompt"</span><span class="nt">&gt;&lt;kbd</span><span class="w"> </span><span class="na">action=</span><span class="s">"back"</span><span class="nt">/&gt;</span><span class="w"> </span>Close<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
 <ul>
@@ -2233,18 +2255,22 @@ Unreal's UI input framework, so the project needs the
   navigation stop by default; <code>autofocus</code> on "Play" is where the focus starts. A <code>div</code> or <code>span</code> needs
   <code>tab-index: auto; nav: auto</code> to become one.</li>
 <li>Confirm is always <span class="keys"><kbd class="key-enter">Enter</kbd></span>, <span class="keys"><kbd class="key-space">Space</kbd></span> or <em>gamepad accept</em> (the gamepad's accept button, A in the samples) and presses the focused button. The CommonUI
-  click action only supplies its key label, <code>{{ ArcKeys.confirm }}</code>.</li>
-<li>Back is the back action of the project's CommonUI input data: <span class="keys"><kbd class="key-escape">Esc</kbd></span> or <em>gamepad back</em> (B in the samples). A Back that no <code>data-event-back</code> handler stops closes
+  click action only supplies its key label, <code>&lt;kbd action="confirm"/&gt;</code>.</li>
+<li>Back is the back action of the project's CommonUI input data: <span class="keys"><kbd class="key-escape">Esc</kbd></span> or <em>gamepad back</em> (B in the samples). A Back that no <code>on:back</code> handler stops closes
   the document.</li>
-<li><code>{{ ArcKeys.confirm }}</code> and <code>{{ ArcKeys.back }}</code> show the keys of Confirm and Back for the current input device.</li>
+<li><code>&lt;kbd action="confirm"/&gt;</code> and <code>&lt;kbd action="back"/&gt;</code> show the keys of Confirm and Back for the current input device (<a href="#key-labels">Key labels</a>).</li>
 </ul>
 <p>The code above is an excerpt: the screen also declares its <a href="../view-models/">view model</a> in <code>&lt;head&gt;</code> and binds it with
-<code>data-model</code> on <code>&lt;body&gt;</code>.</p>
+<code>:model</code> on <code>&lt;body&gt;</code>.</p>
 <h2 id="the-menus-own-action">The menu's own action<a class="headerlink" href="#the-menus-own-action" title="Permanent link">&para;</a></h2>
 <p><code>input-mapping</code> names a mapping context that the document adds while it is active. <code>IMC_Sample_GamepadMenu</code> maps
 one action, <code>IA_Sample_MenuInfo</code>, to <span class="keys"><kbd class="key-i">I</kbd></span> and gamepad Y; it arrives as a <a href="../events/#ui-actions">UI action</a>.</p>
-<p><code>data-hotkey="IA_Sample_MenuInfo"</code> clicks the element when that action fires, so "Info" calls <code>ToggleInfo</code>.
-<code>{{ ArcKeys.IA_Sample_MenuInfo }}</code> shows the action's key, named by the action's asset name.</p>
+<p><code>data-hotkey="/ArcRmlUISamples/UI/Rml/GamepadMenu/IA_Sample_MenuInfo"</code> clicks the element when that action fires, so "Info" calls <code>ToggleInfo</code>.
+<code>&lt;kbd action="/ArcRmlUISamples/UI/Rml/GamepadMenu/IA_Sample_MenuInfo"/&gt;</code> shows the action's key.</p>
+<p>An action is named by the package path of its Input Action asset: starts with <code>/</code>, no <code>.</code> and no object suffix. <code>data-hotkey</code>, <code>data-hotkey-focus</code>,
+<code>data-hotkey-cycle</code> and <code>data-drag-action</code> also take the bare asset name (<code>IA_Sample_MenuInfo</code>), but write the path: two
+actions with the same asset name make a bare name ambiguous, which is a <a href="../validation/#input-actions">validator</a> warning and a log warning that names
+the full paths, and the first action wins. <code>ev.action</code> in <code>on:uiaction</code> stays the asset name (<a href="../events/#ui-actions">UI actions</a>).</p>
 <p>Keep Confirm and Back out of a document's mapping context: they belong to one project-wide context.</p>
 <div class="highlight"><span class="filename">GamepadMenu/ArcRmlSamplesGamepadMenu.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesGamepadMenuViewModel::Choose</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Item</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2262,21 +2288,40 @@ nearest ancestor of it that has the attribute, so one action works on every row 
 rows; the key marks the row that has focus as the favourite, whichever of its controls is focused:</p>
 <div class="highlight"><span class="filename">RowHotkeys.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"input-mapping"</span> <span class="na">content</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/RowHotkeys/IMC_Sample_RowHotkeys"</span><span class="p">/&gt;</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">RowHotkeys.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"rh-row-0"</span> <span class="na">class</span><span class="o">=</span><span class="s">"rh-row"</span> <span class="na">data-attrif-favourite</span><span class="o">=</span><span class="s">"Favourite == 0"</span> <span class="na">data-hotkey-focus</span><span class="o">=</span><span class="s">"IA_Sample_RowAction"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'SetFavourite', 0)"</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">RowHotkeys.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"rh-row-0"</span> <span class="na">class</span><span class="o">=</span><span class="s">"rh-row"</span> <span class="na">attrif:favourite</span><span class="o">=</span><span class="s">"rh.Favourite == 0"</span> <span class="na">data-hotkey-focus</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/RowHotkeys/IA_Sample_RowAction"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('rh', 'SetFavourite', 0)"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"rh-name"</span><span class="p">&gt;</span>Potion<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"rh-use-0"</span> <span class="na">class</span><span class="o">=</span><span class="s">"rh-use"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Use', 'Potion'); stopPropagation()"</span><span class="p">&gt;</span>Use<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"rh-use-0"</span> <span class="na">class</span><span class="o">=</span><span class="s">"rh-use"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('rh', 'Use', 'Potion'); stopPropagation()"</span><span class="p">&gt;</span>Use<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <ul>
 <li>The attribute sits on the row, not on a button inside it. With focus on "Use", the row is the ancestor that has it, and its
-  <code>data-event-click</code> runs as if the row were clicked.</li>
+  <code>on:click</code> runs as if the row were clicked.</li>
 <li>The "Use" button ends its click with <code>stopPropagation()</code>, so using it does not also mark the favourite.</li>
 <li>Only a visible element is clicked. When neither the focused element nor its ancestors have the attribute, <code>data-hotkey</code> and <code>data-hotkey-cycle</code> are tried next.</li>
-<li><code>IMC_Sample_RowHotkeys</code> maps <code>IA_Sample_RowAction</code> to <span class="keys"><kbd class="key-r">R</kbd></span> and a press of the right thumbstick; the document's
+<li><code>IMC_Sample_RowHotkeys</code> maps <code>/ArcRmlUISamples/UI/Rml/RowHotkeys/IA_Sample_RowAction</code> to <span class="keys"><kbd class="key-r">R</kbd></span> and a press of the right thumbstick; the document's
   <code>input-mapping</code> meta activates it (<a href="#the-menus-own-action">the menu's own action</a>).</li>
 </ul>
 <p>The code above is an excerpt: the rows "Scroll" and "Gem" are written like "Potion", and the screen also declares its view model.</p>
 <p>Run it by choosing RowHotkeys in the samples list. The readout under the rows starts as <code>Favourite: -1, used:</code>. Press <span class="keys"><kbd class="key-r">R</kbd></span> on the first row: it reads <code>Favourite: 0, used:</code>. Press Down to move to the second row and <span class="keys"><kbd class="key-r">R</kbd></span> again: it reads <code>Favourite: 1, used:</code>. Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> on "Use" and <code>used:</code> shows the row's item name.</p>
+<h2 id="key-labels">Key labels<a class="headerlink" href="#key-labels" title="Permanent link">&para;</a></h2>
+<p><code>&lt;kbd action="&lt;path&gt;"/&gt;</code> shows the current key of an Input Action as text and follows rebinding, the input device and the culture. <code>action</code> is
+the package path of the Input Action, or one of <code>confirm</code>, <code>back</code>, <code>navigate</code>, <code>stepLeft</code>, <code>stepRight</code>, the keys of the project's
+Confirm and Back and of the navigation:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Press <span class="p">&lt;</span><span class="nt">kbd</span> <span class="na">action</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/RowHotkeys/IA_Sample_RowAction"</span><span class="p">/&gt;</span> to mark the row, <span class="p">&lt;</span><span class="nt">kbd</span> <span class="na">action</span><span class="o">=</span><span class="s">"back"</span><span class="p">/&gt;</span> to leave.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>&lt;kbd&gt;</code> keeps the monospace font of the default style sheet. The text is the key's display name, or the entry of the
+  <code>KeyLabels</code> project setting for that key (<code>A</code>, <code>LB</code>, <code>Esc</code>, arrows and others have defaults; a project overrides them).</li>
+<li>The element gets a <code>key</code> attribute with the name of the shown key (<code>Gamepad_FaceButton_Bottom</code>; <code>navigate</code> has none), so RCSS can style
+  one key: <code>kbd[key=Gamepad_FaceButton_Bottom] { border-radius: 50%; }</code>.</li>
+<li><code>action</code> takes no <code>{{ }}</code> value and the <code>&lt;kbd&gt;</code> takes no children; either is a compile error. An empty <code>action</code> leaves an empty <code>&lt;kbd&gt;</code>. A <code>&lt;kbd&gt;</code>
+  without <code>action</code> is a plain element. In a <a href="../components/">component</a>, <code>action="$action"</code> takes the static value of a prop.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Deprecated</p>
+<p><code>{{ ArcKeys.&lt;action name&gt; }}</code>, the key label by the asset name, still works and is a validator warning. Use <code>&lt;kbd action="&lt;path&gt;"/&gt;</code>.
+<code>ArcKeys.confirm</code>, <code>ArcKeys.back</code>, <code>ArcKeys.navigate</code>, <code>ArcKeys.stepLeft</code>, <code>ArcKeys.stepRight</code> and <code>ArcKeys.scheme</code> are not deprecated.</p>
+</div>
 <h2 id="project-setup">Project setup<a class="headerlink" href="#project-setup" title="Permanent link">&para;</a></h2>
 <p>The menu needs the CommonUI setup of <a href="../project-setup/#input-for-menus">Project setup, Input for menus</a>, which also lists
 the sample input assets and their ini lines. A menu document whose Back action has no key logs a warning when it

@@ -2231,7 +2231,7 @@
 <h1 id="attribute-reference">Attribute reference<a class="headerlink" href="#attribute-reference" title="Permanent link">&para;</a></h1>
 <p>Every attribute and head tag a <a href="../documents/">document</a> can use, grouped by where it goes. Each row names the value, what it does and the
 page that explains it. Names in angle brackets are filled in:
-<code>data-class-&lt;name&gt;</code> is <code>data-class-active</code>.</p>
+<code>class:&lt;name&gt;</code> is <code>class:active</code>.</p>
 <h2 id="head-meta">Head <code>&lt;meta&gt;</code><a class="headerlink" href="#head-meta" title="Permanent link">&para;</a></h2>
 <p><code>&lt;meta name="..." content="..."/&gt;</code>, each name at most once. Details and defaults: <a href="../documents/">Documents</a>.</p>
 <table>
@@ -2304,7 +2304,7 @@ page that explains it. Names in angle brackets are filled in:
 <tr>
 <td><code>name</code></td>
 <td>text, unique in the document</td>
-<td>The name <code>data-model</code> uses.</td>
+<td>The name <code>:model</code> uses.</td>
 </tr>
 <tr>
 <td><code>class</code></td>
@@ -2339,7 +2339,7 @@ page that explains it. Names in angle brackets are filled in:
 </tbody>
 </table>
 <h2 id="binding">Binding<a class="headerlink" href="#binding" title="Permanent link">&para;</a></h2>
-<p>An expression reads the nearest <code>data-model</code>. Details: <a href="../data-binding/">Data binding</a>.</p>
+<p>An expression reads a field as <code>&lt;model&gt;.&lt;Field&gt;</code>. Details: <a href="../data-binding/">Data binding</a>.</p>
 <table>
 <thead>
 <tr>
@@ -2350,87 +2350,87 @@ page that explains it. Names in angle brackets are filled in:
 </thead>
 <tbody>
 <tr>
-<td><code>data-model</code></td>
+<td><code>:model</code></td>
 <td>a <code>&lt;viewmodel&gt;</code> name</td>
 <td>The model the element and its children read.</td>
 </tr>
 <tr>
-<td><code>data-if</code></td>
+<td><code>:if</code></td>
 <td>expression</td>
 <td>Present only while true.</td>
 </tr>
 <tr>
-<td><code>data-visible</code></td>
+<td><code>:visible</code></td>
 <td>expression</td>
 <td>Sets <code>visibility</code>; the layout stays.</td>
 </tr>
 <tr>
-<td><code>data-for</code></td>
+<td><code>:for</code></td>
 <td><code>row, index : List</code></td>
 <td>One element per row (<a href="../data-binding/#lists">Lists</a>).</td>
 </tr>
 <tr>
-<td><code>data-key</code></td>
+<td><code>:key</code></td>
 <td>a member of the row</td>
-<td>The row identity of a <code>data-for</code> element.</td>
+<td>The row identity of a <code>:for</code> element.</td>
 </tr>
 <tr>
-<td><code>data-virtual</code></td>
+<td><code>:virtual</code></td>
 <td>none</td>
-<td>On a <code>data-for</code> element, creates only the rows near the scrolled area; the parent must scroll vertically (<a href="../data-binding/#virtual-lists">Virtual lists</a>).</td>
+<td>On a <code>:for</code> element, creates only the rows near the scrolled area; the parent must scroll vertically (<a href="../data-binding/#virtual-lists">Virtual lists</a>).</td>
 </tr>
 <tr>
-<td><code>data-rml</code></td>
+<td><code>:rml</code></td>
 <td>expression</td>
 <td>Replaces the element's content with the <a href="../glossary/#rml">RML</a> in the value; never use it for text a player typed (<a href="../data-binding/#inner-rml">Inner RML</a>).</td>
 </tr>
 <tr>
-<td><code>data-class-&lt;name&gt;</code></td>
+<td><code>class:&lt;name&gt;</code></td>
 <td>expression</td>
 <td>Adds the class while true.</td>
 </tr>
 <tr>
-<td><code>data-style-&lt;property&gt;</code></td>
+<td><code>style:&lt;property&gt;</code></td>
 <td>expression</td>
 <td>Sets one style property.</td>
 </tr>
 <tr>
-<td><code>data-attr-&lt;name&gt;</code></td>
+<td><code>attr:&lt;name&gt;</code></td>
 <td>expression</td>
 <td>Sets an attribute to the value.</td>
 </tr>
 <tr>
-<td><code>data-attrif-&lt;name&gt;</code></td>
+<td><code>attrif:&lt;name&gt;</code></td>
 <td>expression</td>
 <td>Sets an empty attribute while true, removes it otherwise (<a href="../navigation-reference/#tab-bar">Navigation</a>).</td>
 </tr>
 <tr>
-<td><code>data-pulse-&lt;class&gt;</code></td>
+<td><code>pulse:&lt;class&gt;</code></td>
 <td>expression</td>
 <td>Removes and adds the class again on each change of the value, so an animation restarts; the first value never pulses (<a href="../styling/">Styling</a>).</td>
 </tr>
 <tr>
-<td><code>data-value</code></td>
+<td><code>:value</code></td>
 <td>expression</td>
-<td>Sets the <code>value</code> attribute; a model variable is read-only (<a href="../text-fields/">Text fields</a>).</td>
+<td>Sets the <code>value</code> attribute; writes a writable model field back on <code>change</code> (<a href="../forms/#show-and-write-back">Forms</a>).</td>
 </tr>
 <tr>
-<td><code>data-checked</code></td>
+<td><code>:checked</code></td>
 <td>expression</td>
 <td>A boolean sets <code>checked</code>; other values check the element when they equal its <code>value</code> (<a href="../forms/">Forms</a>).</td>
 </tr>
 <tr>
-<td><code>data-world</code></td>
+<td><code>:world</code></td>
 <td>expression giving <code>"x y z"</code></td>
 <td>Places the element over a world point (<a href="../world-markers/">World markers</a>).</td>
 </tr>
 <tr>
-<td><code>data-alias-&lt;name&gt;</code></td>
+<td><code>alias:&lt;name&gt;</code></td>
 <td>a data path</td>
 <td>Makes <code>&lt;name&gt;</code> stand for that path in the element and its descendants (<a href="../data-binding/#aliases">Aliases</a>).</td>
 </tr>
 <tr>
-<td><code>data-event-&lt;event&gt;</code></td>
+<td><code>on:&lt;event&gt;</code></td>
 <td>expression list</td>
 <td>Runs the calls on an event (<a href="../events/">Events</a>, <a href="../reference-events/">event reference</a>).</td>
 </tr>
@@ -2498,7 +2498,7 @@ page that explains it. Names in angle brackets are filled in:
 <td>The name of the area that holds focus, for CSS selectors.</td>
 </tr>
 <tr>
-<td><code>data-focus-request</code></td>
+<td><code>:focus-request</code></td>
 <td>expression</td>
 <td>Each later non-empty change focuses the element (<a href="../navigation-reference/#focus-requests">Focus requests</a>).</td>
 </tr>
@@ -2509,17 +2509,17 @@ page that explains it. Names in angle brackets are filled in:
 </tr>
 <tr>
 <td><code>data-hotkey</code></td>
-<td>UI action name</td>
-<td>Clicks the element when the action fires.</td>
+<td>Input Action package path (or asset name)</td>
+<td>Clicks the element when the action fires (<a href="../input/#the-menus-own-action">Input and gamepad</a>).</td>
 </tr>
 <tr>
 <td><code>data-hotkey-focus</code></td>
-<td>UI action name</td>
+<td>Input Action package path (or asset name)</td>
 <td>The same, only for the focused element and its ancestors (<a href="../input/#a-hotkey-on-the-focused-row">A hotkey on the focused row</a>).</td>
 </tr>
 <tr>
 <td><code>data-hotkey-cycle</code></td>
-<td>two UI action names, previous and next</td>
+<td>two Input Action package paths (or asset names), previous and next</td>
 <td>On a container: steps through its focusable items.</td>
 </tr>
 <tr>
@@ -2557,7 +2557,7 @@ page that explains it. Names in angle brackets are filled in:
 </tr>
 <tr>
 <td><code>data-drag-action</code></td>
-<td>UI action name</td>
+<td>Input Action package path (or asset name)</td>
 <td>The action that picks up the focused source with pad or keyboard.</td>
 </tr>
 </tbody>
@@ -2578,9 +2578,34 @@ page that explains it. Names in angle brackets are filled in:
 <td>Places a <a href="../glossary/#component">component</a> (<a href="../components/">Components</a>).</td>
 </tr>
 <tr>
+<td><code>&lt;dc-import name="&lt;path&gt;"&gt;</code> of a view</td>
+<td>body</td>
+<td>Places a view: its body, with its models merged into the document's (<a href="../components/#place-a-view">Place a view</a>).</td>
+</tr>
+<tr>
+<td><code>&lt;link rel="component" href="&lt;path&gt;" as="&lt;alias&gt;"/&gt;</code></td>
+<td><code>&lt;head&gt;</code></td>
+<td>Names a component, so <code>&lt;dc-import name="&lt;alias&gt;"&gt;</code> can use the alias (<a href="../components/#alias-in-the-head">Components</a>).</td>
+</tr>
+<tr>
+<td><code>&lt;kbd action="&lt;path&gt;"/&gt;</code></td>
+<td>body</td>
+<td>Shows the current key of an Input Action, or of <code>confirm</code>, <code>back</code>, <code>navigate</code>, <code>stepLeft</code>, <code>stepRight</code> (<a href="../input/#key-labels">Key labels</a>).</td>
+</tr>
+<tr>
+<td><code>&lt;viewmodel manual="true"&gt;</code> given at an import</td>
+<td><code>&lt;dc-import&gt;</code> of a view</td>
+<td><code>member="{{ m }}"</code>: the attribute named like the view's <code>manual</code> model gives that copy its object (<a href="../components/#place-a-view">Place a view</a>).</td>
+</tr>
+<tr>
 <td><code>&lt;prop&gt;</code></td>
 <td>component</td>
 <td>Declares a property of the component.</td>
+</tr>
+<tr>
+<td><code>&lt;state name type default/&gt;</code></td>
+<td>component header</td>
+<td>Declares a value the component keeps per placed copy, read as <code>state.&lt;name&gt;</code> (<a href="../components/#local-state">Local state</a>).</td>
 </tr>
 <tr>
 <td><code>&lt;slot&gt;</code>, <code>slot</code></td>

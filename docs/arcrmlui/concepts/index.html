@@ -2297,7 +2297,7 @@
 <h1 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h1>
 <p>The terms the rest of the guide uses, in the order you meet them. Read it once before the feature pages, or come back
 when a term is unfamiliar. The <a href="../glossary/">Glossary</a> defines each term in a sentence or two.</p>
-<p><img alt="Diagram: an .rml document styled by .rcss sheets opens per local player on a UI.Layer layer; a view model gives its Field Notify fields to an element with data-model, and data-event-click calls one of its BlueprintCallable functions" src="../images/concepts-overview.svg" /></p>
+<p><img alt="Diagram: an .rml document styled by .rcss sheets opens per local player on a UI.Layer layer; a view model gives its Field Notify fields to an element with :model, and on:click calls one of its BlueprintCallable functions" src="../images/concepts-overview.svg" /></p>
 <h2 id="documents-and-content-roots">Documents and content roots<a class="headerlink" href="#documents-and-content-roots" title="Permanent link">&para;</a></h2>
 <p>A document is an <code>.rml</code> file: HTML-like markup with a <code>&lt;head&gt;</code> and a <code>&lt;body&gt;</code>, styled by <code>.rcss</code> style sheets it
 links. Documents and sheets live in a content root, the <code>Content</code> folder of the project (<code>/Game</code>) or of a plugin in
@@ -2376,30 +2376,30 @@ the instance comes from:</p>
 <code>preview="&lt;file&gt;.json"</code> binds stand-in data for the editor (sample EditorPreview). <a href="../view-models/">View models</a> has
 the rules per source.</p>
 <h2 id="bindings">Bindings<a class="headerlink" href="#bindings" title="Permanent link">&para;</a></h2>
-<p><code>data-model="&lt;name&gt;"</code> on an element makes a model's fields readable inside it. Only Field Notify fields (see the <a href="../glossary/">Glossary</a>) are
+<p><code>:model="&lt;name&gt;"</code> on an element makes a model's fields readable inside it. Only Field Notify fields (see the <a href="../glossary/">Glossary</a>) are
 exposed, and the document updates when the model broadcasts a change. A field shows with <code>{{ Field }}</code>, and
 attributes bind it to classes, styles, attributes and conditions, as in this excerpt of the FieldBinding sample:</p>
-<div class="highlight"><span class="filename">FieldBinding.rml</span><pre><span></span><code>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Count: {{ Count }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Progress: {{ Progress | format(1) }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ Message | to_upper }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"bEven"</span><span class="p">&gt;</span>The count is even.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"!bEven"</span><span class="p">&gt;</span>The count is odd.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-badge"</span> <span class="na">data-class-fb-odd</span><span class="o">=</span><span class="s">"!bEven"</span><span class="p">&gt;</span>odd or even<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">FieldBinding.rml</span><pre><span></span><code>        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Count: {{ fields.Count }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Progress: {{ fields.Progress | format(1) }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ fields.Message | to_upper }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">:if</span><span class="o">=</span><span class="s">"fields.bEven"</span><span class="p">&gt;</span>The count is even.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">:if</span><span class="o">=</span><span class="s">"!fields.bEven"</span><span class="p">&gt;</span>The count is odd.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-badge"</span> <span class="na">class:fb-odd</span><span class="o">=</span><span class="s">"!fields.bEven"</span><span class="p">&gt;</span>odd or even<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>A document never writes a property; it calls a function that does. <a href="../data-binding/">Data binding</a> has the types,
 transforms and lists.</p>
 <h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
-<p><code>data-event-&lt;event&gt;</code> runs an expression when the element receives the event. <code>call('', 'Function', args...)</code> calls a
-<code>BlueprintCallable</code> function of a model; the empty <code>''</code> means the model of the element's <code>data-model</code>, <code>callIf(condition, '', 'Function', args...)</code> calls only when the
+<p><code>on:&lt;event&gt;</code> runs an expression when the element receives the event. <code>call('model', 'Function', args...)</code> calls a
+<code>BlueprintCallable</code> function of the model that name picks, one the document declares, <code>callIf(condition, 'model', 'Function', args...)</code> calls only when the
 condition holds, and <code>stopPropagation()</code> stops the event there. <code>data-action</code> is a document action handled by the
 plugin, not a view model call: <code>close</code> closes the document. Another excerpt of the same document:</p>
-<div class="highlight"><span class="filename">FieldBinding.rml</span><pre><span></span><code>            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"fb-add"</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-button"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Increment')"</span><span class="p">&gt;</span>Add one<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">FieldBinding.rml</span><pre><span></span><code>            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"fb-add"</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-button"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('fields', 'Increment')"</span><span class="p">&gt;</span>Add one<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"fb-button"</span> <span class="na">data-action</span><span class="o">=</span><span class="s">"close"</span><span class="p">&gt;</span>Close<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>See <a href="../events/">Events</a>.</p>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
 <p>A component is an <code>.rml</code> file whose root is <code>&lt;component&gt;</code>, with declared props and slots. A document imports it with
-<code>&lt;dc-import name="&lt;package path&gt;" prop="value"&gt;</code>; props are static text or a bound <code>{{ }}</code> value, and the
+<code>&lt;dc-import name="&lt;package path&gt;" prop="value"&gt;</code> (or by a name declared in the head with <code>&lt;link rel="component" href="&lt;package path&gt;" as="&lt;name&gt;"/&gt;</code>); props are static text or a bound <code>{{ }}</code> value, and the
 component's markup is expanded into the document when the document is compiled. See <a href="../components/">Components</a>.</p>
 <h2 id="the-update-cycle">The update cycle<a class="headerlink" href="#the-update-cycle" title="Permanent link">&para;</a></h2>
 <p>A change reaches the screen one update later: the plugin draws documents on its own thread, so a view model change
@@ -2427,7 +2427,7 @@ file of its own.</p>
 <p>ArcRmlUI lays out and draws documents with RmlUi, an open-source UI library with HTML-like markup and CSS-like
 styling. ArcRmlUI extends it to behave more like a browser. This guide and <a href="../reference-css/">CSS support</a> are the
 reference for what a document can do. RmlUi's own documentation describes the library this plugin is built on; where it differs, this guide is right, and <a href="../from-rmlui/">Coming from RmlUi</a> lists the differences. Documents reach the game through
-view models and <code>data-*</code> attributes, and code through the plugin's own API (<a href="../reference-api/">C++ and Blueprint</a>).</p>
+view models and binding attributes, and code through the plugin's own API (<a href="../reference-api/">C++ and Blueprint</a>).</p>
 
 
 

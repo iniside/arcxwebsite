@@ -2186,9 +2186,9 @@ when changing the property in Project Settings makes the editor ask you to resta
 <td>Key Labels</td>
 <td><code>KeyLabels</code></td>
 <td>Input</td>
-<td>the four arrow keys and the four D-pad keys</td>
+<td>arrow keys, D-pad, gamepad buttons and a few keyboard keys</td>
 <td>no</td>
-<td>The text shown for a key in <code>ArcKeys</code> labels; see below.</td>
+<td>The text shown for a key in a <code>&lt;kbd action&gt;</code> label; see below.</td>
 </tr>
 <tr>
 <td>Default Input Mapping Priority</td>
@@ -2225,11 +2225,12 @@ when changing the property in Project Settings makes the editor ask you to resta
 </tbody>
 </table>
 <h2 id="key-labels">Key labels<a class="headerlink" href="#key-labels" title="Permanent link">&para;</a></h2>
-<p>A document shows the key of an action with <code>{{ ArcKeys.&lt;name&gt; }}</code> (<a href="../input/#the-document">Input and gamepad</a>). The label
+<p>A document shows the key of an action with <code>&lt;kbd action="/Game/Input/IA_Jump"/&gt;</code> (<a href="../input/#the-document">Input and gamepad</a>). The label
 of a key is its entry in <strong>Key Labels</strong>; a key without an entry shows the engine's short display name of the key. The
-default entries replace the arrow keys and the D-pad with arrow and triangle glyphs. The labels <code>navigate</code>, <code>stepLeft</code>
+default entries are arrow glyphs for the arrow keys, triangle glyphs for the D-pad, <code>A</code> <code>B</code> <code>X</code> <code>Y</code> for the face buttons, <code>LB</code> <code>RB</code> <code>LT</code> <code>RT</code>, <code>LS</code> <code>RS</code>, <code>R↑</code>, <code>Start</code> and <code>View</code> on the pad, and <code>Shift</code>, <code>Ctrl</code>, <code>Esc</code> and <code>Del</code> on the keyboard. The labels <code>navigate</code>, <code>stepLeft</code>
 and <code>stepRight</code> built from the same entries are described under
 <a href="../view-models/#fields-every-model-gets">Fields every model gets</a>.</p>
+<p>Deprecated: <code>{{ ArcKeys.&lt;action name&gt; }}</code> still works; use <code>&lt;kbd action="&lt;package path&gt;"/&gt;</code>.</p>
 
 
 

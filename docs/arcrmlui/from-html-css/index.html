@@ -2325,7 +2325,7 @@ and a web font link does not load: declare each font in a font sheet, see <a hre
 </tr>
 <tr>
 <td><code>a</code></td>
-<td>No <code>href</code> behaviour. Use <code>data-action</code> or <code>data-event-click</code>.</td>
+<td>No <code>href</code> behaviour. Use <code>data-action</code> or <code>on:click</code>.</td>
 </tr>
 <tr>
 <td><code>textarea</code></td>
@@ -2338,9 +2338,9 @@ Text fields and focus: <a href="../text-fields/">Text fields</a>, <a href="../na
 <h2 id="no-javascript">No JavaScript<a class="headerlink" href="#no-javascript" title="Permanent link">&para;</a></h2>
 <p>A <code>&lt;script&gt;</code> is a compile error and no <code>on*</code> handler runs. What replaces it:</p>
 <ul>
-<li><strong>Data</strong>: a <a href="../glossary/#view-model">view model</a> (<code>UMVVMViewModelBase</code>, C++ or Blueprint) is declared in the head and read with <code>data-*</code>
-  bindings. <a href="../view-models/">View models</a>, <a href="../data-binding/">Data binding</a>.</li>
-<li><strong>Click handlers</strong>: <code>data-event-click="call(...)"</code> calls a view model function. <a href="../events/">Events</a>.</li>
+<li><strong>Data</strong>: a <a href="../glossary/#view-model">view model</a> (<code>UMVVMViewModelBase</code>, C++ or Blueprint) is declared in the head and read with binding
+  attributes. <a href="../view-models/">View models</a>, <a href="../data-binding/">Data binding</a>.</li>
+<li><strong>Click handlers</strong>: <code>on:click="call(...)"</code> calls a view model function. <a href="../events/">Events</a>.</li>
 <li><strong>Navigation</strong>: <code>data-action="close"</code> or <code>data-action="open:&lt;package path&gt;"</code> closes the document or opens another.
   <a href="../events/#document-actions">Events</a>.</li>
 <li><strong>Tabs and frames</strong>: <a href="../frames-and-tabs/">Frames and tabs</a>.</li>

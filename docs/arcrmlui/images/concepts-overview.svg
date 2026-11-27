@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 310" width="820" height="310" role="img" aria-label="Concepts: an .rml document styled by .rcss sheets opens per local player on a UI.Layer layer; a view model exposes Field Notify fields to elements under data-model, and data-event calls run its BlueprintCallable functions." font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#111827">
-<title>Concepts: an .rml document styled by .rcss sheets opens per local player on a UI.Layer layer; a view model exposes Field Notify fields to elements under data-model, and data-event calls run its BlueprintCallable functions.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 310" width="820" height="310" role="img" aria-label="Concepts: an .rml document styled by .rcss sheets opens per local player on a UI.Layer layer; a view model exposes Field Notify fields to elements under :model, and data-event calls run its BlueprintCallable functions." font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#111827">
+<title>Concepts: an .rml document styled by .rcss sheets opens per local player on a UI.Layer layer; a view model exposes Field Notify fields to elements under :model, and data-event calls run its BlueprintCallable functions.</title>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
 <rect x="0.5" y="0.5" width="819" height="309" rx="8" fill="#f3f4f6" stroke="#9ca3af"/>
 <rect x="20" y="30" width="260" height="74" rx="5" fill="#b9d3f0" stroke="#4b5563"/><text x="150" y="55" text-anchor="middle" font-weight="600">Document (.rml)</text><text x="150" y="71" text-anchor="middle">styled by linked .rcss sheets,</text><text x="150" y="87" text-anchor="middle">in a content root</text>
 <line x1="280" y1="67" x2="538" y2="67" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
 <text x="409" y="58" text-anchor="middle">opens per local player on a layer</text>
 <rect x="540" y="30" width="260" height="74" rx="5" fill="#f6d7a7" stroke="#4b5563"/><text x="670" y="55" text-anchor="middle" font-weight="600">Layer (UI.Layer.* tag)</text><text x="670" y="71" text-anchor="middle">from &lt;meta name="layer"&gt;,</text><text x="670" y="87" text-anchor="middle">default UI.Layer.Game</text>
-<rect x="20" y="180" width="260" height="90" rx="5" fill="#b9d3f0" stroke="#4b5563"/><text x="150" y="221" text-anchor="middle" font-weight="600">Element with</text><text x="150" y="237" text-anchor="middle">data-model="&lt;name&gt;"</text>
+<rect x="20" y="180" width="260" height="90" rx="5" fill="#b9d3f0" stroke="#4b5563"/><text x="150" y="221" text-anchor="middle" font-weight="600">Element with</text><text x="150" y="237" text-anchor="middle">:model="&lt;name&gt;"</text>
 <line x1="150" y1="104" x2="150" y2="178" stroke="#374151" stroke-width="1.6" stroke-dasharray="4 3"/>
 <text x="158" y="146" fill="#374151">inside the document</text>
 <rect x="540" y="180" width="260" height="90" rx="5" fill="#d1e7d1" stroke="#4b5563"/><text x="670" y="205" text-anchor="middle" font-weight="600">View model</text><text x="670" y="221" text-anchor="middle">UMVVMViewModelBase,</text><text x="670" y="237" text-anchor="middle">C++ or Blueprint, declared</text><text x="670" y="253" text-anchor="middle">in the head with &lt;viewmodel&gt;</text>
@@ -14,6 +14,6 @@
 <text x="409" y="191" text-anchor="middle">Field Notify fields: {{ Field }}</text>
 <text x="409" y="218" text-anchor="middle" fill="#374151">updated when the model broadcasts</text>
 <line x1="282" y1="250" x2="538" y2="250" stroke="#374151" stroke-width="1.6" marker-end="url(#a)" />
-<text x="409" y="242" text-anchor="middle">data-event-click: call('', 'Function')</text>
+<text x="409" y="242" text-anchor="middle">on:click: call('model', 'Function')</text>
 <text x="409" y="268" text-anchor="middle" fill="#374151">runs a BlueprintCallable function</text>
 </svg>

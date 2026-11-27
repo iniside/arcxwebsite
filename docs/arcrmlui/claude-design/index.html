@@ -2327,10 +2327,10 @@ download that icon from <a href="https://lucide.dev">lucide.dev</a> as SVG and s
   tokens name need an <code>@font-face</code> in one of your <a href="../project-setup/#fonts">font sheets</a>.</li>
 <li>For each component (a file that declares its own props): <code>&lt;Name&gt;.rml</code>, a <code>&lt;component&gt;</code> with one <code>&lt;prop&gt;</code> per
   prop and its default, and <code>&lt;Name&gt;.rcss</code>. Fixed styles become classes (<code>dk-&lt;name&gt;</code> on the root); a style that changes
-  with a true/false or a choice prop becomes a modifier class switched by <code>data-class-*</code>; a style that follows a number
-  becomes <code>data-style-*</code>. Hover styles apply to <code>:hover</code> and <code>:focus-visible</code>.</li>
+  with a true/false or a choice prop becomes a modifier class switched by <code>class:*</code>; a style that follows a number
+  becomes <code>style:*</code>. Hover styles apply to <code>:hover</code> and <code>:focus-visible</code>.</li>
 <li>For each screen (a file that imports components and declares no props): a document that links <code>tokens.rcss</code> and its own
-  <code>.rcss</code>, with <code>data-model</code> on <code>&lt;body&gt;</code>. Imports name the components by <a href="../glossary/#package-path">package path</a> in the
+  <code>.rcss</code>, with <code>:model</code> on <code>&lt;body&gt;</code>. Imports name the components by <a href="../glossary/#package-path">package path</a> in the
   <code>--dest</code> folder.</li>
 </ul>
 <p>Files with no <code>&lt;x-dc&gt;</code> template, and the pages named <code>GameUI</code>, <code>Components</code>, <code>Style Guide</code>, <code>HudDebug</code>,
@@ -2349,10 +2349,10 @@ The ones you meet most:</p>
 <tbody>
 <tr>
 <td><code>event wiring: ...</code></td>
-<td>Put <code>data-event-click</code> with <code>call()</code> on the import (<a href="../events/">Events</a>).</td>
+<td>Put <code>on:click</code> with <code>call()</code> on the import (<a href="../events/">Events</a>).</td>
 </tr>
 <tr>
-<td><code>data-for over $&lt;list&gt;; item struct &lt;Name&gt; { &lt;fields&gt; } ...</code></td>
+<td><code>:for over $&lt;list&gt;; item struct &lt;Name&gt; { &lt;fields&gt; } ...</code></td>
 <td>Give the view model a list of rows with these fields (<a href="../data-binding/#struct-lists">Struct lists</a>).</td>
 </tr>
 <tr>
@@ -2361,15 +2361,15 @@ The ones you meet most:</p>
 </tr>
 <tr>
 <td><code>screen shell: ...</code></td>
-<td>Add the head of the screen: <code>&lt;meta&gt;</code> names, the <code>&lt;viewmodel&gt;</code> for its <code>data-model</code>, focus areas and Back (<a href="../documents/#the-head">Documents</a>, <a href="../navigation/">Navigation</a>).</td>
+<td>Add the head of the screen: <code>&lt;meta&gt;</code> names, the <code>&lt;viewmodel&gt;</code> for its <code>:model</code>, focus areas and Back (<a href="../documents/#the-head">Documents</a>, <a href="../navigation/">Navigation</a>).</td>
 </tr>
 <tr>
 <td><code>... write this style by hand</code>, <code>... write this declaration by hand</code>, <code>... write the rule by hand</code></td>
 <td>The converter could not reduce the style to classes; write it in the <code>.rcss</code>.</td>
 </tr>
 <tr>
-<td><code>... the class value loses to the inline data-style-&lt;property&gt;</code></td>
-<td>A <code>data-style-*</code> shorthand hides a longhand of a modifier class; write the combined value by hand.</td>
+<td><code>... the class value loses to the inline style:&lt;property&gt;</code></td>
+<td>A <code>style:*</code> shorthand hides a longhand of a modifier class; write the combined value by hand.</td>
 </tr>
 <tr>
 <td><code>... the focused look prop is a :focus-visible rule, not data</code></td>

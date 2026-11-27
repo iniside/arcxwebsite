@@ -2220,7 +2220,7 @@ written in the <code>.rml</code> is the source (English) text. A key is made of 
 <div class="highlight"><span class="filename">Localization.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-title"</span> <span class="na">loc</span><span class="o">=</span><span class="s">"Title"</span><span class="p">&gt;</span>Localization<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-text"</span> <span class="na">loc</span><span class="o">=</span><span class="s">"Welcome"</span><span class="p">&gt;</span>Welcome, traveler!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-plain"</span><span class="p">&gt;</span>Plain text without loc stays as written.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"lc-add"</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-button"</span> <span class="na">loc</span><span class="o">=</span><span class="s">"AddCoin"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'AddCoin')"</span><span class="p">&gt;</span>Add a coin<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"lc-add"</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-button"</span> <span class="na">loc</span><span class="o">=</span><span class="s">"AddCoin"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('loc', 'AddCoin')"</span><span class="p">&gt;</span>Add a coin<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </code></pre></div>
 <ul>
 <li>The table is one per <code>.rml</code> file: <code>&lt;folder&gt;/Loc/ST_&lt;Name&gt;</code> beside the file, here <code>Loc/ST_Localization</code>. Only
@@ -2235,7 +2235,7 @@ written in the <code>.rml</code> is the source (English) text. A key is made of 
 <h2 id="plurals">Plurals<a class="headerlink" href="#plurals" title="Permanent link">&para;</a></h2>
 <p><code>{{ n | arcplural('Key') }}</code> takes the entry <code>Key</code> of the same table, which holds the forms. The entry is String Table
 text, not <a href="../glossary/#rml">RML</a>:</p>
-<div class="highlight"><span class="filename">Localization.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"lc-coins"</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-value"</span><span class="p">&gt;</span>{{ Coins | arcplural('Coins') }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">Localization.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"lc-coins"</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-value"</span><span class="p">&gt;</span>{{ loc.Coins | arcplural('Coins') }}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">String Table entry Coins</span><pre><span></span><code>{0}|plural(one={0} coin,other={0} coins)
 </code></pre></div>
@@ -2251,7 +2251,7 @@ only checks it.</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>call('', 'SwitchCulture', 'pl')</code> calls it. ArcRmlUI translates every open document again in place; no document is
+<p><code>call('loc', 'SwitchCulture', 'pl')</code> calls it. ArcRmlUI translates every open document again in place; no document is
 reopened, so focus, scroll and the count stay. The engine console command <code>culture=pl</code> does the same. The sample's <a href="../glossary/#view-model">view model</a>
 also listens to <code>FInternationalization::Get().OnCultureChanged()</code>, so the <code>{{ Culture }}</code> readout follows a change from
 anywhere.</p>

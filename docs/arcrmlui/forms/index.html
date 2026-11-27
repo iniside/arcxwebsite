@@ -2253,85 +2253,81 @@
 <h1 id="forms">Forms<a class="headerlink" href="#forms" title="Permanent link">&para;</a></h1>
 <p>Use form controls when the player sets a flag, picks one of a few options, drags a value or chooses from a list, and a
 <a href="../glossary/#view-model">view model</a> must see the choice.</p>
-<p>The FormControls sample has a checkbox, a radio group, a range and a select. Each shows a model value and sends every change
-back; a readout under them shows what the view model holds. Most form markup and CSS from a web page works; see the limits below. Run the sample by choosing FormControls
+<p>The FormControls sample has a checkbox, a radio group, a range and a select. Each shows a model value and writes every change
+back to it; a readout under them shows what the view model holds. Most form markup and CSS from a web page works; see the limits below. Run the sample by choosing FormControls
 in the samples list in the map <code>L_ArcRmlSamples</code> (<a href="../samples/">Samples</a>). Text
 fields have their own page: <a href="../text-fields/">Text fields</a>.</p>
 <p><img alt="The FormControls sample: a Subtitles checkbox, a Warrior, Mage, Rogue radio group, a volume range, a quality select and the readout line" src="../images/form-controls.png" /></p>
 <h2 id="show-and-write-back">Show and write back<a class="headerlink" href="#show-and-write-back" title="Permanent link">&para;</a></h2>
-<p>A binding on a control only shows the model value. The control's change does not reach the view model by itself: a model
-variable is read-only, and a write from the control is refused without a warning. Send the change with an event handler that
-calls a view model function:</p>
-<ul>
-<li><code>data-checked</code>, <code>data-value</code> and <code>data-attr-value</code> set the control from the model.</li>
-<li><code>data-event-input</code> and <code>data-event-change</code> hear the user's change and <code>call()</code> a function that sets the field.</li>
-</ul>
-<p>A value written by a binding fires no event.</p>
-<p>The sample's view model has one field and one setter per control. This is the checkbox's pair (excerpt of
-<code>ArcRmlSamplesFormControls.h</code>; <code>ClassName</code>, <code>Volume</code> and <code>Quality</code> follow the same pattern). A Blueprint view model
-uses a variable and a function instead (<a href="../blueprint-view-models/">Blueprint view models</a>):</p>
-<div class="highlight"><span class="filename">FormControls/ArcRmlSamplesFormControls.h</span><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
+<p><code>:checked</code>, <code>:value</code> and <code>attr:value</code> set the control from the model. <code>:checked</code> and <code>:value</code> also write
+the control's change back to the field: no function and no event handler. Every field Blueprint may write is two-way; a
+<a href="../glossary/#view-model">view model</a> needs only the field:</p>
+<div class="highlight"><span class="filename">FormControls/ArcRmlSamplesFormControls.h</span><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadWrite</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">bSubtitles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-
-<span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
-<span class="kt">void</span><span class="w"> </span><span class="n">SetSubtitles</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">bValue</span><span class="p">);</span>
 </code></pre></div>
+<ul>
+<li>A field that is <code>BlueprintReadOnly</code> (or not Blueprint-visible) is refused: the write logs an error naming the field, and the
+  <a href="../validation/">validator</a> warns <code>read-only-field</code>. Make the field <code>BlueprintReadWrite</code>, or send the change with
+  <code>on:input</code> or <code>on:change</code> and <code>call()</code> a function that sets it (<a href="../text-fields/">Text fields</a> does).</li>
+<li>The write reaches the game in order with <code>call()</code>s. The game then answers with the stored value, so a value it clamps or
+  refuses comes back to the control.</li>
+<li>In an editor preview, or with no local player, the write logs <code>[preview] write</code> and the value stays in the UI only.</li>
+<li>A value written by a binding fires no event. Limits: <a href="../limits/">Limits</a>.</li>
+</ul>
 <h2 id="checkbox">Checkbox<a class="headerlink" href="#checkbox" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">FormControls.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-subtitles"</span> <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span>
-    <span class="na">data-checked</span><span class="o">=</span><span class="s">"bSubtitles"</span>
-    <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'SetSubtitles', ev.checked)"</span><span class="p">/&gt;</span>
+    <span class="na">:checked</span><span class="o">=</span><span class="s">"fc.bSubtitles"</span><span class="p">/&gt;</span>
 <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">"fc-subtitles"</span><span class="p">&gt;</span>Subtitles<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </code></pre></div>
 <ul>
-<li><code>data-checked</code> with a bool checks the box when the bool is true.</li>
+<li><code>:checked</code> with a bool checks the box when the bool is true.</li>
 <li>A toggle by click, <span class="keys"><kbd class="key-space">Space</kbd></span>, <span class="keys"><kbd class="key-enter">Enter</kbd></span>, gamepad accept or a click on its <code>&lt;label&gt;</code> fires <code>input</code>, then <code>change</code>. <code>ev.checked</code>
   is the box's state after the toggle.</li>
 <li><code>ev.value</code> of a checkbox or radio is its <code>value</code> attribute (<code>on</code> without one), checked or not. Use <code>ev.checked</code> for the state.</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Bind a checkbox with <code>data-checked</code></p>
-<p><code>data-attr-checked="Flag"</code> writes the bool as text, so a false value sets <code>checked="0"</code>. Any <code>checked</code> attribute checks
-the control, so the box stays checked. <code>data-checked="Flag"</code> (a bool, or a string equal to the control's <code>value</code>) and
-<code>data-attrif-checked="Flag"</code> (the attribute is set when true and removed when false) check and uncheck correctly.</p>
+<p class="admonition-title">Bind a checkbox with <code>:checked</code></p>
+<p><code>attr:checked="Flag"</code> writes the bool as text, so a false value sets <code>checked="0"</code>. Any <code>checked</code> attribute checks
+the control, so the box stays checked. <code>:checked="Flag"</code> (a bool, or a string equal to the control's <code>value</code>) and
+<code>attrif:checked="Flag"</code> (the attribute is set when true and removed when false) check and uncheck correctly.</p>
 </div>
 <h2 id="radio-group">Radio group<a class="headerlink" href="#radio-group" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">FormControls.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-warrior"</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span> <span class="na">name</span><span class="o">=</span><span class="s">"class"</span> <span class="na">value</span><span class="o">=</span><span class="s">"warrior"</span>
-    <span class="na">data-checked</span><span class="o">=</span><span class="s">"ClassName"</span> <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'SetClassName', ev.value)"</span><span class="p">/&gt;</span> Warrior
+    <span class="na">:checked</span><span class="o">=</span><span class="s">"fc.ClassName"</span><span class="p">/&gt;</span> Warrior
 <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-mage"</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span> <span class="na">name</span><span class="o">=</span><span class="s">"class"</span> <span class="na">value</span><span class="o">=</span><span class="s">"mage"</span>
-    <span class="na">data-checked</span><span class="o">=</span><span class="s">"ClassName"</span> <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'SetClassName', ev.value)"</span><span class="p">/&gt;</span> Mage
+    <span class="na">:checked</span><span class="o">=</span><span class="s">"fc.ClassName"</span><span class="p">/&gt;</span> Mage
 <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-rogue"</span> <span class="na">type</span><span class="o">=</span><span class="s">"radio"</span> <span class="na">name</span><span class="o">=</span><span class="s">"class"</span> <span class="na">value</span><span class="o">=</span><span class="s">"rogue"</span>
-    <span class="na">data-checked</span><span class="o">=</span><span class="s">"ClassName"</span> <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'SetClassName', ev.value)"</span><span class="p">/&gt;</span> Rogue
+    <span class="na">:checked</span><span class="o">=</span><span class="s">"fc.ClassName"</span><span class="p">/&gt;</span> Rogue
 </code></pre></div>
 <ul>
 <li>Radios with the same <code>name</code> are one group: checking one unchecks the others. A group is the radios inside the same
   <code>&lt;form&gt;</code>; radios outside every <code>&lt;form&gt;</code> form one group per <a href="../glossary/#document">document</a> and do not mix with the radios of a form.</li>
-<li><code>data-checked</code> with a string checks the radio whose <code>value</code> equals the string. The same <code>data-checked="ClassName"</code> on
+<li><code>:checked</code> with a string checks the radio whose <code>value</code> equals the string. The same <code>:checked="ClassName"</code> on
   each radio therefore selects the one that matches. An empty string checks none.</li>
 <li>Picking an unchecked radio fires <code>input</code> and <code>change</code> on that radio only; the radios it unchecks and a radio that is
   already checked fire nothing. <code>ev.value</code> is the picked radio's <code>value</code>.</li>
 </ul>
 <h2 id="range">Range<a class="headerlink" href="#range" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">FormControls.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-volume"</span> <span class="na">class</span><span class="o">=</span><span class="s">"fc-range"</span> <span class="na">type</span><span class="o">=</span><span class="s">"range"</span> <span class="na">min</span><span class="o">=</span><span class="s">"0"</span> <span class="na">max</span><span class="o">=</span><span class="s">"100"</span> <span class="na">step</span><span class="o">=</span><span class="s">"5"</span>
-    <span class="na">data-value</span><span class="o">=</span><span class="s">"Volume"</span>
-    <span class="na">data-event-input</span><span class="o">=</span><span class="s">"call('', 'SetVolume', ev.value)"</span><span class="p">/&gt;</span>
+    <span class="na">:value</span><span class="o">=</span><span class="s">"fc.Volume"</span><span class="p">/&gt;</span>
 </code></pre></div>
 <ul>
-<li><code>data-value</code> sets the slider. <code>input</code> fires for every change the user makes while dragging or stepping, <code>change</code> once at
-  release and once per key step; both carry <code>ev.value</code>. Use <code>data-event-input</code> for a live readout and
-  <code>data-event-change</code> to commit.</li>
+<li><code>:value</code> sets the slider. <code>input</code> fires for every change the user makes while dragging or stepping, <code>change</code> once at
+  release and once per key step; both carry <code>ev.value</code>. <code>:value</code> writes the field on <code>change</code>, at release, not on every step
+  of a drag. For a live readout while dragging, <code>call()</code> a function from <code>on:input</code>.</li>
 <li>A value is clamped to <code>min</code> and <code>max</code> and snapped to <code>step</code>.</li>
 <li>Gamepad and keyboard: the range is a focus stop. Left and Right step it (Up and Down for <code>orientation="vertical"</code>), Home and End
   jump to <code>min</code> and <code>max</code>. Up and Down on a horizontal range move focus, as anywhere else.</li>
 </ul>
 <h2 id="select">Select<a class="headerlink" href="#select" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">FormControls.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-quality"</span> <span class="na">data-attr-value</span><span class="o">=</span><span class="s">"Quality"</span> <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'SetQuality', ev.value)"</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">FormControls.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-quality"</span> <span class="na">:value</span><span class="o">=</span><span class="s">"fc.Quality"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"low"</span><span class="p">&gt;</span>Low<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"medium"</span><span class="p">&gt;</span>Medium<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">"high"</span><span class="p">&gt;</span>High<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
 </code></pre></div>
 <ul>
-<li><code>data-attr-value</code> selects the option whose <code>value</code> matches. <code>input</code> and <code>change</code> fire when a pick changes the value.</li>
+<li><code>:value</code> selects the option whose <code>value</code> matches and writes the pick. <code>input</code> and <code>change</code> fire when a pick changes the value.</li>
 <li>On a closed select <span class="keys"><kbd class="key-enter">Enter</kbd></span>, <span class="keys"><kbd class="key-space">Space</kbd></span> or gamepad accept open the list with the selected option highlighted. Up and Down move
   the highlight, Home and End jump to the first and last option, and <span class="keys"><kbd class="key-enter">Enter</kbd></span>, <span class="keys"><kbd class="key-space">Space</kbd></span> or gamepad accept pick it. A mouse click
   on an option picks it.</li>
@@ -2340,7 +2336,7 @@ the control, so the box stays checked. <code>data-checked="Flag"</code> (a bool,
 <li>Up and Down on a closed select move focus; they do not change the value.</li>
 </ul>
 <h2 id="readout">Readout<a class="headerlink" href="#readout" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">FormControls.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-readout"</span> <span class="na">class</span><span class="o">=</span><span class="s">"fc-result"</span><span class="p">&gt;</span>Subtitles: {{ bSubtitles ? 'on' : 'off' }}, class: {{ ClassName }}, volume: {{ Volume }}, quality: {{ Quality }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">FormControls.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"fc-readout"</span> <span class="na">class</span><span class="o">=</span><span class="s">"fc-result"</span><span class="p">&gt;</span>Subtitles: {{ fc.bSubtitles ? 'on' : 'off' }}, class: {{ fc.ClassName }}, volume: {{ fc.Volume }}, quality: {{ fc.Quality }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>The readout reads the view model, so it shows the value after the setter has run.</p>
 <div class="admonition warning">

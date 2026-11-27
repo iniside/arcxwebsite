@@ -2360,7 +2360,7 @@ font sheet that fails to load logs <code>ArcRmlUI: font sheet '&lt;path&gt;' in 
 <li><strong>Back does nothing, and the log has <code>ArcRmlUI: '&lt;path&gt;': no keys are mapped to the CommonUI Enhanced Input back
   action</code>.</strong> The project's input data has no key on its Back action. Complete the
   <a href="../project-setup/#input-for-menus">input setup</a>; the validator reports it as <code>input-mapping</code>.</li>
-<li><strong>Back closes the document although a <code>data-event-back</code> handler ran.</strong> A <code>call</code> never stops the event. Add
+<li><strong>Back closes the document although a <code>on:back</code> handler ran.</strong> A <code>call</code> never stops the event. Add
   <code>stopPropagation()</code> to the handler, or leave it and let a child area's <code>data-focus-parent</code> take the Back. The order
   is in <a href="../navigation-reference/#back-and-the-parent-area">Navigation</a>.</li>
 </ul>
@@ -2369,7 +2369,7 @@ font sheet that fails to load logs <code>ArcRmlUI: font sheet '&lt;path&gt;' in 
 change. A plain assignment in C++ is not seen, and neither is a Blueprint Set node that does not broadcast.</p>
 <p>Fix: in C++ write the field with <code>UE_MVVM_SET_PROPERTY_VALUE</code>. In a Blueprint <a href="../glossary/#view-model">view model</a>, set the Field Notify variable
 with its Set node, which the editor titles <strong>SET w/ Broadcast</strong> (<a href="../data-binding/#fields">Data binding</a>,
-<a href="../blueprint-view-models/">Blueprint view models</a>). <code>data-value</code> cannot write a value back (<a href="../limits/">Limits</a>).</p>
+<a href="../blueprint-view-models/">Blueprint view models</a>). A field a control writes must be <code>BlueprintReadWrite</code>; a read-only one logs an error (<a href="../forms/#show-and-write-back">Forms</a>).</p>
 <h2 id="a-call-does-nothing">A call does nothing<a class="headerlink" href="#a-call-does-nothing" title="Permanent link">&para;</a></h2>
 <p>Cause: <code>call()</code> runs nothing and logs a warning. The line about a <code>'vm:&lt;path&gt;'</code> argument, the path of a view model
 (<a href="../events/#calls">Events</a>), is an error:</p>
@@ -2409,10 +2409,10 @@ with its Set node, which the editor titles <strong>SET w/ Broadcast</strong> (<a
 </table>
 <p>The validator reports a missing function as <code>unknown-function</code> and a wrong count as <code>call-arity</code>
 (<a href="../validation/#what-it-reports">Validation</a>). A click on a <code>data-action</code> other than <code>close</code> and <code>open:&lt;package path&gt;</code> under a <code>&lt;body&gt;</code> without
-<code>data-model</code> logs <code>action '&lt;action&gt;' was clicked under a &lt;body&gt; or embedded document root that has no data-model; only close
+<code>:model</code> logs <code>action '&lt;action&gt;' was clicked under a &lt;body&gt; or embedded document root that has no :model; only close
 and open:&lt;path&gt; work without one</code>.</p>
 <p>Fix: make the name, the argument count and the argument values match the function in the view model class, and give the
-<code>&lt;body&gt;</code> a <code>data-model</code>.</p>
+<code>&lt;body&gt;</code> a <code>:model</code>.</p>
 <h2 id="a-binding-shows-defaults">A binding shows defaults<a class="headerlink" href="#a-binding-shows-defaults" title="Permanent link">&para;</a></h2>
 <p>Cause: a view model that is not resolved still binds, from its class defaults, and its
 <a href="../view-models/#fields-every-model-gets"><code>ArcResolved</code></a> is false. This is the case before the first
@@ -2428,7 +2428,8 @@ preview model in a <a href="../glossary/#shipping-build">Shipping build</a> or w
 <li>The log has <code>ArcRmlUI: '&lt;path&gt;' input mapping '&lt;mapping&gt;' does not load as an Input Mapping Context</code> (an error). The
   document opens, but its <a href="../glossary/#ui-action">UI actions</a> are unbound. Fix the path of the <code>input-mapping</code> meta.</li>
 <li>A UI action that nothing handles logs <code>UI action '&lt;action&gt;' has no handler, hotkey or cycle</code> at the <code>Log</code> level. Fix: add a <code>data-hotkey</code> or a handler for it.</li>
-<li>A <code>data-event-uiaction</code> handler consumes the action only if it also calls <code>stopPropagation()</code>; otherwise the hotkey
+<li>A <code>data-hotkey</code> name that two actions of the document's contexts share warns in the validator; name the action by its full package path (<code>/Game/Input/IA_Jump</code>).</li>
+<li>A <code>on:uiaction</code> handler consumes the action only if it also calls <code>stopPropagation()</code>; otherwise the hotkey
   runs as well.</li>
 <li>The action must be in the document's <code>input-mapping</code> context, and the document needs an <code>input-mode</code> other than
   <code>game</code> (<a href="../input/#the-menus-own-action">Input and gamepad</a>).</li>
@@ -2437,7 +2438,7 @@ preview model in a <a href="../glossary/#shipping-build">Shipping build</a> or w
 <p>Cause: with <strong>Package Everything</strong> on, every document of every <a href="../glossary/#content-root">content root</a> ships. With it off, a document that is neither in
 <strong>Paths to Package</strong> nor reached from a shipped document by a <a href="../glossary/#frame">frame</a>, a literal <code>open:</code> target or a reference of a
 Blueprint or data asset is not packaged (<a href="../project-setup/#packaging">Project setup, Packaging</a>). A <code>data-action</code>
-built from data (<code>data-attr-data-action</code>, <code>data-attrif-data-action</code> or <code>{{ }}</code>) is not followed; the cook logs
+built from data (<code>attr:data-action</code>, <code>attrif:data-action</code> or <code>{{ }}</code>) is not followed; the cook logs
 <code>'&lt;document&gt;' builds a data-action from data</code> as a warning.</p>
 <p>Fix: add the target to <strong>Paths to Package</strong>. For a document inside a Game Feature plugin, add the <strong>Package RML Documents</strong>
 action to its <code>GameFeatureData</code> instead (<a href="../project-setup/#packaging">Project setup, Packaging</a>).</p>

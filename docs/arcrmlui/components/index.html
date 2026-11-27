@@ -923,6 +923,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#alias-in-the-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Alias in the head
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -935,6 +946,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Local state
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#place-a-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Place a view
+      </span>
+    </span>
+  </a>
   
 </li>
       
@@ -2197,6 +2230,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#alias-in-the-head" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Alias in the head
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2209,6 +2253,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Local state
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#place-a-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Place a view
+      </span>
+    </span>
+  </a>
   
 </li>
       
@@ -2266,13 +2332,13 @@
 <p>A component is an <code>.rml</code> file whose root is <code>&lt;component&gt;</code>: markup you write once and import into a
 <a href="../glossary/#document">document</a> with a <code>&lt;dc-import&gt;</code> element, with props for the values that differ and slots for the
 children the importer supplies. The component file lives in a <a href="../glossary/#content-root">content root</a>, by convention under
-<code>UI/Rml/</code> like a document. The Component sample imports one file, <code>Card.rml</code>, twice.</p>
+<code>UI/Rml/</code> like a document. The Component sample imports one file, <code>Card.rml</code>, twice; the LocalState sample is <a href="#local-state">below</a>.</p>
 <h2 id="define-a-component">Define a component<a class="headerlink" href="#define-a-component" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Card.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">component</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">prop</span> <span class="na">name</span><span class="o">=</span><span class="s">"title"</span> <span class="na">default</span><span class="o">=</span><span class="s">"Card"</span><span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">prop</span> <span class="na">name</span><span class="o">=</span><span class="s">"accentColor"</span> <span class="na">default</span><span class="o">=</span><span class="s">"#3399ff"</span><span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"cp-card"</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"cp-card-head"</span> <span class="na">data-style-background-color</span><span class="o">=</span><span class="s">"$accentColor"</span><span class="p">&gt;</span>{{ $title }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"cp-card-head"</span> <span class="na">style:background-color</span><span class="o">=</span><span class="s">"$accentColor"</span><span class="p">&gt;</span>{{ $title }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"cp-card-body"</span><span class="p">&gt;&lt;</span><span class="nt">slot</span><span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"cp-card-foot"</span><span class="p">&gt;&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">"footer"</span><span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -2280,7 +2346,13 @@ children the importer supplies. The component file lives in a <a href="../glossa
 </code></pre></div>
 <ul>
 <li><code>&lt;prop name="title" default="Card"/&gt;</code> declares a prop and its default. A prop with no default and no value is empty text.</li>
-<li>The body reads a prop as <code>$title</code>: in an expression, as in <code>data-style-background-color="$accentColor"</code>, and inside
+<li><code>type</code> is optional: <code>string</code> (the default when <code>type</code> is missing), <code>number</code>, <code>bool</code> or <code>function</code>, as in
+  <code>&lt;prop name="count" type="number" default="0"/&gt;</code>. A static value or default that does not fit fails the compile: a
+  <code>number</code> takes a decimal number, a <code>bool</code> takes <code>true</code>, <code>false</code> or nothing. A <code>function</code> prop names a view model
+  function the component calls, as in <code>call('model', $onPress)</code>. A <code>{{ }}</code> value is not checked. The type is used only
+  while compiling and in the editor, where the prop row edits a <code>bool</code> with a checkbox, a <code>number</code> with a number
+  field and a <code>function</code> with a function picker.</li>
+<li>The body reads a prop as <code>$title</code>: in an expression, as in <code>style:background-color="$accentColor"</code>, and inside
   <code>{{ }}</code>, as in <code>{{ $title }}</code>.</li>
 <li><code>&lt;slot/&gt;</code> receives the children of the import. <code>&lt;slot name="footer"/&gt;</code> receives only the direct children that carry
   <code>slot="footer"</code>.</li>
@@ -2318,28 +2390,41 @@ document that imports the component.</p>
     <span class="p">&lt;</span><span class="nt">p</span> <span class="na">slot</span><span class="o">=</span><span class="s">"footer"</span><span class="p">&gt;</span>The footer slot.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">dc-import</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/Component/Card"</span> <span class="na">title</span><span class="o">=</span><span class="s">"{{ Title }}"</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Pressed {{ Count }} times.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"cp-press"</span> <span class="na">slot</span><span class="o">=</span><span class="s">"footer"</span> <span class="na">class</span><span class="o">=</span><span class="s">"cp-button"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Increment')"</span><span class="p">&gt;</span>Press<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Pressed {{ card.Count }} times.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"cp-press"</span> <span class="na">slot</span><span class="o">=</span><span class="s">"footer"</span> <span class="na">class</span><span class="o">=</span><span class="s">"cp-button"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('card', 'Increment')"</span><span class="p">&gt;</span>Press<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">dc-import</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="props">Props<a class="headerlink" href="#props" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>name</code> is the absolute <a href="../glossary/#package-path">package path</a> of the component file, <code>.rml</code> optional. A name that does not start with <code>/</code> is a
-  compile error, and no folder is searched.</li>
+<li><code>name</code> is the absolute <a href="../glossary/#package-path">package path</a> of the component file, <code>.rml</code> optional, or an alias declared in the
+  head (<a href="#alias-in-the-head">below</a>). Any other name that does not start with <code>/</code> is a compile error, and no folder is searched.</li>
 <li>A prop is an attribute of the import. A prop declared in camelCase is written in kebab-case: <code>accent-color="#ff9933"</code>
   sets <code>accentColor</code>. An attribute that names no prop is a compile error.</li>
 <li>A prop value is static text (<code>title="Static title"</code>) or one whole-value expression (<code>title="{{ Title }}"</code>); text and
   <code>{{ }}</code> cannot be mixed in one value. A bound value reads the fields of the model the import sits in, here <code>Title</code>
   of the <a href="../glossary/#view-model">view model</a>.</li>
-<li>The import must be inside a <code>data-model</code>. The component's own expressions and <code>call('', ...)</code> then use that model
+<li>The import must be inside a <code>:model</code>. The component's own reads and calls name their model in full, as the import's document does
   (the second import's <code>Pressed {{ Count }} times</code> and <code>Press</code> button above).</li>
-<li><code>data-for</code>, <code>data-if</code>, <code>data-model</code> and <code>data-key</code> on an import apply to the <code>&lt;div class="sc-host"&gt;</code>, the wrapper element the
+<li><code>:for</code>, <code>:if</code>, <code>:model</code> and <code>:key</code> on an import apply to the <code>&lt;div class="sc-host"&gt;</code>, the wrapper element the
   plugin puts around each import, not to the component's content.</li>
+</ul>
+<h3 id="alias-in-the-head">Alias in the head<a class="headerlink" href="#alias-in-the-head" title="Permanent link">&para;</a></h3>
+<p>A document can name a component once in its <code>&lt;head&gt;</code> and import it by that name. The Component sample declares <code>Card</code>:</p>
+<div class="highlight"><span class="filename">Component.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"component"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/Component/Card"</span> <span class="na">as</span><span class="o">=</span><span class="s">"Card"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Component.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"Card"</span> <span class="na">title</span><span class="o">=</span><span class="s">"{{ card.Title }}"</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>href</code> is the full package path; a missing file is a compile error even when no import uses the alias. <code>as</code> is a letter followed by
+  letters, digits, <code>-</code> and <code>_</code>. A missing <code>href</code> or <code>as</code>, a duplicate alias, and a component link outside <code>&lt;head&gt;</code> are compile errors; an
+  unused alias is silent.</li>
+<li>The alias belongs to the document that declares it. It does not reach a component body: inside a component, <code>name</code> is a full path.</li>
+<li>The links are removed from the compiled document.</li>
 </ul>
 <h3 id="slots">Slots<a class="headerlink" href="#slots" title="Permanent link">&para;</a></h3>
 <p>Children of the import without a <code>slot</code> attribute go to the default slot, and a child with <code>slot="footer"</code> goes to the
 slot of that name. A named slot with no children renders nothing. A <code>slot</code> name the component does not declare is a
-compile error. In the sample, the second import puts a button in the footer, and the button's <code>call('', 'Increment')</code>
+compile error. In the sample, the second import puts a button in the footer, and the button's <code>call('card', 'Increment')</code>
 runs on the document's view model:</p>
 <div class="highlight"><span class="filename">Component/ArcRmlSamplesComponent.h</span><pre><span></span><code><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">FieldNotify</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
 <span class="n">FText</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INVTEXT</span><span class="p">(</span><span class="s">"Bound title"</span><span class="p">);</span>
@@ -2350,8 +2435,75 @@ runs on the document's view model:</p>
 <span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Samples"</span><span class="p">)</span>
 <span class="kt">void</span><span class="w"> </span><span class="n">Increment</span><span class="p">();</span>
 </code></pre></div>
+<h2 id="local-state">Local state<a class="headerlink" href="#local-state" title="Permanent link">&para;</a></h2>
+<p>A component keeps a value of its own with <code>&lt;state&gt;</code>, written beside its props. Its body reads it as <code>state.&lt;name&gt;</code> in any
+binding (<code>:if</code>, <code>class:*</code>, <code>{{ }}</code>, <code>:value</code>) and writes it with a plain assignment in an event. The
+LocalState sample's accordion opens and closes itself:</p>
+<div class="highlight"><span class="filename">Accordion.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">component</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">prop</span> <span class="na">name</span><span class="o">=</span><span class="s">"title"</span> <span class="na">default</span><span class="o">=</span><span class="s">"Section"</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">state</span> <span class="na">name</span><span class="o">=</span><span class="s">"open"</span> <span class="na">type</span><span class="o">=</span><span class="s">"bool"</span> <span class="na">default</span><span class="o">=</span><span class="s">"false"</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-acc"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-button lc-acc-head"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"state.open = !state.open"</span><span class="p">&gt;</span>{{ $title }} {{ state.open ? '-' : '+' }}<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-acc-body"</span> <span class="na">:if</span><span class="o">=</span><span class="s">"state.open"</span><span class="p">&gt;&lt;</span><span class="nt">slot</span><span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">component</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li><code>&lt;state name="open" type="bool" default="false"/&gt;</code> must be self-closing and sit in the component header, before the body.
+  <code>name</code> is letters, digits and <code>_</code>, starting with a letter. <code>type</code> is <code>bool</code>, <code>number</code> or <code>string</code> (the default); <code>default</code>
+  is a literal of that type or one whole <code>{{ expression }}</code> reading props (<code>{{ $start }}</code>) and full model paths. A bad name, a duplicate, an unknown type or a default that does not fit fails the compile.</li>
+<li>Every placed copy has its own value: the three accordions and the one per <code>:for</code> row open independently.</li>
+<li>A state write is never sent to the game.</li>
+<li><code>state</code> is reserved. A <code>:for</code> iterator or a <code>&lt;viewmodel&gt;</code> named <code>state</code> is a validator error, and <code>state.x</code> that no
+  <code>&lt;state&gt;</code> declares fails the compile. Only <code>state</code> as the first name of a path is state: <code>vendor.state.x</code> is a field of <code>vendor</code>.</li>
+<li>Slot content means the state of the component whose file wrote it, not of the component it is placed in. In the sample's
+  <code>Panel.rml</code>, which declares <code>pinned</code>, the toggle sits in the slot of an <code>Accordion</code>, yet it changes the Panel's pin mark:</li>
+</ul>
+<div class="highlight"><span class="filename">Panel.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">component</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">prop</span> <span class="na">name</span><span class="o">=</span><span class="s">"title"</span> <span class="na">default</span><span class="o">=</span><span class="s">"Panel"</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">state</span> <span class="na">name</span><span class="o">=</span><span class="s">"pinned"</span> <span class="na">type</span><span class="o">=</span><span class="s">"bool"</span> <span class="na">default</span><span class="o">=</span><span class="s">"false"</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-box"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-box-head"</span><span class="p">&gt;</span>{{ $title }}: {{ state.pinned ? 'pinned' : 'not pinned' }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/LocalState/Accordion"</span> <span class="na">title</span><span class="o">=</span><span class="s">"Pin from the slot"</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The Panel is {{ state.pinned ? 'pinned' : 'not pinned' }}.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"lc-button"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"state.pinned = !state.pinned"</span><span class="p">&gt;</span>Toggle pin<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">dc-import</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">component</span><span class="p">&gt;</span>
+</code></pre></div>
+<ul>
+<li>A state returns to its default when its element is rebuilt: a <code>:if</code> that turns false and true again, a keyed <code>:for</code>
+  row rebuilt out of order, a <a href="../data-binding/#virtual-lists">virtual list</a> row that leaves the window. It is not kept across a
+  document reload.</li>
+<li>A view or screen (a document with <code>&lt;head&gt;</code>) declares <code>&lt;state&gt;</code> in its <code>&lt;head&gt;</code>, next to <code>&lt;viewmodel&gt;</code>, with the same
+  attributes; its <code>{{ }}</code> default reads only full model paths (a view has no props). Each placement of a view and each
+  <code>:for</code> row has its own value. A screen whose <code>&lt;body&gt;</code> has no <code>:model</code> needs nothing more: the state works without
+  a model of your own.</li>
+</ul>
+<h2 id="place-a-view">Place a view<a class="headerlink" href="#place-a-view" title="Permanent link">&para;</a></h2>
+<p>A <a href="../glossary/#view">view</a> can be placed in another document with <code>dc-import</code>: a file with <code>&lt;rml&gt;</code> as its root and a
+<code>&lt;head&gt;</code>, the kind of file you open as a screen. Its <code>&lt;body&gt;</code> children go inside the <code>sc-host</code> wrapper, and the same file still opens alone.
+The EmbeddedViews sample places two views in one screen:</p>
+<div class="highlight"><span class="filename">EmbeddedViews.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/EmbeddedViews/PartyHeader"</span><span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/EmbeddedViews/MemberCard"</span> <span class="na">:for</span><span class="o">=</span><span class="s">"m : party.Children"</span> <span class="na">member</span><span class="o">=</span><span class="s">"{{ m }}"</span><span class="p">/&gt;</span>
+</code></pre></div>
+<ul>
+<li><strong>A shared model.</strong> A <code>&lt;viewmodel&gt;</code> of the view that is not <code>manual</code> joins the document's models. The same name with the
+  same declaration (class, creation, path or resolver, <code>OnClose</code>, preview) is one shared model; the same name with a different
+  declaration is a compile error. The header in the sample declares <code>party</code> as the screen does, so both read one object.</li>
+<li><strong>A given model.</strong> A <code>manual</code> model of the view is given by an attribute of the import that is named like the model and holds one
+  whole-value <code>{{ path }}</code>: <code>member="{{ m }}"</code>. Each placed copy reads and calls its own object, so each row's
+  <code>call('member', 'AddPoint')</code> reaches only that row's member. A <code>manual</code> model without such an attribute is a compile error.
+  A given model does not join the document's models; inside the view, <code>:model</code> and <code>:for</code> cannot use its name.</li>
+<li><strong>Attributes.</strong> <code>:for</code>, <code>:if</code>, <code>:key</code> and <code>:virtual</code> act on the wrapper as on a component, so the import needs a
+  <code>:model</code> around it. A view has no props or slots: any other attribute, or any child of the import, is a compile error.</li>
+<li><strong>Head.</strong> The view's <code>&lt;link type="text/rcss"&gt;</code> and <code>&lt;style&gt;</code> join the document with no isolation; its <code>&lt;link rel="component"&gt;</code>
+  aliases work inside that view only. Its <code>&lt;meta&gt;</code>, <code>&lt;title&gt;</code>, <code>&lt;script&gt;</code> and other head tags are ignored, and so are the
+  attributes of its <code>&lt;body&gt;</code> except <code>:model</code>.</li>
+<li>A view can place components and other views; a view that places itself is a compile error.</li>
+</ul>
 <h2 id="when-components-expand">When components expand<a class="headerlink" href="#when-components-expand" title="Permanent link">&para;</a></h2>
-<p>Imports are expanded when the document is compiled, into its <code>.rmlc</code> file, the compiled copy the plugin runs (<a href="../concepts/#compiled-files">Concepts</a>). A
+<p>Imports, views included, are expanded when the document is compiled, into its <code>.rmlc</code> file, the compiled copy the plugin runs (<a href="../concepts/#compiled-files">Concepts</a>). A
 mistake in an import or a component, such as an unknown prop or slot name, is reported then
 (<a href="../validation/">Validation</a>), not while the game runs.</p>
 <h2 id="run-it">Run it<a class="headerlink" href="#run-it" title="Permanent link">&para;</a></h2>
@@ -2360,6 +2512,8 @@ mistake in an import or a component, such as an unknown prop or slot name, is re
 <h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../documents/">Documents</a>: the head, opening and closing.</li>
+<li><a href="../view-models/">View models</a>: declaring and giving models.</li>
+<li><a href="../reference-expressions/#names-and-paths">Expression reference</a>: reading <code>state.&lt;name&gt;</code>.</li>
 </ul>
 
 

@@ -2319,7 +2319,7 @@
 <h1 id="view-models">View models<a class="headerlink" href="#view-models" title="Permanent link">&para;</a></h1>
 <p>A <a href="../glossary/#document">document</a> reads data from Unreal MVVM <a href="../glossary/#view-model">view models</a> (<code>UMVVMViewModelBase</code>) and calls their
 functions. Use one for anything a screen shows from your game or does to it. The head declares each model with
-<code>&lt;viewmodel&gt;</code> and the body reads it through <code>data-model="&lt;name&gt;"</code> (<a href="../concepts/#view-models-and-sources">Concepts</a>).</p>
+<code>&lt;viewmodel&gt;</code> and the body reads it through <code>:model="&lt;name&gt;"</code> (<a href="../concepts/#view-models-and-sources">Concepts</a>).</p>
 <p>A declaration has a <code>name</code>, unique in the document, and a <code>class</code>, the path of a class that derives from
 <code>UMVVMViewModelBase</code>: <code>/Script/&lt;Module&gt;.&lt;Class&gt;</code> for a C++ class, or the generated class <code>..._C</code> of a Blueprint
 (<a href="../blueprint-view-models/">Blueprint view models</a>). It also has exactly one <a href="../glossary/#source">source</a>, the attribute that says where the
@@ -2573,18 +2573,18 @@ returns whether it took the object.</p>
 <ul>
 <li><code>ArcResolved</code> is true once the view model exists. An unresolved model still binds, from the class defaults, so give the
   document a fallback. The sample documents show the pattern:
-  <code>&lt;div data-if="ArcResolved"&gt;...&lt;/div&gt;</code> and <code>&lt;span data-if="!ArcResolved"&gt;Waiting for the view model&lt;/span&gt;</code>.</li>
+  <code>&lt;div :if="ArcResolved"&gt;...&lt;/div&gt;</code> and <code>&lt;span :if="!ArcResolved"&gt;Waiting for the view model&lt;/span&gt;</code>.</li>
 <li><code>ArcEmpty</code> is an empty array, which a <a href="../glossary/#component">component</a> prop with a <code>[]</code> default receives.</li>
-<li><code>ArcKeys</code> holds key labels as text for the current input device: <code>ArcKeys.&lt;Action&gt;</code> for each action of the
-  document's <code>input-mapping</code> context, by the action's asset name, and <code>confirm</code>, <code>back</code>, <code>navigate</code>, <code>stepLeft</code>,
-  <code>stepRight</code> and <code>scheme</code> (<code>keyboard</code> or <code>gamepad</code>). The GamepadMenu sample shows them as prompts:</li>
+<li><code>ArcKeys</code> holds key labels as text for the current input device: <code>confirm</code>, <code>back</code>, <code>navigate</code>, <code>stepLeft</code>,
+  <code>stepRight</code> and <code>scheme</code> (<code>keyboard</code> or <code>gamepad</code>). Show the key of an action with <code>&lt;kbd action="&lt;path&gt;"/&gt;</code>, not by reading
+  <code>ArcKeys</code> (<a href="../input/#key-labels">Key labels</a>). The GamepadMenu sample shows prompts:</li>
 </ul>
-<div class="highlight"><span class="filename">GamepadMenu.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span><span class="p">&gt;</span>{{ ArcKeys.confirm }} Select<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"gm-info"</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span> <span class="na">data-hotkey</span><span class="o">=</span><span class="s">"IA_Sample_MenuInfo"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'ToggleInfo')"</span><span class="p">&gt;</span>{{ ArcKeys.IA_Sample_MenuInfo }} Info<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span><span class="p">&gt;</span>{{ ArcKeys.back }} Close<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">GamepadMenu.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span><span class="p">&gt;&lt;</span><span class="nt">kbd</span> <span class="na">action</span><span class="o">=</span><span class="s">"confirm"</span><span class="p">/&gt;</span> Select<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"gm-info"</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span> <span class="na">data-hotkey</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/GamepadMenu/IA_Sample_MenuInfo"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('menu', 'ToggleInfo')"</span><span class="p">&gt;&lt;</span><span class="nt">kbd</span> <span class="na">action</span><span class="o">=</span><span class="s">"/ArcRmlUISamples/UI/Rml/GamepadMenu/IA_Sample_MenuInfo"</span><span class="p">/&gt;</span> Info<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">"gm-prompt"</span><span class="p">&gt;&lt;</span><span class="nt">kbd</span> <span class="na">action</span><span class="o">=</span><span class="s">"back"</span><span class="p">/&gt;</span> Close<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>These are three lines of the sample's <code>&lt;body&gt;</code>.</p>
-<p>A document with no <code>&lt;viewmodel&gt;</code> that reads <code>ArcKeys</code> gets a model named <code>ArcDocument</code> on its <code>&lt;body&gt;</code>; it has
+<p>A document with no <code>&lt;viewmodel&gt;</code> that reads <code>ArcKeys</code> or has a <code>&lt;kbd action&gt;</code> gets a model named <code>ArcDocument</code> on its <code>&lt;body&gt;</code>; it has
 <code>ArcResolved</code> (true) and <code>ArcKeys</code>. <a href="../input/">Input and gamepad</a> covers the keys.</p>
 <h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">&para;</a></h2>
 <ul>

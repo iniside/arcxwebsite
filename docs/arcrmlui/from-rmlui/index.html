@@ -533,6 +533,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#binding-attribute-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Binding attribute names
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#data-binding-through-unreal-view-models" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2179,6 +2190,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#binding-attribute-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Binding attribute names
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#data-binding-through-unreal-view-models" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2253,7 +2275,7 @@
 <h1 id="coming-from-rmlui">Coming from RmlUi<a class="headerlink" href="#coming-from-rmlui" title="Permanent link">&para;</a></h1>
 <p>ArcRmlUI draws <a href="../glossary/#document">documents</a> with its own fork of <a href="https://github.com/mikke89/RmlUi">RmlUi</a>, based
 on RmlUi 6.4-dev (upstream revision <code>96fda45</code>). If you know RmlUi, the markup and the style sheets will look familiar:
-RML, RCSS, <code>data-for</code>, <code>data-if</code>, decorators and <code>nav</code> are all there. It is not the same library. The fork changes
+RML, RCSS, data binding, decorators and <code>nav</code> are all there. It is not the same library. The fork changes
 CSS layout, text and painting to behave like Chrome, and the plugin replaces RmlUi's application side (your own backend,
 data models registered in C++, Lua) with Unreal. This page lists the differences by what you get, and links the page
 that has the detail.</p>
@@ -2297,26 +2319,52 @@ still missing, is <a href="../reference-css/">CSS support</a>.</p>
 <li><strong>An unstyled scroll container shows Chrome's native scrollbar</strong>; a <code>::-webkit-scrollbar</code> rule replaces it.</li>
 <li><strong>Data variable names match regardless of case</strong>: <code>{{ Id }}</code> reads a field named <code>ID</code>.</li>
 </ul>
+<h2 id="binding-attribute-names">Binding attribute names<a class="headerlink" href="#binding-attribute-names" title="Permanent link">&para;</a></h2>
+<p>Binding attributes have short names instead of RmlUi's <code>data-</code> names. An RmlUi name such as <code>data-for</code> is a plain
+attribute here: it binds nothing and reports no error.</p>
+<table>
+<thead>
+<tr>
+<th>RmlUi</th>
+<th>ArcRmlUI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data-model</code>, <code>data-if</code>, <code>data-for</code>, <code>data-value</code>, ...</td>
+<td><code>:model</code>, <code>:if</code>, <code>:for</code>, <code>:value</code>, ...</td>
+</tr>
+<tr>
+<td><code>data-class-active</code>, <code>data-style-color</code>, <code>data-attr-src</code></td>
+<td><code>class:active</code>, <code>style:color</code>, <code>attr:src</code></td>
+</tr>
+<tr>
+<td><code>data-event-click</code></td>
+<td><code>on:click</code></td>
+</tr>
+</tbody>
+</table>
+<p>The full list is in <a href="../reference-attributes/#binding">Attribute reference</a>.</p>
 <h2 id="data-binding-through-unreal-view-models">Data binding through Unreal view models<a class="headerlink" href="#data-binding-through-unreal-view-models" title="Permanent link">&para;</a></h2>
 <p>In RmlUi, game code builds a data model in C++ and the document names it with <code>data-model</code>. Here the document declares
 each model in its head with <code>&lt;viewmodel&gt;</code>: an Unreal MVVM view model (<code>UMVVMViewModelBase</code>) made in C++ or Blueprint,
-which the document creates or finds through a <a href="../view-models/">source</a>. <code>data-model</code> names that declaration. The plugin
+which the document creates or finds through a <a href="../view-models/">source</a>. <code>:model</code> names that declaration. The plugin
 binds the model's Field Notify fields, and the document updates when the model broadcasts a change; nothing is
 registered by hand (<a href="../concepts/#view-models-and-sources">Concepts</a>, <a href="../data-binding/">Data binding</a>).</p>
 <p>What the document can do with a model goes beyond RmlUi's data bindings:</p>
 <ul>
 <li><code>call()</code> and <code>callIf()</code> call a <code>BlueprintCallable</code> function of a model from an event, and <code>stopPropagation()</code> stops
   the event (<a href="../events/">Events</a>). <code>data-action</code> runs a document action such as <code>close</code>.</li>
-<li><code>data-key</code> keeps a row's element across inserts and removals (<a href="../data-binding/#lists">Lists</a>); <code>data-virtual</code> creates
+<li><code>:key</code> keeps a row's element across inserts and removals (<a href="../data-binding/#lists">Lists</a>); <code>:virtual</code> creates
   only the rows in view (<a href="../data-binding/#virtual-lists">Virtual lists</a>).</li>
-<li>A <code>data-if</code> whose condition is false does not create its branch.</li>
-<li><code>data-world</code> places an element at a point in the world (<a href="../world-markers/">World markers</a>), <code>data-pulse-*</code> plays a
-  class when a value changes (<a href="../styling/#pulse">Styling</a>), and <code>data-focus-request</code> moves focus from the model
+<li>A <code>:if</code> whose condition is false does not create its branch.</li>
+<li><code>:world</code> places an element at a point in the world (<a href="../world-markers/">World markers</a>), <code>pulse:*</code> plays a
+  class when a value changes (<a href="../styling/#pulse">Styling</a>), and <code>:focus-request</code> moves focus from the model
   (<a href="../navigation-reference/#focus-requests">Focus requests</a>).</li>
 <li><code>preview</code> data shows a document in the editor without the game (<a href="../editor-preview/">Editor preview</a>).</li>
 </ul>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
-<p>A component is an <code>.rml</code> file with props and slots that a document imports with <code>&lt;dc-import&gt;</code>; the plugin expands it
+<p>A component is an <code>.rml</code> file with props and slots that a document imports with <code>&lt;dc-import&gt;</code> (by package path or a <code>&lt;link rel="component" as&gt;</code> alias from its head); the plugin expands it
 when the document is compiled (<a href="../components/">Components</a>).</p>
 <h2 id="input-focus-and-gamepad">Input, focus and gamepad<a class="headerlink" href="#input-focus-and-gamepad" title="Permanent link">&para;</a></h2>
 <p>Input reaches documents through CommonUI and Enhanced Input, with a per-document input mapping and CommonUI's Back

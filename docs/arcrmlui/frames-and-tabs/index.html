@@ -2211,8 +2211,8 @@ back. Run it by choosing FrameTabs in the samples list in the map <code>L_ArcRml
 <h2 id="switching-tabs">Switching tabs<a class="headerlink" href="#switching-tabs" title="Permanent link">&para;</a></h2>
 <p>Switching is an ordinary <code>OpenDocument</code> of the other tab. The frame's two buttons call the <a href="../view-models/">view model</a>; <code>ShowTab</code> takes the
 <code>WorldContextObject</code> the call fills with the player controller (<a href="../events/#the-world-context-object">Events</a>).</p>
-<div class="highlight"><span class="filename">Frame.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"ft-show-a"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ft-tab"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">data-attrif-selected</span><span class="o">=</span><span class="s">"Shown == 0"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'ShowTab', 0)"</span><span class="p">&gt;</span>Tab A<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"ft-show-b"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ft-tab"</span> <span class="na">data-attrif-selected</span><span class="o">=</span><span class="s">"Shown == 1"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'ShowTab', 1)"</span><span class="p">&gt;</span>Tab B<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">Frame.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"ft-show-a"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ft-tab"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">attrif:selected</span><span class="o">=</span><span class="s">"frame.Shown == 0"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('frame', 'ShowTab', 0)"</span><span class="p">&gt;</span>Tab A<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"ft-show-b"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ft-tab"</span> <span class="na">attrif:selected</span><span class="o">=</span><span class="s">"frame.Shown == 1"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('frame', 'ShowTab', 1)"</span><span class="p">&gt;</span>Tab B<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">FrameTabs/ArcRmlSamplesFrameTabs.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesFrameTabsFrameViewModel::ShowTab</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">Index</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2233,7 +2233,7 @@ back. Run it by choosing FrameTabs in the samples list in the map <code>L_ArcRml
 <code>Shown</code> only drives the <code>selected</code> look of the buttons. <code>ArcRmlSamplesFrameTabs::Open</code> opens <code>TabA</code> and returns the frame, since
 the frame stays open while the tabs switch and is the document to close.</p>
 <h2 id="tabs-stay-once-visited">Tabs stay once visited<a class="headerlink" href="#tabs-stay-once-visited" title="Permanent link">&para;</a></h2>
-<p>A tab you leave is hidden, not closed. Its view model, scroll, field text and <code>data-if</code> state stay until the frame closes;
+<p>A tab you leave is hidden, not closed. Its view model, scroll, field text and <code>:if</code> state stay until the frame closes;
 showing it again does not create it again, so <code>Count</code> keeps its value. Closing the frame drops every tab, and the next open
 starts at 0. A hidden tab is not open: <code>IsDocumentOpen</code> is false for it, and an open of it shows it.</p>
 <h2 id="models-and-styles">Models and styles<a class="headerlink" href="#models-and-styles" title="Permanent link">&para;</a></h2>
@@ -2253,7 +2253,7 @@ starts at 0. A hidden tab is not open: <code>IsDocumentOpen</code> is false for 
 <div class="admonition warning">
 <p class="admonition-title">Limits</p>
 <ul>
-<li>A <code>data-if</code> on the frame that rebuilds the <code>arc-embed</code> element drops the kept tabs and embeds the shown one again.</li>
+<li>A <code>:if</code> on the frame that rebuilds the <code>arc-embed</code> element drops the kept tabs and embeds the shown one again.</li>
 </ul>
 </div>
 

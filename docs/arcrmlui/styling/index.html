@@ -2189,9 +2189,9 @@ the new values through <code>var()</code>, so no other rule changes.</p>
 <span class="w">    </span><span class="nv">--button</span><span class="p">:</span><span class="w"> </span><span class="mh">#1c212c</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Themes.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span> <span class="na">data-model</span><span class="o">=</span><span class="s">"themes"</span> <span class="na">data-class-theme-dark</span><span class="o">=</span><span class="s">"Theme == 'dark'"</span> <span class="na">data-class-theme-contrast</span><span class="o">=</span><span class="s">"Theme == 'contrast'"</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">Themes.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span> <span class="na">:model</span><span class="o">=</span><span class="s">"themes"</span> <span class="na">class:theme-dark</span><span class="o">=</span><span class="s">"themes.Theme == 'dark'"</span> <span class="na">class:theme-contrast</span><span class="o">=</span><span class="s">"themes.Theme == 'contrast'"</span><span class="p">&gt;</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Themes.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"th-dark"</span> <span class="na">class</span><span class="o">=</span><span class="s">"th-button"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'SetTheme', 'dark')"</span><span class="p">&gt;</span>Dark<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">Themes.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"th-dark"</span> <span class="na">class</span><span class="o">=</span><span class="s">"th-button"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('themes', 'SetTheme', 'dark')"</span><span class="p">&gt;</span>Dark<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><code>SetTheme</code> is a function of the sample's <a href="../view-models/">view model</a>; the button's <code>call</code> runs it:</p>
 <div class="highlight"><span class="filename">Themes/ArcRmlSamplesThemes.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesThemesViewModel::SetTheme</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Name</span><span class="p">)</span>
@@ -2200,8 +2200,8 @@ the new values through <code>var()</code>, so no other rule changes.</p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>data-class-theme-dark="Theme == 'dark'"</code>: the class is on while the expression is true. The default theme has no class.</li>
-<li><code>data-class-theme-contrast="Theme == 'contrast'"</code> does the same for the High contrast button, with <code>body.theme-contrast</code>
+<li><code>class:theme-dark="Theme == 'dark'"</code>: the class is on while the expression is true. The default theme has no class.</li>
+<li><code>class:theme-contrast="Theme == 'contrast'"</code> does the same for the High contrast button, with <code>body.theme-contrast</code>
   declared in <code>Themes.rcss</code>.</li>
 <li><code>var(--muted, #9aa6ba)</code> uses <code>#9aa6ba</code> when <code>--muted</code> has no value; the sample gives it a value only in
   <code>body.theme-contrast</code>. A <code>var()</code> with no fallback and no value makes the property invalid, so it takes its inherited or
@@ -2228,22 +2228,22 @@ the new values through <code>var()</code>, so no other rule changes.</p>
 <li><code>@starting-style</code> is not supported: its rules are dropped. Use a <code>@keyframes</code> animation on <code>body.enter</code> for an entrance.</li>
 </ul>
 <h2 id="pulse">Pulse<a class="headerlink" href="#pulse" title="Permanent link">&para;</a></h2>
-<p><code>data-pulse-&lt;class&gt;="Expr"</code> adds the class to the element each time the value changes, so an animation that the class
+<p><code>pulse:&lt;class&gt;="Expr"</code> adds the class to the element each time the value changes, so an animation that the class
 starts runs again.</p>
-<div class="highlight"><span class="filename">Animations.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"an-hits"</span> <span class="na">class</span><span class="o">=</span><span class="s">"an-hits"</span> <span class="na">data-pulse-flash</span><span class="o">=</span><span class="s">"Hits"</span><span class="p">&gt;</span>Hits: {{ Hits }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">Animations.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"an-hits"</span> <span class="na">class</span><span class="o">=</span><span class="s">"an-hits"</span> <span class="na">pulse:flash</span><span class="o">=</span><span class="s">"animations.Hits"</span><span class="p">&gt;</span>Hits: {{ animations.Hits }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">Animations.rcss</span><pre><span></span><code><span class="p">.</span><span class="nc">an-hits</span><span class="p">.</span><span class="nc">flash</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">animation</span><span class="p">:</span><span class="w"> </span><span class="n">an-flash</span><span class="w"> </span><span class="mf">0.6</span><span class="kt">s</span><span class="w"> </span><span class="kc">linear</span><span class="w"> </span><span class="kc">forwards</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Each change of <code>Hits</code> removes the class <code>flash</code> and adds it back in the same <a href="../glossary/#ui-update">UI update</a>, and the class stays until the next change.
-The <code>&lt;class&gt;</code> is the part of the attribute name after <code>data-pulse-</code>.</p>
+The <code>&lt;class&gt;</code> is the part of the attribute name after <code>pulse:</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Limits</p>
 <ul>
 <li>The first value never pulses, and several changes before one UI update give one pulse.</li>
-<li>A <a href="../glossary/#view">view</a> created in the update that changes the value (a <code>data-if</code> branch, a new row) does not pulse.</li>
-<li>An unkeyed <code>data-for</code> row reads whichever item sits at its index, so an insert or a removal pulses it. Put pulses in
+<li>A <a href="../glossary/#view">view</a> created in the update that changes the value (a <code>:if</code> branch, a new row) does not pulse.</li>
+<li>An unkeyed <code>:for</code> row reads whichever item sits at its index, so an insert or a removal pulses it. Put pulses in
   keyed rows (<a href="../data-binding/#lists">Data binding</a>).</li>
 </ul>
 </div>

@@ -1489,6 +1489,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bind-from-the-panels" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bind from the panels
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#in-a-game" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2157,6 +2168,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#bind-from-the-panels" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Bind from the panels
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#in-a-game" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -2217,8 +2239,8 @@ in for the real view model, so a designer sees real-looking values without code,
   base value. An overridden field is replaced as a whole, so <code>Items</code> in <code>LowHealth</code> is the complete list. A variant
   can name only fields the base data has, else the file does not load and an error is logged.</li>
 </ul>
-<p>The document reads these fields like any other model's: <code>{{ Name }}</code>, <code>data-if="bLowHealth"</code>,
-<code>data-for="item : Items"</code>.</p>
+<p>The document reads these fields like any other model's: <code>{{ Name }}</code>, <code>:if="bLowHealth"</code>,
+<code>:for="item : Items"</code>.</p>
 <h2 id="when-the-data-shows">When the data shows<a class="headerlink" href="#when-the-data-shows" title="Permanent link">&para;</a></h2>
 <p>The data shows in the editor preview and in a game with a <a href="../glossary/#local-player">local player</a>, when all of these hold:</p>
 <ul>
@@ -2228,27 +2250,94 @@ in for the real view model, so a designer sees real-looking values without code,
 <li>The JSON file exists.</li>
 </ul>
 <p>Otherwise the model binds default values and its field <code>ArcResolved</code> is false. The sample shows a fallback line with it:</p>
-<div class="highlight"><span class="filename">EditorPreview.rml</span><pre><span></span><code><span class="nt">&lt;p</span><span class="w"> </span><span class="na">data-if=</span><span class="s">"!ArcResolved"</span><span class="nt">&gt;</span>No<span class="w"> </span>preview<span class="w"> </span>data<span class="w"> </span>is<span class="w"> </span>shown.<span class="nt">&lt;/p&gt;</span>
+<div class="highlight"><span class="filename">EditorPreview.rml</span><pre><span></span><code><span class="nt">&lt;p</span><span class="w"> </span><span class="na">:if=</span><span class="s">"!player.ArcResolved"</span><span class="nt">&gt;</span>No<span class="w"> </span>preview<span class="w"> </span>data<span class="w"> </span>is<span class="w"> </span>shown.<span class="nt">&lt;/p&gt;</span>
 </code></pre></div>
 <p>Never make live behaviour depend on preview data. A function called on a preview model only logs, so a button that calls
 one does nothing except log.</p>
 <h2 id="open-the-preview-tab">Open the preview tab<a class="headerlink" href="#open-the-preview-tab" title="Permanent link">&para;</a></h2>
 <p>In the Content Browser, double-click <code>EditorPreview.rml</code>: the preview tab opens and shows the sample with the base data,
-"Aldric, level 7", a health bar and three items. Its toolbar has <strong>Resolution</strong>,
-<strong>Variant</strong> (Base and the variants of the document's preview files), <strong>Theme</strong>, <strong>Background</strong>, <strong>Inspect</strong>, <strong>Open
-in text editor</strong> and <strong>Reload</strong>. Beside the view, the panels are <strong>Bindings</strong>, <strong>Diagnostics</strong>, <strong>Inspector</strong> and
+"Aldric, level 7", a health bar and three items. Its toolbar, above all tabs, has <strong>Save</strong> (<code>Ctrl+S</code>; greyed when nothing is unsaved) and <strong>Browse</strong> (selects the
+document in the Content Browser; greyed when it has no item there), then <strong>Resolution</strong>,
+<strong>Variant</strong> (Base and the variants of the document's preview files), <strong>Theme</strong>, <strong>Background</strong>, <strong>Play</strong>, <strong>Open
+in text editor</strong> and <strong>Reload</strong>. Left of the view is the <strong>Hierarchy</strong>, below it <strong>View Bindings</strong>, <strong>View State</strong> and <strong>Source</strong> (see <a href="#bind-from-the-panels">Bind from the panels</a>). Beside the view, the panels are <strong>Details</strong>, <strong>View Models</strong>, <strong>Preview Data</strong>, <strong>Diagnostics</strong>, <strong>Inspector</strong> and
 <strong>Input</strong>:</p>
 <ul>
-<li><strong>Bindings</strong> lists the document's view models; for a preview model it edits the JSON data: add keys, rename or
-  remove them, and override a value in the selected variant.</li>
+<li><strong>Details</strong> shows the selected element (<a href="#bind-from-the-panels">Bind from the panels</a>).</li>
+<li><strong>View Models</strong> lists the document's view models as a tree of fields and functions with the places that use them, and adds and removes their <code>&lt;viewmodel&gt;</code> declarations (see <a href="#bind-from-the-panels">Bind from the panels</a>).</li>
+<li><strong>Preview Data</strong> holds the preview values of each view model; for a preview model it edits the JSON data: add keys,
+  rename or remove them, and override a value in the selected variant.</li>
 <li><strong>Diagnostics</strong> lists the errors and warnings of the open document.</li>
-<li><strong>Inspector</strong> shows the elements you pick with <strong>Inspect</strong>: tree, box model and rules by selector (<a href="../inspector/">Debugging layout</a>).</li>
+<li><strong>Inspector</strong> shows the element you select: tree, box model and rules by selector (<a href="../inspector/">Debugging layout</a>).</li>
 <li><strong>Input</strong> lists the actions of the document's input mapping context for keyboard or gamepad. After you choose
-  gamepad, click the preview view once with the mouse before you use a pad: the view gets pad input only while it has
-  focus.</li>
+  gamepad, the preview view takes focus, so a pad works at once.</li>
+<li><strong>Source</strong> shows the document's text, coloured for RML tags, attributes, values, comments, <code>{{ }}</code> expressions and the RCSS of <code>&lt;style&gt;</code> blocks, below the view with <strong>View Bindings</strong>. Edit it and press <code>Ctrl+S</code> or <strong>Save</strong>: the file is written
+  as you typed it, keeping its byte order mark and line endings, and the preview reloads. The tab reads "Source*" while it holds unsaved text; the
+  panels that write the document are then read-only under "Save or discard the Source changes" and <strong>Discard</strong> reloads the file. A file that is not
+  plain UTF-8 with one kind of line ending opens read-only. If the file changed on disk, Save asks whether to overwrite it, load it from disk or cancel;
+  closing the window with unsaved text asks Save, Discard or Cancel. Selecting an element moves the cursor to its line.</li>
 </ul>
+<p>Each panel is a dockable tab: drag it to another dock, or open a closed one from the window menu of the preview tab. One
+layout is saved and shared by all documents.</p>
 <p>The <strong>Variant</strong> menu ends with <strong>Add variant...</strong>, which asks for a name and adds an empty variant to every JSON
 preview file of the document that lacks it. It is disabled when the document has no JSON preview file that loaded.</p>
+<h2 id="bind-from-the-panels">Bind from the panels<a class="headerlink" href="#bind-from-the-panels" title="Permanent link">&para;</a></h2>
+<p>The panels write the document's <code>.rml</code> and <code>.rcss</code> files, so a binding needs no typing of binding attributes. Every
+change is one edit of the file text at the element's own position: the rest of the file stays as you wrote it.</p>
+<ol>
+<li>Open the preview tab with <strong>Play</strong> off. Hover the view: the element under the pointer is outlined when it has a
+   tag in a file. Click it to select it,
+   or select its row in the <strong>Hierarchy</strong> or the Inspector tree. <strong>Details</strong> under the tabs shows the selection. Tick <strong>Play</strong> to use the document with the mouse instead.</li>
+<li>The <strong>Hierarchy</strong> lists those elements with badges Binding, Event, Text and Asset; "Only bindings and assets" hides
+   the rows without a badge. <strong>View Bindings</strong> lists the bindings, <code>:for</code> lists and events of the elements,
+   and their <code>{{ }}</code> text expressions (read-only; <strong>Edit text</strong> scrolls Details to its Text section). It shows the selected element
+   only until you clear "Selected element only"; the search box filters by element, attribute or value. Change a value in its
+   row, or press <strong>Add</strong> to add a row: pick the element (the selected one by default), the property, then its value. <strong>Details</strong>
+   lists the element's attributes in the categories Content, Visibility, Form, Events, Classes, Attributes and Style (and Other
+   for the rest). Every property the element can take has a row, set or not, with a value editor for the static value (keyword list,
+   colour picker (hex, <code>rgb</code>, <code>hsl</code>, <code>oklab</code>, <code>oklch</code>), number and unit, checkbox, asset picker, font weight list, font family chips, token list for <code>var()</code> and <code>calc()</code>; emptying a text field removes the attribute) and a <strong>Bind</strong> button. <strong>Bind</strong> lists the
+   fields of the document's view models that fit the property's type under Valid and the others under Invalid; a field the runtime
+   would refuse is listed with its reason. A bound row shows the picked parts with <strong>Edit</strong> and <strong>Unbind</strong>. <strong>Advanced binding...</strong> in
+   the Bind menu, or <strong>Edit</strong>, opens the binding editor under the row: the field, <strong>+ Conversion</strong> (a transform whose input fits), and for a
+   condition rows of value, operator (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code> or "is true") and value joined by All or Any; the raw
+   expression is only under <strong>Advanced</strong>.
+   Above those categories <strong>Details</strong> shows design sections with plain names: Layout, Size, Spacing, Text, and Fill and Border. They
+   write the same properties as the Style rows. A control that needs another property (Direction needs Row/Column layout) is greyed
+   with a hint and, where one value fixes it, a button that sets it. The Style category is under <strong>Advanced (CSS)</strong>, closed by default.
+   Picking a member of a list's rows (for example <code>rows.Name</code>) on an element that does not repeat asks whether to add a
+   <code>:for</code> over that list to the element and writes both in one step.
+   On a <code>:for</code> row, <strong>Advanced: fields on the page</strong> (closed by default) lists each field of the row type and the places that read it, each a link
+   that selects the element; a field nothing reads says "not shown". The <code>data-action</code> picker offers close (closes this screen), open
+   (another screen; components are not listed) and custom (the value goes to the body view model's <code>HandleAction</code>), each with a help line.</li>
+<li>A text field writes on Enter or when you leave it; a pick from a list writes at once. The panel shows "Reloading…" until the preview has reloaded the document,
+   and then selects the element again.</li>
+</ol>
+<p>Each attribute row shows its name with a one-line meaning under it; hover for the attribute name and the meaning. An event row's mode
+switch reads <strong>Call</strong> (writes <code>call()</code>, runs the function each time the event fires) or <strong>Call If</strong> (writes <code>callIf()</code>, runs it only when its condition is
+true as the event fires). An argument that does not fit the function's parameter shows "'x' (string) does not fit parameter 'Value' (int32)."
+under the row: a number fits any numeric parameter (int and float both ways), a string fits string, name and text parameters, a bool fits a bool, and
+an argument whose type the editor cannot tell (an expression, a loop item) always fits. The function list greys a function whose parameters do not
+fit the current arguments and says why. The runtime stays lenient; this is the check the validator makes too (<a href="../validation/">Validation</a>).</p>
+<p>If a write is refused, for example because the file changed on disk since the preview compiled it, the panel shows the
+reason and writes nothing. A write is one undo step (<code>Ctrl+Z</code>), and with source control enabled the file is checked out
+first.</p>
+<p>On a component instance (a <code>dc-import</code>) the panel shows the props of the component. <strong>Edit in component</strong> switches to the
+component's own tag, which every instance shares; <strong>Open component</strong> opens a preview tab of the component file, which shows the component alone with each prop at its
+declared default; a double-click on an import row in the <strong>Hierarchy</strong> does the same. <strong>Open in text editor</strong> in that
+tab opens the text.
+For an element that comes from a component or view, <strong>Details</strong> starts with one line, "From
+<code>Panel.rml</code> placed in <code>CartPanel.rml</code> placed in <code>VendorScreen.rml</code>" (the component, the view, the document); each file name opens its preview tab.
+On the instance, <strong>Details</strong> shows only the style the import keeps (<code>position</code>, <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, <code>inset</code>, <code>width</code>, <code>height</code>, <code>z-index</code>, <code>transform</code>). Other declarations on the <code>dc-import</code> tag are listed as ignored, each with a remove button, and <strong>Bind</strong> offers no <code>style:</code> binding there; edit the component's own look with <strong>Edit in component</strong>.
+Each prop row's tooltip gives the prop's type, its default and the lines where the component reads it ("<code>disabled</code> on <code>div.dk-button</code> (line 14)"),
+or says "Not read by the component."; each listed use is a link that opens the component at that line. A prop's type (<code>type</code> on its <code>&lt;prop&gt;</code>, see <a href="../components/">Components</a>)
+sets the editor: a checkbox for <code>bool</code>, a number field for <code>number</code>, the function list for <code>function</code>, text otherwise.
+The Hierarchy hides the elements a component brings from its own file; tick <strong>Show component internals</strong> (per preview tab)
+to list them greyed under the import. The Asset badge of an import row covers only asset attributes on the <code>dc-import</code>
+tag itself.</p>
+<p><strong>View State</strong> lists on the left the <code>&lt;state&gt;</code> declarations of the document (name, type String, Bool or Number, default) with <strong>Add</strong>, edit and remove,
+and on the right the bindings that read or write only <code>state.*</code>; Details and View Bindings do not list those. A state can carry named values (<code>values="0:All, 1:Common"</code>, editor metadata only); condition rows then show the name ("tabsActive = Common"), and <strong>Fill from buttons</strong> proposes names from the buttons that assign the state.</p>
+<p>The <strong>View Models</strong> tab does the same for the head of the document. Each view model is a tree node: <strong>Browse</strong> and <strong>Open</strong> select a Blueprint model in the Content Browser or open its editor, and open a C++ model's class in your code editor; <strong>Fields</strong> and <strong>Functions</strong> list the members with a type icon. A member the document uses shows "N uses", and expanding it lists each place (element, attribute, expression); click one to select its line. <strong>+ Viewmodel</strong> adds a <code>&lt;viewmodel&gt;</code> declaration: pick
+the class, the name and the creation type. Click a view model to edit its class and creation type in Details; with nothing
+selected, Details shows <strong>Head metas</strong> (layer, input mode, frame, input mapping and the flags). While the document cannot be written, the tree, <strong>Browse</strong> and <strong>Open</strong> still work; <strong>Remove</strong> and <strong>+ Viewmodel</strong> are greyed. <strong>Broken references</strong> below the tree shows what the validator found in the document; click an entry to select its element.</p>
 <h2 id="in-a-game">In a game<a class="headerlink" href="#in-a-game" title="Permanent link">&para;</a></h2>
 <p>In a running game, <a href="../quick-start/#open-the-console">open the console</a> and type:</p>
 <div class="highlight"><pre><span></span><code>ArcRml.Preview /ArcRmlUISamples/UI/Rml/EditorPreview/EditorPreview.rml LowHealth

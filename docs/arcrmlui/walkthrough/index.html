@@ -2303,7 +2303,7 @@ from <code>/ArcRmlUIDemo/UI/Rml/Demo/SaveLoad.rml</code> and the screen's <a hre
 one real screen. The excerpts are shortened to the lines that matter.</p>
 <div class="admonition note">
 <p class="admonition-title">Demo code and plugin API</p>
-<p>The RML attributes, <code>&lt;viewmodel&gt;</code> declarations, <code>dc-import</code>, <code>ArcKeys</code> and <code>data-focus-active</code> on this page are
+<p>The RML attributes, <code>&lt;viewmodel&gt;</code> declarations, <code>dc-import</code>, <code>&lt;kbd action&gt;</code> and <code>data-focus-active</code> on this page are
 ArcRmlUI. Everything in the <code>ArcRmlUIDemo</code> module is demo code that you write differently in your game: the
 <code>ARC_RML_DEMO_SET</code> macro, the demo subsystem <code>UArcRmlDemoSubsystem</code> that opens and closes the screens, the view
 model base classes, the <a href="../glossary/#resolver">resolver</a> <code>ArcRmlDemoViewModelResolver</code>, the components under
@@ -2347,33 +2347,32 @@ in load mode, Save Game in the pause menu in save mode.</p>
   <code>SaveLoad.rcss</code> (<a href="../styling/">Styling</a>).</li>
 </ul>
 <h2 id="two-view-models">Two view models<a class="headerlink" href="#two-view-models" title="Permanent link">&para;</a></h2>
-<p>The head declares two models, and the body reads each through its own <code>data-model</code>:</p>
-<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span> <span class="na">data-model</span><span class="o">=</span><span class="s">"ui"</span>
-    <span class="na">data-class-theme-ember</span><span class="o">=</span><span class="s">"Theme == 'ember'"</span>
-    <span class="na">data-class-theme-daylight</span><span class="o">=</span><span class="s">"Theme == 'daylight'"</span>
-    <span class="na">data-event-back</span><span class="o">=</span><span class="s">"call('', 'Back'); stopPropagation()"</span>
-    <span class="na">data-event-uiaction</span><span class="o">=</span><span class="s">"callIf(ev.action == 'IA_ArcDemo_DevBar', '', 'ToggleDevBar')"</span><span class="p">&gt;</span>
+<p>The head declares two models, and the body reads each through its own <code>:model</code>:</p>
+<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span> <span class="na">:model</span><span class="o">=</span><span class="s">"ui"</span>
+    <span class="na">class:theme-ember</span><span class="o">=</span><span class="s">"ui.Theme == 'ember'"</span>
+    <span class="na">class:theme-daylight</span><span class="o">=</span><span class="s">"ui.Theme == 'daylight'"</span>
+    <span class="na">on:back</span><span class="o">=</span><span class="s">"call('ui', 'Back'); stopPropagation()"</span>
+    <span class="na">on:uiaction</span><span class="o">=</span><span class="s">"callIf(ev.action == 'IA_ArcDemo_DevBar', 'ui', 'ToggleDevBar')"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-layer"</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-screen"</span> <span class="na">data-model</span><span class="o">=</span><span class="s">"saveload"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-screen"</span> <span class="na">:model</span><span class="o">=</span><span class="s">"saveload"</span><span class="p">&gt;</span>
 </code></pre></div>
 <ul>
 <li><code>ui</code> is shared by every demo screen: the theme and the dev bar. Its source is <code>context</code>, so
   it is looked up in the GameInstance's view model collection, where the demo adds it when it starts
-  (<a href="../view-models/#source-context">Source: context</a>). The <code>data-class-theme-*</code> bindings on <code>&lt;body&gt;</code> read its <code>Theme</code>
+  (<a href="../view-models/#source-context">Source: context</a>). The <code>class:theme-*</code> bindings on <code>&lt;body&gt;</code> read its <code>Theme</code>
   (<a href="../styling/#themes">Themes</a>).</li>
 <li><code>saveload</code> is this screen's own state. Its source is a resolver (<a href="../view-models/#source-resolver">Source: resolver</a>);
   the demo's resolver returns one instance per class and player, so the state survives closing and opening the screen.</li>
-<li><code>ev.action</code> in the <code>data-event-uiaction</code> line is the name of the Input Action that fired
+<li><code>ev.action</code> in the <code>on:uiaction</code> line is the name of the Input Action that fired
   (<a href="../events/#ui-actions">UI actions</a>); here <code>IA_ArcDemo_DevBar</code> (F10) calls <code>ToggleDevBar</code>.</li>
 <li>Both classes are Blueprint children of C++ view models; the Blueprints hold the data defaults
   (<a href="../blueprint-view-models/">Blueprint view models</a>).</li>
 </ul>
-<p><code>call('', ...)</code> calls the model of the element's nearest <code>data-model</code> (<a href="../events/#calls">Calls</a>): inside
-<code>gu-screen</code> that is <code>saveload</code>, on <code>&lt;body&gt;</code> it is <code>ui</code>.</p>
+<p><code>call('saveload', ...)</code> and <code>call('ui', ...)</code> name the model they call (<a href="../events/#calls">Calls</a>), wherever the element sits.</p>
 <h2 id="the-list-and-its-empty-state">The list and its empty state<a class="headerlink" href="#the-list-and-its-empty-state" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sl-grid"</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"Slots.size &amp;gt; 0"</span> <span class="na">data-focus-area</span><span class="o">=</span><span class="s">"slots"</span> <span class="na">data-focus-primary</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"sl-grid"</span> <span class="na">:if</span><span class="o">=</span><span class="s">"saveload.Slots.size &amp;gt; 0"</span> <span class="na">data-focus-area</span><span class="o">=</span><span class="s">"slots"</span> <span class="na">data-focus-primary</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/SaveSlotCard"</span>
-        <span class="na">data-for</span><span class="o">=</span><span class="s">"slSlot, slSlot_index : Slots"</span>
+        <span class="na">:for</span><span class="o">=</span><span class="s">"slSlot, slSlot_index : saveload.Slots"</span>
         <span class="na">state</span><span class="o">=</span><span class="s">"{{ slSlot.State }}"</span>
         <span class="na">slot-label</span><span class="o">=</span><span class="s">"{{ slSlot.SlotLabel }}"</span>
         <span class="na">title</span><span class="o">=</span><span class="s">"{{ slSlot.Title }}"</span>
@@ -2385,14 +2384,14 @@ in load mode, Save Game in the pause menu in save mode.</p>
         <span class="na">empty-hint</span><span class="o">=</span><span class="s">"{{ slSlot.EmptyHint }}"</span>
         <span class="na">corrupted-label</span><span class="o">=</span><span class="s">"Data corrupted"</span>
         <span class="na">corrupted-hint</span><span class="o">=</span><span class="s">"This file cannot be read."</span>
-        <span class="na">selected</span><span class="o">=</span><span class="s">"{{ slSlot_index == SelectedSlot }}"</span>
+        <span class="na">selected</span><span class="o">=</span><span class="s">"{{ slSlot_index == saveload.SelectedSlot }}"</span>
         <span class="na">focusable</span><span class="o">=</span><span class="s">"{{ true }}"</span>
-        <span class="na">autofocus</span><span class="o">=</span><span class="s">"{{ slSlot_index == SelectedSlot }}"</span>
-        <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Activate', slSlot_index)"</span>
+        <span class="na">autofocus</span><span class="o">=</span><span class="s">"{{ slSlot_index == saveload.SelectedSlot }}"</span>
+        <span class="na">on:click</span><span class="o">=</span><span class="s">"call('saveload', 'Activate', slSlot_index)"</span>
         <span class="na">style</span><span class="o">=</span><span class="s">"width: 100%"</span><span class="p">/&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/EmptyState"</span>
-    <span class="na">data-if</span><span class="o">=</span><span class="s">"Slots.size == 0"</span>
+    <span class="na">:if</span><span class="o">=</span><span class="s">"saveload.Slots.size == 0"</span>
     <span class="na">icon</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/icons/folder-x.svg"</span>
     <span class="na">title</span><span class="o">=</span><span class="s">"No saved games"</span>
     <span class="na">body</span><span class="o">=</span><span class="s">"Your saves and autosaves will appear here."</span>
@@ -2403,9 +2402,9 @@ in load mode, Save Game in the pause menu in save mode.</p>
 <span class="p">&lt;/</span><span class="nt">dc-import</span><span class="p">&gt;</span>
 </code></pre></div>
 <ul>
-<li><code>data-if</code> shows the grid while <code>Slots</code> has rows and the empty state when it has none; <code>.size</code> is the array's
+<li><code>:if</code> shows the grid while <code>Slots</code> has rows and the empty state when it has none; <code>.size</code> is the array's
   length (<a href="../data-binding/#fields">Fields</a>).</li>
-<li><code>data-for="slSlot, slSlot_index : Slots"</code> on the import makes one card per row, with the row and its index
+<li><code>:for="slSlot, slSlot_index : saveload.Slots"</code> on the import makes one card per row, with the row and its index
   (<a href="../data-binding/#lists">Lists</a>). The click passes the index to <code>Activate</code>.</li>
 <li><code>selected</code> and <code>autofocus</code> compare the index with <code>SelectedSlot</code>, so focus lands on the selected slot when the
   area is entered, also after the screen is opened again. No view model field follows the focus.</li>
@@ -2433,10 +2432,10 @@ the screen's model (<a href="../components/#props">Props</a>). Children of an im
         <span class="na">label</span><span class="o">=</span><span class="s">"Delete"</span>
         <span class="na">variant</span><span class="o">=</span><span class="s">"ghost"</span>
         <span class="na">icon-left</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/icons/trash-2.svg"</span>
-        <span class="na">disabled</span><span class="o">=</span><span class="s">"{{ bNoDelete }}"</span>
+        <span class="na">disabled</span><span class="o">=</span><span class="s">"{{ saveload.bNoDelete }}"</span>
         <span class="na">focusable</span><span class="o">=</span><span class="s">"{{ true }}"</span>
         <span class="na">data-focus-enter</span><span class="o">=</span><span class="s">"modal"</span>
-        <span class="na">data-event-click</span><span class="o">=</span><span class="s">"callIf(!bNoDelete, '', 'Delete')"</span><span class="p">/&gt;</span>
+        <span class="na">on:click</span><span class="o">=</span><span class="s">"callIf(!saveload.bNoDelete, 'saveload', 'Delete')"</span><span class="p">/&gt;</span>
 </code></pre></div>
 <p>Delete is reachable while disabled: <code>disabled</code> only changes its look, so the click is guarded with
 <code>callIf(!bNoDelete, ...)</code> (<a href="../events/#callif">callIf</a>).</p>
@@ -2490,13 +2489,13 @@ the screen's model (<a href="../components/#props">Props</a>). Children of an im
   their Back goes to <code>&lt;body&gt;</code> (<a href="#back">Back</a>).</li>
 </ul>
 <p>The confirm is an area inside the screen, shown while <code>bConfirm</code> is true:</p>
-<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-area"</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"bConfirm"</span> <span class="na">data-focus-area</span><span class="o">=</span><span class="s">"modal"</span> <span class="na">data-focus-contain</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-area"</span> <span class="na">:if</span><span class="o">=</span><span class="s">"saveload.bConfirm"</span> <span class="na">data-focus-area</span><span class="o">=</span><span class="s">"modal"</span> <span class="na">data-focus-contain</span><span class="o">=</span><span class="s">""</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/Modal"</span>
         <span class="na">backdrop</span><span class="o">=</span><span class="s">"{{ true }}"</span>
         <span class="na">variant</span><span class="o">=</span><span class="s">"danger"</span>
         <span class="na">title</span><span class="o">=</span><span class="s">"Delete this save?"</span>
-        <span class="na">body</span><span class="o">=</span><span class="s">"{{ ConfirmBody }}"</span>
-        <span class="na">buttons</span><span class="o">=</span><span class="s">"{{ ConfirmButtons }}"</span>
+        <span class="na">body</span><span class="o">=</span><span class="s">"{{ saveload.ConfirmBody }}"</span>
+        <span class="na">buttons</span><span class="o">=</span><span class="s">"{{ saveload.ConfirmButtons }}"</span>
         <span class="na">focused</span><span class="o">=</span><span class="s">"{{ 0 }}"</span><span class="p">/&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -2521,7 +2520,7 @@ the screen's model (<a href="../components/#props">Props</a>). Children of an im
 <ul>
 <li><code>data-focus-enter</code> is read only from a click (a mouse click, pad accept, a hotkey or cycle step), never from a key
   handler that calls the view model.</li>
-<li>A <code>data-if</code> that turns true builds its branch again, so focus, scroll and hover state inside it start fresh
+<li>A <code>:if</code> that turns true builds its branch again, so focus, scroll and hover state inside it start fresh
   (<a href="../limits/">Limits</a>).</li>
 <li>A custom element that looks disabled stays a focus stop; only a disabled form control loses it.</li>
 </ul>
@@ -2530,21 +2529,20 @@ the screen's model (<a href="../components/#props">Props</a>). Children of an im
 <p>The footer holds one prompt group per area, and <code>GameUI.rcss</code> shows the group of the active area. The plugin sets
 <code>data-focus-active</code> on <code>&lt;body&gt;</code> to the name of the area that holds the focus, so CSS can switch groups without a view
 model field:</p>
-<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-prompts gu-default"</span> <span class="na">data-area</span><span class="o">=</span><span class="s">"slots"</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"!bConfirm"</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-prompts gu-default"</span> <span class="na">data-area</span><span class="o">=</span><span class="s">"slots"</span> <span class="na">:if</span><span class="o">=</span><span class="s">"!saveload.bConfirm"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/PromptBar"</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/InputPrompt"</span>
-            <span class="na">key-label</span><span class="o">=</span><span class="s">"{{ ArcKeys.confirm }}"</span>
-            <span class="na">label</span><span class="o">=</span><span class="s">"{{ Mode == 'save' ? 'Save' : 'Load' }}"</span>
-            <span class="na">disabled</span><span class="o">=</span><span class="s">"{{ bNoPrimary }}"</span><span class="p">/&gt;</span>
+            <span class="na">action</span><span class="o">=</span><span class="s">"confirm"</span>
+            <span class="na">label</span><span class="o">=</span><span class="s">"{{ saveload.Mode == 'save' ? 'Save' : 'Load' }}"</span>
+            <span class="na">disabled</span><span class="o">=</span><span class="s">"{{ saveload.bNoPrimary }}"</span><span class="p">/&gt;</span>
         <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/InputPrompt"</span>
-            <span class="na">key-label</span><span class="o">=</span><span class="s">"{{ ArcKeys.IA_ArcDemo_Delete }}"</span>
+            <span class="na">action</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/Demo/Input/IA_ArcDemo_Delete"</span>
             <span class="na">label</span><span class="o">=</span><span class="s">"Delete"</span>
-            <span class="na">disabled</span><span class="o">=</span><span class="s">"{{ bNoDelete }}"</span>
-            <span class="na">data-hotkey</span><span class="o">=</span><span class="s">"IA_ArcDemo_Delete"</span>
+            <span class="na">disabled</span><span class="o">=</span><span class="s">"{{ saveload.bNoDelete }}"</span>
             <span class="na">data-focus-enter</span><span class="o">=</span><span class="s">"modal"</span>
-            <span class="na">data-event-click</span><span class="o">=</span><span class="s">"callIf(!bNoDelete, '', 'Delete')"</span><span class="p">/&gt;</span>
+            <span class="na">on:click</span><span class="o">=</span><span class="s">"callIf(!saveload.bNoDelete, 'saveload', 'Delete')"</span><span class="p">/&gt;</span>
         <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/InputPrompt"</span>
-            <span class="na">key-label</span><span class="o">=</span><span class="s">"{{ ArcKeys.back }}"</span>
+            <span class="na">action</span><span class="o">=</span><span class="s">"back"</span>
             <span class="na">label</span><span class="o">=</span><span class="s">"Back"</span><span class="p">/&gt;</span>
     <span class="p">&lt;/</span><span class="nt">dc-import</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -2561,23 +2559,23 @@ model field:</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>The full sheet repeats this selector for every focus area name used by any demo screen. <code>gu-default</code> also shows while no area is active, and <code>gu-all</code> always. A
-<code>data-if</code> on <code>bConfirm</code> replaces the groups with Confirm and Cancel while the confirm is open:</p>
-<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-prompts gu-all"</span> <span class="na">data-if</span><span class="o">=</span><span class="s">"bConfirm"</span><span class="p">&gt;</span>
+<code>:if</code> on <code>bConfirm</code> replaces the groups with Confirm and Cancel while the confirm is open:</p>
+<div class="highlight"><span class="filename">SaveLoad.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"gu-prompts gu-all"</span> <span class="na">:if</span><span class="o">=</span><span class="s">"saveload.bConfirm"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/PromptBar"</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/InputPrompt"</span>
-            <span class="na">key-label</span><span class="o">=</span><span class="s">"{{ ArcKeys.confirm }}"</span>
+            <span class="na">action</span><span class="o">=</span><span class="s">"confirm"</span>
             <span class="na">label</span><span class="o">=</span><span class="s">"Confirm"</span><span class="p">/&gt;</span>
         <span class="p">&lt;</span><span class="nt">dc-import</span> <span class="na">name</span><span class="o">=</span><span class="s">"/ArcRmlUIDemo/UI/Rml/Demo/Components/InputPrompt"</span>
-            <span class="na">key-label</span><span class="o">=</span><span class="s">"{{ ArcKeys.back }}"</span>
+            <span class="na">action</span><span class="o">=</span><span class="s">"back"</span>
             <span class="na">label</span><span class="o">=</span><span class="s">"Cancel"</span><span class="p">/&gt;</span>
     <span class="p">&lt;/</span><span class="nt">dc-import</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>The key labels are <code>ArcKeys</code>: <code>confirm</code> and <code>back</code> for the project's Confirm and Back, <code>IA_ArcDemo_Delete</code> for the
-screen's action, each for the current input device (<a href="../view-models/#fields-every-model-gets">Fields every model gets</a>).</p>
+<p><code>InputPrompt</code> shows its key with <code>&lt;kbd action&gt;</code> (<a href="../input/#key-labels">Key labels</a>): <code>confirm</code> and <code>back</code> are the project's Confirm and
+Back, the path is the package path of the screen's Input Action, each shown for the current input device.</p>
 <h2 id="the-hotkey">The hotkey<a class="headerlink" href="#the-hotkey" title="Permanent link">&para;</a></h2>
-<p>The Delete prompts carry <code>data-hotkey="IA_ArcDemo_Delete"</code>: when that action fires, the prompt is clicked, so its
-<code>data-event-click</code> and <code>data-focus-enter</code> run as for the button
+<p><code>InputPrompt</code> also sets <code>data-hotkey</code> on its element to its <code>action</code>, so on the Delete prompts, when that action fires, the prompt is clicked and its
+<code>on:click</code> and <code>data-focus-enter</code> run as for the button
 (<a href="../input/#the-menus-own-action">The menu's own action</a>).
 A hotkey clicks only a visible element, so the key works exactly while a Delete prompt is shown: in <code>slots</code> and
 <code>actions</code>, not in <code>sort</code> or while the confirm is open.</p>
@@ -2588,8 +2586,8 @@ one in the focused area, then in the document; nothing is reported. Here two pro
 and CSS shows one at a time.</p>
 </div>
 <h2 id="back">Back<a class="headerlink" href="#back" title="Permanent link">&para;</a></h2>
-<p>One handler on <code>&lt;body&gt;</code> handles Back for the whole screen (<a href="../events/#back">Back</a>): the <code>data-event-back</code> attribute of the <code>&lt;body&gt;</code> shown in
-<a href="#two-view-models">Two view models</a>, <code>call('', 'Back'); stopPropagation()</code>.</p>
+<p>One handler on <code>&lt;body&gt;</code> handles Back for the whole screen (<a href="../events/#back">Back</a>): the <code>on:back</code> attribute of the <code>&lt;body&gt;</code> shown in
+<a href="#two-view-models">Two view models</a>, <code>call('ui', 'Back'); stopPropagation()</code>.</p>
 <p>Back in <code>actions</code> first returns focus to its parent <code>slots</code>, on the slot it was entered from, and never reaches
 <code>&lt;body&gt;</code> (<a href="../navigation-reference/#back-and-the-parent-area">Back and the parent area</a>). With no saves there is no <code>slots</code> area,
 so that Back goes on to <code>&lt;body&gt;</code> like a Back in <code>slots</code>, <code>sort</code> or <code>modal</code>. <code>&lt;body&gt;</code> calls <code>ui</code>'s <code>Back</code> and stops

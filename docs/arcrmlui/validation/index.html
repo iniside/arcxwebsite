@@ -1651,6 +1651,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#call-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Call arguments
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Input actions
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2152,6 +2174,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#call-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Call arguments
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Input actions
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2235,8 +2279,16 @@ check that did not run.</p>
 <td>A binding reads a field the declared view model does not have.</td>
 </tr>
 <tr>
+<td><code>read-only-field</code></td>
+<td>A <code>:value</code>, <code>:checked</code> or event assignment writes a field Blueprint cannot write (<code>BlueprintReadOnly</code>, a getter, not Blueprint-visible); the game refuses the write (warning).</td>
+</tr>
+<tr>
 <td><code>unknown-function</code>, <code>call-arity</code></td>
 <td><code>call()</code> names a function the model does not have, or passes the wrong number of arguments.</td>
+</tr>
+<tr>
+<td><code>invalid-value</code></td>
+<td>A <code>call('model', 'Fn', ...)</code> argument does not fit its parameter: a string for a number, a number for a bool and so on (<a href="#call-arguments">below</a>).</td>
 </tr>
 <tr>
 <td><code>view-model-path</code></td>
@@ -2256,7 +2308,11 @@ check that did not run.</p>
 </tr>
 <tr>
 <td><code>input-mapping</code></td>
-<td>An <code>input-mapping</code> does not load as an Input Mapping Context, or a menu document has no key on the Back action.</td>
+<td>An <code>input-mapping</code> does not load as an Input Mapping Context, or a menu document has no key on the Back action; a hotkey or <code>&lt;kbd action&gt;</code> names no UI action (<a href="#input-actions">below</a>).</td>
+</tr>
+<tr>
+<td><code>asset-reference</code></td>
+<td>A <code>&lt;kbd action&gt;</code> or hotkey path is not the package path of an Input Action.</td>
 </tr>
 <tr>
 <td><code>missing-image</code>, <code>missing-font</code>, <code>unknown-font-family</code></td>
@@ -2272,7 +2328,7 @@ check that did not run.</p>
 </tr>
 <tr>
 <td><code>structural-conflict</code></td>
-<td>For example <code>data-if</code> and <code>data-for</code> on one element, or a <code>data-action</code> other than <code>close</code> and <code>open:&lt;package path&gt;</code> without a <code>data-model</code> on <code>&lt;body&gt;</code>.</td>
+<td>For example <code>:if</code> and <code>:for</code> on one element, or a <code>data-action</code> other than <code>close</code> and <code>open:&lt;package path&gt;</code> without a <code>:model</code> on <code>&lt;body&gt;</code>.</td>
 </tr>
 <tr>
 <td><code>undefined-variable</code>, <code>duplicate-id</code></td>
@@ -2307,6 +2363,47 @@ reports:</p>
 </ul>
 <p>A misspelled segment gets the same warning and never resolves, with no other message, so read the segment name in the
 warning.</p>
+<h3 id="call-arguments">Call arguments<a class="headerlink" href="#call-arguments" title="Permanent link">&para;</a></h3>
+<p>The validator types each argument of a <code>call('model', 'Fn', ...)</code> or <code>callIf</code> and checks it against the parameter of <code>Fn</code>. A literal has its own type; a
+model field has the type of its property; <code>ev.value</code> is a number on <code>&lt;input type="range"&gt;</code> and a string on other inputs; an expression, an alias or
+a loop item is not typed and always fits. A number fits any numeric parameter (int and float both ways), a string fits a string, name or text parameter, and
+a bool fits only a bool. A misfit is an error that names the argument, its type, the parameter and its type: "... passes 'abc' (string) to parameter 'Amount' (int32) of 'Heal', which does not fit it". The runtime still converts leniently, so a misfit
+the check cannot see does not break a game; the editor's argument rows and function list use the same rule.</p>
+<h3 id="input-actions">Input actions<a class="headerlink" href="#input-actions" title="Permanent link">&para;</a></h3>
+<p>The validator reads the value of <code>data-hotkey</code>, <code>data-hotkey-focus</code>, <code>data-hotkey-cycle</code>, <code>data-drag-action</code> and <code>&lt;kbd action&gt;</code> unless it contains <code>{{ }}</code>.
+The UI actions it checks against are the actions of the input mapping contexts of the document, or of its frame when it is a tab (<a href="../input/">Input and gamepad</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Report</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A path (starts with <code>/</code>) that is no Input Action package path</td>
+<td>Error <code>asset-reference</code>.</td>
+</tr>
+<tr>
+<td>A path of an Input Action that is no UI action of those contexts</td>
+<td>Warning <code>input-mapping</code>.</td>
+</tr>
+<tr>
+<td>A bare name no UI action has</td>
+<td>Warning <code>input-mapping</code>.</td>
+</tr>
+<tr>
+<td>A bare name that two UI actions share</td>
+<td>Warning <code>input-mapping</code> that lists the paths; name one by its path.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>For a <code>&lt;kbd action&gt;</code>, the Confirm and Back actions of the project's Common Input settings also count, and <code>confirm</code>, <code>back</code>, <code>navigate</code>, <code>stepLeft</code>
+  and <code>stepRight</code> are not checked.</li>
+<li>A read of <code>ArcKeys.&lt;action name&gt;</code> is a <code>data-expression</code> warning, "ArcKeys.<name> is deprecated: use &lt;kbd action=\"<path>\"/&gt;", which names the path when one action has that name.
+  <code>ArcKeys.confirm</code>, <code>back</code>, <code>navigate</code>, <code>stepLeft</code>, <code>stepRight</code> and <code>scheme</code> get none.</li>
+</ul>
 
 
 

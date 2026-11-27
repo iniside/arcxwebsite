@@ -2313,19 +2313,19 @@ field: the Set node of a Field Notify variable does that (the node is titled <st
 <p>A Blueprint view model is named by its generated class: the asset path, a dot, and the asset name followed by <code>_C</code>.
 <code>create="true"</code> makes a new instance when the document opens. The rest of the document reads the fields and calls
 the function like any other view model:</p>
-<div class="highlight"><span class="filename">BlueprintViewModel.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span> <span class="na">data-model</span><span class="o">=</span><span class="s">"counter"</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">BlueprintViewModel.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span> <span class="na">:model</span><span class="o">=</span><span class="s">"counter"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"bv-panel"</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"bv-title"</span><span class="p">&gt;</span>{{ Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"bv-count"</span><span class="p">&gt;</span>Count: {{ Count }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Step: {{ Step }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">"bv-title"</span><span class="p">&gt;</span>{{ counter.Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"bv-count"</span><span class="p">&gt;</span>Count: {{ counter.Count }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Step: {{ counter.Step }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"bv-buttons"</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bv-increment"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bv-button"</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Increment')"</span><span class="p">&gt;</span>Add step<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"bv-increment"</span> <span class="na">class</span><span class="o">=</span><span class="s">"bv-button"</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('counter', 'Increment')"</span><span class="p">&gt;</span>Add step<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">"bv-button"</span> <span class="na">data-action</span><span class="o">=</span><span class="s">"close"</span><span class="p">&gt;</span>Close<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
-<p><code>call('', 'Increment')</code> calls <code>Increment</code> on the model of the element's <code>data-model</code>; "Add step" adds <code>Step</code> to
+<p><code>call('counter', 'Increment')</code> calls <code>Increment</code> on the model <code>counter</code>; "Add step" adds <code>Step</code> to
 <code>Count</code>. <code>data-action="close"</code> closes the document.</p>
 <h2 id="which-blueprint-functions-a-document-can-call">Which Blueprint functions a document can call<a class="headerlink" href="#which-blueprint-functions-a-document-can-call" title="Permanent link">&para;</a></h2>
 <ul>

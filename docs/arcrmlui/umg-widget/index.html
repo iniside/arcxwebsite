@@ -2339,7 +2339,7 @@ Open Requested</strong> creates such a pair in one step:</p>
 <p><img alt="The event graph of WBP_Sample_UmgEvents. Event Construct runs Bind Event to On Open Requested and then Bind Event to On Close Requested; the Target of both is the Document variable. The custom event OnOpenRequested_Event has a Path output and sets Document on the Document widget to a Make Arc Rml Document Ref of that Path. The custom event OnCloseRequested_Event calls Remove from Parent on self" src="../images/umg-events-graph.png" /></p>
 <p>Open swaps the document and keeps the widget and its place on the screen; close removes the widget from its parent.</p>
 <p><img alt="The UmgEvents sample: a text block above a card titled UMG events with the buttons Open the second document and Close" src="../images/umg-events.png" /></p>
-<p>The two document actions need no <code>data-model</code> on the document's <code>&lt;body&gt;</code>, so the sample declares no view model
+<p>The two document actions need no <code>:model</code> on the document's <code>&lt;body&gt;</code>, so the sample declares no view model
 (<a href="../limits/">Limits</a>). A document action with no listener bound logs one <code>LogArcRmlUI</code> warning
 naming the widget, the document and the action.</p>
 <h2 id="give-it-data">Give it data<a class="headerlink" href="#give-it-data" title="Permanent link">&para;</a></h2>

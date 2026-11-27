@@ -2576,7 +2576,7 @@ places on their own.</p>
 <li>A tab is isolated from its frame: frame rules and custom properties do not reach into it, so every tab links the shared
   style sheets itself.</li>
 <li>A tab may not declare a view model name that a kept tab declares differently, and a frame cannot have a frame
-  (<a href="../frames-and-tabs/">Frames and tabs</a>). A <code>data-if</code> that rebuilds the <code>arc-embed</code> element drops the kept tabs
+  (<a href="../frames-and-tabs/">Frames and tabs</a>). A <code>:if</code> that rebuilds the <code>arc-embed</code> element drops the kept tabs
   (<a href="../limits/">Limits</a>).</li>
 </ul>
 <h2 id="shared-parts">Shared parts<a class="headerlink" href="#shared-parts" title="Permanent link">&para;</a></h2>
@@ -2588,8 +2588,8 @@ places on their own.</p>
 <li><strong>One tokens sheet.</strong> Colours, spacing and fonts as custom properties on <code>:root</code>, in one sheet linked from every
   document and every tab (<a href="../styling/#themes">Styling</a>). The fonts themselves come from the <strong>Font Sheets</strong> setting
   (<a href="../project-setup/#fonts">Project setup</a>).</li>
-<li><strong>Key hints.</strong> <code>{{ ArcKeys.confirm }}</code>, <code>{{ ArcKeys.back }}</code> and <code>{{ ArcKeys.&lt;Action&gt; }}</code> show the key of the current
-  input device (<a href="../view-models/#fields-every-model-gets">View models</a>), so one prompt serves keyboard and pad.</li>
+<li><strong>Key hints.</strong> <code>&lt;kbd action="confirm"/&gt;</code>, <code>&lt;kbd action="back"/&gt;</code> and <code>&lt;kbd action="/Game/Input/IA_Jump"/&gt;</code> show the key of the current
+  input device (<a href="../input/">Input and gamepad</a>), so one prompt serves keyboard and pad.</li>
 <li><strong>Input per document.</strong> Each screen's own verbs go in its own mapping context, named by <code>input-mapping</code>; Confirm and
   Back stay in one project-wide context (<a href="../input/#the-menus-own-action">Input and gamepad</a>).</li>
 </ul>

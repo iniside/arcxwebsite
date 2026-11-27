@@ -2264,7 +2264,7 @@ destroying it. Opening it again brings back what the player left:</p>
 <ul>
 <li>The <a href="../view-models/">view model</a> with its values: the count <code>Kept</code> shows is still there. The view model is new only after a discard or a
   reload.</li>
-<li>The text in a field, the scroll position of a list, the classes and the <code>data-if</code> state.</li>
+<li>The text in a field, the scroll position of a list, the classes and the <code>:if</code> state.</li>
 <li>Loaded images and sounds.</li>
 </ul>
 <p>What starts again is focus and the enter animation: focus goes to the <code>autofocus</code> element as on a first open, and the
@@ -2278,7 +2278,7 @@ park (<a href="../view-models/#option-on-close">View models</a>).</p>
 <li>In the editor, a reload of documents, style sheets or fonts destroys every parked document.</li>
 </ul>
 <h2 id="preload">Preload<a class="headerlink" href="#preload" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">Menu.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"ka-preload"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ka-button"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">data-event-click</span><span class="o">=</span><span class="s">"call('', 'Preload')"</span><span class="p">&gt;</span>Preload<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<div class="highlight"><span class="filename">Menu.rml</span><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"ka-preload"</span> <span class="na">class</span><span class="o">=</span><span class="s">"ka-button"</span> <span class="na">autofocus</span><span class="o">=</span><span class="s">""</span> <span class="na">on:click</span><span class="o">=</span><span class="s">"call('menu', 'Preload')"</span><span class="p">&gt;</span>Preload<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><span class="filename">KeepAlive/ArcRmlSamplesKeepAlive.cpp</span><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">UArcRmlSamplesKeepAliveMenuViewModel::Preload</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">WorldContextObject</span><span class="p">)</span>
 <span class="p">{</span>

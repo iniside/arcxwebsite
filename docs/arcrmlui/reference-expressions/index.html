@@ -2251,10 +2251,10 @@
 
 
 <h1 id="expression-reference">Expression reference<a class="headerlink" href="#expression-reference" title="Permanent link">&para;</a></h1>
-<p>The language of <code>{{ }}</code> in a <a href="../documents/">document</a> and of the binding attributes that take an expression: <code>data-if</code>, <code>data-visible</code>,
-<code>data-class-*</code>, <code>data-style-*</code>, <code>data-attr-*</code>, <code>data-attrif-*</code>, <code>data-pulse-*</code>, <code>data-rml</code>, <code>data-value</code>,
-<code>data-checked</code>, <code>data-world</code> and <code>data-focus-request</code>. A <code>data-event-*</code> holds <a href="#event-statements">statements</a> made of
-the same expressions. <code>data-for</code> and <code>data-alias-*</code> take a path, not an expression.</p>
+<p>The language of <code>{{ }}</code> in a <a href="../documents/">document</a> and of the binding attributes that take an expression: <code>:if</code>, <code>:visible</code>,
+<code>class:*</code>, <code>style:*</code>, <code>attr:*</code>, <code>attrif:*</code>, <code>pulse:*</code>, <code>:rml</code>, <code>:value</code>,
+<code>:checked</code>, <code>:world</code> and <code>:focus-request</code>. A <code>on:*</code> holds <a href="#event-statements">statements</a> made of
+the same expressions. <code>:for</code> and <code>alias:*</code> take a path, not an expression.</p>
 <h2 id="literals">Literals<a class="headerlink" href="#literals" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2281,12 +2281,13 @@ the same expressions. <code>data-for</code> and <code>data-alias-*</code> take a
 <h2 id="names-and-paths">Names and paths<a class="headerlink" href="#names-and-paths" title="Permanent link">&para;</a></h2>
 <p>A name starts with a letter and goes on with letters, digits, <code>_</code> and <code>.</code>. <code>Player.Name</code> reads a member,
 <code>Items[0]</code> or <code>Items[i + 1]</code> an element (the index is cut to a whole number), <code>Items.size</code> the length of an array.
-<code>ev.&lt;name&gt;</code> reads a parameter of the event in a <code>data-event-*</code> (<a href="../reference-events/">event reference</a>); a parameter
+<code>ev.&lt;name&gt;</code> reads a parameter of the event in a <code>on:*</code> (<a href="../reference-events/">event reference</a>); a parameter
 the event does not carry is empty.</p>
-<p>The first name of a path is looked up as a field of the <a href="../glossary/#view-model">view model</a>, then as a <code>data-alias-*</code> or <code>data-for</code> name of the
+<p>The first name of a path is looked up as a field of the <a href="../glossary/#view-model">view model</a>, then as a <code>alias:*</code> or <code>:for</code> name of the
 element or an ancestor, then as a field whose name differs only in case. When two fields match that way, a warning
 names both and the one used. A path of two or more names that matches none of these reads <code>&lt;Field&gt;</code> of the view model
-named by its first name (<a href="../data-binding/#other-models">Other models</a>): <code>ui.Theme</code> reads <code>Theme</code> of the model <code>ui</code>, read-only. The element's own model is read with or without its own name in front of a field.</p>
+named by its first name (<a href="../data-binding/#other-models">Other models</a>): <code>ui.Theme</code> reads <code>Theme</code> of the model <code>ui</code>. The element's own model is read with or without its own name in front of a field.</p>
+<p><code>state.&lt;name&gt;</code> inside a component reads the value declared by its <code>&lt;state&gt;</code>; the name <code>state</code> is reserved, and a write to it never reaches the game (<a href="../components/#local-state">Local state</a>).</p>
 <h2 id="operators">Operators<a class="headerlink" href="#operators" title="Permanent link">&para;</a></h2>
 <p>From the strongest binding to the weakest. Operators of one row run left to right.</p>
 <div class="admonition note">
@@ -2358,7 +2359,7 @@ named by its first name (<a href="../data-binding/#other-models">Other models</a
 <td>Compare text when either side is text, else numbers: <code>Count == '3'</code> is true when <code>Count</code> is 3.</td>
 </tr>
 <tr>
-<td>True or false (<code>!</code>, <code>&amp;&amp;</code>, <code>\|\|</code>, <code>? :</code>, <code>data-if</code>, <code>data-visible</code>, <code>data-class-*</code>, <code>callIf</code>)</td>
+<td>True or false (<code>!</code>, <code>&amp;&amp;</code>, <code>\|\|</code>, <code>? :</code>, <code>:if</code>, <code>:visible</code>, <code>class:*</code>, <code>callIf</code>)</td>
 <td>A number is true when not <code>0</code>. Text is true only when it is <code>true</code> or <code>1</code> in any case; other text, also a name like <code>'Bob'</code>, is false. An empty value is false.</td>
 </tr>
 <tr>
@@ -2434,14 +2435,14 @@ value; the ones marked "logs" also write a warning.</p>
 </tbody>
 </table>
 <h2 id="event-statements">Event statements<a class="headerlink" href="#event-statements" title="Permanent link">&para;</a></h2>
-<p>A <code>data-event-*</code> holds statements separated by <code>;</code>, run left to right. Each statement is a function call:
+<p>A <code>on:*</code> holds statements separated by <code>;</code>, run left to right. Each statement is a function call:
 <code>call</code>, <code>callIf</code> or <code>stopPropagation</code> (<a href="../events/">Events</a>). A name without parentheses calls with no arguments:
 <code>stopPropagation</code> is <code>stopPropagation()</code>. Arguments are expressions, transforms included. The example is not from a sample: the line sits in a document inside an
-element whose <code>data-model</code> names a view model, the <code>''</code> in <code>call</code> means that model, and <code>SetVolume</code> is a function of it:</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"range"</span> <span class="na">data-event-change</span><span class="o">=</span><span class="s">"call('', 'SetVolume', ev.value | arcclamp(0, 1))"</span><span class="p">/&gt;</span>
+element whose <code>:model</code> names a view model, the <code>''</code> in <code>call</code> means that model, and <code>SetVolume</code> is a function of it:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"range"</span> <span class="na">on:change</span><span class="o">=</span><span class="s">"call('settings', 'SetVolume', ev.value | arcclamp(0, 1))"</span><span class="p">/&gt;</span>
 </code></pre></div>
-<p><code>Name = expression</code> parses but always fails when it runs: a document never writes a view model field. Any other
-function name fails the same way.</p>
+<p><code>Name = expression</code> writes a field Blueprint may write, as <code>:value</code> does (<a href="../forms/#show-and-write-back">Forms</a>); a
+read-only field is refused with an error. Any other function name fails.</p>
 <h2 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link">&para;</a></h2>
 <p>What you see, and the cause.</p>
 <table>
@@ -2453,16 +2454,16 @@ function name fails the same way.</p>
 </thead>
 <tbody>
 <tr>
-<td>The binding or handler does nothing. The validator reports <code>Data expression '&lt;expression&gt;' does not parse: &lt;message&gt;.</code></td>
+<td>The binding or handler does nothing; a failed <code>{{ }}</code> prints nothing, a failed <code>:if</code> or <code>:for</code> hides its element, a failed <code>:visible</code> sets <code>visibility: hidden</code>. When the expression parses but fails when it runs (a missing field, an unknown transform), <code>:visible</code> keeps the element visible on its first update and <code>:if</code> creates no branch. The validator reports <code>Data expression '&lt;expression&gt;' does not parse: &lt;message&gt;.</code></td>
 <td>A syntax error. The document compile reports a <code>data-expression</code> diagnostic (<a href="../validation/">Validation</a>) in a build that is not a <a href="../glossary/#shipping-build">Shipping build</a>; the <code>ArcRmlValidate</code> commandlet reports it as a warning. Documents load compiled, so the run time logs nothing: the binding or handler is not created, and the diagnostic is the only report. A Shipping build reports nothing.</td>
 </tr>
 <tr>
 <td>A log line <code>Could not find variable name '&lt;address&gt;' in data model.</code>, with the whole address (<code>Player.Name</code>)</td>
-<td>An unknown name. The binding is not created.</td>
+<td>An unknown name. The binding is not created and shows what the row above says.</td>
 </tr>
 <tr>
 <td>Log lines <code>Error during execution. &lt;message&gt;</code> and <code>Failed to execute program with &lt;n&gt; instructions:</code> with a dump of the program</td>
-<td>An unknown transform or event function, an assignment, or an index that is not a number. A binding keeps its last value; the statements after the failing one do not run.</td>
+<td>An unknown transform or event function, an assignment, or an index that is not a number. An attribute, class or style binding keeps its last value; a <code>{{ }}</code> prints nothing; the statements after the failing one do not run.</td>
 </tr>
 <tr>
 <td>Nothing is logged; the value prints nothing and is false</td>
